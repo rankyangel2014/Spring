@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<!-- 输出格式 -->
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+
+		<!-- 配置记录器级别 -->
+		<Root level="ERROR">
+			<!-- 输出设置 -->
+			<AppenderRef ref="STDOUT" />
+		</Root>
+
+		<!-- 将调用mybatis的dao的包填入此处即可 -->
+		<logger name="com.ranky.dao" level="TRACE" additivity="false">
+			<AppenderRef ref="STDOUT" />
+		</logger>
+
+	</Loggers>
+</Configuration>
