@@ -1,5 +1,7 @@
 package com.ranky.protal.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ranky.bean.FilmDto;
+import com.ranky.bean.ImageDto;
 import com.ranky.service.FilmService;
 
 /**
@@ -34,6 +37,11 @@ public class FilmController {
 		return filmService.getFilm(id);
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/getImages/{tid}", method = RequestMethod.GET)
+	public List<ImageDto> getImages(@PathVariable("tid") String id) {
+		return filmService.getImagesByTid(id);
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/getAllFilm", method = RequestMethod.GET)

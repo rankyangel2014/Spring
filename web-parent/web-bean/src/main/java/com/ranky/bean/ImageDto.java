@@ -8,6 +8,9 @@ public class ImageDto extends BaseDTO<ImageDto> {
 	private String imageUrl;
 	private String isCover;
 
+	public ImageDto() {
+	};
+
 	public ImageDto(String tid, String imageUrl) {
 		this.tid = tid;
 		this.imageUrl = imageUrl;

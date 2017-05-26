@@ -18,27 +18,27 @@
 	<script>
 		$(document).ready(function() {
 			$("button").click(function() {
-				var saveDataAry = [];
-				saveDataAry.push({
-					id : 1,
-					value : '中文'
-				});
-				saveDataAry.push({
-					id : 1,
-					value : '1'
-				});
-				$.ajax({
-					type : "POST",
-					url : "batch",
-					dataType : "json",
-					contentType : "application/json",
-					data : JSON.stringify(saveDataAry),
-					success : function(data) {
-						alert(data);
-					}
-				});
-			});
-		});
-	</script>
+
+    /* 				var saveDataAry = [];
+         saveDataAry.push({
+         id : 1,
+         value : '中文'
+         });
+         saveDataAry.push({
+         id : 1,
+         value : '1'
+         }); */
+        $.ajax({
+          type: "GET",
+          url: "getImages/7",
+          dataType: "json",
+          contentType: "application/json",
+          success: function(data) {
+            console.log(data);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

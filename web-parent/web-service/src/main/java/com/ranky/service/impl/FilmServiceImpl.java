@@ -11,6 +11,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.google.common.collect.Lists;
 import com.ranky.bean.FilmDto;
+import com.ranky.bean.ImageDto;
 import com.ranky.dao.FilmDao;
 import com.ranky.dao.ImageDao;
 import com.ranky.dao.TorrentDao;
@@ -88,6 +89,11 @@ public class FilmServiceImpl implements FilmService {
 	@Override
 	public FilmDto getFilmByCondition(String value) {
 		return null;
+	}
+
+	@Override
+	public List<ImageDto> getImagesByTid(String tid) {
+		return imageDao.findImagesByTid(tid);
 	}
 
 }

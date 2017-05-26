@@ -145,11 +145,12 @@
     <script src="js/vendor/html5shiv.js"></script>
     <![endif]-->
 <script src="js/jquery/jquery-1.9.1.min.js"></script>
+<script src="js/jquery/plugins/blockui/jquery.blockUI.min.js"></script>
 </head>
 <body>
 	<h2>Hello World!</h2>
 	<h2></h2>
-	<a class='showimage' href='#'>查看图片</a>
+	<button class='showimage'>查看图片</button>
 	<div id="lightgallery"></div>
 	<hr>
 	<script src="js/lightgallery/lightgallery.js"></script>
