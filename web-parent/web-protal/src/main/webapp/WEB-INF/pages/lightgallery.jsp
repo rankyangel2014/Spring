@@ -5,11 +5,11 @@
 <link rel="stylesheet" href="css/lightgallery.css">
 
 <style type="text/css">
-body {
+/* body {
 	background-color: #152836
-}
+} */
 
-.demo-gallery>ul {
+/* .demo-gallery>ul {
 	margin-bottom: 0;
 }
 
@@ -139,7 +139,7 @@ body {
 
 .home .demo-gallery {
 	padding-bottom: 80px;
-}
+} */
 </style>
 <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
@@ -149,44 +149,9 @@ body {
 <body>
 	<h2>Hello World!</h2>
 	<h2></h2>
-	<div class="demo-gallery">
-		<ul id="lightgallery" class="list-unstyled row">
-			<li class="col-xs-6 col-sm-4 col-md-3"
-				data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
-				data-src="img/1-1600.jpg"
-				data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-				<a href=""> <img class="img-responsive" src="img/thumb-1.jpg">
-			</a>
-			</li>
-			<li class="col-xs-6 col-sm-4 col-md-3"
-				data-responsive="img/2-375.jpg 375, img/2-480.jpg 480, img/2.jpg 800"
-				data-src="img/2-1600.jpg"
-				data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-				<a href=""> <img class="img-responsive" src="img/thumb-2.jpg">
-			</a>
-			</li>
-			<li class="col-xs-6 col-sm-4 col-md-3"
-				data-responsive="img/13-375.jpg 375, img/13-480.jpg 480, img/13.jpg 800"
-				data-src="img/13-1600.jpg"
-				data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-				<a href=""> <img class="img-responsive" src="img/thumb-13.jpg">
-			</a>
-			</li>
-			<li class="col-xs-6 col-sm-4 col-md-3"
-				data-responsive="img/4-375.jpg 375, img/4-480.jpg 480, img/4.jpg 800"
-				data-src="img/4-1600.jpg"
-				data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-				<a href=""> <img class="img-responsive" src="img/thumb-4.jpg">
-			</a>
-			</li>
-		</ul>
-	</div>
+	<a class='showimage' href='#'>查看图片</a>
+	<div id="lightgallery"></div>
 	<hr>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#lightgallery').lightGallery();
-		});
-	</script>
 	<script src="js/lightgallery/lightgallery.js"></script>
 	<script src="js/lightgallery/lg-fullscreen.js"></script>
 	<script src="js/lightgallery/lg-thumbnail.js"></script>
@@ -196,5 +161,6 @@ body {
 	<script src="js/lightgallery/lg-hash.js"></script>
 	<script src="js/lightgallery/lg-pager.js"></script>
 	<script src="js/lightgallery/lib/jquery.mousewheel.min.js"></script>
+	<script src="js/lightgallery.js"></script>
 </body>
 </html>

@@ -9,8 +9,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * 测试after,before,around,throwing,returning Advice.
  * 
@@ -27,7 +25,7 @@ public class AspceJAdvice {
 	 * Pointcut 定义Pointcut，Pointcut的名称为aspectjMethod()，此方法没有返回值和参数
 	 * 该方法就是一个标识，不进行调用
 	 */
-//	@Pointcut("execution(* com.ranky.dao.UserDao.*(..))")
+	//	@Pointcut("execution(* com.ranky.dao.UserDao.*(..))")
 	@Pointcut("execution(* com.ranky.protal.controller.UserController.*(..))")
 	private void aspectjMethod() {
 	};
@@ -72,16 +70,16 @@ public class AspceJAdvice {
 		long start = System.currentTimeMillis();
 		// 调用核心逻辑
 		Object retVal = null;
-//		try {
-			retVal = pjp.proceed();
-			// logger.info("正常返回：" + retVal);
+		//		try {
+		retVal = pjp.proceed();
+		// logger.info("正常返回：" + retVal);
 
-//		} catch (Throwable e) {
-//			 logger.error("发生异常：" + e.getMessage());
-//		} finally {
+		//		} catch (Throwable e) {
+		//			 logger.error("发生异常：" + e.getMessage());
+		//		} finally {
 
-			// logger.info("最终结果！");
-//		}
+		// logger.info("最终结果！");
+		//		}
 		// System.out.println(" 此处可以做类似于After Advice的事情");
 		logger.info("method invoke cost time " + (System.currentTimeMillis() - start) + " ms");
 		return retVal;

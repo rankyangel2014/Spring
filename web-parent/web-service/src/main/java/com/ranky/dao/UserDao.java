@@ -41,5 +41,5 @@ public interface UserDao {
 
 	@SelectProvider(type = UserSqlBuilder.class, method = "findUser")
 	@Cacheable(value = "users", sync = true)
-	UserDto findUserByCondition(@Param("value")String value);
+	UserDto findUserByCondition(@Param("value") String value);
 }

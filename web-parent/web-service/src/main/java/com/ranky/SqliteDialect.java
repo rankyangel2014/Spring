@@ -11,13 +11,9 @@ public class SqliteDialect extends Dialect {
 		super(mappedStatement, parameterObject, pageBounds);
 	}
 
+	@Override
 	protected String getLimitString(String sql, String offsetName, int offset, String limitName, int limit) {
 		sql = sql.trim();
-		// boolean isForUpdate = false;
-		// if (sql.toLowerCase().endsWith(" for update")) {
-		// sql = sql.substring(0, sql.length() - 11);
-		// isForUpdate = true;
-		// }
 		System.out.println("limit:" + limit);
 		System.out.println("limitName:" + limitName);
 		System.out.println("offset:" + offset);
