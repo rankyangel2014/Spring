@@ -53,7 +53,7 @@ public interface TorrentDao {
 	@Select(value = "select * from torrent where tid = #{tid}  and isHd='Y' LIMIT 1 ")
 	@Cacheable(value = "torrents", sync = true)
 	TorrentDto findHdTorrentByTid(@Param("tid") String tid);
-	
+
 	@Select(value = "select * from torrent where tid = #{tid} LIMIT 1  ")
 	@Cacheable(value = "torrents", sync = true)
 	TorrentDto findDefaultTorrentByTid(@Param("tid") String tid);

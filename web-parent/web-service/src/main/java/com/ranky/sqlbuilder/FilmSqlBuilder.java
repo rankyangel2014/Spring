@@ -1,11 +1,9 @@
 package com.ranky.sqlbuilder;
 
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.jdbc.SQL;
 
 import com.ranky.bean.ImageDto;
 import com.ranky.bean.TorrentDto;
@@ -25,7 +23,6 @@ public class FilmSqlBuilder {
 			sb.append(sql);
 		}
 		return StringUtils.removeEnd(sb.toString(), ",");
-
 	}
 
 	public String batchInsertTorrents(Map<String, List<TorrentDto>> map) {

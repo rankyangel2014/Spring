@@ -8,24 +8,18 @@ import java.util.List;
 /**
  * DTO基类
  * 
- * @author lilong
+ * @author xiekx
  * 
  */
 public class BaseDTO<T> implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	private Integer totalCount;// 记录数
-
 	private Integer page; // 起始页数
-
 	private String sort; //
 	private Integer limit; //
-
 	private List<T> root;
-
 	private String resCode;
-
 	private String resMsg;
 
 	public Integer getPage() {
