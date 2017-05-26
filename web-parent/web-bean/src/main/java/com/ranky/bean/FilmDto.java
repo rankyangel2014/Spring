@@ -2,14 +2,8 @@ package com.ranky.bean;
 
 import java.util.List;
 
-/**
- * Created by admin on 16/8/8.
- */
 public class FilmDto extends BaseDTO<FilmDto> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String tid;

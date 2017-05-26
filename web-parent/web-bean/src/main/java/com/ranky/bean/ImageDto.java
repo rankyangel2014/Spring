@@ -1,13 +1,7 @@
 package com.ranky.bean;
 
-/**
- * Created by admin on 16/8/8.
- */
 public class ImageDto extends BaseDTO<ImageDto> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String tid;

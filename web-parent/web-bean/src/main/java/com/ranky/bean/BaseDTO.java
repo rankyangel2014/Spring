@@ -3,8 +3,6 @@ package com.ranky.bean;
 import java.io.Serializable;
 import java.util.List;
 
-//import com.jsjn.platform.driver.serialize.CSerializer;
-
 /**
  * DTO基类
  * 
