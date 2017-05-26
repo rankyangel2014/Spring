@@ -25,6 +25,10 @@ public class FilmController {
 	@Autowired
 	private FilmService filmService;
 
+	@RequestMapping(value = "/filmIndex", method = RequestMethod.GET)
+	public String filmIndex() {
+		return "index";
+	}
 	@ResponseBody
 	@RequestMapping(value = "/searchFilm/{username}", method = RequestMethod.GET)
 	public FilmDto searchFilm(@PathVariable("username") String username) {

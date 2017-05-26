@@ -11,5 +11,6 @@ public class UserSqlBuilder {
 				WHERE("value like #{value} || '%'");
 			}
 		}.toString();
+
 	}
 }

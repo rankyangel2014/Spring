@@ -11,9 +11,10 @@ public class ImageDto extends BaseDTO<ImageDto> {
 	public ImageDto() {
 	};
 
-	public ImageDto(String tid, String imageUrl) {
+	public ImageDto(String tid, String imageUrl,String isCover) {
 		this.tid = tid;
 		this.imageUrl = imageUrl;
+		this.isCover = isCover;
 	}
 
 	public Integer getId() {

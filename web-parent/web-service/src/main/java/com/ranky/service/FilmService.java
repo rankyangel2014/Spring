@@ -8,13 +8,13 @@ import com.ranky.bean.ImageDto;
 public interface FilmService {
 	FilmDto getFilm(Integer id);
 
-	int saveFilm(FilmDto userDto);
+	int saveFilm(FilmDto filmDto);
 
-	int updateFilm(FilmDto userDto);
+	int updateFilm(FilmDto filmDto);
 
 	int deleteFilm(Integer id);
 
-	FilmDto getAllFilm(FilmDto user);
+	FilmDto getAllFilm(FilmDto filmDto);
 
 	FilmDto getFilmByCondition(String value);
 

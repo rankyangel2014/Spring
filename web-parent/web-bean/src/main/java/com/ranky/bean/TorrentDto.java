@@ -9,8 +9,11 @@ public class TorrentDto extends BaseDTO<TorrentDto> {
 	private String torrentName;
 	private String torrentUrl;
 
-	public TorrentDto(String tid, String torrentUrl) {
+	public TorrentDto(String tid, String isHd, String torrentName,
+			String torrentUrl) {
 		this.tid = tid;
+		this.isHd = isHd;
+		this.torrentName = torrentName;
 		this.torrentUrl = torrentUrl;
 	}
 

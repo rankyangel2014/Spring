@@ -17,23 +17,12 @@
 .mmGrid, .mmPaginator {
 	font-size: 12px;
 }
-
-.btnPrice {
-	display: block;
-	width: 16px;
-	height: 16px;
-	margin: 0px auto;
-	background: url(img/botton_g1.gif) no-repeat;
-}
-
-.btnPrice:hover {
-	background: url(img/botton_g2.gif) no-repeat;
-}
 </style>
 <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
     <![endif]-->
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/jquery/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 	<h2>Hello World!</h2>
@@ -47,14 +36,14 @@
 	</div>
 	<div class="clear"></div>
 	<hr>
-	<script src="js/jquery/jquery-1.9.1.min.js"></script>
+
+	<script src="js/jquery/plugins/blockui/jquery.blockUI.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/vendor/json2.js"></script>
 	<script src="mmGrid/mmGrid.js"></script>
 	<script src="mmGrid/mmPaginator.js"></script>
+	<script src="js/layer/layer.js"></script>
 	<script src="js/index.js"></script>
-	<script>
-		
-	</script>
+	
 </body>
 </html>

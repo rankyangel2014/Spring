@@ -14,4 +14,5 @@ public interface UserService {
 	UserDto getAllUser(UserDto user);
 
 	UserDto getUserByCondition(String value);
+
 }

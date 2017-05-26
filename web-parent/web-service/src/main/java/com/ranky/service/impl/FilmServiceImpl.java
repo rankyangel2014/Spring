@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
@@ -12,6 +13,8 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.google.common.collect.Lists;
 import com.ranky.bean.FilmDto;
 import com.ranky.bean.ImageDto;
+import com.ranky.bean.TorrentDto;
+import com.ranky.bean.UserDto;
 import com.ranky.dao.FilmDao;
 import com.ranky.dao.ImageDao;
 import com.ranky.dao.TorrentDao;
@@ -36,14 +39,15 @@ public class FilmServiceImpl implements FilmService {
 		return filmDao.findFilmById(id);
 	}
 
+	@Transactional
 	@Override
 	public int saveFilm(FilmDto filmDto) {
-		// FilmDto film = filmDao.findFilmById(id);
-		// String tid = film.getTid();
-		// ImageDto imageDto = imageDao.findCoverImageByTid(tid);
-		// TorrentDto torrentDto = torrentDao.findHdTorrentByTid(tid);
-		// film.setFilmCover(imageDto.getImageUrl());
-		// film.setFilmTorrent(torrentDto.getTorrentUrl());
+		List<TorrentDto> torrents = filmDto.getTorrents();
+		List<ImageDto> imgs = filmDto.getImages();
+		filmDto.setFilmCover(imgs.get(0).getImageUrl());
+		filmDto.setFilmTorrent(torrents.get(0).getTorrentUrl());
+		imageDao.batchSaveImage(imgs);
+		torrentDao.batchSaveTorrent(torrents);
 		return filmDao.saveFilm(filmDto);
 	}
 
