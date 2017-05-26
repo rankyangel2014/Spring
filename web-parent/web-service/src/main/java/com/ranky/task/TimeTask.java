@@ -12,35 +12,41 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 import com.ranky.bean.FilmDto;
 import com.ranky.bean.ImageDto;
 import com.ranky.bean.TorrentDto;
+import com.ranky.common.Cryptos;
 import com.ranky.service.FilmService;
 
-//@Component
+@Component
 public class TimeTask {
 
 	@Autowired
 	private FilmService filmService;
 
-	// @Scheduled(cron = "0/5 * * * * ?")
+	//	@Scheduled(cron = "0/5 * * * * ?")
 	public void execute() {
 		System.err.println("*******定时任务begin********");
 		getFilmInfo("thread-1053416-1-1.html");
 		System.err.println("*******定时任务end********");
 	}
 
-	private static final String THZHD_URI_PREFIX = "http://www.taohuabbs.cc/";
+	private static final String URI_PREFIX1 = Cryptos
+			.aesDecrypt("2020240521b7b47e7e6aadf4cfa6e39b96b5225158f4dbc0fa30d14252f8ba4c");
+	private static final String PAGE_COUNT_URI = Cryptos
+			.aesDecrypt("0b8d69777c70b9e13bbcba559e29d6f7666ba3a5cc3d657d71e2110866caf05b");
+	private static final String TORRENT_URI_PREFIX = Cryptos
+			.aesDecrypt("c2c432af94d6818d1ecb55796787604654ef735568f854cf69450e67dc167b37");
+
+	private static final String FILM_INFO_SPLIT = Cryptos.aesDecrypt("f043277cdeda2aff9667e26d20333248");
 
 	public Integer getPageCount() {
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(THZHD_URI_PREFIX + "forum-181-1.html")
-					.timeout(4000).get();
+			doc = Jsoup.connect(URI_PREFIX1 + PAGE_COUNT_URI).timeout(4000).get();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -64,14 +70,14 @@ public class TimeTask {
 
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(THZHD_URI_PREFIX + url).timeout(4000).get();
+			doc = Jsoup.connect(URI_PREFIX1 + url).timeout(4000).get();
 		} catch (Exception e1) {
 			System.err.println(url + e1.getMessage());
 		}
 
 		Elements aidEles = doc.select(".attnm a[href]");
 		Elements imgEles = doc.select("img[file]");
-		String[] arr = doc.select("td .t_f").get(0).text().split("[【：】]");
+		String[] arr = doc.select("td .t_f").get(0).text().split(FILM_INFO_SPLIT);
 
 		List<ImageDto> imgs = Lists.newArrayListWithCapacity(imgEles.size());
 		imgEles.forEach(new Consumer<Element>() {
@@ -79,9 +85,6 @@ public class TimeTask {
 			public void accept(Element t) {
 				try {
 					String imgUrl = t.attr("file");
-					String.format(
-							"INSERT INTO T_IMGS(TID,IMGURL) VALUES(%s,%s);",
-							tid, imgUrl);
 					imgs.add(new ImageDto(tid, imgUrl, "N"));
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -98,11 +101,8 @@ public class TimeTask {
 				try {
 					URIBuilder uri = new URIBuilder(t.attr("href"));
 					String said = uri.getQueryParams().get(0).getValue();
-					String aid = String.format(THZHD_URI_PREFIX
-							+ "forum.php?mod=attachment&aid=%s", said);
+					String aid = String.format(URI_PREFIX1 + TORRENT_URI_PREFIX, said);
 					aids.add(new TorrentDto(tid, "N", t.text(), aid));
-					// String.format("INSERT INTO T_AIDS(TID,AID) VALUES(%s,%s);",
-					// tid, aid);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -131,10 +131,9 @@ public class TimeTask {
 		filmDto.setMarkInfo(markInfo);
 		filmDto.setReleaseTime(releaseTime);
 		filmDto.setTorrentTerm(torrentTerm);
-		filmDto.setSource(THZHD_URI_PREFIX + url);
+		filmDto.setSource(URI_PREFIX1 + url);
 		filmDto.setTorrents(aids);
 		filmDto.setImages(imgs);
 		filmService.saveFilm(filmDto);
-
 	}
 }

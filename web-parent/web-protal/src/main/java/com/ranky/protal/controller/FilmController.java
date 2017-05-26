@@ -29,6 +29,7 @@ public class FilmController {
 	public String filmIndex() {
 		return "index";
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/searchFilm/{username}", method = RequestMethod.GET)
 	public FilmDto searchFilm(@PathVariable("username") String username) {
@@ -50,7 +51,7 @@ public class FilmController {
 	@ResponseBody
 	@RequestMapping(value = "/getAllFilm", method = RequestMethod.GET)
 	public FilmDto getAllFilm(FilmDto filmDto) {
-		return filmService.getAllFilm(null);
+		return filmService.getAllFilm(filmDto);
 	}
 
 	@ResponseBody

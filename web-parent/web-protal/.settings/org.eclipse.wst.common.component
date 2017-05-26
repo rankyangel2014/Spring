@@ -10,6 +10,9 @@
         <dependent-module archiveName="web-bean-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-bean/web-bean">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="web-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/web-common/web-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="web-protal"/>
         <property name="java-output-path" value="/web-protal/target/classes"/>
     </wb-module>
