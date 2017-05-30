@@ -12,6 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
@@ -27,14 +28,18 @@ public class TimeTask {
 	@Autowired
 	private FilmService filmService;
 
-	//	@Scheduled(cron = "0/5 * * * * ?")
+	@Scheduled(cron = "0/5 * * * * ?")
 	public void execute() {
 		System.err.println("*******定时任务begin********");
-		getFilmInfo("thread-1053416-1-1.html");
+		System.out.println(URI_PREFIX);
+		System.out.println(PAGE_COUNT_URI);
+		System.out.println(TORRENT_URI_PREFIX);
+		System.out.println(FILM_INFO_SPLIT);
+		//		getFilmInfo("thread-1053416-1-1.html");
 		System.err.println("*******定时任务end********");
 	}
 
-	private static final String URI_PREFIX1 = Cryptos
+	private static final String URI_PREFIX = Cryptos
 			.aesDecrypt("2020240521b7b47e7e6aadf4cfa6e39b96b5225158f4dbc0fa30d14252f8ba4c");
 	private static final String PAGE_COUNT_URI = Cryptos
 			.aesDecrypt("0b8d69777c70b9e13bbcba559e29d6f7666ba3a5cc3d657d71e2110866caf05b");
@@ -46,7 +51,7 @@ public class TimeTask {
 	public Integer getPageCount() {
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(URI_PREFIX1 + PAGE_COUNT_URI).timeout(4000).get();
+			doc = Jsoup.connect(URI_PREFIX + PAGE_COUNT_URI).timeout(4000).get();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -70,7 +75,7 @@ public class TimeTask {
 
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(URI_PREFIX1 + url).timeout(4000).get();
+			doc = Jsoup.connect(URI_PREFIX + url).timeout(5000).get();
 		} catch (Exception e1) {
 			System.err.println(url + e1.getMessage());
 		}
@@ -101,7 +106,7 @@ public class TimeTask {
 				try {
 					URIBuilder uri = new URIBuilder(t.attr("href"));
 					String said = uri.getQueryParams().get(0).getValue();
-					String aid = String.format(URI_PREFIX1 + TORRENT_URI_PREFIX, said);
+					String aid = String.format(URI_PREFIX + TORRENT_URI_PREFIX, said);
 					aids.add(new TorrentDto(tid, "N", t.text(), aid));
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -131,7 +136,7 @@ public class TimeTask {
 		filmDto.setMarkInfo(markInfo);
 		filmDto.setReleaseTime(releaseTime);
 		filmDto.setTorrentTerm(torrentTerm);
-		filmDto.setSource(URI_PREFIX1 + url);
+		filmDto.setSource(URI_PREFIX + url);
 		filmDto.setTorrents(aids);
 		filmDto.setImages(imgs);
 		filmService.saveFilm(filmDto);

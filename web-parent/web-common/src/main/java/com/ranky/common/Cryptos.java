@@ -289,7 +289,6 @@ public class Cryptos {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(Cryptos.aesEncrypt("[【：】]"));
 		System.out.println(Cryptos.aesDecrypt("f043277cdeda2aff9667e26d20333248"));
 	}
 }
