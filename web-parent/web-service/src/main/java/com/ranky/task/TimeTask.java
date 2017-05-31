@@ -13,7 +13,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 import com.ranky.bean.FilmDto;
@@ -22,7 +21,7 @@ import com.ranky.bean.TorrentDto;
 import com.ranky.common.Cryptos;
 import com.ranky.service.FilmService;
 
-@Component
+//@Component
 public class TimeTask {
 
 	@Autowired
@@ -65,12 +64,12 @@ public class TimeTask {
 		return 0;
 	}
 
-	public void getFilmInfo(String url) {
+	public FilmDto getFilmInfo(String url) {
 		String uuid = UUID.randomUUID().toString();
 		String tid = StringUtils.replaceChars(uuid, "-", "");
 
 		if (StringUtils.isBlank(url)) {
-			return;
+			return null;
 		}
 
 		Document doc = null;
@@ -139,6 +138,7 @@ public class TimeTask {
 		filmDto.setSource(URI_PREFIX + url);
 		filmDto.setTorrents(aids);
 		filmDto.setImages(imgs);
-		filmService.saveFilm(filmDto);
+		return filmDto;
+		//		filmService.saveFilm(filmDto);
 	}
 }
