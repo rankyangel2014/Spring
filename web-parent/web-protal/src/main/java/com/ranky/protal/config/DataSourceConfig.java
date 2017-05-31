@@ -3,7 +3,7 @@ package com.ranky.protal.config;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.ibatis.logging.log4j2.Log4j2Impl;
+import org.apache.ibatis.logging.slf4j.Slf4jImpl;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,31 +31,31 @@ public class DataSourceConfig {
 	@Value("${db.url}")
 	private String dbUrl;
 
-//	@Value("${db.username}")
-//	private String username;
-//
-//	@Value("${db.password}")
-//	private String password;
-//
-//	@Value("${db.maxtotal}")
-//	private Integer maxTotal;
-//
-//	@Value("${db.minidle}")
-//	private Integer minIdle;
-//
-//	@Value("${db.maxidle}")
-//	private Integer maxIdle;
+	//	@Value("${db.username}")
+	//	private String username;
+	//
+	//	@Value("${db.password}")
+	//	private String password;
+	//
+	//	@Value("${db.maxtotal}")
+	//	private Integer maxTotal;
+	//
+	//	@Value("${db.minidle}")
+	//	private Integer minIdle;
+	//
+	//	@Value("${db.maxidle}")
+	//	private Integer maxIdle;
 
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(jdbcDriver);
 		dataSource.setUrl(dbUrl);
-//		dataSource.setUsername(username);
-//		dataSource.setPassword(password);
-//		dataSource.setMaxActive(maxTotal);
-//		dataSource.setMinIdle(minIdle);
-//		dataSource.setMaxIdle(maxIdle);
+		//		dataSource.setUsername(username);
+		//		dataSource.setPassword(password);
+		//		dataSource.setMaxActive(maxTotal);
+		//		dataSource.setMinIdle(minIdle);
+		//		dataSource.setMaxIdle(maxIdle);
 		return dataSource;
 	}
 
@@ -68,7 +68,7 @@ public class DataSourceConfig {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		org.apache.ibatis.session.Configuration config = new org.apache.ibatis.session.Configuration();
-		config.setLogImpl(Log4j2Impl.class);// 指定log实现
+		config.setLogImpl(Slf4jImpl.class);// 指定log实现
 		// 配置分页插件
 		OffsetLimitInterceptor pagingInterceptor = new OffsetLimitInterceptor();
 		// 配置数据库方言

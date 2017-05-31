@@ -4,6 +4,10 @@ import java.util.Objects;
 import java.util.concurrent.Executors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -26,13 +30,17 @@ import com.ranky.service.FilmService;
  */
 @Component
 public class ScheduledCallback {
+
+	private static final Logger logger = LoggerFactory.getLogger(ScheduledCallback.class);
+	private static final Marker fatal = MarkerFactory.getMarker("FATAL");
+
 	@Autowired
 	private FilmService filmService;
 	/**
 	 * 返回可监听的异步任务线程池
 	 */
 	private final ListeningExecutorService executorService = MoreExecutors
-			.listeningDecorator(Executors.newFixedThreadPool(10));
+			.listeningDecorator(Executors.newFixedThreadPool(1));
 
 	/**
 	 * 定时任务入口
@@ -62,7 +70,7 @@ public class ScheduledCallback {
 				if (Objects.nonNull(filmDto)) {
 					filmService.saveFilm(filmDto);
 				} else {
-					System.err.println("result is null ");
+					logger.error("result is null ");
 				}
 			}
 
@@ -71,7 +79,7 @@ public class ScheduledCallback {
 			 */
 			@Override
 			public void onFailure(Throwable t) {
-				System.out.println(t.getMessage());
+				logger.error("result is null {} ", t.getMessage());
 			}
 
 		}, executorService);

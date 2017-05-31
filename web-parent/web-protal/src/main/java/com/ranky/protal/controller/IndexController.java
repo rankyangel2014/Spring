@@ -1,7 +1,7 @@
 package com.ranky.protal.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +17,10 @@ import com.ranky.bean.UserDto;
  */
 @Controller
 public class IndexController {
-	private static Logger logger = LogManager.getLogger(IndexController.class);
+	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
 	@RequestMapping(value = "/lightgallery/{tid}", method = RequestMethod.GET)
-	public String lightgallery(@PathVariable("tid")String tid) {
+	public String lightgallery(@PathVariable("tid") String tid) {
 		return "lightgallery?tid='3bcc0f32708e495db95df7f5b96fb1df'";
 	}
 
