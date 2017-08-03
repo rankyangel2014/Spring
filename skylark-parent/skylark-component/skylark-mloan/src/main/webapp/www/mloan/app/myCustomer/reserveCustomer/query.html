@@ -1,0 +1,94 @@
+<ion-view view-title="潜在客户查询">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="Ctrl.submit();"
+        >查询
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="Ctrl.myForm" novalidate>
+            <ion-list>
+
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="!Ctrl.justManager && !Ctrl.justTeamManager && !Ctrl.justSysManager"
+                >
+                    <span class="input-label">团队</span>
+                    <jn-select-team
+                            name="deptId"
+                            ng-model="Ctrl.form.deptId"
+                    ></jn-select-team>
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="Ctrl.form.deptId">
+                    <span class="input-label">客户经理</span>
+                    <jn-select-manager ng-hide="Ctrl.justManager"
+                                       name="custManagerNo"
+                                       ng-model="Ctrl.form.custManagerNo"
+                                       team="Ctrl.form.deptId"
+                    ></jn-select-manager>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input type="text" ng-model='Ctrl.form.custName' name='custName' placeholder="请输入客户名称"
+                           jn-input-length="60"/>
+                </ion-item>
+
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">客户类型</span>
+                    <select
+                            ng-model="Ctrl.form.custType"
+                            jn-options="5028"
+                    ></select>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">接触日期（从）</span>
+                    <input
+                            type="date"
+                            ng-model="Ctrl.form.fstContactForm"
+                            name="fstContactForm"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">接触日期（至）</span>
+                    <input
+                            type="date"
+                            ng-model="Ctrl.form.fstContactTo"
+                            name="fstContactTo"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">联系电话</span>
+                    <input type="text" jn-mobile ng-model='Ctrl.form.phoneNo' name='phoneNo' placeholder="请输入联系电话"/>
+                </ion-item>
+
+                <ion-item class="item-input item-select">
+                    <span class="input-label">信息渠道</span>
+                    <select jn-options="895" ng-model='Ctrl.form.adTypeId' name='adTypeId'></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">最近回访结果</span>
+                    <select jn-options="891" ng-model='Ctrl.form.visitResult' name='visitResult'></select>
+                </ion-item>
+
+                <ion-item class="item-input item-select">
+                    <span class="input-label">移交状态</span>
+                    <select ng-model="Ctrl.form.asgnStatus" name="asgnStatus">
+                        <option value="1">未移交</option>
+                        <option value="2">移交中</option>
+                    </select>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

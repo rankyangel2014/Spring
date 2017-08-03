@@ -1,0 +1,226 @@
+<ion-view view-title="{{title}}">
+    <jn-back></jn-back>
+    <ion-content>
+            <ion-item class="item-divider">基本信息</ion-item>
+            <ion-item class="item">
+                申请日期
+                <span class="item-note">{{ it.applDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item">
+                申请金额
+                <span class="item-note">{{ it.applAmt | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                申请期限(月)
+                <span class="item-note">{{ it.applPerd }}</span>
+            </ion-item>
+            
+            <ion-item class="item" style="white-space:normal">
+                贷款描述
+            	<div class="item-note"
+            	style="max-width:60%">{{ it.applRemark }}</div>
+            </ion-item>
+            <ion-item class="item">
+                贷款合同号
+                <span class="item-note">{{ it.contNoExt }}</span>
+            </ion-item>
+            <ion-item class="item">
+                借据号
+                <span class="item-note">{{ it.loanNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+                客户经理
+                <span class="item-note">{{ it.operName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                客户名称
+                <span class="item-note">{{ it.custName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                共同借款人
+                <span class="item-note">{{ it.commcust }}</span>
+            </ion-item>
+            <ion-item class="item">
+                协办客户经理
+                <span class="item-note">{{ it.cOperNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+                协办业务比例（%）
+                <span class="item-note">{{ it.cProportion |number:4}}</span>
+            </ion-item>
+            <ion-item class="item">
+                起息日
+                <span class="item-note">{{ it.intStartDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item">
+                到期日
+                <span class="item-note">{{ it.lastDueDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item">
+                贷款金额
+                <span class="item-note">{{ it.exapAmt | jnCurrency }}</span>
+            </ion-item>
+            <ion-item class="item">
+                期限(月)
+                <span class="item-note">{{ it.exapPerd }}</span>
+            </ion-item>
+            <ion-item class="item">
+                担保方式
+                <span class="item-note">{{ it.mainGurTyp | jnConstant:5045}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=' it.custType=="0" '>
+                贷款对象
+                <span class="item-note">{{ it.loanObj | jnConstant:7600 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=' it.custType=="1" '>
+                贷款对象
+                <span class="item-note">{{ it.loanObj | jnConstant:7601 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=' it.custType=="0" '>
+                借款事由
+                <span class="item-note">{{ it.loanUse | jnConstant:7602 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=' it.custType=="1" '>
+                借款事由
+                <span class="item-note">{{ it.loanUse | jnConstant:7603 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                资金投向
+                <span class="item-note">{{ it.capitalDirection }}</span>
+            </ion-item>
+            <ion-item class="item">
+                贷款品种
+                <span class="item-note">{{ it.prdctDesc }}</span>
+            </ion-item>
+            <ion-item class="item">
+                使用授信
+                <span class="item-note">{{ it.isUseCrdt | jnConstant:300}}</span>
+            </ion-item>
+            <ion-item class="item">
+                融资
+                <span class="item-note">{{ it.isFinancing | jnConstant:300}}</span>
+            </ion-item>
+            <ion-item class="item">
+                资金来源
+                <span class="item-note">{{ it.bnkTyp  | jnConstant:6037 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                企业规模
+                <span class="item-note">{{ it.companyScale | jnConstant:7508 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                计息方式
+                <span class="item-note">{{ it.rateType | jnConstant:9001 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                本金宽限期
+                <span class="item-note">{{ it.gracePerdP }}</span>
+            </ion-item>
+            <ion-item class="item">
+                利息宽限期
+                <span class="item-note">{{ it.gracePerdI }}</span>
+            </ion-item>
+            <ion-item class="item">
+                贷款状态
+                <span class="item-note">{{ it.loanStatus | jnConstant:9300 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                放款操作员
+                <span class="item-note">{{ it.actvOperName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                放款复核员
+                <span class="item-note">{{ it.actvReviewName }}</span>
+            </ion-item>
+        
+       		<ion-item class="item-divider">还款属性和利率</ion-item>
+            <ion-item class="item">
+                还款方式
+                <span class="item-note">{{ it.repayTyp | jnConstant:327 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                约定还款日
+                <span class="item-note">{{ it.dueDay }}</span>
+            </ion-item>
+            <ion-item class="item">
+                还款间隔值
+                <span class="item-note">{{ it.instmFreqNumUnit }}</span>
+            </ion-item>
+            <ion-item class="item">
+                还款间隔单位
+                <span class="item-note">{{ it.instmFreqUnitTyp | jnConstant:313 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                每期拟还金额
+                <span class="item-note">{{ it.balloonPerdAmt | jnCurrency }}</span>
+            </ion-item>
+            <ion-item class="item">
+                首次还款日
+                <span class="item-note">{{ it.fstPaymDt }}</span>
+            </ion-item>
+            <ion-item class="item">
+                基准年利率
+                <span class="item-note">{{ it.baseRate | number:4}}%</span>
+            </ion-item>
+            <ion-item class="item">
+                基础利率模式
+                <span class="item-note">{{ it.rateMode | jnConstant:317 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                执行年利率
+                <span class="item-note">{{ it.intRate | number:4 }}%</span>
+            </ion-item>
+            <ion-item class="item">
+                执行月利率
+                <span class="item-note">{{ it.intRateM | number:3 }}‰</span>
+            </ion-item>
+            <ion-item class="item">
+                罚息浮动比
+                <span class="item-note">{{ it.odIntRatePrcp * 100 | number:2 }}%</span>
+            </ion-item>
+            <ion-item class="item">
+                利率计算按
+                <span class="item-note">{{ it.rateFloatMode | jnConstant:328 }}</span>
+            </ion-item>
+            
+        	<ion-item class="item-divider">客户账户</ion-item>
+            <ion-item class="item">
+                收款户名
+                <span class="item-note">{{ it.recvAccName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                收款账户
+                <span class="item-note">{{ it.recvAccNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+                收款开户行
+                <span class="item-note">{{ it.recvAccBnk }}</span>
+            </ion-item>
+            <ion-item class="item">
+                扣款户名
+                <span class="item-note">{{ it.repyAccName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                扣款账户
+                <span class="item-note">{{ it.repyAccNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+                扣款开户行
+                <span class="item-note">{{ it.repyAccBnk }}</span>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+	        <ion-item class='item item-icon-right' ui-sref='advancesLoanDetail({ custNo:it.custNo, loanNo:it.loanNo, })'>
+	        	详细信息
+	        	<i class="icon ion-ios-arrow-right "></i>
+	        </ion-item>
+	        <ion-item class='item item-icon-right' ui-sref='advancesLoanGuarantee({custNo:it.custNo, contNo:it.loanNo,contTyp:1,})'>
+	        	担保信息
+	        	<i class="icon ion-ios-arrow-right "></i>
+	        </ion-item>
+	        <ion-item class='item item-icon-right' ui-sref='advancesRepaymentSchedule({custNo:it.custNo, loanNo:it.loanNo,})'>
+	        	还款计划表
+	        	<i class="icon ion-ios-arrow-right "></i>
+	        </ion-item>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/3500/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/fee
+END
+TotalFeeDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/4108/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/fee/TotalFeeDao.xml
+END
+XmlFlowDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/2179/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/fee/XmlFlowDao.xml
+END

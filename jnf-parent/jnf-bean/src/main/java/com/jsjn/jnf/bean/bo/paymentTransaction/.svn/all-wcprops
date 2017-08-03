@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Zfjs/!svn/ver/4039/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/paymentTransaction
+END
+PaymentTransactionReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/4137/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/paymentTransaction/PaymentTransactionReqDataBO.java
+END
+PaymentTransactionResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/4137/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/paymentTransaction/PaymentTransactionResDataBO.java
+END
+PaymentTransactionReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/Zfjs/!svn/ver/4137/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/paymentTransaction/PaymentTransactionReqBO.java
+END
+PaymentTransactionResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/Zfjs/!svn/ver/4137/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/paymentTransaction/PaymentTransactionResBO.java
+END

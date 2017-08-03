@@ -1,0 +1,32 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            has-bouncing="false">
+    <!-- 搜索框 -->
+    <div class="bar bar-header item-input-inset" style="background-image:none">
+        <label class="item-input-wrapper">
+        <i class="icon  ion-ios-search-strong placeholder-icon"></i>
+            <input type="search" placeholder="输入客户名称搜索" ng-model="loanBaseInfoCtrl.custNameModalConf.formalKeywords"
+            ng-change="loanBaseInfoCtrl.custNameModalConf.searchFormal()">
+        </label>
+    </div>
+    <!-- 内容列表 -->
+    <ion-list>
+        <ion-item ng-repeat="e in loanBaseInfoCtrl.custNameModalConf.formalCustList.items"
+                  ng-click="loanBaseInfoCtrl.custNameModalConf.chooseCustName(e,'formal',$index)"
+                  ng-class="{'jn-item-selected': loanBaseInfoCtrl.custNameModalConf.isItemSelected('formal',$index)}">
+            <div class="jn-name" cust-type="{{e.custType}}">{{ e.custName }}</div>
+            <jn-tel-no num="{{ e.phoneNo||e.fixPhone}}"></jn-tel-no>
+            <div class="address" ng-if="e.custAddr">{{ e.custAddr }}</div>
+        </ion-item>
+    </ion-list>
+    <div ng-show="0 === loanBaseInfoCtrl.custNameModalConf.formalCustList.items.length" class="no_record">暂无记录</div>
+
+    <button ng-click="loanBaseInfoCtrl.custNameModalConf.moreFormal()"
+            ng-show="loanBaseInfoCtrl.custNameModalConf.formalCustList.items.length < loanBaseInfoCtrl.custNameModalConf.formalCustList.total"
+            class="button button-clear button-full button-positive">
+            点击加载更多
+    </button>
+
+    </ion-list>
+
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

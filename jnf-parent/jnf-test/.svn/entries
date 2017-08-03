@@ -1,0 +1,77 @@
+10
+
+dir
+4084
+https://172.31.15.240:8443/svn/Zfjs/group/dev/jnf-parent/jnf-test
+https://172.31.15.240:8443/svn/Zfjs
+
+
+
+2017-02-23T07:48:17.031250Z
+3936
+xiekx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+461a980e-2d88-dd47-b394-1a44b2c43655
+
+jnf-common
+dir
+
+logs
+dir
+
+src
+dir
+
+pom.xml
+file
+4408
+
+
+
+2017-05-22T06:18:51.945437Z
+a3e7efa64d87794287bd6137c6faf9bf
+2017-05-22T05:29:12.265625Z
+4408
+xiekx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2303
+
+jnf-service
+dir
+
+jnf-protal
+dir
+

@@ -1,0 +1,23 @@
+<ion-view view-title="使用明细" id="historyDeatils">
+	<jn-back></jn-back>
+    <ion-content>
+        <ion-list ng-show="0 < symxCtrl.symxList.items.length">
+            <ion-item ng-repeat="h in symxCtrl.symxList.items" >
+            	<div style="font-weight: bold;">{{ h.contNoExt }}</div>
+            	<div><span>业务类型：</span>{{ h.busType }}</div>
+            	<div><span>贷款状态：</span>{{  h.status | jnConstant :9300 }}</div>
+               	<div><span>使用额度：</span>{{ h.exapAmt | jnCurrency}}</div>
+               	<div>{{ h.applDt | jnDate}} ~ {{ h.lastDueDt | jnDate}}</div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === symxCtrl.symxList.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="symxCtrl.more()"
+            ng-show="symxCtrl.symxList.items.length < symxCtrl.symxList.total"
+            class="button button-full button-clear button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

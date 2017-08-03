@@ -1,0 +1,23 @@
+<ion-scroll class="jn-tabSlideBox-scroll" 
+	ng-controller="loanHisCtrl as ctrl"
+	has-bouncing="false">
+    <ion-list>
+        <ion-item  class="item-icon-right"  ng-click="ctrl.currLoan()">
+            当前融资
+        	<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+         <ion-item  class="item-icon-right"  ng-click="ctrl.hisLoan()">
+            历史融资
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+         <ion-item  class="item-icon-right"  ng-click="ctrl.extGuar()">
+            对外担保
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+         <ion-item  class="item-icon-right"  ng-click="ctrl.creditInfo()">
+            信用卡
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

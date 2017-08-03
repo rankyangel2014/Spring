@@ -1,0 +1,168 @@
+<ion-view view-title="关联信息修改（个人）" id="perCustActualEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-clear "
+                ng-click="ctrl.submit()">保存
+        </button>
+    </ion-nav-buttons>
+
+    <style>
+        .show_radio {
+            border: 0px;
+            max-width: 110px;
+            line-height: 10px;
+        }
+
+
+    </style>
+    <ion-content>
+        <form name="ctrl.editForm" novalidate jn-edit-form>
+            <ion-item class="item-input">
+                    <span class="input-label">与客户关系</span>
+                    <jn-multi-select
+                        id="linkType"
+                        name="linkType"
+                        options="ctrl.linkTypeOptions"
+                        always-selected="25"
+                        ng-model="ctrl.form.linkType"
+                        placeholder="请选择与客户关系"
+                    ></jn-multi-select>
+            </ion-item>
+
+            <ion-item class="item-input" >
+                <span class="input-label required">姓名</span>
+                <!-- <jn-select-customer
+                        name="custName"
+                        cust-no="ctrl.form.custNo"
+                        cust-type="0"
+                        ng-model="ctrl.form.custName"
+                        ng-readonly="ctrl.form.custNo"
+                        on-select="ctrl.onSelectCustomer"
+                        required
+                        placeholder="请输入姓名"
+                ></jn-select-customer> -->
+                <input
+                        type="text"
+                        name="custName"
+                        ng-model="ctrl.form.custName"
+                        ng-required ="true"
+                        ng-readonly ="true"/>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label">身份证号</span>
+                <input
+                        style="width:85%"
+                        type="text"
+                        name="paperNo"
+                        ng-model="ctrl.form.paperNo"
+                        ng-change="ctrl.onChangeId()"
+                        jn-id-no
+                        ng-readonly ="ctrl.form.paperNoRead!=''"
+                        placeholder="身份证号"/>
+            </ion-item>
+            <ion-item class='item-input'>
+                <span class='input-label'>性别</span>
+                <ion-radio class="show_radio" name='sex' ng-model='ctrl.form.sex' ng-checked="ctrl.form.sex"
+                           value='M' checked>男
+                </ion-radio>
+                <ion-radio class="show_radio" name='sex' ng-model='ctrl.form.sex' ng-checked="ctrl.form.sex"
+                           value='F'>女
+                </ion-radio>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label">出生日期</span>
+                <input
+                        type="date"
+                        name="birthday"
+                        ng-model="ctrl.form.birthday"
+                        placeholder="请输入出生日期"
+                />
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">年龄</span>
+                <input
+                        readonly
+                        type="number"
+                        name="age"
+                        ng-model="ctrl.form.age"
+                        min="1"
+                        max="100"
+                        placeholder="请输入年龄"
+                />
+            </ion-item>
+
+            <ion-item class="item-input item-select">
+                <span class="input-label">婚姻状况</span>
+                <select
+                        name="marryStatus"
+                        ng-model="ctrl.form.marryStatus"
+                        jn-options="5027"
+                >
+                </select>
+            </ion-item>
+
+            <ion-item class="item-input item-select">
+                <span class="input-label">教育水平</span>
+                <select
+                        name="eduLevel"
+                        ng-model="ctrl.form.eduLevel"
+                        jn-options="5047"
+                ></select>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label">手机</span>
+                <input
+                        type="tel"
+                        name="mobPhone"
+                        ng-model="ctrl.form.mobPhone"
+                        jn-mobile
+                        placeholder="请输入手机"/>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label">固定电话</span>
+                <input
+                        type="text"
+                        data-limit="[\d-]+"
+                        name="fixPhone"
+                        ng-model="ctrl.form.fixPhone "
+                        jn-phone
+                        placeholder="请输入固定电话"/>
+            </ion-item>
+
+            <ion-item class="item-input item-select" style="border-bottom:0px;">
+                <span class="input-label">居住情况</span>
+                <select
+                        name="housingStatus"
+                        ng-model="ctrl.form.housingStatus">
+                    <option value="">-- 请选择 --</option>
+                    <option value="1">自有</option>
+                    <option value="2">抵押</option>
+                    <option value="3">租赁</option>
+                    <option value="4">其他</option>
+                </select>
+            </ion-item>
+            <ion-item ng-if=" ctrl.form.housingStatus=='4' " class="item-input" style="border-top:0px;">
+                <span class="input-label">其他</span>
+                <input
+                         type="text"
+                         name="housingDesc"
+                         ng-model="ctrl.form.housingDesc"
+                         placeholder="请输入其他居住情况"/>
+            </ion-item>
+            <ion-item class="item-input  ">
+                <span class="input-label">家庭地址</span>
+                <input
+                        type="text"
+                        name="custAddr"
+                        ng-model="ctrl.form.custAddr "
+                        placeholder="请输入家庭地址"/>
+            </ion-item>
+        </form>
+    </ion-content>
+</ion-view>

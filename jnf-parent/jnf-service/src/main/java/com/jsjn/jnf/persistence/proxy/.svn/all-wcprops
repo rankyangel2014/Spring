@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Zfjs/!svn/ver/1163/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/persistence/proxy
+END
+PaginationMapperMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/607/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/persistence/proxy/PaginationMapperMethod.java
+END
+PaginationMapperProxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/607/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/persistence/proxy/PaginationMapperProxy.java
+END
+PageConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/1163/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/persistence/proxy/PageConfiguration.java
+END
+PaginationMapperRegistry.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/198/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/persistence/proxy/PaginationMapperRegistry.java
+END

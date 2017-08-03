@@ -1,0 +1,136 @@
+<ion-view view-title="{{title}}">
+	<jn-back></jn-back>
+    <ion-content >
+  		<ion-list>
+            <ion-item class="item-divider">贷款概要</ion-item>
+            <ion-item class="item" >
+            	客户名称 
+            	 <span class="item-note">{{ it.custName }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件类型
+            	<span class="item-note">{{ it.paperType |jnConstant:5024 }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件号码
+            	<span class="item-note">{{ it.paperNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款合同号
+            	<span class="item-note">{{ it.contNoExt }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	借据号
+            	<span class="item-note">{{ it.loanNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款品种
+            	<span class="item-note">{{ it.prdctDesc }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	起息日
+            	<span class="item-note">{{ it.intStartDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	到期日
+            	<span class="item-note">{{ it.lastDueDt | jnDate  }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	拖欠起始日
+            	<span class="item-note">{{ it.fstOdDt | jnDate  }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	执行年利率
+            	<span class="item-note">{{ it.intRate }}%</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款状态
+            	<span class="item-note">{{ it.setlFlg  |jnConstant:6701}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款形态
+            	<span class="item-note">{{ it.status  |jnConstant:6060}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款本金
+            	<span class="item-note">{{ it.prcpOrig  | jnCurrency  }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	剩余本金
+            	<span class="item-note">{{ it.prcpBal | jnCurrency  }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	计提金额
+            	<span class="item-note">{{ it.prvsnIntRemain | jnCurrency  }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	总期数
+            	<span class="item-note">{{ it.noOfInstm }}</span>
+            </ion-item>
+            
+            <ion-item class="item" style="white-space:normal">
+                                      银联代扣
+            	<div class="item-note"
+            	style="max-width:60%">{{ it.unipayFlg }}</div>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+                                      实时代收
+            	<div class="item-note"
+            	style="max-width:60%">{{ it.ssds }}</div>
+            </ion-item>
+            
+            <ion-item class="item" >
+            	还款人
+            	<span class="item-note">{{ it.repayer }}</span>
+            </ion-item>
+            
+            <ion-item class="item" style="white-space:normal">
+                                      还款事由
+            	<div class="item-note"
+            	style="max-width:60%">{{ it.repayRemark }}</div>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  ui-sref='singleDebtLoanDetailInfo({
+            		  crtTxNo:it.crtTxNo,
+            		  crtDt:it.crtDt,
+            		  custNo:it.custNo,
+            		  loanNo:it.loanNo,
+            		  })'>
+                	还款信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='singleDebtLoanDetail({
+            		  crtTxNo:it.crtTxNo,
+            		  crtDt:it.crtDt,
+            		  custNo:it.custNo,
+            		  loanNo:it.loanNo,
+            		  })'>
+                	还款明细
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='singleDebtPaymentRecord({
+            		  crtTxNo:it.crtTxNo,
+            		  crtDt:it.crtDt,
+            		  custNo:it.custNo,
+            		  loanNo:it.loanNo,
+            		  })'>
+                	收款记录
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='singleDebtBalanceTreatment({
+            		  crtTxNo:it.crtTxNo,
+            		  crtDt:it.crtDt,
+            		  custNo:it.custNo,
+            		  loanNo:it.loanNo,
+            		  })'>
+                	费用处理
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

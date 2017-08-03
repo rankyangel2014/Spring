@@ -1,0 +1,46 @@
+<ion-view view-title="当前融资">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button 
+        	 ng-if="!data.isReadOnly"
+             class="button button-clear"
+             ng-click="add();"
+         >新增</button>
+    </ion-nav-buttons>
+    <ion-content id="currLoan">
+    	<style>
+    		#currLoan .item-content{
+    			padding-right: 16px;
+    		}
+    	</style>
+		<ion-list>
+			<ion-item class="crdtListItem" ng-repeat="e in loans.data" 
+				ng-click="edit(e, $event)";
+				ng-show="0 < loans.data.length">
+				<div class="jn-item-title" >
+	                <span style="font-weight: bold;">{{e.lender}}</span>
+                </div>
+				<div class="compact"><label>融资金额</label><span class="content">{{ e.amt | jnCurrency}}</span></div>
+				<div class="compact" ng-if="e.lendDt!='' || e.perd!==''">
+					<label ng-if="e.lendDt!=''" class="">发放日期</label>
+					<span  ng-if="e.lendDt!=''" class="content" style="width: 35%">{{e.lendDt | jnDate}}</span>
+					<label ng-if="e.perd!==''" class="">期限（月）</label>
+					<span  ng-if="e.perd!==''" class="content" >{{e.perd}}</span>
+				</div>
+				<div class="compact"  ng-if="e.purpose !=''">
+					<label>用途</label>
+					<span style="padding-left:5px;word-break: break-all;white-space: normal;">{{e.purpose}}</span>
+				</div>
+				<ion-option-button
+                    class="button-assertive"
+                     ng-if="!data.isReadOnly"
+                    ng-click="remove(e, $event)"
+                >删除</ion-option-button>
+			</ion-item>
+		</ion-list>
+		<div ng-show="0 === loans.data.length" class="no_record">暂无记录</div>
+		
+    </ion-content>
+</ion-view>

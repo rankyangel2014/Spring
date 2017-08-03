@@ -1,0 +1,147 @@
+<ion-view view-title="还款计划表试算器">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <input type="reset" form="loanCalcForm" ng-model="dummy" value="清空" class="button button-clear "
+               ng-click="loanCalcCtrl.reset()"/>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="loanCalcCtrl.myForm" id="loanCalcForm" novalidate>
+            <ion-item class="item-divider">贷款信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">贷款本金</span>
+                <input type="number"
+                       required="true" value="" min="1"
+                       jnPositive
+                       max="100000000000"
+                       ng-model="loanCalcCtrl.form.exapAmt"
+                       name="exapAmt"
+                       placeholder="请输入贷款本金">
+            </ion-item>
+
+            <ion-item class='item-input'>
+                <span class='input-label required'>起息日</span>
+                <input type='date' format-date ng-model='loanCalcCtrl.form.intStartDt'
+                       required name='intStartDt' ng-blur="loanCalcCtrl.changeLastDueDt()"/>
+            </ion-item>
+
+            <ion-item class='item-input'>
+                <span class='input-label required'>到期日</span>
+                <input required type='date' format-date ng-model='loanCalcCtrl.form.lastDueDt'
+                       name='lastDueDt' ng-blur="loanCalcCtrl.changeLastDueDt()"/>
+            </ion-item>
+
+            <ion-item class='item-input'>
+                <span class='input-label'>计息方式</span>
+                <input type="hidden" ng-model='loanCalcCtrl.form.rateType' name='rateType'/>
+                <span class="item-note">{{loanCalcCtrl.form.rateTypeTitle}}</span>
+            </ion-item>
+
+            <ion-item class="item-divider">还款属性</ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label required">还款方式</span>
+                <select ng-required="true"
+                        ng-model="loanCalcCtrl.form.repayTyp"
+                        ng-change="loanCalcCtrl.changeRepayTyp()"
+                        name="repayTyp">
+                    <option value="{{key}}" ng-selected="key==loanCalcCtrl.form.repayTyp"
+                            ng-repeat="(key, value) in loanCalcCtrl.hkfs">{{value}}
+                    </option>
+                </select>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label required">约定还款日</span>
+                <input type="number"
+                       ng-required="true" value="" min="1" max="31"
+                       jn-integer
+                       name="dueDay"
+                       pattern="[0-9]*"
+                       ng-model="loanCalcCtrl.form.dueDay"
+                       ng-change="loanCalcCtrl.changeRepayTyp()"
+                       ng-readonly="loanCalcCtrl.dueDayDisabled"
+                       ng-disabled="loanCalcCtrl.dueDayDisabled"
+                       placeholder="请输入约定还款日">
+            </ion-item>
+
+            <!--<ion-item class="item-input">-->
+            <!--<span class="input-label required">还款间隔值</span>-->
+            <!--<input type="number"-->
+            <!--ng-required="true" min="0" ng-required="true" max="100"-->
+            <!--ng-model="loanCalcCtrl.form.instmFreqNumUnit"-->
+            <!--name="instmFreqNumUnit"-->
+            <!--placeholder="请输入还款间隔值">-->
+            <!--</ion-item>-->
+            <!--<ion-item class="item-input item-select">-->
+            <!--<span class="input-label required">还款间隔单位</span>-->
+            <!--<select required="true" ng-required="true"-->
+            <!--ng-model="loanCalcCtrl.form.instmFreqUnitTyp"-->
+            <!--name="instmFreqUnitTyp" jn-options='313'>-->
+            <!--</select>-->
+            <!--</ion-item>-->
+
+            <ion-item class="item-input" ng-if="loanCalcCtrl.form.repayTyp=='Q'">
+                <span class="input-label required">每期拟还金额</span>
+                <input type="number"
+                       value="" min="1" max="9999999999999999"
+                       ng-model="loanCalcCtrl.form.balloonPerdAmt"
+                       name="balloonPerdAmt"
+                       ng-required="true"
+                       placeholder="请输入每期拟还金额">
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label required">首次还贷日</span>
+                <input type='date' format-date ng-model='loanCalcCtrl.form.fstPaymDt'
+                       ng-readonly="loanCalcCtrl.fstPaymDtDisabled"
+                       ng-disabled="loanCalcCtrl.fstPaymDtDisabled"
+                       ng-required="true" name='fstPaymDt'/>
+            </ion-item>
+
+            <!--<ion-item class="item-input item-select">-->
+            <!--<span class="input-label">利率代码</span>-->
+            <!--<select ng-model="loanCalcCtrl.form.type"-->
+            <!--name="type">-->
+            <!--<option value="debx">年</option>-->
+            <!--<option value="debj">季</option>-->
+            <!--<option value="aqhx">月</option>-->
+            <!--</select>-->
+            <!--</ion-item>-->
+            <ion-item class="item-divider">利率</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">执行年利率%</span>
+                <input type="number"
+                       name="intRate"
+                       min="0.0001" max="999.9999"
+                       ng-required="true"
+                       ng-model="loanCalcCtrl.form.intRate"
+                       placeholder="请输入执行年利率%">
+            </ion-item>
+
+            <!--<ion-item class="item-input">-->
+            <!--<span class="input-label">基准年利率%</span>-->
+            <!--<input type="number"-->
+            <!--value="" min="0" max="100"-->
+            <!--ng-model="loanCalcCtrl.form.rate"-->
+            <!--name="rate"-->
+            <!--placeholder="请输入基准年利率%">-->
+            <!--</ion-item>-->
+
+            <!--<ion-item class="item-input">-->
+            <!--<span class="input-label">执行月利率‰</span>-->
+            <!--<input type="number"-->
+            <!--value="" min="0" max="100"-->
+            <!--ng-model="loanCalcCtrl.form.rate"-->
+            <!--name="rate"-->
+            <!--placeholder="请输入执行月利率‰">-->
+            <!--</ion-item>-->
+
+            <div class="padding">
+                <button class="button button-block  button-balanced" ng-click="loanCalcCtrl.submit()">
+                    生成还款计划
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

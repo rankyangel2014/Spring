@@ -1,0 +1,31 @@
+<ion-view view-title="联系人详情" >
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	 <ion-nav-buttons side="secondary">
+        <button ng-if="isDetail=='0'"
+             class="button button-clear "
+             ng-click="ctrl.edit()"
+         >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+		    <ion-item class="item">名称
+                <span class="item-note">{{ ctrl.param.linkCustName  }}</span>
+           </ion-item >
+            <ion-item class="item">身份证号
+                <span class="item-note">{{ ctrl.param.linkPaperNo  }}</span>
+           </ion-item >
+            <ion-item class="item">联系方式
+                <span class="item-note">{{ ctrl.param.linkPhoneNo  }}</span>
+           </ion-item >
+            <ion-item class="item">关系类型
+                <span class="item-note">{{ ctrl.param.linkType|jnConstant:5018  }}</span>
+           </ion-item >
+            <ion-item class="item">工作单位
+                <span class="item-note">{{ ctrl.param.linkWorkUnit  }}</span>
+           </ion-item >
+            <ion-item class="item">联系地址
+                <span class="item-note">{{ ctrl.param.linkCustAddr  }}</span>
+           </ion-item >
+    </ion-content>
+</ion-view>

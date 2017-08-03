@@ -1,0 +1,125 @@
+<ion-view view-title="{{ctrl.title}}" id="custOtherList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+         <button ng-if="ctrl.actionFlag==='stxx' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="add('stxx')"
+         >新增</button>
+         <button ng-if="ctrl.actionFlag==='gtjyz' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="add('gtjyz')"
+         >新增</button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+         <!-- 重要指标-->
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='zyzb'"
+        ng-repeat="it in ctrl.list.items">
+            <ion-item class="item" >累放笔数
+                <span class="item-note">{{it.lfCount }}</span>
+            </ion-item>
+            <ion-item class="item" >累放金额
+                <span class="item-note">{{it.dprcpOrig }}</span>
+            </ion-item>
+            <ion-item class="item" >未结清贷款笔数
+                <span class="item-note">{{it.wjqCount }}</span>
+            </ion-item>
+            <ion-item class="item" >逾期还款次数
+                <span class="item-note">{{it.yqhkCount }}</span>
+            </ion-item>
+            <ion-item class="item" >累计未结清本金
+                <span class="item-note">{{it.dPrcpBal }}</span>
+            </ion-item>
+            <ion-item class="item" >累计未结清利息
+                <span class="item-note">{{it.dLx }}</span>
+            </ion-item>
+            <ion-item class="item" >最近一次还款日
+                <span class="item-note">{{it.lastSetlDt }}</span><!-- nextDueDt-->
+            </ion-item>
+            <ion-item class="item" >下一次还款日
+                <span class="item-note">{{it.nextDueDt }}</span>
+            </ion-item>
+            <ion-item class="item" >最差五级分类
+                <span class="item-note">{{it.zcLoanGrd | jnConstant :7801 }}</span>
+            </ion-item>
+            <ion-item class="item" >最差贷款形态
+                <span class="item-note">{{it.zcStatus | jnConstant :6060 }}</span>
+            </ion-item>
+        </ion-list>
+        <!-- 实体信息 -->
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='stxx'" >
+            <ion-item class="item-icon-right" ng-repeat="e in ctrl.list.items" ng-click="ctrl.toDetail('stxiangx',e.entCustNo+'|'+e.custNo)">
+               <div class="jn-item-title" >{{ e.custName }} </div>
+               <div ng-if=" e.liceNo" style="font-weight: normal;">
+                   {{ e.corpReprst }}<span ng-if="e.corpReprst"> / </span>{{  e.liceNo }}<span ng-if="e.orgForm"> / </span>{{ e.orgForm|jnConstant:899 }}
+               </div>
+               <div ng-if="!e.liceNo" style="font-weight: normal;">
+                {{ e.corpReprst }} <span ng-if="e.corpReprst"> / </span>{{  e.regNo }}<span ng-if="e.orgForm"> / </span>{{ e.orgForm|jnConstant:899 }}
+               </div>
+               <i 
+                class="icon arrow-size ion-ios-arrow-{{e.expandFlag==='1'?'up':'down'}} " 
+               ng-click="toggleItem($index)"
+               style=" position: absolute; right: -10px;;top: 0;width: 50px;height: 50px;font-size: 22px;"></i>
+               <div ng-if="e.expandFlag==='1'">
+                  <div>
+                      <label class="label">关联贷款次数:</label>
+	               	  <span class="content">{{ e.totalNum }} 次</span>
+                  </div>
+                  <div>
+                   <label class="label"> 关联贷款余额:</label>
+	               	<span class="content">{{ e.totalBal }} 元</span>
+                 </div>
+               </div>
+               <ion-option-button
+               	   ng-if="isDetail=='0'"
+                   class="button-assertive"
+                   ng-click="rmSTXX(e, $event)"
+               >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        
+         <!-- 共同经营者 -->
+      <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='gtjyz'" >
+            <ion-item class="item-icon-right" ng-repeat="e in ctrl.list.items" ng-click="ctrl.toDetail('gtjyz',$index)">
+               <div
+                   style="overflow: hidden; text-overflow: ellipsis;"
+               >{{ e.custName }}</div>
+               <div class="id" ng-if="e.paperNo">{{ e.paperNo }}</div>
+               <div><jn-tel-no num="{{ e.phoneNo}}"></jn-tel-no></div>
+             <!--   <i 
+                class="icon arrow-size ion-ios-arrow-{{e.expandFlag==='1'?'up':'down'}} " 
+               ng-click="toggleItem($index)"
+               style=" position: absolute; right: -10px;;top: 0;width: 50px;height: 50px;font-size: 22px;"></i> -->
+            <!--    <div ng-if="e.expandFlag==='1'">
+                  <div ng-if=" e.custType == '1'">
+                      <label class="label">股份占比：</label>
+	               	  <span class="content">{{ e.soWnedClient }}%</span>
+                  </div>
+                  <div ng-if=" e.custType == '0'">
+                   <label class="label"> 工作单位：</label>
+	               	<span class="content jn-item-title">{{ e.workUnit }}</span>
+                 </div>
+                 <div>
+                   <label class="label">联系地址：</label>
+	               <span class="content jn-item-title">{{ e.custAddr }}</span>
+                 </div>
+               </div> -->
+               <ion-option-button
+              		 ng-if="isDetail=='0'"
+                   class="button-assertive"
+                   ng-click="rmGTJYZ(e, $event)"
+               >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-show="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,753 @@
+<style type="text/css">
+ .phone a[href^="tel:"] {
+    display: block;
+    width: 100px;
+    padding-left: 0px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+.phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 4px;
+    content: '\e616';
+}
+.address::before {
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    height: 100%;
+    padding-right: 4px;
+    font-size: 12px;
+    color: salmon;
+}
+.address{
+display:block;
+white-space: normal;
+max-width: 100%;
+}
+.show_radio{
+	max-width: 60px;
+	width:60px;
+	line-height: 10px;
+	border-width: 0px;
+}
+.show_radio1{
+	max-width: 80px;
+	width:80px;
+	line-height: 10px;
+	border-width: 0px;
+}
+.show_radio2{
+	max-width: 60px;
+	line-height: 10px;
+	border-width: 0px;
+}
+.show_radio3{
+	max-width: 120px;
+	width:120px;
+	line-height: 15px;
+	border-width: 0px;
+}
+.show_radio4{
+	max-width: 160px;
+	width:160px;
+	line-height: 15px;
+	border-width: 0px;
+}
+.show_radio_text{
+	max-width: 100px;
+	line-height: 10px;
+	border-width: 0px;
+}
+.item-content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+.item-input1 {
+  display: -webkit-box;
+}
+.item-input textarea {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 220px;
+  -moz-box-flex: 1;
+  -moz-flex: 1 220px;
+  -ms-flex: 1 220px;
+  flex: 1 220px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding-right: 24px;
+  background-color: transparent; 
+  }
+.input-label1 {
+  display: table;
+  padding: 7px 10px 7px 0px;
+  max-width: 200px;
+  width: 35%;
+  color: #444;
+  font-size: 12px; }
+</style>
+
+<ion-view view-title="经营贷客户普通/最高额贷款申请表">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="secondary">
+       <button ng-if="editFlag!=='1' && isManager"
+             class="button button-clear "
+             ng-click="edit()"
+         >编辑</button>
+           <button
+             class="button button-clear"
+             ng-click="assign();"
+             ng-if='enableAssign && flag==="1"'
+         >分配</button>
+    </ion-nav-buttons>
+    <ion-content >
+    	
+  		<!-- <ion-list ng-repeat="custDetail in custDetailData"> -->
+        <!--     <ion-item class="item-divider">经营贷客户普通/最高额贷款申请表</ion-item> -->
+   			<ion-item class="item-input" >
+            	<span class="input-label">申请日期</span>
+                <input
+                        type="date"
+                        ng-required="true"
+                        name="birthday"
+                        ng-model="ctrl.form.birthday"
+                />
+            </ion-item>
+            <ion-item class="item-input" >
+            	<span class="input-label required">需款日期</span>
+                <input
+                        type="date"
+                        ng-required="true"
+                        name="birthday"
+                        ng-model="ctrl.form.birthday"
+                />
+            </ion-item>
+            <ion-item class="item-input">
+                 <span class="input-label">客户编号</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input item-select">
+                  <span class="input-label required">客户性质</span>
+                  <select name="nation" ng-required="true"
+                          ng-model="ctrl.form.nation"
+                          jn-options="8"
+                  ></select>
+            </ion-item>
+            <!--  个人资料  -->
+            <ion-item  ng-click="toggleItem('grzl')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['grzl']]" ng-model= 'checked["grzl"]' ng-checked='checked["grzl"]' >个人资料
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['grzl']]"></i>
+         	</ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label">姓名</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class='item-input' ng-show=' checked["grzl"]'>
+                 <span class='input-label' >证件类型</span>
+                 <ion-br style='width:100%;'/>
+                 <div class='item-input1'>
+                 <ion-radio ng-disabled="true" class="show_radio1" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >身份证</ion-radio>
+                 <ion-radio ng-disabled="true" class="show_radio1"  name='perTyp' value='1'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >其他</ion-radio>
+				 </div>
+				 <input
+                       type="text"
+                       name="custName"
+                       readonly="readonly"
+                       jn-input-length="60"
+                       ng-model="ctrl.form.custName"
+                       value="asdadasdw"
+                 />
+         	</ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                  <span class="input-label required">证件号码</span>
+                  <input
+                  	required
+                      type="text"
+                      name="paperNo"
+                      readonly="readonly"
+                      ng-model="ctrl.form.paperNo"
+                      placeholder="请输入证件号码"
+                      jn-id-no
+                      />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+            	<span class="input-label required">出生日期</span>
+                <input
+                        type="date"
+                        ng-required="true"
+                        name="birthday"
+                        ng-model="ctrl.form.birthday"
+                />
+            </ion-item>
+            <ion-item class='item-input' ng-show=' checked["grzl"]'>
+                <span class='input-label required' >性别</span>
+                <ion-radio class="show_radio" name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='M' checked>男</ion-radio>
+                <ion-radio  class="show_radio"  name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='F'>女</ion-radio>
+        	</ion-item>
+            <ion-item class="item-input item-select" ng-show=' checked["grzl"]'>
+                <span class="input-label required">婚姻状况</span>
+                <select
+                    ng-model="ctrl.form.marryStatus"
+                    jn-options="5027"
+                    name="marryStatus"
+                    required
+                ></select>
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">家庭地址</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.custAddr"
+                     placeholder="请输入家庭地址" 
+                     name="address"
+                     jn-input-length="200"
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+            	 <span class='input-label' >居住状况</span>
+            	 <ion-br/>
+            	 <div class='item-input1'>
+                 <ion-radio  class="show_radio" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >自有</ion-radio>
+                 <ion-radio  class="show_radio" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >抵押</ion-radio>
+                 <ion-radio  class="show_radio" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >租赁</ion-radio>
+                 <ion-radio  class="show_radio" name='perTyp' value='1' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >其他</ion-radio>
+	         	 </div>
+	         	 
+	         	 <input
+                       type="text"
+                       name="custName"
+                       readonly="readonly"
+                       jn-input-length="60"
+                       ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">手机</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.phoneNo"
+                     placeholder="请输入手机" 
+                     name="mobile"
+                     jn-tel
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">固定电话</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.phoneNo"
+                     placeholder="请输入固定电话" 
+                     name="mobile"
+                     jn-tel
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input item-select" ng-show=' checked["grzl"]'>
+                <span class="input-label required">教育水平</span>
+                <select
+                    ng-model="ctrl.form.marryStatus"
+                    jn-options="5027"
+                    name="marryStatus"
+                    required
+                ></select>
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label">配偶</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class='item-input' ng-show=' checked["grzl"]'>
+                 <span class='input-label' >证件类型</span>
+                 <ion-br style='width:100%;'/>
+                 <div class='item-input1'>
+                 <ion-radio ng-disabled="true" class="show_radio1" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >身份证</ion-radio>
+                 <ion-radio ng-disabled="true" class="show_radio1"  name='perTyp' value='1'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >其他</ion-radio>
+				 </div>
+				 <input
+                       type="text"
+                       name="custName"
+                       readonly="readonly"
+                       jn-input-length="60"
+                       ng-model="ctrl.form.custName"
+                       value="asdadasdw"
+                 />
+         	</ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                  <span class="input-label required">证件号码</span>
+                  <input
+                  	required
+                      type="text"
+                      name="paperNo"
+                      readonly="readonly"
+                      ng-model="ctrl.form.paperNo"
+                      placeholder="请输入证件号码"
+                      jn-id-no
+                      />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">手机</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.phoneNo"
+                     placeholder="请输入手机" 
+                     name="mobile"
+                     jn-tel
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">固定电话</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.phoneNo"
+                     placeholder="请输入固定电话" 
+                     name="mobile"
+                     jn-tel
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["grzl"]'>
+                 <span class="input-label required">工作单位</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.custAddr"
+                     placeholder="请输入工作单位" 
+                     name="address"
+                     jn-input-length="200"
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-icon-right" href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&linkType=25&actionFlag=relations&custClass={{custDetail.custClass}}&custPaperNo={{custDetail.paperNo}}">
+                                                             紧急联系人
+                 <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item  ng-click="toggleItem('sqyq')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['sqyq']]" ng-model= 'checked["sqyq"]' ng-checked='checked["sqyq"]' >申请要求
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['sqyq']]"></i>
+         	</ion-item>
+            <ion-item class="item-input" ng-show=' checked["sqyq"]'>
+                 <span class="input-label required">申请金额(元)</span>
+                 <input
+                     type="number"
+                     name="investAmt"
+                     value="" min="1" 
+                     ng-model="ctrl.form.investAmt"
+                     placeholder="请输入申请金额" 
+                     ng-required="true"
+                  />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["sqyq"]'>
+                 <span class="input-label required">申请期限(月)</span>
+                 <input
+                     type="number"
+                     name="investAmt"
+                     value="" min="1" 
+                     ng-model="ctrl.form.investAmt"
+                     placeholder="请输入申请期限" 
+                     ng-required="true"
+                  />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["sqyq"]'>
+                 <span class="input-label">月还款能力(元)</span>
+                 <input
+                     type="number"
+                     name="investAmt"
+                     value="" min="1" 
+                     ng-model="ctrl.form.investAmt"
+                     placeholder="请输入月还款能力" 
+                     ng-required="true"
+                  />
+            </ion-item>
+            <ion-item class="item-input item-select" ng-show=' checked["sqyq"]'>
+                <span class="input-label required">贷款目的</span>
+                <select
+                    ng-model="ctrl.form.marryStatus"
+                    jn-options="5027"
+                    name="marryStatus"
+                    required
+                ></select>
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["sqyq"]'>
+                 <span class="input-label required">用途描述</span>
+                 <!-- <input
+                     type="text"
+                     ng-model="ctrl.form.custAddr"
+                     placeholder="请输入用途描述" 
+                     name="address"
+                     jn-input-length="200"
+                     ng-required="true"
+                     /> -->
+                 <textarea placeholder="Comments"></textarea>
+            </ion-item>
+            <ion-item  ng-click="toggleItem('qyzl')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['qyzl']]" ng-model= 'checked["qyzl"]' ng-checked='checked["qyzl"]' >企业资料
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['qyzl']]"></i>
+         	</ion-item>
+            <ion-item class='item-input' ng-show=' checked["qyzl"]'>
+                <span class='input-label required' >三证合一</span>
+                <ion-radio class="show_radio" name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='M' checked>否</ion-radio>
+                <ion-radio  class="show_radio"  name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='F'>是</ion-radio>
+        	</ion-item>
+        	<ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                <span class="input-label required">营业执照</span>
+                <input
+                	required
+                    type="text"
+                    name="regNo"
+                    readonly="readonly"
+                    ng-model="ctrl.form.regNo"
+                    placeholder="请输入营业执照" 
+                    jn-reg-no
+                    />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">主营业务</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">企业名称</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">实际经营地址</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">法定代表人</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class='item-input' ng-show=' checked["qyzl"]'>
+                <span class='input-label required' >组织形式</span>
+                <ion-radio class="show_radio" name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='M' checked>个体经营</ion-radio>
+                <ion-radio  class="show_radio"  name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='F'>法律实体</ion-radio>
+        	</ion-item>
+        	<ion-item class="item-input" ng-show=' checked["qyzl"]'>
+            	<span class="input-label required">业务开始日期</span>
+                <input
+                        type="date"
+                        ng-required="true"
+                        name="birthday"
+                        ng-model="ctrl.form.birthday"
+                />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label required">雇员人数</span>
+                 <input
+                     type="number"
+                     name="investAmt"
+                     value="" min="1" 
+                     ng-model="ctrl.form.investAmt"
+                     placeholder="请输入雇员人数" 
+                     ng-required="true"
+                  />
+            </ion-item>
+            <ion-item class="item-input item-select" ng-show=' checked["qyzl"]'>
+                <span class="input-label required">法律实体类型</span>
+                <select
+                    ng-model="ctrl.form.marryStatus"
+                    jn-options="5027"
+                    name="marryStatus"
+                    required
+                ></select>
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">营业时间</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label">所属行业</span>
+                 <input
+                         type="text"
+                         name="custName"
+                         readonly="readonly"
+                         jn-input-length="60"
+                         ng-model="ctrl.form.custName"
+                 />
+            </ion-item>
+            <ion-item class='item-input' ng-show=' checked["qyzl"]'>
+                 <span class='input-label' >经营场所</span>
+                 <ion-br style='width:100%;'/>
+                 <div class='item-input1'>
+                 <ion-radio ng-disabled="true" class="show_radio1" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >自有</ion-radio>
+                 <ion-radio ng-disabled="true" class="show_radio1"  name='perTyp' value='1'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >租赁</ion-radio>
+                 <ion-radio ng-disabled="true" class="show_radio1"  name='perTyp' value='1'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >其他</ion-radio>
+				 </div>
+				 <input
+                       type="text"
+                       name="custName"
+                       readonly="readonly"
+                       jn-input-length="60"
+                       ng-model="ctrl.form.custName"
+                       value="asdadasdw"
+                 />
+         	</ion-item>
+         	<ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label required">固定电话</span>
+                 <input
+                     type="text"
+                     ng-model="ctrl.form.phoneNo"
+                     placeholder="请输入固定电话" 
+                     name="mobile"
+                     jn-tel
+                     ng-required="true"
+                     />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["qyzl"]'>
+                 <span class="input-label required">备注</span>
+                 <textarea placeholder="Comments"></textarea>
+            </ion-item>
+            <ion-item  ng-click="toggleItem('cwxx')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['cwxx']]" ng-model= 'checked["cwxx"]' ng-checked='checked["cwxx"]' >财务信息概述
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['cwxx']]"></i>
+         	</ion-item>
+         	<ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">月均营业额(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">旺季营业额(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">淡季营业额(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">毛利率(%)</span>
+                <input
+                    type="number"
+                    name="investPct"
+                    ng-model="ctrl.form.investPct"
+                    placeholder="请输入出资比例" 
+                    value="" min="0"   max="100"
+                    ng-required="true"
+                   />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">应收账款(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">存货(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">净利率(%)</span>
+                <input
+                    type="number"
+                    name="investPct"
+                    ng-model="ctrl.form.investPct"
+                    placeholder="请输入出资比例" 
+                    value="" min="0"   max="100"
+                    ng-required="true"
+                   />
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">总资产(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">其他收入(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-input" ng-show=' checked["cwxx"]'>
+                <span class="input-label required">负债(元)</span>
+                <input
+                    type="number"
+                    name="investAmt"
+                    value="" min="1" 
+                    ng-model="ctrl.form.investAmt"
+                    placeholder="请输入出资金额" 
+                    ng-required="true"
+                   /><!-- ng-blur="lostBlur()" -->
+            </ion-item>
+            <ion-item class="item-icon-right" href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&linkType=25&actionFlag=relations&custClass={{custDetail.custClass}}&custPaperNo={{custDetail.paperNo}}">
+                                                             共同经营者
+                 <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&linkType=25&actionFlag=relations&custClass={{custDetail.custClass}}&custPaperNo={{custDetail.paperNo}}">
+                                                             申请人信贷历史
+                 <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item  ng-click="toggleItem('dbfs')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['dbfs']]" ng-model= 'checked["dbfs"]' ng-checked='checked["dbfs"]' >担保方式
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['dbfs']]"></i>
+         	</ion-item>
+         	<ion-item class='item-input' ng-show=' checked["dbfs"]'>
+                 <span class='input-label' >担保方式</span>
+                 <ion-br style='width:100%;'/>
+                 <div class='item-input1'>
+                 <ion-checkbox  class="show_radio3"  name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >信用</ion-checkbox>
+                 <ion-checkbox  class="show_radio3"  name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >保证</ion-checkbox>
+                 </div>
+                 <div class='item-input1'>
+                 <ion-checkbox  class="show_radio3"  name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >抵押</ion-checkbox>
+                 <ion-checkbox  class="show_radio3"  name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >质押</ion-checkbox>
+				 </div>
+         	</ion-item>
+         	<ion-item class='item-input' ng-show=' checked["dbfs"]'>
+                 <span class='input-label' >保证</span>
+                 <ion-br style='width:100%;'/>
+                 <div class='item-input1'>
+                 <ion-checkbox  class="show_radio4" name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >企业担保</ion-checkbox>
+                 </div>
+                 <div class='item-input1'>
+	                 <span class="input-label1 ">名称</span>
+                	 <input
+                        type="text"
+                        name="custName"
+                        jn-input-length="60"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入名称"
+                	  />
+               	 </div>
+               	 <div class='item-input1'>
+                	  <span class="input-label1 ">与借款人的关系</span>
+                	  <input
+                        type="text"
+                        name="custName"
+                        jn-input-length="60"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入与借款人的关系"
+                	  />
+                 </div>
+                 <div class='item-input1'>
+                 <ion-checkbox  class="show_radio4" name='perTyp'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >个人担保</ion-checkbox>
+				 </div>
+				 <div class='item-input1'>
+	                 <span class="input-label1 ">名称</span>
+                	 <input
+                        type="text"
+                        name="custName"
+                        jn-input-length="60"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入名称"
+                	  />
+               	 </div>
+               	 <div class='item-input1'>
+                	  <span class="input-label1 ">与借款人的关系</span>
+                	  <input
+                        type="text"
+                        name="custName"
+                        jn-input-length="60"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入与借款人的关系"
+                	  />
+                 </div>
+         	</ion-item>
+         	<ion-item  ng-click="toggleItem('sqs')"  style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['sqs']]" ng-model= 'checked["sqs"]' ng-checked='checked["sqs"]' >授权书
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['sqs']]"></i>
+         	</ion-item>
+         	<ion-item  ng-click="toggleItem('khtj')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['khtj']]" ng-model= 'checked["khtj"]' ng-checked='checked["khtj"]' >客户提交的资料及第一印象
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['khtj']]"></i>
+         	</ion-item>
+         	<ion-item  ng-click="toggleItem('scjg')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['scjg']]" ng-model= 'checked["scjg"]' ng-checked='checked["scjg"]' >筛查结果
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['scjg']]"></i>
+         	</ion-item>
+          
+		<!-- </ion-list>-->
+    </ion-content>
+</ion-view>

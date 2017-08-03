@@ -1,0 +1,31 @@
+<ion-view id="remindList" view-title="{{ ctrl.messageName }}">
+<jn-back></jn-back>
+<ion-content>
+<ion-list>
+<div class="card" ng-show="0 < ctrl.messages.items.length"
+	ng-repeat="e in ctrl.messages.items | remindLi"
+	data-operflag="{{ e.operFlag }}" data-stat="{{ e.stat }}">
+	<div class="item item-avatar" data-stat="{{e.stat}}"
+		data-operFlag="{{e.operFlag}}">
+		<div class="row">
+			<h2 style="max-width: 75%;">{{ e.custName }}</h2>
+			<span class="pendTime">{{ e.applyDate | jnDate | jnDateFormat }}</span>
+		</div>
+	</div>
+	<div class="item item-body">{{ e.content }}</div>
+	<div class="item tabs  tabs-secondary tabs-icon-left" >
+		<a class="tab-item tab-do"   ng-show="'0' === e.stat"
+                    ng-click="ctrl.setRead(e.messageId)"> <i class="icon ion-ios-checkmark"></i> <span>标记已读</span> </a> 
+		<a class="tab-item tab-do"  ng-show="'1' === e.stat && '0' === e.operFlag"
+                    ng-click="ctrl.setTop(e.messageId)" > <i class="icon ion-ios-flag"></i><span> 置顶</span>  </a>
+		<a class="tab-item tab-do"  ng-show="'1' === e.stat && '1' === e.operFlag"
+                    ng-click="ctrl.unsetTop(e.messageId)"> <i class="icon ion-ios-flag-outline"></i><span> 取消置顶</span> </a>
+	</div>
+</div>
+</ion-list>
+<div ng-show="0 === ctrl.messages.items.length" class="no_record">暂无记录</div>
+<button ng-show="ctrl.messages.items.length < ctrl.messages.total"
+	ng-click="ctrl.more()"
+	class="button button-block button-clear button-positive">点击加载更多</button>
+</ion-content>
+</ion-view>

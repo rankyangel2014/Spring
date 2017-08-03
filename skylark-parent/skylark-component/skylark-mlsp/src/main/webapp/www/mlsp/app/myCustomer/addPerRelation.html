@@ -1,0 +1,118 @@
+<style type="text/css">
+
+
+</style>
+
+
+<ion-view view-title="新增紧急联系人" id="addPerRelation">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+        >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <jn-form name="ctrl.addForm" edit>
+            <ion-list>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        ng-model="ctrl.form.paperNo"
+                        required
+                        jn-id-no
+                        placeholder="请输入身份证号码"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">客户名称</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="ctrl.form.custName"
+                        required
+                        jn-input-length="60"
+                        placeholder="请输入客户名称"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">生日</span>
+                    <input
+                            type="date"
+                            name="birthday"
+                            ng-model="ctrl.form.birthday"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">民族</span>
+                    <select name="nation"
+                        ng-model="ctrl.form.nation"
+                        jn-options="8"
+                    ></select>
+                </ion-item>
+
+                <ion-item class='item-input' >
+                    <span class='input-label' >性别</span>
+                    <ion-radio class="show_radio" name='sex'  ng-model='it.sex'  ng-checked="it.sex"  value='M' checked>男</ion-radio>
+                    <ion-radio  class="show_radio"  name='sex'  ng-model='it.sex'  ng-checked="it.sex"  value='F'>女</ion-radio>
+                </ion-item>
+
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label required">婚姻状况</span>
+                    <select
+                        name="marryStatus"
+                        ng-model="ctrl.form.marryStatus"
+                        jn-options="5027"
+                        required
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label required">涉农类型</span>
+                    <select
+                        name="agricultureType"
+                        ng-model="ctrl.form.agricultureType"
+                        jn-options="7600"
+                        required
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">联系方式</span>
+                    <input
+                        type="text"
+                        name="mobile"
+                        ng-model="ctrl.form.mobile"
+                        required
+                        jn-tel
+                        placeholder="请输入联系方式"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">详细地址</span>
+                    <textarea
+                        name="address"
+                        ng-model="ctrl.form.address"
+                        required
+                        jn-input-length="200"
+                        placeholder="请输入详细地址"
+                    ></textarea>
+                </ion-item>
+            </ion-list>
+        </jn-form>
+    </ion-content>
+</ion-view>

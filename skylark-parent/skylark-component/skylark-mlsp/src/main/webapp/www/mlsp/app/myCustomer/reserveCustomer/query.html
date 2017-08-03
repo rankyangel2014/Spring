@@ -1,0 +1,46 @@
+<ion-view view-title="储备客户查询" id="reserveCustomerQuery">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="Ctrl.submit();"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="Ctrl.myForm" >
+               <!--  <div ng-if='userFlag'>
+                    <input name="custManagerNo" type="hidden" />
+                </div>
+                <ion-item class="item-input item-select" ng-hide='userFlag'>
+                    <span class="input-label">客户经理</span>
+                    <select
+                        ng-model="Ctrl.form.custManagerNo"
+                        jn-manager-select
+                        name = "custManagerNo" 
+                    ></select>
+                </ion-item> -->
+                <ion-list>
+                <ion-item class="item item-input">
+                    <span class="input-label">客户名称</span>
+                    <input type="text" ng-model='Ctrl.form.custName' name='custName'  placeholder="请输入客户名称"  />
+                </ion-item>
+                <ion-item class="item-input item-select" ng-show='!isManager'>
+                        <span class="input-label">客户经理</span>
+                        <select
+                            ng-model="Ctrl.form.custManagerNo"
+                            jn-manager-select
+                            name = "custManagerNo" 
+                        ></select>
+                </ion-item>
+                <ion-item class="item item-input" ng-if='isManager'>
+                    <span class="input-label">联系电话</span>
+                    <input type="text" jn-mobile  ng-model='Ctrl.form.phoneNo' name='phoneNo' placeholder="请输入联系电话"  />
+                </ion-item>
+                </ion-list>
+                <!-- <ion-item class="item-input item-select">
+                    <span class="input-label">客户状态</span>
+                    <select jn-options="6030" ng-model='Ctrl.form.status' name='status' />
+                </ion-item> -->
+        </form>
+    </ion-content>
+</ion-view>

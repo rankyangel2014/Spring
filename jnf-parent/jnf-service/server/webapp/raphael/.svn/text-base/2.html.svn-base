@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="xmlUtil.js"></script>
+<script type='text/javascript'>
+
+//读取xml文档
+	var xmlDoc =new XMLDOC();
+	
+	if (xmlDoc != null) {
+		try{
+			xmlDoc.async = false;
+			xmlDoc.load("sample.xml");
+		} catch(e) {
+			//chrome会抛出异常
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "sample.xml", false);
+			xhr.send(null);
+			xmlDoc = xhr.responseXML.documentElement;
+		}
+		
+	}
+
+	var elements = xmlDoc.getElementsByTagName("startEvent");
+//document.getElementById("").get
+	for ( var i = 0; i < elements.length; i++) {
+		var id = elements[i].getAttribute("id");
+		alert(id);
+		//var ip = elements[i].getElementsByTagName("cIP")[0].firstChild.nodeValue;
+		var name = elements[i].getAttribute("name");
+		alert(name);
+	}
+	
+	
+//生成xml文档
+xmlDoc =new XMLDOC();
+var newPI=xmlDoc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"utf-8\"");     
+    xmlDoc.appendChild(newPI);  
+    var documentElement=xmlDoc.createElement("req");     
+    xmlDoc.appendChild(documentElement);
+  //创建CDATA   
+    var newCD=xmlDoc.createCDATASection("This is a CDATASection node");     
+    xmlDoc.documentElement.appendChild(newCD); 
+    var ctype=xmlDoc.createElement("ctype");
+    var ctypeText = xmlDoc.createTextNode("haha");
+    ctype.appendChild(ctypeText);
+    documentElement.appendChild(ctype);
+    var xmls=new XMLSerializer(); 
+	var result = xmls.serializeToString(xmlDoc); 
+	alert(result); 
+</script>
+</head>
+<body>
+
+</body>
+</html>

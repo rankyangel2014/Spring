@@ -1,0 +1,214 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            has-bouncing="false"
+            ng-controller="personalInfoCtrl as personalInfoCtrl">
+    <ion-list>
+        <form name="personalInfoCtrl.personalInfoForm" novalidate>
+            <ion-item class="item-divider">个人基本信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">姓名</span>
+                <input type="text"
+                       name="custName"
+                       placeholder="请输入姓名"
+                       ng-model="personalInfoCtrl.form.custName"
+                       readonly
+                       required/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">证件类型</span>
+                <select name="paperType"
+                        ng-model="personalInfoCtrl.form.paperType"
+                        jn-options="5099"
+                        disabled>
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">证件号码</span>
+                <input type="text"
+                       name="paperNo"
+                       placeholder="请输入证件号码"
+                       ng-model="personalInfoCtrl.form.paperNo"
+                       readonly
+                       required/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">出生日期</span>
+                <input type="date"
+                       name="birthday"
+                       ng-model="personalInfoCtrl.form.birthday"
+                       format-date
+                       readonly/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">性别</span>
+                <select name="sex"
+                        ng-model="personalInfoCtrl.form.sex"
+                        jn-options="306"
+                        disabled>
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">手机</span>
+                <input type="tel"
+                       placeholder="请输入手机号码"
+                       name="mobPhone"
+                       ng-model="personalInfoCtrl.form.mobPhone"
+                       ng-readonly="personalInfoCtrl.isReadOnly"
+                       jn-mobile/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">固定电话/传真</span>
+                <input type="tel"
+                       placeholder="请输入固定电话/传真"
+                       name="fixPhone"
+                       ng-model="personalInfoCtrl.form.fixPhone"
+                       ng-readonly="personalInfoCtrl.isReadOnly"
+                       jn-phone/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">联系地址</span>
+                <input type="text"
+                       placeholder="请输入联系地址"
+                       name="address"
+                       ng-model="personalInfoCtrl.form.address"
+                       ng-readonly="personalInfoCtrl.isReadOnly"
+                       jn-input-length="200"/>
+            </ion-item>
+
+            <ion-item class="item-icon-right jn-toggle-item"
+                      ng-click="personalInfoCtrl.toggleItem('pDetail')"
+                      ng-class="{'item-divider':personalInfoCtrl.checked.pDetail}"
+                      ng-model='personalInfoCtrl.checked.pDetail'>
+                <span>更多信息</span>
+                <i class="icon"
+                   ng-class="{true:'ion-ios-arrow-up',false:'ion-ios-arrow-down'}[personalInfoCtrl.checked.pDetail]"></i>
+            </ion-item>
+            <div ng-show="personalInfoCtrl.checked.pDetail">
+                <ion-item class="item-input item-select">
+                    <span class="input-label">婚姻状况</span>
+                    <select name="marryStatus"
+                            ng-model="personalInfoCtrl.form.marryStatus"
+                            ng-disabled="personalInfoCtrl.isReadOnly"
+                            jn-options="5027">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">民族</span>
+                    <select name="nation"
+                            ng-model="personalInfoCtrl.form.nation"
+                            ng-disabled="personalInfoCtrl.isReadOnly"
+                            jn-options="8">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">教育水平</span>
+                    <select name="eduLevel"
+                            ng-model="personalInfoCtrl.form.eduLevel"
+                            ng-disabled="personalInfoCtrl.isReadOnly"
+                            jn-options="5047">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">电子邮箱</span>
+                    <input type="email"
+                           placeholder="请输入电子邮箱"
+                           name="email"
+                           ng-model="personalInfoCtrl.form.email"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           jn-email/>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">居住情况</span>
+                    <select name="housingStatus"
+                            ng-model="personalInfoCtrl.form.housingStatus"
+                            ng-disabled="personalInfoCtrl.isReadOnly">
+                        <option value="">-- 请选择 --</option>
+                        <option value="1">自有</option>
+                        <option value="2">抵押</option>
+                        <option value="3">租赁</option>
+                        <option value="4">其他</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input" ng-if="personalInfoCtrl.form.housingStatus=='4'">
+                    <span class="input-label"></span>
+                    <input type="text"
+                           name="housingDesc"
+                           ng-model="personalInfoCtrl.form.housingDesc"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           placeholder="请输入其他居住情况"/>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">居住场所类型</span>
+                    <select name="housingType"
+                            ng-model="personalInfoCtrl.form.housingType"
+                            ng-disabled="personalInfoCtrl.isReadOnly"
+                            jn-options="7700">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">户籍所在地</span>
+                    <input type="text"
+                           placeholder="请输入户籍所在地"
+                           name="domPlace"
+                           ng-model="personalInfoCtrl.form.domPlace"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">收入情况(元)</span>
+                    <input type="number"
+                           placeholder="请输入收入情况"
+                           name="netIncomeY"
+                           ng-model="personalInfoCtrl.form.netIncomeY"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           min="0"
+                           max="9999999999999999"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">家庭地址</span>
+                    <input type="text"
+                           placeholder="请输入家庭地址"
+                           name="home"
+                           ng-model="personalInfoCtrl.form.home"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                    <input type="text"
+                           placeholder="请输入工作单位"
+                           name="workUnit"
+                           ng-model="personalInfoCtrl.form.workUnit"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位地址</span>
+                    <input type="text"
+                           placeholder="请输入工作单位地址"
+                           name="workAddr"
+                           ng-model="personalInfoCtrl.form.workAddr"
+                           ng-readonly="personalInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class='item-input'>
+                      <span class='input-label'>其他说明</span>
+                      <textarea class="jn-input-textarea"
+                                name='remark'
+                                rows='4'
+                                cols="32"
+                                ng-model='personalInfoCtrl.form.remark'
+                                ng-readonly="personalInfoCtrl.isReadOnly"
+                                jn-input-length="1000" >
+                      </textarea>
+                </ion-item>
+            </div>
+        </form>
+        <ion-item class="item-divider"></ion-item>
+        <ion-item class="item-icon-right"
+                  ng-click="personalInfoCtrl.goSpouse()">
+            <span>配偶</span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

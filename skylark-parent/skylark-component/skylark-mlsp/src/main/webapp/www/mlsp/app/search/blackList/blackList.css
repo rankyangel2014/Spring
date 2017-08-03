@@ -1,0 +1,81 @@
+#blackList  ion-item {
+    font-size: 14px;
+}
+
+
+
+#blackList .list .name {
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+#blackList .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#blackList .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#blackList .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#blackList .list .id_card ,
+#blackList .list .business_card{
+	padding-left: 0px;
+	font-family: iconfont;
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+#blackList .list .id_card:before {
+  content: '\e626';
+  color: #007aff;
+   font-size: 14px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+
+#blackList .list .business_card:before {
+  content: '\e629';
+  color: #007aff;
+  padding-right: 5px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+#blackListQry .quick_tool_bar {
+    height: 40px;
+    line-height: 38px;
+    vertical-align: middle;
+        text-align: center;
+    
+}
+
+#blackListQry .quick_tool_bar a {
+    padding: 10px 20px 10px 20px;
+    font-size: 14px;
+}
+
+#blackListQry .quick_tool_bar .idcard:BEFORE {
+    content: '\e635';
+    color: #007aff;
+    font-size: 20px;
+    margin-right: 5px;
+    font-family: 'iconfont';
+    vertical-align: middle;
+}
+
+#blackListQry .title_divider {
+    padding: 0px;
+    margin-top: 18px;
+}

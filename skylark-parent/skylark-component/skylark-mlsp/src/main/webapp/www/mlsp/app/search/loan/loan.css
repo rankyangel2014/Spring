@@ -1,0 +1,150 @@
+#loan .item {
+	line-height: 1.5em;
+	font-size: 14px;
+}
+#loan .txNoAcc {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    line-height: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+#loan .manager:before {
+    content: '\e627';
+    font-family: iconfont;
+    font-size:18px;
+    color: #007aff;
+    padding-right: 5px;
+}
+
+#loan .status {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+   	font-size: 12px;
+    line-height: 1;
+}
+
+
+#loan .jylx:BEFORE {
+	color: #f98653;
+}
+#loan .czbz:BEFORE {
+    color: #f98653;
+}
+
+#loan .jylx:AFTER,
+#loan .czbz:AFTER {
+     margin-left: .3em;
+     font-size: 12px;
+}
+
+#loan .jylx:AFTER {
+    content: attr(data-value);
+}
+
+
+#loan .czbz:AFTER {
+    content: attr(data-value);
+}
+
+#hkSheet .detail {
+    width: 95%;
+    font-size: 12px;
+    white-space: nowrap;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+#hkSheet .detail tr {
+    border-top: 1px solid #ddd;
+}
+
+#hkSheet .detail tbody tr:nth-child(even) {
+    color: #299bd1;
+}
+
+#hkSheet .detail tbody tr:nth-child(odd) {
+    color: #e285ab;
+}
+
+#hkSheet .detail th,
+#hkSheet .detail td {
+    padding: 10px 5px;
+}
+
+#hkSheet .detail td {
+    text-align: right;
+}
+
+#advancesListView .item{
+	font-size: 14px;
+		line-height: 1.5em;
+}
+
+#hkSheet .info {
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+#hkSheet .sum {
+    margin: auto;
+}
+
+#hkSheet .sum th,
+#hkSheet .sum td {
+    padding: 2px 5px;
+}
+
+#advancesListView .status {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+   	font-size: 12px;
+    line-height: 1;
+}
+
+
+#advancesListView .repayTyp:BEFORE {
+    color: #f98653;
+}
+
+#advancesListView .repayTyp:AFTER {
+     margin-left: .3em;
+     font-size: 12px;
+}
+
+#advancesListView .repayTyp:AFTER {
+    content: attr(data-value);
+}
+
+#loan .name {
+    line-height: 1.5em;
+}
+
+#loan .name {
+    font-weight: bold;
+}
+
+#loan .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#loan .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#loan .name[data-type="1"]:before {
+    content: '\e644';
+}
+

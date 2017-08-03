@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.withhold.WithholdDao">
+	<sql id="columns">
+		T1.C1 as "id",
+		T1.C2 as "custId",
+		T1.C3 as "channelId",
+		T1.C4 as "state",
+		T1.C5 as "bindAccNo",
+		T1.C6 as "key",
+		T1.C9 as "cardNo"
+	</sql>
+
+	<!-- 查询投资人渠道关系 -->
+	<select id="queryOrgList" resultType="PubInsttuDto">
+		SELECT
+	        C1 insttuId,
+	        C2 insttuNm
+        FROM JNF_T2
+        <where>
+            C4='1'
+            <if test=" insttuId != null and insttuId !='' ">
+                AND C1 = #{insttuId}
+            </if>
+            <if test=" insttuNm != null and insttuNm !='' ">
+                AND C2 like '%${insttuNm}%'
+            </if>
+        </where>
+	</select>
+	<!-- 查询投资人渠道关系 -->
+	<select id="queryInvestorChannelList" resultType="InvestorChannelDto">
+		SELECT
+		    T1.C1 id ,
+		    T1.C2 recId ,
+	        T2.C12 custId,
+	        T2.C2 custName,
+	        T1.C3 channelId,
+	        T1.C4 state,
+	        T1.C5 bindAccNo,
+	        T1.C6 key,
+	        T1.C7 created,
+	        T1.C8 modified,
+	        T1.C9 cardNo
+        FROM JNF_T24 T1 ,JNF_T2 T2
+        <where>
+            T1.C2 = T2.C1
+            <if test=" custId != null and custId !='' ">
+                AND T2.C12 = #{custId}
+            </if>
+            <if test=" channelId != null and channelId !='' ">
+                AND T1.C3 = #{channelId}
+            </if>
+            <if test=" state != null and state !='' ">
+                AND T1.C4 = #{state}
+            </if>
+            <if test=" cardNo != null and cardNo !='' ">
+                AND T1.C9 = #{cardNo}
+            </if>
+        </where>
+        ORDER BY T1.C7 DESC
+	</select>
+
+	<!-- 根据投资人查询渠道编号 -->
+	<select id="qryChannelByInvestorId" parameterType="MemberDto"
+		resultType="MenuDto">
+		select
+	    a.C1 as "menuCde",
+	    a.C2 as "menuKey",
+	    a.C3 as "menuValue",
+	    a.C4 as "menuSort"
+	    from
+	    (select * from jnf_t24 b where b.C4='1' and b.C2= (select c1 from jnf_t2 where c12=#{insttuId} and c4='1')) c left join jnf_t13 a
+	    on a.c2 = c.c3
+	</select>
+
+	<!-- 插入 -->
+	<insert id="insertInvestorChannel">
+		INSERT INTO
+		JNF_T24( C1, C2, C3, C4, C5, C6, C7,C8,C9)
+		VALUES
+		(#{id},
+		#{custId},
+		#{channelId},
+		#{state},
+		#{bindAccNo},
+		#{key},
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+		#{cardNo})
+	</insert>
+	
+	<!-- 停用or启用 -->
+	<update id="updateInvestorChannelState" parameterType="InvestorChannelDto">
+		UPDATE
+		JNF_T24
+		SET
+		C4 = #{state},
+		C8 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss')
+		WHERE
+		C1 = #{id}
+	</update>
+	<!-- 查询投资人渠道关系 -->
+	<select id="queryInvestorChannelCount" resultType="Long">
+	   SELECT
+            COUNT(1)
+        FROM JNF_T24 T1 ,JNF_T2 T2
+		WHERE  T1.C2 = T2.C1 AND  T2.C12 = #{custId} AND T1.C3=#{channelId} AND T1.C4='1'
+	</select>
+
+	<select id="queryInverstor" resultType="com.jsjn.jnf.bean.dto.withhold.InvestorChannelDto">
+		SELECT
+		<include refid="columns"></include>
+		FROM JNF_T24 T1
+		WHERE T1.C2 = #{investorId}
+		AND T1.C3 = #{channelId}
+		AND T1.C4 = '1'
+	</select>
+
+    <!-- 批量代扣相关业务 start -->
+
+    <!-- 插入批量代扣信息表 -->
+    <insert id="batchInsertWithhold" parameterType="java.util.List">
+        INSERT INTO JNF_T91
+            (C1,   C2,   C3,   C4,   C5, C6
+            ,C7,   C8,   C9,   C10,  C11, C12)
+	    <foreach open="(" close=")" collection="list" item="item"
+	        index="index" separator="union">
+	        select
+	            #{item.id},       #{item.serialNo}, #{item.orgNo},   #{item.loanNo},  #{item.cardSignNo}, #{item.custName},
+	            #{item.custIdNo}, #{item.amount},   #{item.curCode}, #{item.remark},  #{item.isValid} ,   #{item.mid}
+	        from dual
+	    </foreach>
+    </insert>
+    
+    <!-- 查询需要发送代扣的数据 -->
+    <select id="queryBatchWithhold" resultType="BatchWithholdDto">
+        SELECT
+       	 	T1.C1 as id,
+	        T1.C2 as serialNo,
+	        T1.C3 as orgNo,
+	        T1.C4 as loanNo,
+	        T1.C5 as cardSignNo,
+	        T1.C6 as custName,
+	        T1.C7 as custIdNo,
+	        TO_CHAR(T1.C8,'9999999999.99') as amount,
+	        T1.C9 as curCode,
+	        T1.C10 as remark,
+	        T1.C11 as isValid,
+	        T1.C12 as mid
+        FROM 
+            JNF_T91 T1
+        WHERE 
+            T1.C11 = 'Y' AND ROWNUM &lt;= #{limit}
+    </select>
+    
+    <!-- 更新批量代扣信息为无效 -->
+    <update id="updateWithhold" parameterType="BatchWithholdDto">
+        UPDATE 
+            JNF_T91 
+        SET 
+            C11 = 'N' 
+        WHERE 
+            C1 = #{id}
+    </update>
+    
+    <!-- 批量代扣相关业务 end -->
+    
+    <select id="queryInsttuCardNo" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT 
+			T1.C9 
+		FROM 
+			JNF_T24 T1
+		WHERE 
+			T1.C2=(
+				SELECT 
+					C1 
+				from 
+					JNF_T2 
+				WHERE
+					C12=#{orgNo}
+					)
+    </select>
+</mapper>

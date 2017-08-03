@@ -1,0 +1,76 @@
+<ion-view view-title="{{title}}" id="hkSheet">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content direction="xy">
+                  <div class="info">{{ it.setlDt|jnDate }} {{  it.txTyp|jnConstant:9820 }} {{  it.setlTyp|jnConstant:9821 }}</div>
+			        <table class="sum" style='border-bottom: 0px;'>
+						<thead>
+						      <tr>
+			                    <th>合计收取</th>
+			                    <th>=</th>
+			                    <th>实收合计</th>
+			                    <th>+</th>
+			                    <th>费用及余款</th>
+			                </tr> 
+			            </thead>
+			            <tbody>
+			                 <tr>
+			                    <th>{{ it.billAmtTotal|jnCurrency }}</th>
+			                    <th></th>
+			                    <th>{{ it.setlTotal|jnCurrency }}</th>
+			                    <th></th>
+			                    <th>{{ it.fee|jnCurrency }}</th>
+			                </tr> 
+			               </tbody>
+			            </table>
+						<table class="detail" >
+						<thead>
+			                <tr>
+			                    <th></th>
+			                    <th>应还</th>
+			                    <th>实收</th>
+			                    <th>减免</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr>
+			                    <th>罚息金额</th>
+								<td>{{ it.receivableOdIntS | jnCurrency }}</td>
+			                    <td>{{ it.setlOdInt  | jnCurrency}}</td>
+			                    <td>{{ it.wvOdInt  | jnCurrency}}</td>
+			                </tr>
+			                <tr>
+			                    <th>复利金额</th>
+			                      <td>{{it.receivableCmpdIntS  | jnCurrency}}</td>
+			                    <td>{{ it.setlCmpdInt  | jnCurrency}}</td>
+			                    <td>{{ it.wvCmpdInt  | jnCurrency}}</td>  
+			                </tr>
+			                <tr>
+			                    <th>拖欠本金</th>
+							    <td>{{  it.receivableOwePrcp | jnCurrency }}</td>
+			                    <td>{{  it.setlOwePrcp  | jnCurrency}}</td> 
+			                    <td></td>
+			                </tr>
+			                <tr>
+			                    <th>拖欠利息</th>
+			                     <td>{{  it.receivableOweInt | jnCurrency }}</td>
+			                    <td>{{  it.setlOweInt | jnCurrency }}</td>
+			                    <td>{{  it.wvOweInt  | jnCurrency}}</td>
+			                </tr>
+			                <tr>
+			                    <th>当期本金</th>
+			                     <td>{{  it.receivableInstmPrcp | jnCurrency }}</td>
+			                    <td>{{  it.setlInstmPrcp  | jnCurrency}}</td>
+			                    <td></td>
+			                </tr>
+			                <tr>
+			                    <th>当期利息</th>
+			                      <td>{{  it.receivableInstmInt  | jnCurrency}}</td>
+			                    <td>{{  it.setlInstmInt  | jnCurrency}}</td>
+			                    <td>{{  it.wvInstmInt  | jnCurrency}}</td>  
+			                </tr>
+			            </tbody>
+        			</table>
+    </ion-content>
+</ion-view>

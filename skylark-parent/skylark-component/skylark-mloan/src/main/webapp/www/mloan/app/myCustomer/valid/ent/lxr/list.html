@@ -1,0 +1,48 @@
+<ion-view view-title="联系人">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+         <button
+             class="button button-clear"
+             ng-if="'1' === ctrl.editable"
+             ng-click="ctrl.add()"
+         >新增</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list
+            ng-if="0 < ctrl.list.length"
+        >
+            <ion-item
+                ng-repeat="e in ctrl.list"
+                ng-click="ctrl.view(e)"
+                style="font-size: 14px;"
+            >
+                <div
+                    style="overflow: hidden; text-overflow: ellipsis;"
+                >
+                    <b>{{ e.custName }}</b>
+                    [{{ e.linkType | jnConstantList :5018 }}]
+                </div>
+                <div
+                    ng-if="e.paperNo"
+                >
+                    <i class="ion-card positive"></i>
+                    {{ e.paperNo }}
+                </div>
+                <div
+                    ng-if="e.phoneNo"
+                ><jn-tel-no num="{{ e.phoneNo }}"></jn-tel-no></div>
+                <ion-option-button
+                    class="button-assertive"
+                    ng-if="'1' === ctrl.editable"
+                    ng-click="ctrl.remove(e, $event)"
+                >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+            class="no_record"
+            ng-if="0 === ctrl.list.length"
+        >暂无记录</div>
+    </ion-content>
+</ion-view>

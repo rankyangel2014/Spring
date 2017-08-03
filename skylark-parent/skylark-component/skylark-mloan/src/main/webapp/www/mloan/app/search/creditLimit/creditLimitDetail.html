@@ -1,0 +1,82 @@
+<ion-view view-title="授信额度查询">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+            <ion-item class="item-divider">客户信息</ion-item>
+           <ion-item class="item" style="white-space:normal">
+            	客户名称 
+            	 <span class="item-note" style="max-width:60%">{{ creditDetail.custName }}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	详细地址
+            	<span class="item-note" style="max-width:60%">{{ creditDetail.custAddr }}</span>
+            </ion-item>
+            
+            <ion-item class="item-divider">授信信息</ion-item>
+            <ion-item class="item" >
+            	授信类型
+            	<span class="item-note">{{ creditDetail.contTyp | jnConstant :9900}}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	预分配合同号
+            	<span class="item-note" style="max-width:60%">{{ creditDetail.contNoExt }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	主担保方式
+            	<span class="item-note">{{ creditDetail.mainGurTyp | jnConstant :5045}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	申请额度
+            	<span class="item-note">{{ creditDetail.applCreAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	授信额度
+            	<span class="item-note">{{ creditDetail.exapCreAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	剩余额度
+            	<span class="item-note">{{ creditDetail.ableAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	申请日期
+            	<span class="item-note">{{ creditDetail.applDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	生效日期
+            	<span class="item-note">{{ creditDetail.startDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	失效日期
+            	<span class="item-note">{{ creditDetail.endDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	申请状态
+            	<span class="item-note">{{ creditDetail.applStatus | jnConstant :9000}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	是否循环
+            	<span class="item-note">{{ creditDetail.orUse | jnConstant :332}}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	授信描述
+            	<div class="item-note"
+            	style="max-width:60%">{{ creditDetail.remark }}</div>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/search/creditLimit/dbxxDetail?custNo={{ creditDetail.custNo }}&contNo={{ creditDetail.crdtNo }}&contType=2&optFlag=0&applSeq=0">
+                	担保信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/search/creditLimit/symxDetail?crdtNo={{ creditDetail.crdtNo }}">
+                	使用明细
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+
+		</ion-list>
+    </ion-content>
+</ion-view>

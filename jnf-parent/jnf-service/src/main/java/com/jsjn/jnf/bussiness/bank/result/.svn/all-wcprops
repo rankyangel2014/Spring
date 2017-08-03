@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Zfjs/!svn/ver/3992/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/result
+END
+BankSinglePaymentResultHandle.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/4117/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/result/BankSinglePaymentResultHandle.java
+END
+BankSingleWithHoldResultHandle.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/Zfjs/!svn/ver/4209/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/result/BankSingleWithHoldResultHandle.java
+END

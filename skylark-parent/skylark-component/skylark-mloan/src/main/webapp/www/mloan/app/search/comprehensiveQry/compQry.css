@@ -1,0 +1,242 @@
+#compQry .item{
+	font-size: 14px;
+	line-height: 1.5em;
+}
+
+#compQry .list {
+    color: #666;
+}
+
+#compQry .list .name {
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+#compQry .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#compQry .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#compQry .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#compQry .list>div:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#compQry .list>div:nth-child(2) {
+    color: #000;
+}
+
+#compQry .ztjc {
+    line-height: 1;
+    font-size: 0px;
+    font-weight: normal;
+     text-align: right;
+}
+
+#compQry .ztjc:before,
+#compQry .ztjc:after {
+    display: inline-block;
+    padding: 5px 6px;
+    border: 1px solid transparent;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+#compQry .ztjc:before {
+    content: attr(data-dkzt);
+    color: #fff;
+}
+
+#compQry .ztjc:after {
+    content: attr(data-dkjc);
+    width: 5em;
+    text-align: center;
+}
+
+#compQry .ztjc[data-dkzt="Y"]:after {
+    border-color: green;
+}
+
+#compQry .ztjc[data-dkzt="N"]:after {
+    border-color: crimson;
+}
+
+#compQry .ztjc[data-dkzt="Y"]:before {
+    content: '已结清';
+    background-color: green;
+}
+
+#compQry .ztjc[data-dkzt="N"]:before {
+    content: '未结清';
+    background-color: crimson;
+}
+
+#compQry .ztjc[data-dkjc="Y"]:after {
+    content: '检查正常';
+}
+
+#compQry .ztjc[data-dkjc="N"]:after {
+    content: '检查异常';
+}
+
+#compQry .ztjc[data-dkjc="X"]:after {
+    content: '未检查';
+}
+
+#compQry .manager:before {
+    content: '\e627';
+    font-family: iconfont;
+    font-size:14px;
+    color: #007aff;
+    padding-right: 5px;
+}
+
+#compQry .status {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: .9em;
+    line-height: 1;
+}
+
+#compQry .dkxz:before,
+#compQry .wjfl:before,
+#compQry .dkxt:before {
+    font-size: .9em;
+    padding: 0 4px 0 14px;
+    color: #f98653;
+}
+
+/* 自营贷款 */
+#compQry .dkxz[data-value="1"],
+#compQry .dkxz[data-value="9"] {
+    display: none;
+}
+
+/* 受托贷款 */
+#compQry .dkxz[data-value="4"]:after {
+    content: '受托';
+}
+
+/* 正常 */
+#compQry .wjfl[data-value="1"] {
+    display: none;
+}
+
+/* 关注 */
+#compQry .wjfl[data-value="2"]:after {
+    content: '关注';
+}
+
+/* 次级 */
+#compQry .wjfl[data-value="3"]:after {
+    content: '次级';
+}
+
+/* 可疑 */
+#compQry .wjfl[data-value="4"]:after {
+    content: '可疑';
+}
+
+/* 损失 */
+#compQry .wjfl[data-value="5"]:after {
+    content: '损失';
+}
+
+/* 正常 */
+#compQry .dkxt[data-value="0"] {
+    display: none;
+}
+
+/* 逾期 */
+#compQry .dkxt[data-value="1"]:after {
+    content: '逾期';
+}
+
+/* 呆滞 */
+#compQry .dkxt[data-value="2"]:after {
+    content: '呆滞';
+}
+
+/* 呆账 */
+#compQry .dkxt[data-value="3"]:after {
+    content: '呆账';
+}
+
+/* 核销 */
+#compQry .dkxt[data-value="4"]:after {
+    content: '核销';
+}
+
+/* 放款冲正 */
+#compQry .dkxt[data-value="9"]:after {
+    content: '冲正';
+}
+
+/* 潜在客户详情 */
+#loanDetailInfo {
+    background-color: #f5f5f5;
+}
+
+#loanDetailInfo a {
+    text-decoration: none;
+}
+
+#loanDetailInfo a[href^="tel:"] {
+    font-size: 16px;
+    width: 90px;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+
+#loanDetailInfo  a[href^="tel:"]:before {
+    content: '\e616';
+    font-family: 'iconfont';
+}
+
+#loanDetailInfo .assign_history {
+    font-size: 12px;
+    color: #007aff;
+}
+
+#loanDetailInfo .arrow-size {
+    float: right;
+    font-size: 20px;
+    margin-right: 7px;
+}
+
+#loanDetailInfo .change {
+    color: #298ccf;
+    background: #fff;
+}
+
+#loanDetailInfo .pItem {
+    background: #fff;
+}
+#loanDetailInfo .item-divider-cust {
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #f5f5f5;
+    color: #222;
+    line-height:18px;
+    font-weight: 500;
+}
+
+
+/* 贷款详情 */

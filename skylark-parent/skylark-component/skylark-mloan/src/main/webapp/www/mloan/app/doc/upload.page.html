@@ -1,0 +1,90 @@
+<ion-view view-title="档案上传" jn-page>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ui-sref="DocTransfer"
+        >上传列表 ({{ queue.length < 99 ? queue.length : '99+' }})</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ul class="cache-list">
+            <li ng-repeat="e in files">
+                <div class="img-wrapper">
+                    <img ng-src="{{ e.thumb }}" ng-click="viewImage(e)" />
+                    <i ng-if="e.processing" class="fa fa-cog fa-spin"></i>
+                </div>
+            </li>
+            <li ng-if="files.length < MAX_CACHE_SIZE">
+                <div class="img-wrapper">
+                    <img src="img/plus.png" ng-click="capture()" />
+                </div>
+            </li>
+        </ul>
+        <form>
+            <ion-list>
+                <ion-item class="item-divider"></ion-item>
+                <ion-item class="item-icon-right" ng-click="selectLoan()">
+                    <label>选择贷款</label>
+                    <span>
+                        <span class="cust-name">{{ custName }}</span>
+                        <span class="appl-amt" ng-if="applAmt"
+                        >({{ applAmt | jnCurrency }})</span>
+                    </span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </ion-item>
+                <ion-item ng-if="custName">
+                    <label>选择类型</label>
+                    <span>
+                        <label ng-click="onChangeType('0')">
+                            <input
+                                name="type"
+                                type="radio"
+                                value="0"
+                                ng-model="type"
+                                ng-checked="'0' === type"
+                                ng-disabled="'0' !== type && lockType"
+                            />
+                            贷前申请
+                        </label>
+                        <label ng-click="onChangeType('1')">
+                            <input
+                                name="type"
+                                type="radio"
+                                value="1"
+                                ng-model="type"
+                                ng-checked="'1' === type"
+                                ng-disabled="'1' !== type && lockType"
+                            />
+                            贷后检查
+                        </label>
+                    </span>
+                </ion-item>
+                <ion-item
+                    class="item-icon-right"
+                    ng-click="selectCheck()"
+                    ng-if="'1' === type"
+                >
+                    <label>检查计划</label>
+                    <span ng-if="check">{{ check }}</span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </ion-item>
+                <ion-item
+                    class="item-icon-right"
+                    ng-if="'0' === type || undefined !== check"
+                    ng-click="selectDir()"
+                >
+                    <label>档案类型</label>
+                    <span>{{ path | jnJoin :'➙' }}</span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </ion-item>
+            </ion-list>
+            <button
+                 class="button button-block button-positive submit"
+                 ng-disabled="0 === files.length || undefined === path || 0 < processing"
+                 ng-click="submit()"
+             >上传</button>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,59 @@
+<ion-view view-title="还款计划表试算器" cache-view="false" id="loanCalc">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="shareMessage()"
+        >分享
+        </button>
+    </ion-nav-buttons>
+    <ion-content scroll="false" style="overflow-x: hidden; overflow-y:visible;-webkit-overflow-scrolling:touch">
+        <ion-list>
+            <ion-item class="item">
+                贷款本金
+                <span class="item-note">{{ it.exapAmt | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                年利率(%)
+                <span class="item-note">{{ it.intRate | number:4}}</span>
+            </ion-item>
+            <ion-item class="item">
+                还款方式
+                <span class="item-note"> {{it.repayTyp|jnConstant:327}} </span>
+            </ion-item>
+            <ion-item class="item">
+                利息总额
+                <span class="item-note">{{ it.lx | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                还款总额
+                <span class="item-note">{{ it.bx | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item-divider">还款明细</ion-item>
+        </ion-list>
+        <div class="padding" style="overflow-x: visible; overflow-y:hidden;-webkit-overflow-scrolling:touch">
+            <table class="table scrollable">
+                <thead>
+                <tr>
+                    <th>期数</th>
+                    <th>还款</th>
+                    <th>本金</th>
+                    <th>利息</th>
+                    <th>剩余本金</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="c in items">
+                    <td>{{ c.perdNo }}</td>
+                    <td>{{ c.instmAmt | jnCurrency}}</td>
+                    <td>{{ c.instmPrcp | jnCurrency}}</td>
+                    <td>{{ c.instmInt | jnCurrency}}</td>
+                    <td>{{ c.contPrcpEnd | jnCurrency}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </ion-content>
+</ion-view>

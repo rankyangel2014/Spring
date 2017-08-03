@@ -1,0 +1,43 @@
+<ion-view view-title="身份证识别" id="utilScanUtil">
+	<jn-back></jn-back>
+    <ion-content>
+           <ion-list>
+                  <ion-item class="item" >
+            		姓名
+            		<span class="item-note">{{form.name}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		证件号码
+            		<span class="item-note">{{form.id}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		性别
+            		<span class="item-note">{{form.sex}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		民族
+            		<span class="item-note">{{form.nation}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		生日
+            		<span class="item-note">{{form.birth}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		住址
+            		<span class="item-note">{{form.address}}</span>
+           		 </ion-item>
+           		  <ion-item class="item" >
+            		有效期限
+            		<span class="item-note">{{form.period}}</span>
+           		 </ion-item>
+           		 <div class="row">
+				  <div class="col"><a class="button button-positive  button-full"
+				  	 ng-click="scanCard($event)">识别</a></div>
+				  <div class="col"></div>
+				  <div class="col"><a class="button button-calm  button-full"
+				  	 ng-click="useInfo($event)">使用信息</a></div>
+				</div>
+           		
+           </ion-list>
+    </ion-content>
+</ion-view>

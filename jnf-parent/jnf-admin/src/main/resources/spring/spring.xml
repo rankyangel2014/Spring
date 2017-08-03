@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan base-package="com.jsjn">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+    <!-- 引入XFire预配置信息 -->  
+    <import resource="classpath:org/codehaus/xfire/spring/xfire.xml" />  
+      
+    <!-- 获得applicationContext中所有bean的JSR181 annotation -->  
+    <bean id="webAnnotations"  
+        class="org.codehaus.xfire.annotations.jsr181.Jsr181WebAnnotations" lazy-init="false" />  
+    <bean id="jsr181HandlerMapping"  
+        class="org.codehaus.xfire.spring.remoting.Jsr181HandlerMapping" lazy-init="false">  
+        <property name="xfire" ref="xfire" />
+        <property name="webAnnotations" ref="webAnnotations" />  
+    </bean>
+
+<!--
+	<bean id="logExecutor"
+		class="com.jsjn.platform.util.mongoLog.LogExecutor">
+		<property name="corePoolSize" value="10" />
+		<property name="keepAliveSeconds" value="200" />
+		<property name="maxPoolSize" value="20" />
+		<property name="queueCapacity" value="30" />
+		<property name="logOpen" value="true" />
+		<property name="logLevel" value="info" />
+		<property name="serverAddress" value="172.31.15.191:30000" />
+		<property name="dbName" value="test" />
+		<property name="logStore" value="test" />
+	</bean>
+-->
+	
+	
+	<!-- 
+		<import resource="spring-jdbc.xml"/>
+	 -->
+	
+	<!-- 配置MultipartHttpServletRequest -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- set the max upload size100MB -->
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+</beans>

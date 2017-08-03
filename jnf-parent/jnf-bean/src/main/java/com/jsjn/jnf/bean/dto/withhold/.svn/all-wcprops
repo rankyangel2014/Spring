@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/4047/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold
+END
+BaseDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/3107/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/BaseDTO.java
+END
+SignInfoDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/4362/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/SignInfoDto.java
+END
+PubInsttuDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3081/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/PubInsttuDto.java
+END
+SignDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/4247/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/SignDto.java
+END
+InvestorChannelDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/InvestorChannelDto.java
+END
+SignTempInfoDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/4203/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/SignTempInfoDto.java
+END
+BatchWithholdDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/3831/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/BatchWithholdDto.java
+END
+CardInfoDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/2483/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/CardInfoDto.java
+END
+UserThirdAccountDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/2937/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/withhold/UserThirdAccountDto.java
+END

@@ -1,0 +1,89 @@
+<ion-view view-title="我的业务" cache-view="false" id="myBusiness">
+	<jn-back></jn-back>
+	<ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="paramsCtrl.search()"
+         >搜索</button>
+    </ion-nav-buttons>
+    <ion-content>
+       <ion-list ng-show="0 < paramsCtrl.list.items.length">
+	            <ion-item ng-repeat="l in paramsCtrl.list.items" 
+	            ng-click="toDetail(l.busType,l.contNoExt,l.status,l.custName,l.phoneNo,l.custManagerName,l.applAmt,l.applDt,l.flowType,l.actvDt,l.custNo,l.loanNo,l.params,l.crdtNo,l.applSeq)">
+	                	<div class="type_status" ng-if="l.busType == '0'"
+                                data-type="{{ l.busType }}"
+                                data-status="{{ l.status }}">
+	                        <span>{{ l.status | jnConstantAbbr :5020}}</span>
+		                </div>
+	                	<div class="type_status" ng-if="l.busType == '1'"
+                                data-type="{{ l.busType }}"
+                                data-status="{{ l.status }}">
+	                        <span>{{ l.status | jnConstantAbbr :9000}}</span>
+		                </div>
+		                <div ng-if=" l.busType === '0' ">
+		                	<!-- <div style="white-space:normal">
+				                <a class="name" style="TEXT-DECORATION:none;max-width:60%" 
+				                	ng-click="custDetail(l.custNo,l.custType,$event)">{{ l.custName }}</a>
+			                	<jn-tel-no ng-if="l.phoneNo != ''"  
+				            	 num="{{ l.phoneNo }}" hide-num></jn-tel-no>
+		                	</div> -->
+		                	<div class="jn-item-title name" ng-click="custDetail(l.custNo,l.custType,$event)"
+		                	 data-type="{{ l.custType }}">{{ l.custName }}</div>
+			                <div ng-if=" l.contNoExt != '' && (l.status == '11' || l.status > '19') " style="white-space:normal">
+			                	<span style="max-width:60%">{{ l.contNoExt }}</span>
+			                </div>
+			                <div ng-if="l.status =='10' || l.status =='19'"
+			                	>
+			                	<label>申请金额</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applAmt | jnCurrency }}元</span>
+			                </div>
+			                <div ng-if=" l.status =='11' || l.status > '19' "
+			                	>
+			                	<label>贷款金额</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applAmt | jnCurrency }}元</span>
+			                </div>
+			                <div>
+			                	<lable>申请日期</lable><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applDt  | jnDate}}</span><!--  -->&nbsp;&nbsp;
+			                	<label>贷款期限</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applPerd }}个月</span>
+			                </div>
+			                <div class="manager">{{ l.custManagerName}}</div>
+		                </div>
+		                <div  ng-if=" l.busType === '1' ">
+		                	<!-- <div style="white-space:normal">
+				                <a class="name" style="TEXT-DECORATION:none;max-width:60%" 
+				                	ng-click="custDetail(l.custNo,l.custType,$event)">{{ l.custName }}</a>
+				                <jn-tel-no ng-if="l.phoneNo != ''"  
+				            	 num="{{ l.phoneNo }}" hide-num></jn-tel-no>
+		                	</div> -->
+		                	<div class="jn-item-title name" ng-click="custDetail(l.custNo,l.custType,$event)"
+		                	 data-type="{{ l.custType }}">{{ l.custName }}</div>
+			                <div ng-if=" l.contNoExt != '' " style="white-space:normal">
+			                	<span style="max-width:60%">{{ l.contNoExt }}</span>
+			                </div>
+			                <div>
+			                	<label>申请额度</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applAmt | jnCurrency }}元</span>
+			                </div>
+			                <div>
+			                	<label>申请日期</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.applDt  | jnDate}}</span><!--  -->&nbsp;&nbsp;
+			                	<label>是否循环</label><!--  -->&nbsp;&nbsp;
+			                	<span>{{ l.orUse | jnConstant :300 }}</span>
+			                </div>
+			                <div class="manager">{{ l.custManagerName}}</div>
+		                </div>
+	            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === paramsCtrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="paramsCtrl.more()"
+            ng-show="paramsCtrl.list.items.length < paramsCtrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

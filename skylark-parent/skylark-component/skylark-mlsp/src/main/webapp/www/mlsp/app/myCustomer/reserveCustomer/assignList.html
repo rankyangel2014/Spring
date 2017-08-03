@@ -1,0 +1,37 @@
+<ion-view view-title="分配历史" id="reserveCustomerAssignList">
+    <jn-back></jn-back>
+    <ion-content>
+            <!--<ion-item class="item" ng-repeat='c in it.items' >
+                 <div>分配日期<span class="item-note">{{c.asgnDate|jnDate}} </span></div>
+                <div>分配前客户经理ID<span class="item-note">{{c.bfCustManagerNo}} </span></div>
+                <div>分配前客户经理<span class="item-note">{{c.bfCustManagerName}} </span></div>
+                <div> 分配后客户经理ID<span class="item-note">{{c.afCustManagerNo}} </span></div>
+                <div>分配后客户经理<span class="item-note">{{c.afCustManagerName}} </span></div>
+                <div>操作员<span class="item-note">{{c.operNo}} </span></div>
+                <div style="white-space:normal;">备注<span class="item-note" style="max-width:60%;">{{c.remark}} </span></div>-->
+            
+            <ion-list ng-if="0 < it.total">
+                <!-- <ion-item ng-repeat="e in it.items" >
+	                <div class='asgnDate'>{{ e.asgnDate|jnDate }}</div>
+	                <div class='content'>操作员<span>{{c.operNo}}</span>将<span>{{ e.bfCustManagerName }}</span>名下的客户<span>{{e.custName}}</span>分配给<span>{{e.afCustManagerName}}</span></div>
+	                <div style="white-space:normal;">备注<span class="item-note" style="max-width:80%;">{{c.remark}} </span></div>
+                </ion-item> -->
+                <ion-item ng-repeat="e in it.items" style="white-space:normal;font-size:14px;">
+	               <!--  <div class='asgnDate'>{{  e.asgnDate|jnDate }}</div>
+	                <div style="white-space:normal;"><span style="max-width:80%;" class='content'>操作员<span>{{e.operNo}}</span>将<span>{{ e.bfCustManagerName }}</span>名下的客户<span>{{e.custName}}</span>分配给<span>{{e.afCustManagerName}}</span></span></div>
+	                <div style="white-space:normal;" ng-if='e.remark'>备注<span class="item-note" style="max-width:80%;color:black;">{{e.remark}}</span></div> -->
+	                <div >{{ e.asgnDate|jnDate }}</div>
+	                <div style="max-width: 100%">
+	                        <span>操作员<strong >{{e.operNo}}</strong>将<strong >{{e.bfCustManagerName }}</strong>名下的客户<strong style="color: #007aff;">{{e.custName}}</strong>分配给<strong >{{e.afCustManagerName}}</strong></span>
+	                </div>
+	                <div ng-hide="{{e.remark==''}}">备注：{{ e.remark }}</div>
+                </ion-item>
+             </ion-list>
+            
+		    <div ng-show="0 === it.items.length" class="no_record" >暂无记录 </div>
+		    <button ng-click="more()"
+		            ng-show="it.items.length < it.total"
+		            class="button button-block button-positive button-clear" >点击加载更多
+		    </button>
+    </ion-content>
+</ion-view>

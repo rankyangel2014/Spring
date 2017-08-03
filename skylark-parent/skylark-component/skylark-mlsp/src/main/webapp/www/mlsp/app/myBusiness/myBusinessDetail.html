@@ -1,0 +1,220 @@
+<ion-view view-title="业务详情" id="myBusinessDetail">
+	<jn-back></jn-back>
+    <ion-content >
+  		<ion-list>
+	  		<ol ng-if=" it.busType ==='0' " class="progress">
+	            <li ng-if="it.status == ''" class="pending"><a>申请</a></li>
+	            <li ng-if="it.status =='10' || it.status =='19' || it.status =='11' " 
+	            	class="active"><a>申请</a></li>
+	            <li ng-if="it.status > '19'"><a>申请</a></li>
+	            
+	            <li ng-if="it.status =='10' || it.status =='19' || it.status =='11' "  
+	            	class="pending"><a>审批</a></li>
+	            <li ng-if="it.status == '20' || it.status == '29'" 
+	            	class="active"><a>审批</a></li>
+	            <li ng-if="it.status == '21' || it.status >= '30'" 
+	            	><a>审批</a></li>
+	            	
+	            <li ng-if="it.status =='10' || it.status =='19' || it.status =='11' || it.status == '20' || it.status == '29'"  
+	            	class="pending"><a>放款</a></li>
+	            <li ng-if="it.status == '21' || it.status == '30' " 
+	            	class="active"><a>放款</a></li>
+	            <li ng-if="it.status > '30' " 
+	            	><a>放款</a></li>
+	        </ol>
+	  		<ol ng-if=" it.busType ==='1' " class="progress">
+	            <li ng-if="it.status == ''" class="pending"><a>申请</a></li>
+	            <li ng-if="it.status == '0' || it.status == '1' " 
+	            	class="active"><a>申请</a></li>
+	            <li ng-if="it.status == '2' || it.status == '3' || it.status == '4'" 
+	            ><a>申请</a></li>
+	            
+	            <li ng-if="it.status == '0' || it.status == '1' " 
+	            	class="pending"><a>审批</a></li>
+	            <li ng-if="it.status == '2' " 
+	            	class="active"><a>审批</a></li>
+	            <li ng-if="it.status == '3' || it.status == '4'" ><a>审批</a></li>
+	        </ol>
+            <ion-item class="item-divider" ng-if="it.busType ==='0'">贷款信息</ion-item>
+            <ion-item class="item-divider" ng-if="it.busType ==='1'">授信信息</ion-item>
+
+            <ion-item class="item" style="white-space:normal" 
+            		ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19') ">
+            	贷款合同号
+            	<span class="item-note"
+            			style="max-width:60%">{{ it.contNoExt }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='0'">
+            	客户电话
+            	<span class="item-note">
+            		<jn-tel-no num="{{ it.phoneNo }}"></jn-tel-no>
+            	</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal" ng-if="it.busType ==='0'">
+            	客户名称
+            	<div class="item-note"
+            			style="max-width:60%">{{ it.custName }}</div>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'">
+            	申请日期
+            	<span class="item-note">{{ it.applDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'">
+            	申请期限
+            	<span class="item-note">{{ it.applPerd }}个月</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'">
+            	申请金额
+            	<span class="item-note">{{ it.applAmt | jnCurrency }} 元</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'">
+            	担保方式
+            	<span class="item-note">{{ it.mainGurTyp | jnConstant :5045 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'">
+            	借款事由
+            	<span class="item-note">{{ it.loanUse | jnConstant :7604 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'"
+            		  style="white-space:normal">
+            	共同借款人
+            	<div class="item-note"
+            	 style="max-width:60%">{{ it.commcust }}</div>
+            </ion-item>
+            <ion-item class="item" ng-if="it.status =='10'  || it.status =='19'" 
+            		  style="white-space:normal">
+            	贷款描述
+            	<div class="item-note"
+            	style="max-width:60%">{{ it.applRemark }}</div>
+            </ion-item>
+            
+            
+            <ion-item class="item" ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	客户经理
+            	<span class="item-note">{{ it.custManagerName }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	贷款金额
+            	<span class="item-note">{{ it.exapAmt | jnCurrency }} 元</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	起息日
+            	<span class="item-note">{{ it.intStartDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=" it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	到期日
+            	<span class="item-note">{{ it.lastDueDt | jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	还款方式
+            	<span class="item-note">{{ it.repayTyp | jnConstant :327 }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if=" it.busType ==='0' && (it.status == '11' || it.status > '19')">
+            	年利率
+            	<span class="item-note">{{ (it.intRate | jnRate:4) + '%' }}</span>
+            </ion-item>
+            
+            <!-- 授信内容 -->
+            <ion-item class="item" style="white-space:normal" ng-if="it.busType ==='1'">
+            	客户名称
+            	<div class="item-note"
+            		style="max-width:60%" >{{ credit.custName }}</div>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'"
+            			style="white-space:normal">
+            	详细地址
+            	<span class="item-note"
+            			style="max-width:60%">{{ credit.custAddr }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	授信类型
+            	<span class="item-note">{{ credit.contTyp | jnConstant :9900}}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal" ng-if="it.busType ==='1'">
+            	预分配合同号
+            	<div class="item-note" 
+            		style="max-width:60%">{{ credit.contNoExt }}</div>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	主担保方式
+            	<span class="item-note">{{ credit.mainGurTyp | jnConstant :5045}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	申请额度
+            	<span class="item-note">{{ credit.applCreAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	授信额度
+            	<span class="item-note">{{ credit.exapCreAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	剩余额度
+            	<span class="item-note">{{ credit.ableAmt | jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	申请日期
+            	<span class="item-note">{{ credit.applDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	生效日期
+            	<span class="item-note">{{ credit.startDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	失效日期
+            	<span class="item-note">{{ credit.endDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	申请状态
+            	<span class="item-note">{{ credit.applStatus | jnConstant :9000}}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="it.busType ==='1'">
+            	是否循环
+            	<span class="item-note">{{ credit.orUse | jnConstant :332}}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal"
+            			ng-if="it.busType ==='1'">
+            	授信描述
+            	<div class="item-note"
+            	style="max-width:60%">{{ credit.remark }}</div>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <ion-item ng-if=" it.busType ==='0' && (it.status == '11' || it.status > '19') "
+            		class="item-icon-right" 
+            		ui-sref="dkxq({custNo:it.custNo, loanNo:it.loanNo,})">
+                	贷款详情
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19') "
+            		  class="item-icon-right" 
+            		  ui-sref="dbxx({ custNo:it.custNo, contNo:it.loanNo, contTyp:1,})">
+                	担保信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="it.busType ==='0' && (it.status == '11' || it.status > '19') "
+            		  class="item-icon-right" 
+            		  ui-sref="hkSheet({custNo:it.custNo, loanNo:it.loanNo,})">
+                	还款计划表
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="it.busType ==='1'"
+            		  class="item-icon-right" 
+            		  ui-sref="creditDbxx({custNo:it.custNo, contNo:it.crdtNo,status:'', contTyp:2,optFlag:0,applSeq:0,})">
+                	担保信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="it.busType ==='1'"
+            		  class="item-icon-right" 
+            		  ui-sref="symx({crdtNo:it.crdtNo,})">
+                	使用明细
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if=" it.busType ==='1' || ( it.busType ==='0' && (it.status == '11' || it.status > '19')) "
+            		  class="item-icon-right" 
+            		  ui-sref="myBusinessLog({flowType:it.flowType,param:it.params,})">
+                	审批历史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

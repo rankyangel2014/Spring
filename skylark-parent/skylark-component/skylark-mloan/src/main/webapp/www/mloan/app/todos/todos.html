@@ -1,0 +1,51 @@
+<ion-view view-title="待办工作">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content id="todoGroup">
+         <div class="row"  >
+            <div class="col col-50"></div>
+            <div class="col">个人</div>
+            <div class="col">岗位</div>
+            <div class="col">历史</div>
+         </div>
+        <div class="row" ng-repeat='c in todosList.items' >
+            <div
+                class="col col-50"
+                ng-if="c.pendName"
+            >{{ c.pendName }}</div>
+            <a
+                class="col"
+                ng-if="c.pendName"
+                ng-click="viewTodo(c, 0)"
+            >{{ c.persionTotal }}</a>
+            <a
+                class="col"
+                ng-if="c.pendName"
+                ng-click="viewTodo(c, 1)"
+            >{{ c.stationTotal }}</a>
+            <a
+                class="col"
+                ng-if="c.pendName"
+                ng-click="viewTodo(c, 2)"
+            >{{ c.hisTotal }}</a>
+            <div
+                class="col col-50"
+                ng-if="c.messageName"
+            >{{ c.messageName }}</div>
+            <a
+                class="col"
+                ng-if="c.messageName"
+                ng-click="viewRemind(c)"
+            >{{ c.unReadTotal }}</a>
+            <a
+                class="col"
+                ng-if="c.messageName"
+            ></a>
+            <a
+                class="col"
+                ng-if="c.messageName"
+            ></a>
+        </div>
+    </ion-content>
+</ion-view>

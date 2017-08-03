@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.member.RealNameFlowDao">
+	<sql id="columns">
+		a.C1 as "id",
+		a.C2 as "mId",
+		a.C3 as "bussinessId",
+		a.C4 as
+		"custId",
+		a.C5 as "custName",
+		a.C6 as "idNo",
+		a.C7 as "bankCardNo",
+		a.C8
+		as "mobile",
+		a.C9 as "validateCode",
+		a.C10 as "state",
+		a.C11 as
+		"exception",
+		a.C12 as "ip",
+		a.C13 as "created",
+		a.C14 as "modified",
+		a.C15 as "pushFlag",
+		a.C16 as "token",
+		a.C17 as "bankName",
+		a.C18 as
+		"bankCode"
+	</sql>
+
+
+	<sql id="joins">
+
+	</sql>
+	<!-- 记录流水 -->
+	<insert id="insertFlow" parameterType="FeeRealNameDto">
+		INSERT
+		INTO JNF_T14(
+		C1,
+		C2,
+		C5,
+		C6,
+		C7,
+		C8,
+		C10,
+		C13,
+		C17,
+		C18,
+		C20
+		) VALUES (
+		#{id},
+		#{mId},
+		#{custName},
+		#{idNo},
+		#{bankCardNo},
+		#{mobile},
+		#{state},
+		sysdate,
+		#{bankName},
+		#{bankCode},
+		#{orgNo}
+		)
+	</insert>
+
+	<!-- 更新表，加入token -->
+	<update id="updateToken" parameterType="String">
+		UPDATE JNF_T14 SET
+		C14=sysdate,
+		C16=#{token},
+		C4=#{custId}
+		WHERE C1 = #{flowId}
+	</update>
+
+	<!-- 更新发送短信状态 -->
+	<update id="updateState" parameterType="String">
+		UPDATE JNF_T14 SET
+		C10=#{state},
+		C11=#{exception},
+		C14=sysdate,
+		C19=#{resCode}
+		WHERE C16 =
+		#{token}
+	</update>
+
+	<!-- 更新state值，防并发，防重复 -->
+	<update id="updateSendState">
+		UPDATE JNF_T14 SET
+		C10 = '2'
+		where
+		C16=#{token} and C10
+		= '1'
+	</update>
+
+	<!-- 更新验证码 -->
+	<update id="updateCode" parameterType="String">
+		UPDATE JNF_T14 SET
+		C9 =
+		#{code},
+		C14= sysdate
+		where
+		C16=#{token} and C10 = '0'
+	</update>
+	
+	<!-- 更新费用-->
+	<update id="updateFee" parameterType="FeeRealNameDto">
+		UPDATE JNF_T14 SET
+		C21 = #{fee},
+		C14= sysdate
+		where
+		C1=#{id}
+	</update>
+
+	<!-- 根据token查询用户输入验证码 -->
+	<sql id="code">
+		a.C9 as "code"
+	</sql>
+	<select id="queryCode" resultType="String">
+		SELECT
+		<include refid="code"></include>
+		FROM JNF_T14 a
+		WHERE C16=#{token}
+	</select>
+
+	<!-- 记录查询 -->
+	<sql id="validate">
+		a.C4 as "custId",
+		a.C5 as "custName",
+		a.C6 as "idNo",
+		a.C7 as
+		"bankCardNo",
+		a.C8 as "mobile",
+		to_char(a.C14,'yyyy-mm-dd hh24:mi:ss')
+		as "modified",
+		a.C17 as "bankName",
+		a.C18 as "bankCode"
+	</sql>
+	<select id="selectByToken" resultType="FeeRealNameDto">
+		SELECT
+		<include refid="validate"></include>
+		FROM JNF_T14 a
+		WHERE
+		a.C16=#{token}
+	</select>
+<!-- 通过身份证号查询实名认证流水表中 -->
+	<select id="controlTimes" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT 
+			count(*) 
+		from 
+			JNF_T14 a
+		WHERE
+			a.C6=#{idNo}
+		and
+			a.C13
+		between 
+			#{start} and #{end}
+	</select>
+
+</mapper>

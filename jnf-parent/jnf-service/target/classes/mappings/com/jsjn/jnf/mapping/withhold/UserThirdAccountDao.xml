@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.withhold.UserThirdAccountDao">
+	<sql id="columns">
+		T1.C1 as "accNo",
+		T1.C2 as "status",
+		T1.C3 as "custId",
+		T1.C4 as "mId",
+		T1.C5 as "bindAccType",
+		T1.C6 as "bindAccNo",
+		T1.C7 as "custName",
+		T1.C8 as "custIdNo",
+		T1.C9 as "mobile",
+		T1.C10 as "cardBankCode",
+		T1.C11 as "cardRegBankNo",
+		T1.C12 as "cardRegBankName",
+		T1.C13 as "remark",
+		T1.C14 as "digest",
+		T1.C15 as "created",
+		T1.C16 as "modified"
+	</sql>
+	
+	<select id="queryUserThirdAcctByAccNo" resultType="com.jsjn.jnf.bean.dto.withhold.UserThirdAccountDto">
+	    SELECT
+	       <include refid="columns"></include>
+	    FROM JNF_T21 T1
+	    WHERE T1.C1 = #{accNo}
+	    <if test="mid != null and mid !=''">
+		  AND T1.C4 = #{mid} 
+		</if>
+		  AND T1.C2 = '1' --状态为正常
+	</select>
+	
+	<select id="queryUserThirdAcctByCardNo" resultType="com.jsjn.jnf.bean.dto.withhold.UserThirdAccountDto">
+	    SELECT
+	       <include refid="columns"></include>
+	    FROM JNF_T21 T1
+	    WHERE T1.C8 = #{custIdNo} 
+	    AND T1.C3 = #{custId}
+	    AND T1.C4 = #{mId}
+	</select>
+	
+	<!-- 插入 -->
+	<insert id="insert">
+	    INSERT INTO JNF_T21(
+	        C1,
+	        C2,
+	        C3,
+	        C4,
+	        C5,
+	        C6,
+	        C7,
+	        C8,
+	        C9,
+	        C10,
+	        C11,
+	        C12,
+	        C13,
+	        C14,
+	        C15,
+	        C16
+	    )VALUES(
+	        #{accNo},
+	        #{status},
+	        #{custId},
+	        #{mId},
+	        #{bindAccType},
+	        #{bindAccNo},
+	        #{custName},
+	        #{custIdNo},
+	        #{mobile},
+	        #{cardBankCode},
+	        #{cardRegBankNo},
+	        #{cardRegBankName},
+	        #{remark},
+	        #{digest},
+	        TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+			TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss')
+	    )
+	</insert>
+	
+	<update id="updateThirdUserInfo">
+		UPDATE JNF_T21 SET 
+			C6 = #{bindAccNo},
+			C9 = #{mobile},
+			C10 = #{cardBankCode},
+			C14 = #{digest},
+			C16 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss') 
+		WHERE C1=#{accNo}
+	</update>
+	
+</mapper>

@@ -14,7 +14,6 @@ import com.google.common.collect.Lists;
 import com.ranky.bean.FilmDto;
 import com.ranky.bean.ImageDto;
 import com.ranky.bean.TorrentDto;
-import com.ranky.bean.UserDto;
 import com.ranky.dao.FilmDao;
 import com.ranky.dao.ImageDao;
 import com.ranky.dao.TorrentDao;
@@ -64,7 +63,7 @@ public class FilmServiceImpl implements FilmService {
 	@Override
 	public FilmDto getAllFilm(FilmDto filmDto) {
 		// System.out.println("getAllUser load from database !");
-		PageBounds pageBounds = new PageBounds();
+		PageBounds pageBounds = null;
 		if (Objects.isNull(filmDto)) {
 			pageBounds.setContainsTotalCount(true);
 			pageBounds.setPage(-1);
@@ -76,10 +75,11 @@ public class FilmServiceImpl implements FilmService {
 			Integer page = filmDto.getPage();
 			Integer limit = filmDto.getLimit();
 			List<Order> orders = Lists.newArrayList(Order.formString(sort));
-			pageBounds.setOrders(orders);
-			pageBounds.setPage(page);
-			pageBounds.setLimit(limit);
-			pageBounds.setContainsTotalCount(true);
+			pageBounds = new PageBounds(page, limit, orders);
+			//			pageBounds.setOrders(orders);
+			//			pageBounds.setPage(page);
+			//			pageBounds.setLimit(limit);
+			//			pageBounds.setContainsTotalCount(true);
 		}
 		// PageBounds pageBounds = new PageBounds(filmDto.getPage(),
 		// filmDto.getLimit(), orders, true);

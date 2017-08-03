@@ -1,0 +1,62 @@
+<ion-view view-title="{{title}}" id="reserveCustomerTransfer">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="transferCustomer();"
+             ng-if='true'
+         >移交</button>
+    </ion-nav-buttons>
+	<ion-content> 
+        <!--
+        <ul
+            style="padding: .5em;"
+        >
+            <li
+                style="display: inline-block; padding: .2em .5em; background-color: #298ccf; color: white; border-radius: .4em;"
+            >李龙</li>
+            <li
+                style="display: inline-block; padding: .2em .5em; background-color: #298ccf; color: white; border-radius: .4em;"
+            >方政</li>
+            <li
+                style="display: inline-block; padding: .2em .5em; background-color: #298ccf; color: white; border-radius: .4em;"
+            >谢开详</li>
+            <li
+                style="display: inline-block; padding: .2em .5em; background-color: #298ccf; color: white; border-radius: .4em;"
+            >王磊</li>
+            <li
+                style="display: inline-block; padding: .2em .5em; background-color: #298ccf; color: white; border-radius: .4em;"
+            >印从洋</li>
+        </ul>
+        -->
+	    <form name="Ctrl.myForm">
+	        <ion-list>
+	            <!-- <ion-item class="item-input">
+						<span class='input-label'>客户名称</span>
+	                    <span style="max-width:60%; white-space: normal;">{{it.custName }} </span>
+	            </ion-item>
+	            <ion-item class="item-input">
+	                <span class='input-label'>电话 </span>
+	                <span>{{it.phoneNo }} </span>
+	            </ion-item> -->
+	            <ion-item class='item-input item-select'>
+	                    <span class='input-label required'>移交给</span>
+	                    <select required ng-model='it.stationType' name='stationType' >
+	                        <option value=''>--请选择--</option>
+							<option ng-if="isStation=='1'" value="3">决策岗</option>
+							<option value="1" ng-if="isStation=='3'">决策岗</option>
+							<option value="2" ng-if="isStation=='2'||isStation=='3'">团队经理</option>
+	                    </select>
+	            </ion-item>
+	            <ion-item class='item-input'>
+	                      <span class='input-label required'>原因</span>
+	                      <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32"  required
+	                      ng-model='it.asgnRemark'  name='asgnRemark' placeholder="请输入原因" jn-input-length="500"></textarea>
+	                      </div>
+	            </ion-item>
+	        </ion-list>
+	    </form>
+	</ion-content>
+</ion-view>

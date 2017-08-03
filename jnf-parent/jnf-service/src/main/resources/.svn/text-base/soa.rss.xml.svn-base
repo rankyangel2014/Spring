@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mcps:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mcps="http://www.jsjngf.com/schema/mcps">
+	<node name="0020"  id="0020"></node>
+	
+	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
+	<!--注册中心配置-->
+	<registery>
+		<protocalId>mcps</protocalId>
+		<protocalName>mcps</protocalName>
+		<!--protocol://ip:port-->
+		<ip>127.0.0.1</ip>
+		<port>4601</port>
+		<!--是否订阅服务（true/false）,默认订阅-->
+		<subscribe>true</subscribe>
+		<!--是否注册（true/false)--> 
+		<register/>
+		<!--单位毫秒（true/false)--> 
+		<heartBeat>10000</heartBeat>
+		<!--用户名-->
+		<password></password>
+		<!--密码-->
+		<username></username>
+	</registery>
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<application id="0020" name="金农付服务层" version="0.0.1" createdate="2013-12-01 12:01:01" verification="true">
+		<reference id="queryLoanInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="changeLoanStatus" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	</application>
+</mcps:definitions>

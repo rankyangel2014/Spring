@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Zfjs/!svn/ver/4083/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task
+END
+WithHoldCallBack.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/4209/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/WithHoldCallBack.java
+END
+BatchWithHoldCallBack.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/4209/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/BatchWithHoldCallBack.java
+END
+TimeTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Zfjs/!svn/ver/2695/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/TimeTask.java
+END
+SinglePaymentTimeTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/SinglePaymentTimeTask.java
+END
+MessageSenderCallBack.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/MessageSenderCallBack.java
+END
+BatchWithholdTimeTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/3624/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/BatchWithholdTimeTask.java
+END
+MessageSenderTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/3624/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/MessageSenderTask.java
+END
+SinglePaymentCallBack.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/4210/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/task/SinglePaymentCallBack.java
+END

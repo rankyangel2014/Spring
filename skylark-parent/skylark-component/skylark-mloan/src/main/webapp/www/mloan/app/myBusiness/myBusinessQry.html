@@ -1,0 +1,139 @@
+<ion-view view-title="我的业务查询">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="paramsCtrl.submit()"
+        >查询
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="paramsCtrl.myForm" novalidate>
+            <ion-list>
+
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="!paramsCtrl.justManager && !paramsCtrl.justTeamManager && !paramsCtrl.justSysManager"
+                >
+                    <span class="input-label">团队</span>
+                    <jn-select-team
+                            name="deptId"
+                            ng-model="paramsCtrl.form.deptId"
+                    ></jn-select-team>
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="paramsCtrl.form.deptId">
+                    <span class="input-label">客户经理</span>
+                    <jn-select-manager ng-hide="paramsCtrl.justManager"
+                                       name="custManagerNo"
+                                       ng-model="paramsCtrl.form.custManagerNo"
+                                       team="paramsCtrl.form.deptId"></jn-select-manager>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                            type="text"
+                            name="custName"
+                            ng-model="paramsCtrl.form.custName"
+                            placeholder="请输入客户名称"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">贷款合同号</span>
+                    <input
+                            type="text"
+                            name="contNoExt"
+                            ng-model="paramsCtrl.form.contNoExt"
+                            placeholder="请输入贷款合同号"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">借据号</span>
+                    <input
+                            type="text"
+                            ng-model="paramsCtrl.form.loanNo"
+                            placeholder="请输入借据号"/>
+                </ion-item>
+
+                <ion-item class="item-input" >
+                    <span class="input-label">联系方式</span>
+                    <input type='text' name='phoneNo' jn-tel ng-model='paramsCtrl.form.phoneNo' placeHolder='请输入联系方式'/>
+                </ion-item>
+
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">当前环节</span>
+                    <select
+                            ng-model="paramsCtrl.form.status"
+                            jn-options="884"
+                    ></select>
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">客户类型</span>
+                    <select
+                            ng-model="paramsCtrl.form.custType"
+                            jn-options="5028"
+                    ></select>
+                </ion-item>
+
+                <!-- <div ng-if='userFlag'>
+                    <input name="custManagerNo" type="hidden"/>
+                </div> -->
+
+               <!-- <ion-item class="item-input item-select" ng-show='!userFlag'>
+                    <span class="input-label">客户经理</span>
+                    <select
+                            ng-model="paramsCtrl.form.custManagerNo"
+                            jn-manager-select
+                            name="custManagerNo"
+                    ></select>
+                </ion-item>-->
+                <ion-item class="item-input item-select">
+                    <span class="input-label">业务类型</span>
+                    <select
+                            ng-model="paramsCtrl.form.contTyp"
+                            jn-options="902"
+                            name="contTyp"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">申请金额（至少）</span>
+                    <input
+                            type="number"
+                            ng-model="paramsCtrl.form.applAmtFrom"
+                            name="applAmtFrom"
+                            jn-Positive
+                            placeholder="至少"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">申请金额（至多）</span>
+                    <input
+                            type="number"
+                            ng-model="paramsCtrl.form.applAmtTo"
+                            name="applAmtTo"
+                            jn-Positive
+                            placeholder="至多"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">申请日期</span>
+                    <jn-input-date-range
+                        ng-model-start="paramsCtrl.form.applDtFrom"
+                        ng-model-end="paramsCtrl.form.applDtTo"
+                    ></jn-input-date-range>
+                </ion-item>
+
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

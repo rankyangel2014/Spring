@@ -1,0 +1,161 @@
+<ion-view view-title="授信额度查询">
+	<jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="paramsCtrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="paramsCtrl.myForm" novalidate>
+            <ion-list>
+            	<ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="paramsCtrl.form.custName"
+                        placeholder="请输入客户名称" 
+                       />
+                </ion-item>
+                <ion-item class="item-input item-select" ng-show='!userFlag'>
+                    <span class="input-label">客户经理</span>
+                    <select
+                        ng-model="paramsCtrl.form.custManagerNo"
+                        jn-manager-select
+                        name = "custManagerNo" 
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">客户类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.custType"
+                        name="custType" 
+                        ng-change="paramsCtrl.onChangeCustType()"
+                        jn-options="5028"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select" ng-show=" paramsCtrl.form.custType === '0' ">
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.paperType"
+                        ng-change="paramsCtrl.onChangePaperType()"
+                        name="paperType"
+                    >
+                    	<option value="">--请选择--</option>
+                    	<option  value="0">身份证</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select" ng-show=" paramsCtrl.form.custType === '1' ">
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.paperType"
+                        ng-change="paramsCtrl.onChangePaperType()"
+                        name="paperType"
+                        jn-options="5025"
+                    >
+                    </select>
+                </ion-item>
+                <ion-item class="item-input" ng-show=" paramsCtrl.form.paperType != undefined && paramsCtrl.form.paperType != '' ">
+                    <span class="input-label">证件号码</span>
+                    <input ng-if="!paramsCtrl.form.paperType"
+                        type="text"
+                        ng-model="paramsCtrl.form.paperNo"
+                        name="paperNo"
+                        placeholder="请输入证件号码" 
+                        />
+                    <input ng-if="paramsCtrl.form.paperType === '0'"
+                        type="text"
+                        ng-model="paramsCtrl.form.paperNo"
+                        name="paperNo"
+                        placeholder="请输入证件号码" 
+                        jn-id-no
+                        />
+                    <input ng-if="paramsCtrl.form.paperType === '10'"
+                        type="text"
+                        ng-model="paramsCtrl.form.paperNo"
+                        name="paperNo"
+                        placeholder="请输入证件号码" 
+                        jn-reg-no
+                        />
+                    <input ng-if="paramsCtrl.form.paperType === '11'"
+                        type="text"
+                        ng-model="paramsCtrl.form.paperNo"
+                        name="paperNo"
+                        placeholder="请输入证件号码" 
+                        jn-org-no
+                        />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">授信类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.contTyp"
+                        name="contTyp"
+                        jn-options="9900" 
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">授信合同号</span>
+                    <input
+                        type="text"
+                        ng-model="paramsCtrl.form.contNoExt"
+                        name="contNoExt"
+                        placeholder="请输入授信合同号" 
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">授信额度（至少）</span>
+                    <input
+                        type="number"
+                        ng-model="paramsCtrl.form.exapCreAmtFrom"
+                        name="exapCreAmtFrom"
+                        jn-Positive
+                        placeholder="至少" 
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">授信额度（至多）</span>
+                     <input
+                        type="number"
+                        ng-model="paramsCtrl.form.exapCreAmtTo"
+                        name="exapCreAmtTo"
+                        jn-Positive
+                        placeholder="至多" 
+                        />
+                </ion-item>
+               <ion-item class="item-input">
+                    <span class="input-label">生效日期（从）</span>
+                    <input
+                        type="date"
+                        ng-model="paramsCtrl.form.startDtFrom"
+                        name="startDtFrom"
+                        />
+                </ion-item>
+               <ion-item class="item-input">
+                    <span class="input-label">生效日期（至）</span>
+                     <input
+                        type="date"
+                        ng-model="paramsCtrl.form.startDtTo"
+                        name="startDtTo"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">失效日期（从）</span>
+                    <input
+                        type="date"
+                        ng-model="paramsCtrl.form.endDtFrom"
+                        name="endDtFrom"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">失效日期（至）</span>
+                     <input
+                        type="date"
+                        ng-model="paramsCtrl.form.endDtTo"
+                        name="endDtTo"
+                        />
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

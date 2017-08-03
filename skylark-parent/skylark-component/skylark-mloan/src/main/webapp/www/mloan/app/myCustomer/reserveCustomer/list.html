@@ -1,0 +1,122 @@
+<ion-view view-title="潜在客户" id="reserveCustomerList">
+<style>
+
+#reserveCustomerList .fstContactDt {
+    font-weight: normal;
+    color: grey;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+#reserveCustomerList .fstContactDt:BEFORE {
+     content: '\e612';
+     font-size:16px;
+     margin-right:5px;
+     font-family: 'iconfont';
+}
+#reserveCustomerList .name:after {
+    content: '';
+    color: white;
+    padding:0px 5px 0px 5px;
+    font-size: 12px;
+    vertical-align: middle;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 25px;
+    border-radius: 2px;
+    line-height: 25px;
+}
+
+#reserveCustomerList .name.valid:after {
+    content: attr(data-value);
+    background-color: #dd514c;
+   	width: 70px;
+    text-align: center;
+}
+
+#reserveCustomerList .name.good:after {
+    content: attr(data-value);
+    background-color: #5eb95e;
+  	width: 70px;
+    text-align: center;
+}
+
+#reserveCustomerList .name.bad:after {
+    content: attr(data-value);
+    background-color: #ffc900;
+   	width: 70px;
+    text-align: center;
+}
+
+#reserveCustomerList .custName:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#reserveCustomerList .custName[data-type="0"]:before {
+    content: '\e645';
+}
+
+#reserveCustomerList .custName[data-type="1"]:before {
+    content: '\e644';
+}
+
+
+</style>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button ng-if='!isManager' class="button button-icon icon ion-navicon" ng-click='Ctrl.showTitleMenu()'></button>
+         <a  class="button button-clear" ui-sref="reserveCustomerQuery" ng-if='isManager'>查询</a>
+    </ion-nav-buttons>
+   
+    <ion-content >
+   <ion-list ng-if='it.total>0'>
+        <ion-item ng-repeat="c in it.items" ui-sref='reserveCustomerDetail({custNo:c.custNo,asgnStatus:Ctrl.asgnStatus})'>
+            <div>
+                    <span ng-class='c.className' data-value='{{c.desc}}'></span>
+            </div>
+            <div  class='jn-item-title custName' data-type="{{ c.custType }}" style="margin-right: 2em;">{{c.custName}} </div>
+            <div>
+                <jn-tel-no style='font-size:12px;'  num="{{ c.phoneNo }}"></jn-tel-no>
+                <span class='fstContactDt'>{{c.fstContactDt|jnDate}}</span>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div
+            ng-if="0 === it.items.length" class="no_record"
+    >暂无记录
+    </div>
+    <button ng-click="more()"
+            ng-if="it.items.length < it.total"
+            class="button button-block button-positive button-clear" >点击加载更多
+    </button>
+
+    </ion-content>
+<ion-footer-bar align-title="left" class="page_footer" >
+      <div  style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;" ng-click="Ctrl.jump('myCustomer')">
+                      正式客户
+  </div>
+  <div style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;
+	    color: #fff;
+	    background-color: #5677fc;" >
+     潜在客户
+  </div>
+</ion-footer-bar>
+</ion-view>

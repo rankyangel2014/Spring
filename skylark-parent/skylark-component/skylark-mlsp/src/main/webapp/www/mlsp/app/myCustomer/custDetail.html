@@ -1,0 +1,131 @@
+<style type="text/css">
+ .phone a[href^="tel:"] {
+    display: block;
+    width: 100px;
+    padding-left: 0px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+.phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 4px;
+    content: '\e616';
+}
+.address::before {
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    height: 100%;
+    padding-right: 4px;
+    font-size: 12px;
+    color: salmon;
+}
+.address{
+display:block;
+white-space: normal;
+max-width: 100%;
+}
+</style>
+
+<ion-view view-title="个人客户详情">
+	<jn-back></jn-back>
+	<ion-nav-buttons side="secondary">
+       <button ng-if="editFlag!=='1' && isManager && isQry != 1 "
+             class="button button-clear "
+             ng-click="edit()"
+         >编辑</button>
+           <button
+             class="button button-clear"
+             ng-click="assign();"
+             ng-if='enableAssign && flag==="1"'
+         >分配</button>
+    </ion-nav-buttons>
+    <ion-content >
+    	
+  		<ion-list ng-repeat="custDetail in custDetailData">
+            <ion-item class="item-divider">客户信息</ion-item>
+            <ion-item class="item" ng-if="custDetail.regNo&&custDetail.regNo!=='X'">
+                客户类别
+                <span class="item-note">个体工商户</span>
+            </ion-item>
+            <ion-item class="item" ng-if="!custDetail.regNo||custDetail.regNo=='X'">
+                客户类别
+                <span class="item-note">普通个人</span>
+            </ion-item>
+            <ion-item class="item" >
+            	客户名称 
+             <span class="item-note">{{ custDetail.custName }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件类型 
+            	 <span class="item-note">{{ custDetail.custType | jnConstant :5029}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件号码
+            	 <span class="item-note">{{ custDetail.paperNo }}</span>
+            </ion-item>
+            <ion-item class="item" ng-if="custDetail.regNo&&custDetail.regNo!=='X'">
+            	营业执照
+            	 <span class="item-note" >{{ custDetail.regNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	生日
+            	 <span class="item-note">{{ custDetail.birthday|jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	民族
+            	 <span class="item-note">{{ custDetail.nation|jnConstant:8 }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	性别
+            	 <span class="item-note">{{ custDetail.sex=='F'?"女": "男"}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	涉农类型
+            	 <span class="item-note">{{ custDetail.agricultureType| jnConstant :7600}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	婚姻状况
+            	 <span class="item-note">{{ custDetail.marryStatus| jnConstant :5027}}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	联系方式
+            	<div class="item-note" style="max-width: 70%">
+            	 	<jn-tel-no num="{{custDetail.contact.split(',')[0]}}" ></jn-tel-no>
+            		<div class="address" ng-if="custDetail.contact&&custDetail.contact.split(',')[1]!=''">{{ custDetail.contact.split(",")[1] }}</div>
+            	</div>
+            </ion-item>
+          
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&linkType=25&actionFlag=relations&custClass={{custDetail.custClass}}&custPaperNo={{custDetail.paperNo}}&isQry={{isQry}}">
+                	紧急联系人
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&linkType=24&actionFlag=shares&custClass={{custDetail.custClass}}&isQry={{isQry}}">
+                	合伙人信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+                      href="#/myCustomer/link/list?custNo={{ custDetail.custNo }}&editable={{ editable }}&custClass={{custDetail.custClass}}">
+                	客户关系
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&actionFlag=custEventInfos">
+                	事件信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ custDetail.custNo }}&actionFlag=assignHistoryInfos">
+                	分配历史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

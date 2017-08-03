@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/1841/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/service/trade
+END
+TestUpdateTransactionByTradeNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/1841/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/service/trade/TestUpdateTransactionByTradeNo.java
+END
+TestQueryTransactionByTradeNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/Zfjs/!svn/ver/1841/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/service/trade/TestQueryTransactionByTradeNo.java
+END

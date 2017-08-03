@@ -1,0 +1,41 @@
+<ion-view view-title="待办工作">
+    <jn-back></jn-back>
+    <ion-content id="todoGroup">
+         <div class="row"  >
+            <div class="col col-50"></div>
+            <div class="col">个人</div>
+            <div class="col">岗位</div>
+            <div class="col">历史</div>
+         </div>
+         <div class="row" ng-repeat='c in todosList.items' >
+            <div class="col col-50" >{{ c.pendName }}</div>
+            <a
+                class="col"
+                ng-if="0 < c.persionTotal"
+                ui-sref='todosAssign({operType:0,pendType:c.pendType ,pendName:c.pendName })'
+            >{{ c.persionTotal }}</a>
+            <a
+                class="col"
+                ng-if="0 === c.persionTotal"
+            >{{ c.persionTotal }}</a>
+            <a
+                class="col"
+                ng-if="'' !== c.stationTotal && 0 < c.stationTotal"
+                ui-sref='todosAssign({operType:1,pendType:c.pendType ,pendName:c.pendName })'
+            >{{ c.stationTotal }}</a>
+            <a
+                class="col"
+                ng-if="'' !== c.stationTotal && 0 === c.stationTotal"
+            >{{ c.stationTotal }}</a>
+            <a
+                class="col"
+                ng-if="'' !== c.hisTotal && 0 < c.hisTotal"
+                ui-sref='todosAssign({operType:2,pendType:c.pendType ,pendName:c.pendName })'
+            >{{ c.hisTotal }}</a>
+            <a
+                class="col"
+                ng-if="'' !== c.hisTotal && 0 === c.hisTotal"
+            >{{ c.hisTotal }}</a>
+         </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,86 @@
+#jn-doc-transfer-uploading .file,
+#jn-doc-transfer-history .file {
+    display: -webkit-box;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#jn-doc-transfer-uploading .thumb,
+#jn-doc-transfer-history .thumb {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+#jn-doc-transfer-uploading .thumb img,
+#jn-doc-transfer-history .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#jn-doc-transfer-uploading .info,
+#jn-doc-transfer-history .info {
+    padding: 0 1em;
+    overflow: hidden;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+#jn-doc-transfer-uploading .name,
+#jn-doc-transfer-history .name {
+    text-decoration: underline;
+    color: rgb(0, 0, 238);
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#jn-doc-transfer-uploading .cust-name,
+#jn-doc-transfer-history .cust-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .7em;
+}
+
+#jn-doc-transfer-uploading .check,
+#jn-doc-transfer-history .check {
+    font-size: .7em;
+}
+
+#jn-doc-transfer-uploading .path,
+#jn-doc-transfer-history .path {
+    font-size: .7em;
+    white-space: normal;
+}
+
+#jn-doc-transfer-uploading .ctime,
+#jn-doc-transfer-history .ctime {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    font-size: .5em;
+    color: #666;
+}
+
+#jn-doc-transfer-uploading .file>label {
+    display: -webkit-box;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-left: -10px;
+}
+
+#jn-doc-transfer-uploading .thumb i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    color: rgba(255, 255, 255, .8);
+    text-align: center;
+    line-height: 60px;
+}

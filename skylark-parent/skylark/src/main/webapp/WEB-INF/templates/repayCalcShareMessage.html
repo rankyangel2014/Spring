@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+    <link href="../www/base/lib/ionic/css/ionic.css" rel="stylesheet"></link>
+    <style type="text/css">
+
+        #loanCalc .table {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 22px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        #loanCalc .table thead {
+            border-bottom: 1px solid #DDD;
+        }
+
+        #loanCalc .table thead th {
+            color: #000;
+            text-align: right;
+            vertical-align: middle;
+            padding: 0 5px 0 5px;
+        }
+
+        #loanCalc .table thead th:nth-child(1) {
+            text-align: center;
+        }
+
+        #loanCalc .table > tbody > tr:nth-child(2n) td {
+            color: #299BD1;
+        }
+
+        #loanCalc .table > tbody > tr:nth-child(2n+1) td {
+            color: #E285AB;
+        }
+
+        #loanCalc .table tr {
+            height: 32px;
+        }
+
+        #loanCalc .table td {
+            vertical-align: middle;
+            border-bottom: 1px solid #DDD;
+            text-align: right;
+            padding: 0 5px 0 5px;
+        }
+
+        #loanCalc .table td:nth-child(1) {
+            vertical-align: middle;
+            border-bottom: 1px solid #DDD;
+            text-align: center;
+            width: 25px;
+        }
+
+        #loanCalc .scrollable {
+            padding: 10px;
+            overflow-x: visible;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+
+    </style>
+    <title>分享</title>
+</head>
+<body>
+<div class="bar bar-header bar-positive">
+    <h1 class="title" th:text="${subject}"></h1>
+</div>
+<div class="scroll-content has-header" style='height: 95%; overflow-y: visible;overflow-x: hidden;' id="loanCalc">
+    <!--<div class="item item-text-wrap" th:text='${#strings.arraySplit(message,"：")[0]}'></div>-->
+    <div class="item"> 贷款本金 <span class="item-note" th:text="${repay.exapAmt}">1000</span></div>
+    <div class="item"> 年利率（%） <span class="item-note" th:text="${repay.intRate}">10</span></div>
+    <div class="item"> 还款方式 <span class="item-note" th:text="${repay.repayTyp}">按期</span></div>
+    <div class="item"> 利息总额 <span class="item-note" th:text="${repay.lxze}">32000</span></div>
+    <div class="item"> 还款总额 <span class="item-note" th:text="${repay.hkze}">10000</span></div>
+    <div class="item item-divider">还款明细</div>
+    <div class="scrollable">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>期数</th>
+                <th>还款</th>
+                <th>本金</th>
+                <th>利息</th>
+                <th>剩余本金</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each='item:${repayList}'>
+                <td th:text="${item.perdNo}"></td>
+                <td th:text="${item.instmAmt}"></td>
+                <td th:text="${item.instmPrcp}"></td>
+                <td th:text="${item.instmInt}"></td>
+                <td th:text="${item.contPrcpEnd}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<extdepender>
+	<ext className="com.jsjn.jnf.withhold.investor.add.AddInvestorChannelList">
+        <dependJs>/js/util.js</dependJs>
+        <dependJs>/js/rcasUtil.js</dependJs>
+        <dependJs>/js/CommonStore.js</dependJs>
+        <dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+    </ext>
+    <ext className="com.jsjn.jnf.withhold.investor.query.QryInvestorChannelList">
+        <dependJs>/js/util.js</dependJs>
+        <dependJs>/js/rcasUtil.js</dependJs>
+        <dependJs>/js/CommonStore.js</dependJs>
+        <dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+        <dependClass>com.jsjn.jnf.withhold.investor.add.AddInvestorChannelList</dependClass>
+    </ext>
+    <!-- 代扣签约查询 -->
+    <ext className="com.jsjn.jnf.withhold.sign.query.QryWithholdList">
+    	<dependJs>/js/jquery.js</dependJs>
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependClass>com.jsjn.jnf.withhold.sign.add.QryLoanCodeList</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.add.QryFeeInfoList</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.query.AddWithHoldInfo</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.query.ApproveWithHoldInfo</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.query.ViewWithHoldInfo</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.query.WithHoldResign</dependClass>
+	</ext> 
+	<ext className="com.jsjn.jnf.withhold.sign.add.AddWithholdList">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.withhold.sign.add.QryLoanCodeList</dependClass>
+	</ext> 
+	<ext className="com.jsjn.jnf.withhold.sign.add.QryLoanCodeList">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+	</ext> 
+
+	<!-- test -->
+	<ext className="com.jsjn.jnf.test.testPnl">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+	</ext>
+	
+	<ext className="com.jsjn.jnf.test.Test">
+        <dependJs>/js/util.js</dependJs>
+        <dependJs>/js/rcasUtil.js</dependJs>
+        <dependJs>/js/CommonStore.js</dependJs>
+        <dependJs>/js/validator.js</dependJs>
+        <dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+    </ext>  
+	<!-- 代扣签约新增 -->
+	<ext className="com.jsjn.jnf.withhold.sign.query.AddWithHoldInfo">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependJs>/common/jquery/1.11.1/jquery.min.js</dependJs>
+        <dependJs>/common/webuploader/webuploader.js</dependJs>
+        <dependJs>/common/webuploader/upload.js</dependJs>
+		<dependClass>com.jsjn.jnf.withhold.sign.add.QryLoanCodeList</dependClass>
+		<dependClass>com.jsjn.jnf.withhold.sign.add.QryFeeInfoList</dependClass>
+	</ext> 
+	
+	<ext className="com.jsjn.jnf.withhold.sign.query.ApproveWithHoldInfo">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependJs>/common/jquery/1.11.1/jquery.min.js</dependJs>
+        <dependJs>/common/webuploader/webuploader.js</dependJs>
+        <dependJs>/common/webuploader/upload.js</dependJs>
+	</ext> 
+	<ext className="com.jsjn.jnf.withhold.sign.query.ViewWithHoldInfo">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependClass>com.jsjn.jnf.withhold.sign.query.ApproveWithHoldInfo</dependClass>
+	</ext> 
+	<ext className="com.jsjn.jnf.withhold.sign.query.WithHoldResign">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependJs>/common/jquery/1.11.1/jquery.min.js</dependJs>
+        <dependJs>/common/webuploader/webuploader.js</dependJs>
+        <dependJs>/common/webuploader/upload.js</dependJs>
+	</ext>
+</extdepender>

@@ -1,0 +1,34 @@
+<ion-view view-title="客户综合查询" id="searchCustomerList">
+    <jn-back></jn-back>
+    <ion-content >
+        <ion-list ng-show="0 < ctrl.customers.items.length">
+            <ion-item
+                ng-repeat="e in ctrl.customers.items"
+                ng-click="ctrl.viewCustomer({{ e.custNo }}, {{ e.custType }})"
+            >
+                <div class="jn-item-title name" data-type="{{ e.custType }}">{{ e.custName }}</div>
+                <div class="id">{{ e.paperNo || e.liceNo }}</div>
+                <div class="manager">{{ e.custManagerName }}</div>
+                <div class="meta">
+                    <span
+                        ng-show="{{ e.grntFlag === '0' }}"
+                        class="ion-android-checkmark-circle"
+                    >担保</span>
+                    <span
+                        ng-show="{{ e.loanFlag === '0' }}"
+                        class="ion-android-checkmark-circle"
+                    >贷款</span>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === ctrl.customers.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-show="ctrl.customers.items.length < ctrl.customers.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

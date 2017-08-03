@@ -1,0 +1,51 @@
+<ion-view view-title="贷款担保信息" id="creditLimitDb">
+	<jn-back></jn-back>
+    <ion-content>
+        <ion-list ng-show="0 < dbxxCtrl.dbxxList.items.length">
+	            <ion-item ng-repeat="c in dbxxCtrl.dbxxList.items" >
+		            <div
+			            class="type_status"
+			            data-type="{{ c.gurTyp }}"
+			            data-status="{{ c.status }}">
+		        	</div>
+		        	<div class="name">{{ c.gurNo }} {{ c.ownerCusts }}</div>
+		        	<div>
+			          <span>{{ c.pleName }}</span> 
+			          <span ng-if=" c.collNoExt == '' "></span>
+			          <span ng-if=" c.collNoExt != '' ">[{{ c.collNoExt }}]</span>
+			        </div>
+		            <div>
+			            <label>创建日期</label>
+			            <span>{{ c.crtDt  | jnDate}}</span>&nbsp;
+			        </div>
+		            <div ng-if="c.updDt != '' ">
+				         <label>作废日期</label>
+				         <span>{{ c.updDt | jnDate}}</span>
+			        </div>
+			        <div ng-if="c.assCd != '' ">
+			            <label>公司作价：</label>&nbsp;
+			            <span>{{ c.assCd | jnCurrency}} 元</span>
+			        </div>
+			        <div ng-if="c.thdCdList != '' " style="white-space:normal;word-break:break-all">
+			            <label>评估人（评估价值）：</label>
+			            <span style="max-width:60%">
+			            	{{ c.thdCdList }}
+			            </span>
+			        </div>
+			        <div ng-if="c.remark3 != '' " style="white-space:normal;word-break:break-all">
+			            <label>描述：</label><!--
+			         --><span style="max-width:60%">{{ c.remark3 }}</span>
+			        </div>	
+	        	</ion-item>
+        </ion-list>
+        <div
+            ng-show=" '0' == dbxxCtrl.dbxxList.items.length ||  dbxxCtrl.dbxxList.items.length == 0 "
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="dbxxCtrl.more()"
+            ng-show="dbxxCtrl.dbxxList.items.length < dbxxCtrl.dbxxList.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

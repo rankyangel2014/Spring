@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.fee.XmlFlowDao">
+	
+	<sql id="columns">
+	 a.C1 as id,
+	 a.C2 as method,
+     a.C3 as orgNo,
+     a.C4 as inputXml,
+     a.C5 as outputXml,
+     a.C6 as state,
+     a.C7 as exception,
+     a.C8 as bflag,
+     a.C9 as reason,
+     a.C10 as reqTime,
+     a.C11 as resTime,
+     a.C12 as mid,
+     b.C4 as feeType,
+     b.C5 as startTime,
+     b.C6 as endTime,
+     b.C7 as fee,
+     c.C2 as mname,
+     d.C2 as custName 
+	</sql>
+	<!-- 获取序列号 -->
+	
+	<!-- 查询流水表信息 -->
+	<select id="qryXmlFlow" parameterType="XmlFlowDataBO" resultType="XmlFlowDataBO">
+		SELECT 
+			<include refid="columns"></include>
+		FROM 
+		JNF_T17 a 
+		left join JNF_T18 b on a.C12 = b.C2 AND a.C3 = b.C3
+		left join JNF_T1 c on a.c12 = c.c1 
+		left join JNF_T2 d on a.c12 = d.c3 and a.c3 = d.c12 and d.c4 = '1'
+		where 1=1 
+		<if test="mname!=null and mname!=''">
+			and c.c2 like '%${mname}%'
+		</if> 
+		<if test="custName!=null and custName!=''">
+			and d.C2=#{custName}
+		</if> 
+		<if test="state!=null and state!=''">
+			and a.C6=#{state}
+		</if> 
+		<if test="bflag!=null and bflag!=''">
+			and a.C8=#{bflag}
+		</if> 
+		<if test="overTime!=null and  overTime!='' ">
+			<![CDATA[ AND  a.C11 <= to_date(#{overTime},'yyyyMMdd') ]]>
+		</if>
+		<if test=" beginTime!=null and  beginTime!=''">
+			AND  a.C11  >= to_date( #{beginTime},'yyyyMMdd')
+		</if>
+		ORDER BY a.C1 DESC
+	</select> 
+	
+</mapper>

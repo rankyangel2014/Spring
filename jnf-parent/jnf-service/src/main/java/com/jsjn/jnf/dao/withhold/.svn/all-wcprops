@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/4000/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/withhold
+END
+SignInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/4254/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/withhold/SignInfoDao.java
+END
+SignTempInfoDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/4000/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/withhold/SignTempInfoDao.java
+END
+WithholdDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/withhold/WithholdDao.java
+END
+UserThirdAccountDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2998/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/withhold/UserThirdAccountDao.java
+END

@@ -1,0 +1,125 @@
+<ion-view view-title="个人客户详细信息" id="custEdit">
+    <ion-nav-buttons side="left">
+        <jn-back to="myCustomer"></jn-back>
+    </ion-nav-buttons>
+	  <ion-nav-buttons side="secondary">
+        <button 
+             class="button button-clear "
+             ng-click="submit()"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content >
+		  <!-- 编辑表单 -->
+            <form  name="ctrl.editForm" novalidate >
+             <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="custEdit.form.custName"
+                        placeholder="请输入客户名称" 
+                        ng-required="true"
+                       />
+                </ion-item>
+                 <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="custEdit.form.paperType"
+                        name="paperType"
+                        ng-required="true"
+                    >
+                    	<option value="0" selected>身份证</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">证件号码</span>
+                    <input
+                    	required="true"
+                        type="text"
+                        name="paperNo"
+                        ng-model="custEdit.form.paperNo"
+                        placeholder="请输入证件号码" 
+                        jn-id-no
+                        />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label">性别</span>
+					<ion-radio ng-model="choice" ng-value="M" class="show_radio" >男</ion-radio>
+					<ion-radio ng-model="choice" ng-value="F" class="show_radio" >女</ion-radio>
+                    
+                </ion-item>
+                <ion-item
+                	class="item-input item-select"
+                >
+                    <span class="input-label">婚姻状况</span>
+                    <select
+                        ng-model="custEdit.form.marryStatus"
+                        jn-options="5027"
+                        name="marryStatus"
+                         ng-required="true"
+                    ></select>
+                </ion-item>
+                <ion-item
+                	class="item-input item-select"
+                >
+                 	<span class="input-label">涉农类型</span>
+                    <select
+                        ng-model="custEdit.form.agricultureType"
+                        jn-options="7600"
+                        name="agricultureType"
+                        ng-required="true"
+                    ></select>
+                </ion-item>
+                <!-- <ion-item class="item-input" >
+                    <span class="input-label" style="white-space:normal">联系方式</span>
+                    <input
+                        type="text"
+                        ng-model="custEdit.form.contact"
+                        placeholder="请输入客户联系电话" 
+                        name="mobile"
+                        ng-required="true"
+                        style="max-width: 50%;white-space:normal"
+                        />
+                        <div class="item-note" style="max-width: 50%"
+            			>{{ custEdit.form.contact }}</div>
+                </ion-item> -->
+                
+            <!--     <ion-item class="item-icon-right" style="white-space:normal">
+            	联系方式
+            	<div class="item-note" style="max-width: 70%"
+            	>{{ custEdit.form.contact }}
+            		<div style="float: right;">
+            	      <i class="icon ion-ios-arrow-right"></i>
+            	    </div>
+            	</div>
+                </ion-item> -->
+                <ion-item class="item-input">
+                    <span class="input-label">联系电话</span>
+                    <input
+                        type="text"
+                        ng-model="custEdit.form.mobile"
+                        placeholder="请输入客户联系电话" 
+                        name="mobile"
+                        ng-required="true"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">详细地址</span>
+                    <input
+                        type="text"
+                        ng-model="custEdit.form.address"
+                        placeholder="请输入客户详细地址" 
+                        name="address"
+                        ng-required="true"
+                        />
+                </ion-item> 
+                  <div class="padding">
+				  </div>
+            </form>
+      		
+    </ion-content>
+</ion-view>

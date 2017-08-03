@@ -1,0 +1,91 @@
+<ion-view view-title="实际控制人详情（企业）" id="entCustActualDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button ng-if=" ctrl.isDetail=='0' "
+                class="button button-clear "
+                ng-click="ctrl.edit(it.custNo)"
+        >修改
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-item class="item-divider"></ion-item>
+        <ion-item class="item">
+            企业名称
+            <span class="item-note">{{ it.custName }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            三证合一
+            <span class="item-note" ng-if=" it.cardMerge=='Y' ">是</span>
+            <span class="item-note" ng-if=" it.cardMerge=='N' ">否</span>
+        </ion-item>
+
+        <ion-item class="item" ng-if=" 'Y' == it.cardMerge">
+            统一信用代码
+            <span class="item-note">{{ it.liceNo }}</span>
+        </ion-item>
+
+        <ion-item class="item" ng-if=" 'N' == it.cardMerge ">
+            营业执照
+            <span class="item-note">{{ it.paperNo }}</span>
+        </ion-item>
+
+        <ion-item class="item" ng-if=" it.cardMerge =='N' ">
+            组织机构代码
+            <span class="item-note">{{ it.liceNo }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            贷款卡编号
+            <span class="item-note" ng-if=" it.loanCard ">{{ it.loanCard }} </span>
+        </ion-item>
+
+        <ion-item class="item">
+            所属行业
+            <span class="item-note">{{ it.inTradeName}}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            联系方式
+            <span class="item-note">{{ it.fixPhone}}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            法律实体类型
+            <span class="item-note">{{ it.orgType|jnConstant:5014}}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            主营业务
+            <span class="item-note">{{ it.mainBusiness }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            业务开始时间
+            <span class="item-note">{{ it.businessStartDt }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            营业时间
+            <span class="item-note">{{ it.businessHours }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            雇员数量
+            <span class="item-note">{{ it.employeeNum }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            实际经营地址
+            <span class="item-note">{{ it.custAddr }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            经营场所
+            <span class="item-note" ng-if="it.addressType!='4'">{{ it.addressType|jnConstant:900 }}</span>
+            <span class="item-note" ng-if="it.addressType=='4'">{{ it.addressTypeOtherDesc }}</span>
+        </ion-item>
+    </ion-content>
+</ion-view>

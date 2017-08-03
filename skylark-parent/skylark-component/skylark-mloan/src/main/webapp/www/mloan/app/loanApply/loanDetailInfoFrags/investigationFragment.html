@@ -1,0 +1,48 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+			ng-controller="investigationCtrl as investigationCtrl"
+            has-bouncing="false">
+    <ion-list ng-show="0 < investigationCtrl.list.items.length">
+        <ion-item ng-repeat="e in investigationCtrl.list.items |orderBy:['-recId']"
+                  ng-click="investigationCtrl.update(e)"
+                  style="padding: 10px;">
+            <div>
+                <div ng-if="e.subType != '9' ">
+                    <span class="jn-name jn-list-item-content" style="font-size: 15px;width:85%" cust-type="1">
+                     {{ e.subType | jnConstant:5900 }}
+                    </span>
+                    <button class="button button-small button-assertive jn-list-item-btn"
+                            ng-click="investigationCtrl.del(e.recId,$event)"
+                            ng-if="!investigationCtrl.isReadOnly">
+                        删除
+                    </button>
+                </div>
+                <div ng-if="e.subType == '9' ">
+                    <span ng-if="e.subject != ''" class="jn-name jn-list-item-content" style="font-size: 15px;width:85%" cust-type="1">
+                     {{ e.subject  }}
+                    </span>
+                    <span ng-if="e.subject == ''" class="jn-name jn-list-item-content" style="font-size: 15px;width:85%" cust-type="1">
+                     	其他
+                    </span>
+                    <button class="button button-small button-assertive jn-list-item-btn"
+                            ng-click="investigationCtrl.del(e.recId,$event)"
+                            ng-if="!investigationCtrl.isReadOnly">
+                        删除
+                    </button>
+                </div>
+
+                <div class="jn-item-compact" ng-if=" e.outline != ''">
+                	<label>副标题</label>
+                    <span class="jn-list-item-content" style="width:80%">{{ e.outline }}</span>
+                </div>
+                <div class="jn-item-compact" ng-if="e.details != '' ">
+                    <span class="jn-list-item-content">{{ e.details}}</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div ng-if="0 === investigationCtrl.list.items.length"
+         class="no_record">
+        暂无记录
+    </div>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

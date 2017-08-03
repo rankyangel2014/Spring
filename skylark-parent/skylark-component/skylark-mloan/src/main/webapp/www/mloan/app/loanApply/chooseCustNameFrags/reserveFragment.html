@@ -1,0 +1,31 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            has-bouncing="false">
+    <!-- 搜索框 -->
+    <div class="bar bar-header item-input-inset" style="background-image:none">
+        <label class="item-input-wrapper">
+        <i class="icon  ion-ios-search-strong placeholder-icon"></i>
+            <input type="search" placeholder="输入客户名称搜索" ng-model="loanBaseInfoCtrl.custNameModalConf.reserveKeywords"
+            ng-change="loanBaseInfoCtrl.custNameModalConf.searchReserve()">
+        </label>
+    </div>
+    <!-- 内容列表 -->
+    <ion-list>
+        <ion-item ng-repeat="e in loanBaseInfoCtrl.custNameModalConf.reserveCustList.items"
+                  ng-click="loanBaseInfoCtrl.custNameModalConf.chooseCustName(e,'reserve',$index)"
+                  ng-class="{'jn-item-selected': loanBaseInfoCtrl.custNameModalConf.isItemSelected('reserve',$index)}">
+            <div class="jn-name" cust-type="{{e.custType}}">{{ e.custName }}</div>
+            <jn-tel-no num="{{ e.phoneNo||e.fixPhone}}"></jn-tel-no>
+        </ion-item>
+    </ion-list>
+    <div ng-show="0 === loanBaseInfoCtrl.custNameModalConf.reserveCustList.items.length" class="no_record">暂无记录</div>
+
+    <button ng-click="loanBaseInfoCtrl.custNameModalConf.moreReserve()"
+            ng-show="loanBaseInfoCtrl.custNameModalConf.reserveCustList.items.length < loanBaseInfoCtrl.custNameModalConf.reserveCustList.total"
+            class="button button-clear button-full button-positive">
+            点击加载更多
+    </button>
+
+    </ion-list>
+
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

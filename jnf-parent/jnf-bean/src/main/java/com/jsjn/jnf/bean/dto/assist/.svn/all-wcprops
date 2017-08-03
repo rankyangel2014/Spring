@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/3714/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist
+END
+LockDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/1137/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/LockDto.java
+END
+SeqDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Zfjs/!svn/ver/633/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/SeqDto.java
+END
+XmlFlowDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/2144/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/XmlFlowDto.java
+END
+ApiRoleDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/566/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/ApiRoleDto.java
+END
+ChannelBankDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3281/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/ChannelBankDto.java
+END
+MenuDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Zfjs/!svn/ver/720/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/MenuDto.java
+END
+SysConfigDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/3632/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/SysConfigDto.java
+END
+ChannelDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/3415/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/ChannelDto.java
+END
+ReqXmlDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/1254/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/ReqXmlDto.java
+END
+BizConfigDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/3456/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/BizConfigDto.java
+END
+DigestDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/566/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/DigestDto.java
+END
+ApiRoleCtrlDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/865/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/ApiRoleCtrlDto.java
+END
+InterfaceXmlDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2144/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/InterfaceXmlDto.java
+END
+DictDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/3714/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/DictDto.java
+END
+FeeConfigDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/3498/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/assist/FeeConfigDto.java
+END

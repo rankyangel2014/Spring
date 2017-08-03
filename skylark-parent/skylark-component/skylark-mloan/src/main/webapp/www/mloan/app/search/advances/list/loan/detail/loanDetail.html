@@ -1,0 +1,104 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item">
+                放款金额
+                <span class="item-note">{{ it.prcpOrig |jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                放款日期
+                <span class="item-note">{{ it.actvDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                核销标志
+                <span class="item-note">{{ it.cancelFlg }}</span>
+            </ion-item>
+            <ion-item class="item">
+                核销日期
+                <span class="item-note">{{ it.rvwDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                已还本金
+                <span class="item-note">{{ it.prcpSetl | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                剩余本金
+                <span class="item-note">{{ it.prcpBal | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                已还利息
+                <span class="item-note">{{ it.intSetl | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                减免利息
+                <span class="item-note">{{ it.intWv | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                贷后检查
+                <span class="item-note">{{ it.compoNo | jnConstant:5055 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近检查日期
+                <span class="item-note">{{ it.rvwLoanDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近催收金额
+                <span class="item-note">{{ it.remindAmt | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近催收日期
+                <span class="item-note">{{ it.remindDate | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                五级分类
+                <span class="item-note">{{ it.loanGrd | jnConstant:7801 }}</span>
+            </ion-item>
+            <ion-item class="item">
+                形态
+                <span class="item-note">{{ it.status | jnConstant:6060}}</span>
+            </ion-item>
+            <ion-item class="item">
+                计提余额
+                <span class="item-note">{{ it.prvsnIntRemain | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近计提日期
+                <span class="item-note">{{ it.prvsnIntDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                表内应收利息
+                <span class="item-note">{{ it.intAccIn | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                表外应收利息
+                <span class="item-note">{{ it.intAccOut | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近展期到期日
+                <span class="item-note">{{ it.extnDueDt | jnDate}}</span>
+            </ion-item>
+            <ion-item class="item">
+                资产池产品名称
+                <span class="item-note">{{ it.productName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                展期次数
+                <span class="item-note">{{ it.extenTimes }}</span>
+            </ion-item>
+            <ion-item class="item">
+                最近展期金额
+                <span class="item-note">{{ it.extnAmt | jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item">
+                融资标记名称
+                <span class="item-note">{{ it.financingName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                资产池产品出表标志
+                <span class="item-note">{{ it.cbFlag  | jnConstant:5064 }}</span>
+            </ion-item>
+    </ion-content>
+</ion-view>

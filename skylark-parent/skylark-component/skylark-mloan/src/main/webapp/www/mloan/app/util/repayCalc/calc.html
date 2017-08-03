@@ -1,0 +1,102 @@
+<ion-view view-title="还款试算器" id="utilRepayCalcCalc">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.calcForm" novalidate>
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label">还款日期</span>
+                    <input
+                            type="date"
+                            name="setlDt"
+                            ng-model="ctrl.form.setlDt"
+                            ng-blur="ctrl.submitBtnStatus=false;ctrl.onChangeSetlDt()"
+                            ng-focus="ctrl.submitBtnStatus=true;"
+                            required
+                    />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">还款类型</span>
+                    <select
+                            ng-model="ctrl.form.setlTyp"
+                            ng-blur="ctrl.submitBtnStatus=false;ctrl.onChangeSetlTyp()"
+                             ng-focus="ctrl.submitBtnStatus=true;"
+                            jn-options="9821"
+                            required
+                    ></select>
+                </ion-item>
+                <ion-item
+                        ng-if="ctrl.showAheadSetlPrcp"
+                        class="item-input"
+                >
+                    <span class="input-label">提前归还本金</span>
+                    <input
+                            type="number"
+                            ng-model="ctrl.form.aheadSetlPrcp"
+                            ng-disabled="ctrl.disableAheadSetlPrcp"
+                            ng-blur="ctrl.submitBtnStatus=false;ctrl.onChangeAheadSetlPrcp()"
+                            ng-focus="ctrl.submitBtnStatus=true;"
+                            placeholder="请输入本金"
+                    />
+                </ion-item>
+                <ion-item
+                        ng-if="ctrl.showSchedAdjTyp && ctrl.repayTyp !='Q'"
+                        class="item-input item-select"
+                >
+                    <span class="input-label">调整规则</span>
+                    <select
+                            ng-model="ctrl.form.schedAdjTyp"
+                            ng-disabled="ctrl.disableSchedAdjTyp"
+                            jn-options="9823"
+                    ></select>
+                </ion-item>
+                <ion-item
+                        ng-if="ctrl.showSchedAdjTyp && ctrl.repayTyp =='Q'"
+                        class="item-input"
+                >
+                    <span class="input-label">调整规则</span>
+
+                    <input  type="text"
+                            ng-model="ctrl.form.schedAdjTypStr"
+                            ng-disabled="ctrl.disableSchedAdjTyp"/>
+                </ion-item>
+                <ion-item
+                        ng-if="ctrl.showCalcuRateTyp && !ctrl.atqghbj"
+                        class="item-input item-select"
+                >
+                    <span class="input-label">部分提前计息</span>
+                    <select
+                            ng-model="ctrl.form.calcuRateTyp"
+                            ng-disabled="ctrl.disableCalcuRateTyp"
+                            ng-blur="ctrl.submitBtnStatus=false;ctrl.onChangeCalcuRateTyp()"
+                            ng-focus="ctrl.submitBtnStatus=true;"
+                            jn-options="9822"
+                            jn-options-exclude="1"
+                    ></select>
+                </ion-item>
+                <ion-item
+                        ng-if="ctrl.showCalcuRateTyp && ctrl.atqghbj"
+                        class="item-input item-select"
+                >
+                    <span class="input-label">部分提前计息</span>
+                    <select
+                            ng-model="ctrl.form.calcuRateTyp"
+                            ng-disabled="ctrl.disableCalcuRateTyp"
+                            ng-blur="ctrl.submitBtnStatus=false;ctrl.onChangeCalcuRateTyp()"
+                            ng-focus="ctrl.submitBtnStatus=true;"
+                            jn-options="9822"
+                    ></select>
+                </ion-item>
+            </ion-list>
+        </form>
+        <div class="padding">
+            <button
+                    ng-click="ctrl.submit()"
+                    ng-disabled="ctrl.submitBtnStatus"
+                    class="button button-block  button-balanced"
+            >还款试算
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

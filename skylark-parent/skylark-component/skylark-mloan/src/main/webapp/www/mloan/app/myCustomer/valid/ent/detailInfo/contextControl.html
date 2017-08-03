@@ -1,0 +1,54 @@
+<ion-view view-title="关联信息" id="partnerInfo">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button ng-if=" '1' != isDetail "
+                class="button button-clear icon ion-navicon"
+                ng-click="ctrl.showTitleMenu()"
+        >
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list ng-if="0 < ctrl.list.total">
+            <ion-item ng-repeat="r in ctrl.list.items" >
+              <div ng-click="ctrl.toDetail(r)">
+	            	<div style="overflow: hidden; text-overflow: ellipsis;" >
+	                    <i class="ion-android-person positive" ng-if="'0' === r.custType"></i>
+	                    <i
+	                        class="ion-home positive"
+	                        ng-if="'1' === r.custType"
+	                    ></i>
+	                    <b>{{ r.custName }}</b>
+	                    [{{ r.linkTypeName }}]
+	                </div>
+			        <div class="sharholder">
+				        <span class="content" ng-if=" r.paperNo ">{{ r.paperNo }}</span>
+				       
+				    </div>
+				    <div >
+			
+				        <span class="content" ng-if=" r.phoneNo ">
+			            	<jn-tel-no 
+			            	  num="{{ r.phoneNo }}"></jn-tel-no>
+		            	</span>
+				    </div>
+			   </div>
+               <ion-option-button
+                   ng-if="isDetail=='0'"
+                   class="button-assertive"
+                   ng-click="ctrl.deleteItem($event,r)"
+               >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-if="0 === ctrl.list.total"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-if="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

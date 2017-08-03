@@ -1,0 +1,72 @@
+<ion-view view-title="客户关系修改" id='custLinkEdit'>
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+            class="button button-clear"
+            ng-click="ctrl.submit()"
+        >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <jn-form edit name="ctrl.editForm">
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label required">关联客户</span>
+                    <input
+                        type="text"
+                        name="linkCustName"
+                        ng-model="ctrl.form.linkCustName"
+                        ng-click="ctrl.selectCust()"
+                        readonly
+                        required
+                        placeholder="请选择关联客户"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                    ng-if="'0' === ctrl.form.linkCustType"
+                >
+                    <span class="input-label required">关系类型</span>
+                    <select
+                        jn-options="5017"
+                        name="linkType"
+                        ng-model="ctrl.form.linkType"
+                        required
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                    ng-if="'1' === ctrl.form.linkCustType"
+                >
+                    <span class="input-label required">关系类型</span>
+                    <select
+                        jn-options="5018"
+                        jn-options-exclude="29"
+                        name="linkType"
+                        ng-model="ctrl.form.linkType"
+                        required
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">股份(%)</span>
+                    <input
+                        type="number"
+                        name="sharePct"
+                        ng-model="ctrl.form.sharePct"
+                        required
+                        min="0"
+                        max="100"
+                        placeholder="请输入股份占比"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">备注</span>
+                    <textarea
+                        ng-model="ctrl.form.remark"
+                        jn-input-length="200"
+                        placeholder="请输入备注"
+                    ></textarea>
+                </ion-item>
+            </ion-list>
+        </jn-form>
+    </ion-content>
+</ion-view>

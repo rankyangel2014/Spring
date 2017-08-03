@@ -1,0 +1,76 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+         <ion-list class='list'>
+         
+       <!--   <ion-item class="item" >
+            	还款日期
+            	<span class="item-note">20150202</span>
+            </ion-item> -->
+	         <ion-item class='item'>
+	         	贷款合同号	
+	         	<span class="item-note">{{ it.contNoExt }}</span>
+	         </ion-item>
+	         
+	         <ion-item class='item'>
+	         	客户名称 
+	         	<span class="item-note">{{ it.custName }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	贷款本金 
+	         	<span class="item-note">{{ it.prcpOrig | jnCurrency }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	剩余本金
+	         	<span class="item-note"> {{ it.prcpBal | jnCurrency}}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	利率 
+	         	<span class="item-note">{{ it.intRate |number:4 }}%</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	贷款品种
+	         	<span class="item-note"> {{ it.prdctDesc }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	还款方式 
+	         	<span class="item-note">{{ it.repayTyp | jnConstant:327 }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	放款日
+	         	<span class="item-note">{{ it.actvDt | jnDate }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	起息日
+	         	<span class="item-note">{{ it.intStartDt | jnDate}}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	到期日
+	         	<span class="item-note">{{ it.lastDueDt | jnDate}}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	客户经理
+	         	<span class="item-note">{{ it.custManagerName }}</span>
+	         </ion-item>
+	         <ion-item class='item'>
+	         	放款操作员
+	         	<span class="item-note">{{ it.actvOperName }}</span>
+	         </ion-item>
+	         <ion-item class="item">
+	         	放款审核员
+	         	<span class="item-note">{{ it.actvReviewName }}</span>
+	         </ion-item>
+	         <ion-item class="item-divider"></ion-item>
+	         <div class='item item-icon-right' ui-sref='compQryDetail({
+	         custNo:it.custNo,
+             loanNo:it.loanNo,
+             contType:it.contType
+	         })'>
+        	           贷款信息
+       			<i class="icon ion-ios-arrow-right " style="font-size: 22px;"></i>
+        	</div>
+        </ion-list>
+    </ion-content>
+</ion-view>

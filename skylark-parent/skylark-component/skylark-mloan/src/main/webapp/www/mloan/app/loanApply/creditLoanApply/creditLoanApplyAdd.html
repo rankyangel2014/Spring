@@ -1,0 +1,166 @@
+<ion-view view-title="用信贷款申请">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button 
+        	 ng-if="ctrl.submitFlag"
+             class="button button-clear"
+             ng-click="ctrl.submit();"
+         >提交</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.myForm" id="creditLoanApplyAddForm" jn-edit-form novalidate ng-if="ctrl.saveFlag">
+            <ion-item class="item-divider">授信信息</ion-item>
+            <ion-item style="font-size:14px;padding: 10px;" class="crdtListItem">
+            	<div class="compact"><label>授信总额度</label><span class="content">{{ ctrl.credit.contAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>可用额度</label><span class="content">{{ ctrl.credit.exapCreAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>剩余额度</label><span class="content">{{ ctrl.credit.ableAmt | jnCurrency}}</span></div>
+		    	<div class="compact"><label>最近申请日期</label><span class="content">{{ ctrl.credit.startDt | jnDate}} ~ {{ctrl.credit.endDt | jnDate}}</span></div>
+		      	<div class="compact"><label>主担保方式</label><span class="content">{{ ctrl.credit.mainGurTyp | jnConstant :5045}}</span></div>
+			</ion-item>
+            <ion-item class="item-divider">用信申请</ion-item>
+            <ion-item class='item-input item-select' >
+           		<span class='input-label required'>客户性质</span>
+            	<select required  ng-model="ctrl.form.applCustProp" name="applCustProp" jn-options='910'></select>
+            </ion-item>
+            <ion-item class="item-input ">
+           		<span class="input-label required">用款时间</span>
+           		<input type="date" required ng-model="ctrl.form.reqDt" format-date required name="reqDt" ng-blur="ctrl.reqDataChange"/>
+           	</ion-item>
+           	 <ion-item class="item-input ">
+           		<span class="input-label required">申请时间</span>
+           		<input type="date" required ng-model="ctrl.form.applDt" format-date required name="applDt" ng-blur="ctrl.reqDataChange" />
+           	</ion-item>
+           	<ion-item class="item-input">
+            	<span class="input-label required">金额（元）</span>
+            	<input type="number" ng-model="ctrl.form.applAmt"  pattern="[0-9.]*"  name="applAmt" min="1"   max="100000000000" 
+            		ng-blur="ctrl.applAmtChange()"
+            		required jn-Positive string-to-number  placeholder="请输入金额"  />
+            </ion-item>
+           	<ion-item class="item-input">
+            	<span class="input-label required">年利率（%）</span>
+            	<input type="number"  ng-model="ctrl.form.applIntRateN"  pattern="^\d+(\.\d+)?$" maxLength="8"
+            		required jn-Positive name="applIntRateN"  string-to-number  min="0.0001" max="999.9999"
+            		placeholder="请输入年利率"  ng-blur="ctrl.applIntRateChange('Y')"/>
+            </ion-item>
+            <ion-item class="item-input">
+            	<span class="input-label required">月利率（‰）</span>
+            	<input type="number" ng-model="ctrl.form.applIntRate" pattern="^\d+(\.\d+)?$"
+            		 name="applIntRate" string-to-number  min="0.0001" max="999.9999" maxLength="8"
+            		required jn-Positive  placeholder="请输入月利率"  ng-blur="ctrl.applIntRateChange('M')"/>
+            </ion-item>
+            <ion-item class="item-input">
+            	<span class="input-label required">申请期限（月）</span>
+            	<input type="number" ng-model="ctrl.form.applPerd"  pattern="[0-9]*" name="applPerd" min="1" max="999" maxlength="3"
+            		required jn-Integer  placeholder="请输入1-999的数字"  />
+            </ion-item>
+            <ion-item class='item-input item-select' >
+           		<span class='input-label required'>还款方式</span>
+            	<select required ng-model="ctrl.form.applRepayTyp" name="applRepayTyp" jn-options='327'></select>
+            </ion-item>
+            <ion-item class="item-input">
+            	<span class="input-label required">每月还款日</span>
+            	<input type="number" ng-model="ctrl.form.applDueDay" pattern="[0-9]*" name="applDueDay" min="1" max="31" maxlength="2"
+            		required jn-Integer  placeholder="请输入1-31的数字"  />
+            </ion-item>
+            <ion-item class='item-input item-select' >
+           		<span class='input-label required'>贷款目的</span>
+            	<select required  ng-model="ctrl.form.applLoanUse" name="applLoanUse" jn-options='7602' ng-if="ctrl.custType=='0'"></select>
+            	<select required  ng-model="ctrl.form.applLoanUse" name="applLoanUse" jn-options='7603' ng-if="ctrl.custType=='1'"></select>
+            </ion-item>
+            <ion-item class='item-input' >
+           		<span class='input-label required'>资金投向</span>
+            	<jn-select-intrade
+                        name="applCapitalDirection"
+                        required
+                        ng-model="ctrl.form.applInTrade"
+                        label="ctrl.form.applCapitalDirection"
+                        placeholder="请输入资金投向"
+                ></jn-select-intrade>
+            </ion-item>
+            <ion-item class="item-divider required">用途描述</ion-item>
+            <ion-item class="item-input" >
+				<span class="input-label required" style="display: none">用途描述</span>
+				<textarea  rows="4" cols="30" name="applPurpose" ng-required="true" jn-input-length="1000"
+					ng-model="ctrl.form.applPurpose" placeholder="请在此处填写用途描述"></textarea> 
+			</ion-item>
+			 <ion-item class="item-divider">其他放款条件</ion-item>
+            <ion-item class="item-input" >
+				<span class="input-label " style="display: none">其他放款条件</span>
+				<textarea  rows="4" cols="30"  jn-input-length="1000" name="applOtherIssueCond"
+					ng-model="ctrl.form.applOtherIssueCond" placeholder="请在此处填写其他放款条件"></textarea> 
+			</ion-item>
+			<div class="padding">
+				<button class="button button-block button-positive" ng-if="ctrl.saveFlag" ng-click="ctrl.save()">
+               	   保存
+           		</button>
+           </div>
+        </form>
+        <ion-list ng-if="!ctrl.saveFlag">
+            <ion-item class="item-divider">授信信息</ion-item>
+            <ion-item style="font-size:14px;padding: 10px;"  class="crdtListItem">
+            	<div class="compact"><label>授信总额度</label><span class="content">{{ ctrl.credit.contAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>可用额度</label><span class="content">{{ ctrl.credit.exapCreAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>剩余额度</label><span class="content">{{ ctrl.credit.ableAmt | jnCurrency}}</span></div>
+		    	<div class="compact"><label>最近申请日期</label><span class="content">{{ ctrl.credit.startDt | jnDate}} ~ {{ctrl.credit.endDt | jnDate}}</span></div>
+		      	<div class="compact"><label>主担保方式</label><span class="content">{{ ctrl.credit.mainGurTyp | jnConstant :5045}}</span></div>
+			</ion-item>
+			<!-- 详情 -->
+            <ion-item class="item-divider">用信申请</ion-item>
+            <ion-item  >
+           		<span>客户性质</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applCustProp | jnConstant :910 }}</span>
+            </ion-item>
+            <ion-item >
+           		<span>用款时间</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.reqDt | jnDate }}</span>
+           	</ion-item>
+           	 <ion-item>
+           		<span>申请时间</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applDt | jnDate }}</span>
+           	</ion-item>
+           	<ion-item>
+            	<span>金额（元）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applAmt | jnCurrency }}</span>
+            </ion-item>
+           	<ion-item>
+            	<span>年利率（%）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applIntRate*1.2 | number:4 }}</span>
+            </ion-item>
+            <ion-item>
+            	<span>月利率（‰）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applIntRate | number:3 }}</span>
+            </ion-item>
+            <ion-item>
+            	<span>申请期限（月）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applPerd}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>还款方式</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applRepayTyp | jnConstant :327 }}</span>
+            </ion-item>
+            <ion-item >
+            	<span>每月还款日</span>
+				<span class="item-note" style="max-width:60%">{{ctrl.form.applDueDay}}</span>  
+            </ion-item>
+            <ion-item>
+           		<span>贷款目的</span>
+            	<span class="item-note" ng-if="ctrl.custType=='0'" style="max-width:60%">{{ctrl.form.applLoanUse | jnConstant :7602 }}</span>
+            	<span class="item-note" ng-if="ctrl.custType=='1'" style="max-width:60%">{{ctrl.form.applLoanUse | jnConstant :7603 }}</span>
+            </ion-item>
+             <ion-item >
+           		资金投向</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applCapitalDirection }}</span>
+            </ion-item>
+            <ion-item class="item-divider ">用途描述</ion-item>
+            <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.applPurpose}}</span>
+			</ion-item>
+			<ion-item class="item-divider">其他放款条件</ion-item>
+			  <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.applOtherIssueCond}}</span>
+			</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

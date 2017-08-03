@@ -1,0 +1,23 @@
+<ion-view view-title="潜在客户分配历史" id="reserveCustomerAssignList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+            
+            <ion-list ng-if="0 < it.total">
+                <ion-item ng-repeat="e in it.items" style="white-space:normal;font-size:14px;">
+	                <div >{{ e.asgnTime|jnDate }}</div>
+	                <div style="max-width: 100%">
+	                        <span>操作员<strong >{{e.operNo}}</strong>将<strong >{{e.bfCustManagerName }}</strong>名下的客户<strong style="color: #007aff;">{{e.custName}}</strong>{{e.asgnType=='1' ? '分配给':'移交给'}}<strong >{{e.afCustManagerName}}</strong></span>
+	                </div>
+	                <div ng-if="e.remark">备注：{{ e.remark }}</div>
+                </ion-item>
+             </ion-list>
+            
+		    <div ng-if="0 === it.total" class="no_record" >暂无记录 </div>
+		    <button ng-click="more()"
+		            ng-if="it.items.length < it.total"
+		            class="button button-block button-positive button-clear" >点击加载更多
+		    </button>
+    </ion-content>
+</ion-view>

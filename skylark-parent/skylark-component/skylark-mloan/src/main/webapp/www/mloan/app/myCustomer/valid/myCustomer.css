@@ -1,0 +1,180 @@
+#myCustomerList ion-item {
+    font-size: 14px;
+}
+
+#myCustomerList .name {
+    font-weight:bold;
+}
+#myCustomerList .name:BEFORE {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+}
+
+#myCustomerList .name.pre:BEFORE{
+    content: '\e611';
+}
+
+#myCustomerList .name.pre[data-sex="M"]:BEFORE{
+    color: #19b4f4;
+     content: '\e645';
+}
+
+#myCustomerList .name.pre[data-sex="F"]:BEFORE{
+    color: #fe9a9c;
+     content: '\e646';
+}
+
+#myCustomerList .name.enb:BEFORE{
+    content: '\e644';
+}
+
+#custOtherList ion-item {
+    font-size: 14px;
+}
+
+
+#custOtherList .list>ion-item>div:first-of-type {
+    font-weight:bold;
+}
+#custOtherList .div_overflow {
+       	width: 90%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		
+}
+
+#custOtherList .id:before{
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+}
+#custOtherList .id:before {
+    content: '\e626';
+}
+#custOtherList .phone a[href^="tel:"] {
+    display: block;
+    width: 90px;
+    padding-left: 2px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+
+#custOtherList .phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 5px;
+    content: '\e616';
+}
+
+
+
+#custOtherList .label {
+    width: 7em;
+    display: inline-block;
+	vertical-align: top;
+	 padding: 5px;
+}
+
+#custOtherList .content{
+	white-space:normal;
+	width: 80%;
+    padding: 5px;
+     display: inline-block;
+    vertical-align: top;	
+}
+#custOtherList .pie {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+#custOtherEdit [data-gender],
+#custOtherEdit [data-age] {
+    font-weight: normal;
+    font-size: 12rem;
+    padding: 3px 5px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+#custOtherEdit [data-gender],
+#custOtherEdit [data-age] {
+    font-weight: normal;
+    font-size: 12px;
+    padding: 3px 5px;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#custOtherEdit [data-gender="M"] {
+    background-color: #19b4f4;
+}
+
+#custOtherEdit [data-gender="M"]:before {
+    content: '\e619';
+    font-family: 'iconfont';
+}
+
+#custOtherEdit [data-gender="F"] {
+    background-color: #fe9a9c;
+}
+
+#custOtherEdit [data-gender="F"]:before {
+    content: '\e61a';
+    font-family: 'iconfont';
+}
+
+#custOtherEdit [data-age]:before {
+    content: attr(data-age);
+}
+
+#custOtherEdit [data-gender="M"][data-age]:before {
+    content: '\e619' attr(data-age);
+}
+
+#custOtherEdit [data-gender="F"][data-age]:before {
+    content: '\e61a' attr(data-age);
+}
+#blackOperateHistory ion-item {
+    font-size: 14px;
+}
+
+
+#blackOperateHistory .label {
+    width: 6em;
+    display: inline-block;
+	vertical-align: top;
+	 padding: 0px 5px 5px 0px;
+}
+
+#blackOperateHistory .content{
+	white-space:normal;
+	width: 80%;
+    padding: 0px 5px 5px 0px;
+     display: inline-block;
+    vertical-align: top;	
+}
+
+
+#assignHistory a {
+	text-decoration: none;
+}
+
+#assignHistory .asgnDate,#assignHistory .content>span
+	{
+	font-weight: bold;
+	margin: 0 3px;
+}

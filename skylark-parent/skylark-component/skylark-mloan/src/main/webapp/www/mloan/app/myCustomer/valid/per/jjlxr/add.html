@@ -1,0 +1,82 @@
+<ion-view view-title="紧急联系人新增">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+        >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.editForm" jn-edit-form>
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label required">客户名称</span>
+                    <jn-select-customer
+                        name="custName"
+                        cust-no="ctrl.form.pCustNo"
+                        cust-type="0"
+                        ng-model="ctrl.form.custName"
+                        ng-readonly="ctrl.form.custNo"
+                        on-select="ctrl.onSelectCustomer"
+                        maxlength="120"
+                        required
+                        placeholder="请输入客户名称"
+                    ></jn-select-customer>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        ng-model="ctrl.form.paperNo"
+                        ng-readonly="ctrl.form.custNo && ctrl.form.paperNo"
+                        jn-id-no
+                        placeholder="请输入证件号码"
+                        ng-blur="ctrl.onChangePaperNo()"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">手机号码</span>
+                    <input
+                        type="tel"
+                        name="phoneNo"
+                        ng-model="ctrl.form.phoneNo"
+                        required
+                        jn-mobile
+                        placeholder="请输入手机号码"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">与客户关系</span>
+                    <jn-multi-select
+                        name="linkType"
+                        options="ctrl.linkTypeOptions"
+                        always-selected="25"
+                        ng-model="ctrl.form.linkType"
+                        placeholder="请选择与客户关系"
+                    ></jn-multi-select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                    <input
+                        type="text"
+                        name="workUnit"
+                        ng-model="ctrl.form.workUnit"
+                        placeholder="请输入工作单位"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系地址</span>
+                    <input
+                        type="text"
+                        name="custAddr"
+                        ng-model="ctrl.form.custAddr"
+                        placeholder="请输入联系地址"
+                    />
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

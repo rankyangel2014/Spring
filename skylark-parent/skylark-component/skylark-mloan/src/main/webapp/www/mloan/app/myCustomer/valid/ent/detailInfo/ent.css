@@ -1,0 +1,92 @@
+#contactInfo .name {
+	font-weight: bold;
+    line-height: 1.2em;
+    white-space: normal;
+}
+
+#contactInfo .address:not(:empty):before{
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    padding-right: 0.25px;
+    font-size: 20px;
+    color: salmon;
+}
+
+#partnerInfo .name {
+    font-weight: bold;
+    font-size: 14px;
+    color:#000;
+}
+
+#partnerInfo .sharholder .content{
+    font-size: 13px;
+   
+}
+#partnerInfo .sharholder .content:nth-child(1){
+	display: inline-block;
+    width: 50%;
+    margin-left:-0.5px;
+   
+}
+
+#partnerInfo .sharholder .content:nth-child(1):BEFORE{
+   font-family: 'iconfont';
+   content: '\e635'; 
+   color: #007aff;
+   font-size:20px;
+   vertical-align: middle;
+   height: 100%;
+   padding-right: 0.25px;
+   margin-right: 4px;
+}
+
+#partnerInfo .sharholder .content:nth-child(2){
+    width: 32%;
+}
+#partnerInfo .sharholder .content:nth-child(3){
+    width: 10%;
+    text-align: right;
+    color: salmon;
+  
+}
+
+#partnerInfo .sharholder .content:nth-child(3):AFTER{
+   font-family: 'iconfont';
+   content: '%'; 
+   color: salmon;
+   vertical-align: middle;
+   height: 100%;
+   padding-left: 0.1px;
+
+}
+
+#partnerInfo .address:not(:empty):before{
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    padding-right: 0.25px;
+    font-size: 20px;
+    color: salmon;
+}
+
+#partnerInfo .clearFix{
+    clear: both;
+}
+
+#partnerInfo .pie {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+#partnerInfo .pie::after {
+    font-size: 9px;
+    right: 120%;
+}

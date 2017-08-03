@@ -1,0 +1,31 @@
+<ion-view view-title="上传历史" jn-page>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+            class="button button-clear"
+            ng-click="clear()"
+        >清除</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="e in files">
+                <div class="file">
+                    <div class="thumb" ng-click="viewImage(e)">
+                        <img ng-src="{{ e.thumb }}" />
+                    </div>
+                    <div class="info">
+                        <div class="name">{{ e.name }}</div>
+                        <div class="cust-name"
+                        >{{ e.custName }} ({{ e.applAmt | jnCurrency }})</div>
+                        <div class="check" ng-if="e.check">{{ e.check }}</div>
+                        <div class="path">{{ e.path | jnJoin :'➙' }}</div>
+                    </div>
+                    <div class="ctime"
+                    >{{ e.ctime | jnRelativeDate :86400000 }}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

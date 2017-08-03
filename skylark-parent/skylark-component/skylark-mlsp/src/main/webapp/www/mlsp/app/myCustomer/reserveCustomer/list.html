@@ -1,0 +1,57 @@
+<ion-view view-title="储备客户" id="reserveCustomerList">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-navicon" ng-click='openPopover($event)' ng-if='isManager'></button>
+         <a  class="button button-clear" ui-sref="reserveCustomerQuery" ng-if='!isManager'>查询</a>
+    </ion-nav-buttons>
+    <ul id="head_menu" class="menu_button" ng-model='show' ng-show='show'>
+	     <li id="new" ui-sref="reserveCustomerAdd"><a >新增</a></li>
+	     <li id="search" ui-sref="reserveCustomerQuery"><a >查询</a></li>
+    </ul>
+    <ion-content >
+   <ion-list>
+        <ion-item ng-repeat="c in it.items" ui-sref='reserveCustomerDetail({custNo:c.custNo})'>
+            <div class="status" ng-if="c.status==1">
+                    <span class='ion-android-checkmark-circle' data-value='{{c.status|jnConstant:6030}}'></span>
+            </div>
+            <div style="white-space:normal;" class='custName'>
+                <span style="max-width:60%;">{{c.custName}} </span>
+            </div>
+            <!-- <div class='custName'>
+                <span>{{ c.custName }}</span>
+            </div> -->
+            <div>
+                <!-- <a href="tel:{{ c.phoneNo }}" ng-if='c.phoneNo'>{{ c.phoneNo }}</a> -->
+                <jn-tel-no  num="{{ c.phoneNo }}"></jn-tel-no>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div
+            ng-show="0 === it.items.length" class="no_record"
+    >暂无记录
+    </div>
+    <button ng-click="more()"
+            ng-show="it.items.length < it.total"
+            class="button button-block button-positive button-clear" >点击加载更多
+    </button>
+
+    </ion-content>
+<ion-footer-bar align-title="left" class="page_footer" >
+      <div  style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;" ng-click="Ctrl.jump('myCustomer')">
+                      正式客户
+  </div>
+  <div style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;
+	    color: #fff;
+	    background-color: #5677fc;" >
+     储备客户
+  </div>
+</ion-footer-bar>
+</ion-view>

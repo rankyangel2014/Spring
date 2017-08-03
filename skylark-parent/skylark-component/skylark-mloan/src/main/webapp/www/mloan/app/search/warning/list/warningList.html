@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}" id="warningList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <style>
+            .no-border {
+                margin: 4px 0px 4px 10px;
+                font-size: 14px;
+            }
+
+            .title {
+                /*border: 0px;*/
+                font-size: 16px;
+                margin-top: 7px;
+            }
+
+        </style>
+        <ion-list>
+            <div class="card" ng-show="0 < list.items.length"
+                 ng-repeat="e in list.items" data-operflag="1" data-stat="0">
+                <div class="item item-avatar" data-stat="0"
+                     data-operFlag="1">
+                    <div class="title">
+                        <span>贷款合同号: {{ e.loanNoExt }}</span>
+                        <button class="ion-android-share-alt button-clear" style="float: right;
+                        color: #007aff;font-size: 18px;margin-top: -4px;"
+                                ng-click="shareMessage(e)">
+                        </button>
+                    </div>
+                </div>
+                <div class="no-border">客户名称: {{ e.custName }}</div>
+                <div class="no-border">贷款金额: {{ e.prcpOrig | jnCurrency }}</div>
+                <div class="no-border">下次还款日: {{ e.nextDueDt | jnDate }}</div>
+                <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
+                <!--<a class="tab-item tab-do"> <span ng-click="shareMessage(e)" style='border: 1px solid #387ef5;padding: 4px 4px ;'>分享</span></a>-->
+                <!--</div>-->
+            </div>
+        </ion-list>
+        <div
+                ng-if="0 === list.items.length" class="no_record"
+        >暂无记录
+        </div>
+        <button
+                ng-click="more()"
+                ng-if="list.items.length < list.total"
+                class="button button-block button-positive button-clear"
+        >点击加载更多
+        </button>
+    </ion-content>
+</ion-view>

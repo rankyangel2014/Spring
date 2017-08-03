@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/2935/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy
+END
+SinglePaymentTradeStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy/SinglePaymentTradeStrategy.java
+END
+SingleFlowStateQueryStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/Zfjs/!svn/ver/2344/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy/SingleFlowStateQueryStrategy.java
+END
+SingleWithHoldStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/Zfjs/!svn/ver/2935/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy/SingleWithHoldStrategy.java
+END
+RealtimeBalQueryStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy/RealtimeBalQueryStrategy.java
+END
+SingleWithHoldQueryStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/4186/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/strategy/SingleWithHoldQueryStrategy.java
+END

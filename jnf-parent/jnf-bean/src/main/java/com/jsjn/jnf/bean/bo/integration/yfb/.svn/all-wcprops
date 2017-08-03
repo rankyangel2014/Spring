@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Zfjs/!svn/ver/2644/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb
+END
+PaymentOrderReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/2583/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb/PaymentOrderReqBO.java
+END
+PaymentOrderResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/4186/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb/PaymentOrderResBO.java
+END
+CardInfoBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2454/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb/CardInfoBO.java
+END
+PaymentOrderQueryReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/2583/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb/PaymentOrderQueryReqBO.java
+END
+RefundOrderReqBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/2644/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/yfb/RefundOrderReqBo.java
+END

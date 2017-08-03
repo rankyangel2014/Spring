@@ -1,0 +1,112 @@
+<style type="text/css">
+#reserveCustomerAdd .show_radio{
+	max-width: 110px;
+	line-height: 10px;
+	border-width: 0px;
+}
+	#syxz label .item-content{
+	white-space:normal;
+	}
+</style>
+<ion-view view-title="储备客户新增" id="reserveCustomerAdd">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="save();"
+             ng-if=' it.status!="1" '
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content >
+        <jn-form name="Ctrl.myForm" jn-edit-form>
+            <ion-list >
+                <ion-item class="item-divider" >客户信息</ion-item>
+                <ion-item class='item-input'>
+                    <span class='input-label required'>客户名称</span>
+                    <input type='hidden'  ng-model='it.custNo' name='custNo'/>
+                    <input type='text'  ng-model='it.custName' required name='custName' jn-input-length="60" placeholder='请输入客户名称' />
+                </ion-item>
+                <ion-item class='item-input' >
+                    <span class='input-label' >性别</span>
+                       <ion-radio class="show_radio" name='sex'  ng-model='it.sex'  ng-checked="it.sex"  value='M' checked>男</ion-radio>
+                       <ion-radio  class="show_radio"  name='sex'  ng-model='it.sex'  ng-checked="it.sex"  value='F'>女</ion-radio>
+                </ion-item>
+                <ion-item class='item item-input'>
+                   <span class='input-label required'>联系电话</span>
+                   <input type='tel' ng-model='it.phoneNo' jn-mobile required name='phoneNo' placeholder='请输入联系电话' />
+                </ion-item>
+                <ion-item class='item-input'>
+                   <span class='input-label'>详细地址</span>
+                   <input type='text' ng-model='it.custAddr' name='custAddr' jn-input-length="100" placeholder='请输入详细地址' />
+                </ion-item>
+                <ion-item class='item-input'>
+                   <span class='input-label required'>从事行业</span>
+                   <input type='hidden' ng-model='it.inTrade' required name='inTrade'/>
+                   <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32" ng-model='it.inTradeName' required readonly="readonly" name='inTradeName' ng-click='alertPop()'></textarea>
+                  <!-- <ion-checkbox ng-repeat="item in devList" ng-model="item.paramValue" ng-checked="item.checked"> {{ item.paramValue }} </ion-checkbox>  -->
+                </ion-item>
+                <ion-item class='item-input'>
+                 <span class='input-label'>备注信息</span>
+                 <!-- <input type='text' name='remark' ng-model='it.remark' placeholder='请输入备注信息不超过500个字！'/> -->
+                    <textarea style="resize: none;width: initial;" name="remark" ng-model="it.remark" rows='4' cols="32" jn-input-length="1000" placeholder="请输入备注信息不超过500个字！" ></textarea>
+                </ion-item>
+                
+                 <!-- <ion-toggle class='pItem'   ng-model= 'checked["dkyx"]' ng-checked='checked["dkyx"]'>贷款意向</ion-toggle> -->
+                 <!--  贷款意向  -->
+                 <ion-item class='item-divider' ></ion-item>
+                 <ion-item ng-click="toggleItem('dkyx')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['dkyx']]"   ng-model= 'checked["dkyx"]' ng-checked='checked["dkyx"]' >贷款意向
+                    <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['dkyx']]"></i>
+                 </ion-item>
+                <ion-item class='item-input' ng-show=' checked["dkyx"]'>
+                   <span class='input-label'>申请金额 </span>
+                   <input type="number" ng-model='it.loanAmt' name='loanAmt' placeholder="请输入贷款申请金额" pattern="([1-9][\d]{0,12}|0)(\.[\d]{1,2})?"/>
+                </ion-item>
+                <ion-item class='item-input' ng-show='checked["dkyx"]'>
+                   <span class='input-label'>申请期限（月） </span>
+                   <input type="number" ng-model='it.period' name='period' placeholder="请输入申请期限" jn-range="9999" jn-positive  pattern="[0-9]*"/>
+                </ion-item>
+                <ion-item class='item-input item-select' ng-show=' checked["dkyx"]'>
+                   <span class="input-label">借款事由</span>
+                   <select jn-options='7604' ng-model='it.loanUse' name='loanUse'></select>
+                </ion-item>
+                <ion-item class='item-input' ng-show=' checked["dkyx"]' style="white-space:normal;">
+                   <span class="input-label" style="max-width: 30%;">可接受最高利率（%）</span>
+                   <input type="text" ng-model='it.loanRate' name='loanRate' placeholder="请输入可接受最高利率"  jn-range="100" jn-positive  />
+                </ion-item>
+                
+                 <!--  法人信息  -->
+                <ion-item ng-click="toggleItem('frxx')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['frxx']]" ng-model= 'checked["frxx"]' ng-checked='checked["xxtj"]' >法人信息
+                     <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['frxx']]"></i>
+                </ion-item>
+                <ion-toggle  ng-show='checked["frxx"]' ng-model= 'it.isJuridicalChecked' ng-checked='it.isJuridicalChecked' name='isJuridical' ng-change='change(it.isJuridicalChecked)'>法人资格</ion-toggle>
+                <ion-item class='item-input item-select' ng-show='checked["frxx"]'>
+                      <span class='input-label'>组织形式</span>
+                      <select ng-if="it.isJuridicalChecked"  jn-options='5014' ng-model='it.orgForm'  name='orgForm' ng-disabled='!it.isJuridicalChecked'></select>
+                      <select ng-if="!it.isJuridicalChecked" style="background-color: #f8f8f8;"  jn-options='5014' ng-model='it.orgForm'  name='orgForm' ng-disabled='!it.isJuridicalChecked'></select>
+                </ion-item>
+                <ion-item class='item-input' ng-show='checked["frxx"]'>
+                      <span class='input-label'>企业名称</span>
+                      <input type='text' ng-model='it.enbName' name='enbName' ng-disabled='!it.isJuridicalChecked' jn-input-length="100"   placeholder="请输入企业名称"  />
+                      </div>
+                </ion-item>
+                
+                <!-- 信息途径 -->
+                <ion-item ng-click="toggleItem('xxtj')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['xxtj']]" ng-model= 'checked["xxtj"]' ng-checked='checked["xxtj"]'>信息途径
+                     <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['xxtj']]"></i>
+                </ion-item>
+                <ion-item class='item-input item-select' ng-show='checked["xxtj"]'>
+                    <span class="input-label">信息途径 </span>
+                    <select jn-options="5001" ng-model='it.adTypeId' name='adTypeId'></select>
+                </ion-item>
+                <ion-item class="item item-input" ng-show='checked["xxtj"]'>
+                        <span class="input-label">途径名称</span>
+                        <input type="text"  ng-model='it.adTitle' name='adTitle' jn-input-length="50" placeholder="请输入信息途径名称"  />
+                </ion-item>
+                <ion-item class="item item-input" ng-show='checked["xxtj"]'>
+                        <span class="input-label">推荐人</span>
+                        <input type="text"  ng-model='it.referrer' name='referrer' jn-input-length="100" placeholder="请输入推荐人信息"  />
+                </ion-item>
+            </ion-list>
+        </jn-form>
+    </ion-content>
+</ion-view>

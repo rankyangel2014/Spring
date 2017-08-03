@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.withhold.SignTempInfoDao">
+
+	<select id="querySignTempInfoList" resultType="SignTempInfoDto">
+		SELECT
+		C1 signRecordId,
+		C2 mId,
+		C3 aid,
+		C4 state,
+		C5 jnfFileHash,
+		C6
+		insttuId,
+		C7 insttuName,
+		C8 channel,
+		C9 signFiles,
+		C10 custName,
+		C11
+		idType,
+		C12 idNo,
+		C13 cardNo,
+		C14 mobile,
+		C15 idFiles,
+		C16 loanNo,
+		C17
+		contNo,
+		C18 repayType,
+		C19 osPrcp,
+		C20 created,
+		C21 modified
+		FROM JNF_T20
+		<where>
+			C4 in ('1','2','3','4')
+			<if test=" signRecordId != null and signRecordId !='' ">
+				AND C1 = #{signRecordId}
+			</if>
+			<if test=" custName != null and custName !='' ">
+				AND C10 like '%${custName}%'
+			</if>
+		</where>
+	</select>
+	<select id="querySignTempInfoByIds" resultType="SignTempInfoDto">
+		SELECT
+		C1 signRecordId,
+		C2 mId,
+		C3 aid,
+		C4 state,
+		C5 jnfFileHash,
+		C6
+		insttuId,
+		C7 insttuName,
+		C8 channel,
+		C9 signFiles,
+		C10 custName,
+		C11
+		idType,
+		C12 idNo,
+		C13 cardNo,
+		C14 mobile,
+		C15 idFiles,
+		C16 loanNo,
+		C17
+		contNo,
+		C18 repayType,
+		C19 osPrcp,
+		C20 created,
+		C21 modified,
+		C27 cancelAble
+		FROM JNF_T20
+		WHERE 1=1 
+		<if test="state!=null and state!=''">
+			AND C4=#{state}
+		</if>
+		<if test=" insttuId!=null and insttuId!=''">
+			AND C6=#{insttuId}
+		</if>
+			AND C6||C16 IN
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<select id="querySignTempInfoById" resultType="SignTempInfoDto">
+		SELECT T1.C1  signRecordId,
+		       T1.C2  mId,
+		       T1.C3  aid,
+		       T1.C4  state,
+		       T1.C5  jnfFileHash,
+		       T1.C6  insttuId,
+		       T1.C7  insttuName,
+		       T1.C8  channel,
+		       T1.C9  signFiles,
+		       T1.C10 custName,
+		       T1.C11 idType,
+		       T1.C12 idNo,
+		       T1.C13 cardNo,
+		       T1.C14 mobile,
+		       T1.C15 idFiles,
+		       T1.C16 loanNo,
+		       T1.C17 contNo,
+		       T1.C18 repayType,
+		       T1.C19 osPrcp,
+		       T1.C20 created,
+		       T1.C21 modified,
+		       T1.C22 cardBankCode,
+		       T1.C23 flowId,
+		       T1.C24 smsVerifyCode,
+		       T1.C25 payStartDay,
+		       T1.C26 isBatchPay,
+		       T1.C27 cancelAble,
+		       T1.C28 channelSign,
+		       T2.C2  bankName
+		  FROM JNF_T20 T1, JNF_T25 T2
+		  WHERE T1.C8=T2.C1 AND T1.C22 = T2.C3 AND  T1.C1 = #{signRecordId}
+		  
+	</select>
+
+	<select id="geTinstitution" resultType="MemberDto">
+		select c1 as custId,c2 as
+		custName
+		from JNF_T2
+		<where>
+			<if test="mid!=null and mid!=''">
+				and c3 = #{mid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getCommercial" resultType="BussinessDto">
+		select c1 as mid,c2 as
+		mName
+		from jnf_t1
+	</select>
+
+	<select id="queryWithholdInfos" parameterType="SignTempInfoDto"
+		resultType="SignTempInfoDto">
+		select t2.c2 as mname,t4.c2 as userName,t1.c16 as
+		loanNo,t1.c1 as
+		signRecordId,t1.c10 as custName,
+		t1.c7 as insttuName ,t3.c7 as
+		type,t1.c4 as state,t1.c8 as channel,
+		t1.c20 as created from jnf_t20
+		t1,jnf_t1 t2,jnf_t22 t3,jnf_t2 t4
+		where t1.c2=t2.c1
+		and t1.c3 = t3.c1
+		and t1.c6 = t4.c12
+		<if test="mid!=null  and mid!=''">
+			and t1.c2 = #{mid}
+		</if>
+		<if test="custName!=null and custName!=''">
+			<![CDATA[   and t1.c10 like '%' || #{custName} || '%'  ]]>
+		</if>
+		<if test="insttuName!=null and insttuName!=''">
+		<![CDATA[  and t1.c7 like '%' || #{insttuName} || '%'  ]]>
+		</if>
+		<if test="insttuId!=null and insttuId!=''">
+			and t4.c1 =#{insttuId}
+		</if>
+		<if test="loanNo!=null and loanNo!=''">
+			and t1.c16 = #{loanNo}
+		</if>
+		<if test="state!=null and state!=''">
+			and t1.c4 =#{state}
+		</if>
+		<if test="startTime!=null and startTime!=''">
+			<![CDATA[   and to_char(t1.c20,'yyyyMMdd')>=#{startTime}  ]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+			<![CDATA[   and to_char(t1.c20,'yyyyMMdd')<=#{endTime}  ]]>
+		</if>
+		<if test="type!=null and type!=''">
+			and t3.c7 =#{type}
+		</if>
+		<if test="channel!=null and channel!=''">
+			and t1.c8 = #{channel}
+		</if>
+	</select>
+
+	<select id="queryWithDetails" resultType="SignTempInfoDto">
+		select t2.c2 as mname, t4.c2 as userName,t1.c3 as aid,t1.c4 as state,t1.c8
+		as channel,t1.c20 as created,
+		t1.c10 as custName,t1.c13 as cardNo,t1.c14 as mobile,t1.c9 as
+		signFiles,t1.c15 as idFiles,t5.c5 as bindAccNo,
+		t1.c16 as loanNo,t1.c17
+		as contNo,t1.c18 as repayType,t1.c19 as osPrcp
+		from jnf_t20 t1,jnf_t1
+		t2,jnf_t22 t3,jnf_t2 t4,jnf_t24 t5
+		where t1.c2=t2.c1
+		and t1.c3 = t3.c1
+		and t5.c2 = t4.c1
+		and t1.c8 = t5.c3
+		and t5.c4 = 1
+		and t1.c6 = t4.c12
+		and t1.c1 = #{signRecordId}
+	</select>
+
+	<select id="querySignTempInfoCount" resultType="Long">
+		SELECT
+		COUNT(1)
+		FROM
+		JNF_T20
+		WHERE C1 = #{signRecordId}
+	</select>
+
+	<select id="querySignInfoByLoanNo" resultType="Integer">
+		SELECT
+		COUNT(1)
+		FROM
+		JNF_T20
+		WHERE C16 = #{loanNo}
+		AND C2 = #{mid}
+		AND C4 ='2'
+		AND C6=#{insttuId}
+	</select>
+
+	<insert id="saveSignTempInfo">
+		INSERT INTO
+		JNF_T20(C1,C2,C4,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,
+		C18,C19,C20,C21,C22,C23,C25,C26,C27,C28)
+		VALUES
+		(
+		#{signRecordId}, #{mid}, #{state}, #{insttuId}, #{insttuName}, #{channel},
+		#{signFiles}, #{custName}, #{idType}, #{idNo}, #{cardNo}, #{mobile}, #{idFiles},
+		#{loanNo}, #{contNo}, #{repayType}, #{osPrcp}, TO_DATE(TO_CHAR(sysdate,'yyyyMMdd
+		HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'), TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),
+		'yyyyMMdd HH24:mi:ss'), #{cardBankCode}, #{flowId}, #{payStartDay},
+		#{isBatchPay}, #{cancelAble}, #{channelSign}
+		)
+	</insert>
+	<update id="updateSignTempInfo">
+		UPDATE
+		JNF_T20
+		SET
+		C3 = #{aid},
+		C4 = #{state},
+		C21 =
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C1=#{signRecordId}
+	</update>
+
+	<update id="updateTaskinstanceId">
+		UPDATE
+		JNF_T20
+		SET
+		C4 = '2',
+		C23 = #{flowId},
+		C21 =
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C1=#{signRecordId}
+	</update>
+
+	<update id="updateSmsVerifyCode">
+		UPDATE
+		JNF_T20
+		SET
+		C24 = #{smsVerifyCode},
+		C21 =
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C1=#{signRecordId}
+	</update>
+
+	<update id="updateSignTempFilesInfo">
+		UPDATE
+		JNF_T20
+		SET
+		C9 = #{signFiles},
+		C15 = #{idFiles},
+		C21 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C1=#{signRecordId}
+	</update>
+
+	<update id="updateSignState">
+		UPDATE
+		JNF_T20
+		SET
+		C4 = '6',
+		C21 =
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C2 = #{mid}
+		AND C16 = #{loanNo}
+		AND C4='4' 
+		AND C6=#{insttuId}
+	</update>
+
+	<update id="cancelSignTemp">
+		UPDATE
+		JNF_T20
+		SET
+		C4 = '4', --已解约
+		C21 =
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C1=#{signRecordId}
+	</update>
+
+</mapper>

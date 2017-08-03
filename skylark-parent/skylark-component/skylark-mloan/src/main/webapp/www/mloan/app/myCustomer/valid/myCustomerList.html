@@ -1,0 +1,64 @@
+ <style type="text/css">
+.address::before {
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    height: 100%;
+    padding-right: 4px;
+    font-size: 12px;
+    color: salmon;
+}
+.address{
+white-space: normal;
+max-width: 100%;
+}
+</style>
+<ion-view view-title="正式客户" id="myCustomerList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary"
+   >
+         <!-- ng-hide="'1'===listCtrl.tmp" -->
+        <button
+             class="button button-clear"
+             ng-click="listCtrl.custSearch()"
+         >搜索</button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <ion-list >
+            <ion-item ng-repeat="e in listCtrl.list.items" ng-click="listCtrl.toDetail(e)">
+                <div class="jn-item-title name {{e.custType=='1'?'enb':'pre'}}" data-sex="{{e.sex=='F'?'F':'M'}}">{{ e.custName }}</div>
+ 				<jn-tel-no num="{{ e.phoneNo||e.fixPhone}}"></jn-tel-no>
+                 <div class="address" ng-if="e.custAddr">{{ e.custAddr }}</div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === listCtrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="listCtrl.more()"
+            ng-show="listCtrl.list.items.length < listCtrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+	<ion-footer-bar align-title="left" class="page_footer" id="myCustomerListBar">
+	 <div  style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;
+	    color: #fff;
+	    background-color: #5677fc;">
+	    	正式客户
+	  </div>
+	  <div style="width: 50%;
+	    font-size: 14px;
+	    text-align: center;
+	    line-height: 44px;
+	    border-top: 1px solid #5677fc;"  ng-click="listCtrl.jump('reserveCustomerList')">
+	 	 潜在客户
+	  </div>
+	</ion-footer-bar>
+</ion-view>

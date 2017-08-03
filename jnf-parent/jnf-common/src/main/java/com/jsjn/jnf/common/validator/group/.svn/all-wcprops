@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/group
+END
+DefaultGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/group/DefaultGroup.java
+END
+EditGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/group/EditGroup.java
+END
+AddGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/group/AddGroup.java
+END

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="none"/>
+    <title>信贷助手</title>
+    <script type="text/javascript">
+    window.HTML_VERSION="${project.version}";
+    window.DEV_MODE = /skylark\/www\/mlsp/.test(window.location.href);
+    </script>
+    <link href="../base/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="app/common/services/login/login.service.css" rel="stylesheet">
+    <link href="app/common/services/select/selectCustomer.service.css" rel="stylesheet">
+    <link href="app/common/services/titleMenu.service.css" rel="stylesheet">
+    <link href="app/main/main.css" rel="stylesheet">
+    <link href="app/remind/list.css" rel="stylesheet">
+    <link href="app/util/repayCalc/repayCalc.css" rel="stylesheet">
+    <link href="app/search/customer/list.css" rel="stylesheet">
+    <link href="app/search/comprehensiveQry/hkSheet.css" rel="stylesheet">
+    <link href="app/search/blackList/blackList.css" rel="stylesheet">
+    <link href="app/search/creditLimit/creditLimit.css" rel="stylesheet">
+    <link href="app/search/creditLimit/creditLimitDb.css" rel="stylesheet">
+    <link href="app/search/comprehensiveQry/compQry.css" rel="stylesheet">
+    <link href="app/search/comprehensiveQry/compQryDb.css" rel="stylesheet">
+    <link href="app/notices/notices.css" rel="stylesheet">
+    <link href="app/util/loanCalc/loanCalc.css" rel="stylesheet">
+    <link href="app/todos/todos.css" rel="stylesheet">
+    <link href="app/search/loan/loan.css" rel="stylesheet">
+    <link href="app/contacts/contacts.css" rel="stylesheet">
+    <link href="app/myBusiness/myBusiness.css" rel="stylesheet">
+    <link href="app/myBusiness/myBusinessDetail.css" rel="stylesheet">
+    <link href="app/myCustomer/reserveCustomer/reserveCustomer.css" rel="stylesheet">
+    <link href="app/myCustomer/myCustomer.css" rel="stylesheet">
+    <link href="app/myCustomer/link/link.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then remove the CSS include above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+    <script src="../lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="../cordova.js"></script>
+    <script src="../lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+    <!-- 开发用 -->
+    <script src="../base/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="../base/lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="../base/lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="utils/jnappAPI.js"></script>
+    <script src="utils/ionic-image-lazy-load.js"></script>
+    <script src="config.js"></script>
+    <script src="app/common/services/analysis.service.js"></script>
+    <script src="app/common/services/constant.service.js"></script>
+    <script src="app/common/services/http.service.js"></script>
+    <script src="app/common/services/user.service.js"></script>
+    <script src="app/common/services/form.service.js"></script>
+    <script src="app/common/services/storage.service.js"></script>
+    <script src="app/common/services/page.service.js"></script>
+    <script src="app/common/services/helper.service.js"></script>
+    <script src="app/common/services/directive.service.js"></script>
+    <script src="app/common/services/validate.service.js"></script>
+    <script src="app/common/services/idReader.service.js"></script>
+    <script src="app/common/services/idvScanner.service.js"></script>
+    <script src="app/common/services/phone.service.js"></script>
+    <script src="app/common/services/titleMenu.service.js"></script>
+    <script src="app/common/services/push.service.js"></script>
+    <script src="app/common/services/login/login.service.js"></script>
+    <script src="app/common/services/login/gesturePwd.service.js"></script>
+    <script src="app/common/services/login/loginPopover.service.js"></script>
+    <script src="app/common/services/login/gestureLoginPopover.service.js"></script>
+    <script src="app/common/services/login/setGesturePwdPopover.service.js"></script>
+    <script src="app/common/services/select/selectCustomer.service.js"></script>
+    <script src="app/common/directives/options.directive.js"></script>
+    <script src="app/common/directives/managerSelect.directive.js"></script>
+    <script src="app/common/directives/back.directive.js"></script>
+    <script src="app/common/directives/validate.directive.js"></script>
+    <script src="app/common/directives/patternInput.directive.js"></script>
+    <script src="app/common/directives/form.directive.js"></script>
+    <script src="app/common/directives/select.directive.js"></script>
+    <script src="app/common/directives/dateRange.directive.js"></script>
+    <script src="app/common/directives/pieChart.directive.js"></script>
+    <script src="app/common/directives/telNo.directive.js"></script>
+    <script src="app/common/filters/constant.filter.js"></script>
+    <script src="app/common/filters/currency.filter.js"></script>
+    <script src="app/common/filters/date.filter.js"></script>
+    <script src="app/common/filters/dateFormat.filter.js"></script>
+    <script src="app/common/filters/textToHtml.filter.js"></script>
+    <script src="app/main/main.service.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/main/menu.service.js"></script>
+    <script src="app/remind/remind.service.js"></script>
+    <script src="app/remind/li.filter.js"></script>
+    <script src="app/remind/entry.controller.js"></script>
+    <script src="app/remind/list.controller.js"></script>
+    <script src="app/search/customer/searchCustomer.service.js"></script>
+    <script src="app/search/customer/search.controller.js"></script>
+    <script src="app/search/customer/list.controller.js"></script>
+    <script src="app/search/blackList/blackListReq.controller.js"></script>
+    <script src="app/search/blackList/blackListQry.controller.js"></script>
+    <script src="app/search/blackList/blackListReq.service.js"></script>
+    <script src="app/todos/todos.service.js"></script>
+    <script src="app/todos/todos.controller.js"></script>
+    <script src="app/notices/notices.service.js"></script>
+    <script src="app/notices/notices.controller.js"></script>
+    <script src="app/search/creditLimit/creditLimitDetail.controller.js"></script>
+    <script src="app/search/creditLimit/creditLimitQry.controller.js"></script>
+    <script src="app/search/creditLimit/creditLimitReq.controller.js"></script>
+    <script src="app/search/creditLimit/creditLimitReq.service.js"></script>
+    <script src="app/search/creditLimit/dbxxDetail.controller.js"></script>
+    <script src="app/search/creditLimit/dbxxDetail.service.js"></script>
+    <script src="app/search/creditLimit/symxDetail.controller.js"></script>
+    <script src="app/search/creditLimit/symxDetail.service.js"></script>
+    <script src="app/search/comprehensiveQry/compQry.controller.js"></script>
+    <script src="app/search/comprehensiveQry/compQryDb.controller.js"></script>
+    <script src="app/search/comprehensiveQry/compQryDb.service.js"></script>
+    <script src="app/search/comprehensiveQry/compQryDetail.controller.js"></script>
+    <script src="app/search/comprehensiveQry/compQryHk.controller.js"></script>
+    <script src="app/search/comprehensiveQry/compQryList.controller.js"></script>
+    <script src="app/search/comprehensiveQry/compQryList.service.js"></script>
+    <script src="app/search/comprehensiveQry/compQryXx.controller.js"></script>
+    <script src="app/search/advances/advances.service.js"></script>
+    <script src="app/search/advances/advances.controller.js"></script>
+    <script src="app/search/advances/list/advancesList.controller.js"></script>
+    <script src="app/search/loan/loan.service.js"></script>
+    <script src="app/search/loan/loan.controller.js"></script>
+    <script src="app/search/loan/list/detail/singleCustomer/singleCustomer.controller.js"></script>
+    <script src="app/search/loan/list/detail/singleDebt/singleDebt.controller.js"></script>
+    <script src="app/search/loan/list/detail/writeBack/writeBack.controller.js"></script>
+    <script src="app/search/loan/list/detail/batch/batch.controller.js"></script>
+    <script src="app/search/loan/list/loanList.controller.js"></script>
+    <script src="app/search/advances/list/detail/advancesDetail.controller.js"></script>
+    <script src="app/search/advances/list/loan/loanInfo.controller.js"></script>
+    <script src="app/search/advances/list/loan/detail/loanDetail.controller.js"></script>
+    <script src="app/search/advances/list/loan/detail/guaranteeDetail.controller.js"></script>
+    <script src="app/search/advances/list/loan/detail/repaymentSchedule.controller.js"></script>
+    <script src="app/util/loanCalc/loanCalcQry.controller.js"></script>
+    <script src="app/util/loanCalc/loanCalcList.controller.js"></script>
+    <script src="app/util/repayCalc/repayCalc.service.js"></script>
+    <script src="app/util/repayCalc/search.controller.js"></script>
+    <script src="app/util/repayCalc/list.controller.js"></script>
+    <script src="app/util/repayCalc/calc.controller.js"></script>
+    <script src="app/util/repayCalc/result.controller.js"></script>
+    <script src="app/contacts/contacts.controller.js"></script>
+    <script src="app/contacts/contacts.service.js"></script>
+    <script src="app/myBusiness/myBusinessList.controller.js"></script>
+    <script src="app/myBusiness/myBusinessList.service.js"></script>
+    <script src="app/myBusiness/myBusinessQry.controller.js"></script>
+    <script src="app/myBusiness/myBusinessReq.controller.js"></script>
+    <script src="app/myBusiness/myBusinessReq.service.js"></script>
+    <script src="app/myBusiness/myBusinessDetail.controller.js"></script>
+    <script src="app/myBusiness/myBusinessLog.controller.js"></script>
+    <script src="app/myBusiness/myBusinessLog.service.js"></script>
+    <script src="app/myBusiness/creditDbxx.controller.js"></script>
+    <script src="app/myBusiness/creditDbxx.service.js"></script>
+    <script src="app/myBusiness/hkSheet.controller.js"></script>
+    <script src="app/myBusiness/loanDbxx.controller.js"></script>
+    <script src="app/myBusiness/loanDbxx.service.js"></script>
+    <script src="app/myBusiness/loanDkxq.controller.js"></script>
+    <script src="app/myBusiness/creditSymx.controller.js"></script>
+    <script src="app/myBusiness/creditSymx.service.js"></script>
+    <!--我的客户  start-->
+    <script src="app/myCustomer/myCustomerList.controller.js"></script>
+    <script src="app/myCustomer/custDetail.controller.js"></script>
+    <script src="app/myCustomer/myCustomer.service.js"></script>
+    <script src="app/myCustomer/custSearch.controller.js"></script>
+    <script src="app/myCustomer/add/custAdd.controller.js"></script>
+    <script src="app/myCustomer/add/custAddCB.controller.js"></script>
+     <script src="app/myCustomer/custOtherList.controller.js"></script>
+    <script src="app/myCustomer/custOther.service.js"></script>
+    <script src="app/myCustomer/ent/entCustDetail.controller.js"></script>
+    <script src="app/myCustomer/ent/entCustDetail.service.js"></script>
+    <script src="app/myCustomer/ent/entCustOther.service.js"></script>
+    <script src="app/myCustomer/custOtherDetail.controller.js"></script>
+    <script src="app/myCustomer/custEdit.controller.js"></script>
+    <script src="app/myCustomer/link/link.service.js"></script>
+    <script src="app/myCustomer/link/list.controller.js"></script>
+
+
+
+    <script src="app/myCustomer/personCust.controller.js"></script>
+    <script src="app/myCustomer/personCust.service.js"></script>
+
+    <script src="app/myCustomer/link/view.controller.js"></script>
+    <script src="app/myCustomer/link/add.controller.js"></script>
+    <script src="app/myCustomer/link/edit.controller.js"></script>
+
+    <!--我的客户  end-->
+    
+    <!--我的客户  潜在客户 start -->
+    <script src="app/myCustomer/reserveCustomer/reserveCustomer.controller.js"></script>
+    <script src="app/myCustomer/reserveCustomer/reserveCustomer.service.js"></script>
+    <!--我的客户  潜在客户  end -->
+    
+    <!-- 身份证扫描终端 -->
+    <script src="app/util/scan/view.controller.js"></script>
+    
+</head>
+<body ng-app="app">
+    <ion-side-menus>
+        <!-- 中间内容 -->
+        <ion-side-menu-content>
+            <!-- 导航栏 -->
+            <ion-nav-bar class="bar-positive">
+            </ion-nav-bar>
+            <!-- 模版视图 -->
+            <ion-nav-view id="jsjn"></ion-nav-view>
+        </ion-side-menu-content>
+
+        <!-- 右侧菜单 -->
+        <ion-side-menu side="right" width="250" ng-controller="indexCtrl">
+            <ion-header-bar align-title="center" class="bar-positive">
+                <h1 class="title">设置</h1>
+            </ion-header-bar>
+            <ion-content>
+	        	<div class="list">
+					<a menu-close class="item item-icon-right"
+                        ng-click="setGesturePwd()"
+                    >
+					 	<b>手势密码设置</b> <i class="icon ion-ios-arrow-right"></i>
+					</a> 
+					<!-- <a class="item item-icon-right"> 
+						应用更新 <i class="icon ion-ios-arrow-right"></i>
+					</a> --> 
+					<!-- <div class="item item-toggle">
+				        
+				        <label class="toggle toggle-balanced">
+					          <input type="checkbox" checked>
+					          <div class="track" ng-click='changeStyle()'>
+						          <div class="handle"></div>
+					          </div>
+				        </label>
+			        </div> -->
+			        <ion-toggle menu-close ng-model='indexStyle' ng-checked='indexStyle'
+			        ng-change="changeIndexStyle()"><b>九宫格/列表</b> </ion-toggle>
+                    
+					<a menu-close class="item item-icon-right" ng-click="logout();"> 
+					 	<b>注销用户 </b><i class="icon ion-ios-arrow-right"></i>
+					</a> 
+					<a menu-close class="item item-icon-right" ng-click="removeDeviceId();"> 
+						<b>切换设备 </b><i class="icon ion-ios-arrow-right"></i>
+					</a>
+					<!-- <a class="item item-icon-right"> 
+						问题反馈 <i class="icon ion-ios-arrow-right"></i>
+					</a>
+					<a class="item item-icon-right"> 
+						 客服电话 <i class="icon ion-ios-arrow-right"></i>
+					</a>
+					<a class="item item-icon-right"> 
+					 	为我评分<i class="icon ion-ios-arrow-right"></i>
+					</a> -->
+				</div>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+   
+</body>
+</html>

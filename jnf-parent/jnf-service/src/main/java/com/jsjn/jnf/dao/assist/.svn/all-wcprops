@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/4058/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist
+END
+ApiRoleCtrlDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/1214/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/ApiRoleCtrlDao.java
+END
+InterfaceXmlDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/2026/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/InterfaceXmlDao.java
+END
+DictDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Zfjs/!svn/ver/3407/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/DictDao.java
+END
+ChannelBankDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/4248/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/ChannelBankDao.java
+END
+MenuDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Zfjs/!svn/ver/2199/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/MenuDao.java
+END
+MessageDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/3656/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/MessageDao.java
+END
+FeeConfigDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/2187/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/FeeConfigDao.java
+END
+ChannelDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/4159/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/ChannelDao.java
+END
+LockDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/773/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/LockDao.java
+END
+ReqXmlDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/1241/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/ReqXmlDao.java
+END
+SeqDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Zfjs/!svn/ver/633/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/SeqDao.java
+END
+BizConfigDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/2103/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/dao/assist/BizConfigDao.java
+END

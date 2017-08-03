@@ -1,0 +1,232 @@
+<ion-view view-title="贷款综合查询">
+	<jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="paramsCtrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="paramsCtrl.myForm" novalidate>
+            <ion-list>
+            	<ion-item class="item-input">
+                    <span class="input-label">查询日期</span>
+                    <input
+                    	readonly 
+                        type="text"
+                        name="queryDt"
+                        ng-model="queryDt"
+                       />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text" 
+                        data-format="%$%"
+                        name="custName"
+                        ng-model="paramsCtrl.form.custName"
+                        placeholder="请输入客户名称" 
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款合同号</span>
+                    <input
+                        type="text"
+                        name="contNoExt"
+                        ng-model="paramsCtrl.form.contNoExt"
+                        placeholder="请输入贷款合同号" 
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">借据号</span>
+                    <input
+                        type="text"
+                        ng-model="paramsCtrl.form.loanNo"
+                        name="loanNo"
+                        pattern="\d*"
+                        data-limit="\d+"
+                        placeholder="请输入借据号" 
+                        />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">合同类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.contType"
+                        jn-options="6700" 
+                        name="contType"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label ">客户类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.custType"
+                        jn-options="5028" 
+                        name="custType"
+                    ></select>
+                </ion-item>
+                
+                <div ng-if='userFlag'>
+                	<input name="custManagerId" type="hidden" />
+                </div>
+                
+                <ion-item class="item-input item-select" ng-show='!userFlag'>
+                    <span class="input-label">客户经理</span>
+                    <select
+                        ng-model="paramsCtrl.form.custManagerId"
+                        jn-manager-select
+                        name = "custManagerId" 
+                    ></select>
+                </ion-item>
+                
+                <ion-item class="item-input item-select">
+                    <span class="input-label">五级分类</span>
+                    <select
+                        ng-model="paramsCtrl.form.loanGrd"
+                        jn-options="7801" 
+                        name="loanGrd"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">贷款形态</span>
+                    <select
+                        ng-model="paramsCtrl.form.loanStatus"
+                        jn-options="6060" 
+                        name="loanStatus"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">主担保方式</span>
+                    <select
+                        ng-model="paramsCtrl.form.mainGurTyp"
+                        jn-options="5045" 
+                        name="mainGurTyp"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款期限（月）</span>
+                    <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        ng-model="paramsCtrl.form.loanPerdFrom"
+                        placeholder="从" 
+                        name="loanPerdFrom"
+                        style="text-align:left"
+                        />
+                     <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        ng-model="paramsCtrl.form.loanPerdTo"
+                        placeholder="至" 
+                        name="loanPerdTo"
+                        style="text-align:left"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款金额（至少）</span>
+                    <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        pattern="\d+"
+                        ng-model="paramsCtrl.form.exapAmtFrom"
+                        placeholder="至少" 
+                        name="exapAmtFrom"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款金额（至多）</span>
+                     <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        pattern="\d+"
+                        ng-model="paramsCtrl.form.exapAmtTo"
+                        placeholder="至多" 
+                        name="exapAmtTo"
+                        />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">贷后检查</span>
+                    <select
+                        ng-model="paramsCtrl.form.compoNo"
+                        jn-options="5055" 
+                        name="compoNo"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款发放日（从）</span>
+                    <input
+                        type="date"
+                        ng-model="paramsCtrl.form.intStartDtFrom"
+                        name="intStartDtFrom"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款发放日（至）</span>
+                     <input
+                        type="date"
+                        ng-model="paramsCtrl.form.intStartDtTo"
+                        name="intStartDtTo"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款到期日（从）</span>
+                    <input
+                        type="date"
+                        ng-model="paramsCtrl.form.lastDueDtFrom"
+                        name="lastDueDtFrom"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款到期日（至）</span>
+                     <input
+                        type="date"
+                        ng-model="paramsCtrl.form.lastDueDtTo"
+                        name="lastDueDtTo"
+                        />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">贷款状态</span>
+                    <select
+                        ng-model="paramsCtrl.form.setlFlg"
+                        jn-options="6701" 
+                        name="setlFlg"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">执行年利率（%）</span>
+                    <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        pattern="\d+"
+                        ng-model="paramsCtrl.form.intRateFrom"
+                        placeholder="至少" 
+                        name="intRateFrom"
+                        style="text-align:left"
+                        />
+                     <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        pattern="\d+"
+                        ng-model="paramsCtrl.form.intRateTo"
+                        placeholder="至多" 
+                        name="intRateTo"
+                        style="text-align:left"
+                        />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">贷款性质</span>
+                    <select
+                        ng-model="paramsCtrl.form.prdctTyp"
+                        jn-options="6705" 
+                        name="prdctTyp"
+                    ></select>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

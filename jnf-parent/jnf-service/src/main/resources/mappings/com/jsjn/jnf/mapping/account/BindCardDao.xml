@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.account.BindCardDao">
+	
+	<sql id="columns">
+		a.C1 as "aid",
+		a.C2 as "custId",
+		a.C3 as "mId",
+		a.C4 as "type",
+		a.C5 as "bankName",
+		a.C6 as "bankCardNo",
+		a.C7 as "state",
+		a.C8 as "mobile",
+		a.C9 as "agreementHash",
+		a.C10 as "remark",
+		a.C11 as "digest",
+		a.C12 as "created",
+		a.C13 as "modified",
+		a.C14 as "custName",
+		a.C15 as "idNo",
+		a.C16 as "signNo"
+	</sql>
+    
+	<sql id="joins"></sql>
+	
+	
+	
+	<!-- 更新数据 -->
+	<update id="update" parameterType="BindCardDto">
+		update JNF_T3 a set 
+		a.C1 = #{aid}, 
+		a.c2 = #{custId},
+		a.C3 = #{mId},
+		a.C4 = #{type},
+		a.C5 = #{bankName},
+		a.C6 = #{bankCardNo},
+		a.C7 = #{state},
+		a.C8 = #{mobile},
+		a.C9 = #{agreementHash},
+		a.C10 = #{remark},
+		a.C11 = #{digest},
+		a.C12 = #{created},
+		a.C13 = #{modified},
+		a.C14 = #{custName},
+		a.C15 = #{idNo},
+		a.C16 = #{signNo} 
+		where a.C1 = #{aid}
+	</update>
+	
+	<!-- 查询客户代扣协议 -->
+	<select id="queryBindCardInfoAboutAid" resultType="BindCardDto">
+		SELECT
+		<include refid="columns"/>
+		FROM JNF_T3 a
+		WHERE a.C1 = #{aid}
+	</select>
+	
+	<!-- 查询出所有的银行名称 -->
+	<!--<select id="queryAllBankName" resultType="MenuDto">
+		select m.c2 as menuKey,m.c3 as menuValue from JNF_T13 m where m.c1='REAL_NAME_BANK_LIST'
+	</select> -->
+	
+	<!-- 查询所有商户的名称 -->
+	<!-- <select id="queryAllBusinessName" resultType="BussinessDto">
+		SELECT b.c1 AS mid,b.c2 AS mName FROM JNF_T1 b 
+	</select> -->
+	
+	<!-- 根据用户编号查询所有的用户绑卡信息 -->
+	<select id="queryBindCarUser" resultType="BindCardDto">
+		SELECT　
+		<include refid="columns"/>
+		,b.C2 as "mName" FROM JNF_T3 a left join JNF_T1 b 
+		on b.C1 = a.C3
+		 WHERE a.c2 = #{custId}
+	</select>
+	
+	<!-- 查询是否绑定 --> 
+	<select id = "isBindCard" parameterType="Map" resultType="int">
+		SELECT count(0) 
+			FROM JNF_T3 a
+			WHERE a.C3=#{mId}
+			AND a.C14=#{custName}
+			AND a.C15=#{idNo}
+			AND a.C6=#{bankCardNo}
+	</select>
+	
+	<!-- 插入签约信息 -->
+	<insert id="signAgree" parameterType="BindCardDto">
+		INSERT INTO JNF_T3(
+			C1, 
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13,
+			C14,
+			C15,
+			C16
+		) VALUES (
+			 #{aid},
+			 #{custId},
+			 #{mId},
+			 #{type},
+			 #{bankName},
+			 #{bankCardNo},
+			 #{state},
+			 #{mobile},
+			 #{agreementHash},
+			 #{remark},
+			 #{digest},
+			 sysdate,
+			 sysdate,
+			 #{custName},
+			 #{idNo},
+			 #{signNo}
+		)
+	</insert>
+	
+	
+	<!-- 查询客户代扣协议 -->
+	<select id="queryBindCardInfo" resultType="BindCardDto">
+		SELECT
+		<include refid="columns"/>
+		FROM JNF_T3 a
+		WHERE a.C6 = #{bankCardNo}
+		and  a.C2 = #{custId}
+		and  a.C3 = #{mId}
+	</select>
+	
+	<!-- 将协议号码更新表中 -->
+	<update id="updateSignNo">
+		update JNF_T3 set C16=#{signNo} where C1 = #{aid}
+	</update>
+	
+	<!-- 根据条件查询签约（绑卡）信息 -->
+	<select id="querySignInfo" resultType="BindCardDto">
+		SELECT
+		<include refid="columns"/>
+		FROM JNF_T3 a
+		WHERE a.C2 = #{cardSignNo} 
+		and  a.C3 = #{mid} 
+		and  a.C6 = #{bankCardNo} 
+		and  a.C14 = #{custName} 
+		and  a.C15 = #{idNo} 
+		and  a.C8 = #{mobile} 
+	</select>
+	
+	<!-- 插入解绑表 -->
+	<insert id="insertReleaseSign" >
+		INSERT INTO JNF_T16
+ 		 (C1, C2, C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17)
+	  		SELECT 
+	  			C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,#{flag}
+	    	FROM JNF_T3 a
+   			WHERE a.C2 = #{aid}
+	</insert>
+	
+	<!-- 删除绑卡表信息 -->
+	<delete id="deleteSignInfo">
+		DELETE FROM JNF_T3 a WHERE a.C2 = #{cardSignNo} 
+	</delete>
+</mapper>

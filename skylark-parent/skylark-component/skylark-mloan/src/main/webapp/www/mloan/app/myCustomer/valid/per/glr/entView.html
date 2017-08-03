@@ -1,0 +1,95 @@
+<ion-view view-title="关联人详情">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-if="'1' === ctrl.editable"
+             ng-click="ctrl.edit()"
+        >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                企业名称
+                <span class="item-note">{{ ctrl.vm.custName }}</span>
+            </ion-item>
+            <ion-item>
+                客户类型
+                <span class="item-note">{{ ctrl.vm.custType | jnConstant :5028 }}</span>
+            </ion-item>
+            <ion-item>
+                与客户关系
+                <span class="item-note">{{ ctrl.vm.linkTypeName }}</span>
+            </ion-item>
+            <ion-item>
+                三证合一
+                <span class="item-note">{{ ctrl.vm.cardMerge | jnConstant :5064 }}</span>
+            </ion-item>
+            <ion-item ng-if="'Y' === ctrl.vm.cardMerge">
+                统一信用代码
+                <span class="item-note">{{ ctrl.vm.liceNo }}</span>
+            </ion-item>
+            <ion-item ng-if="'N' === ctrl.vm.cardMerge">
+                营业执照
+                <span class="item-note">{{ ctrl.vm.paperNo }}</span>
+            </ion-item>
+            <ion-item ng-if="'N' === ctrl.vm.cardMerge">
+                组织机构代码
+                <span class="item-note">{{ ctrl.vm.orgNo }}</span>
+            </ion-item>
+            <ion-item>
+                贷款卡编号
+                <span class="item-note">{{ ctrl.vm.loanCard }}</span>
+            </ion-item>
+            <ion-item>
+                所属行业
+                <span class="item-note">{{ ctrl.vm.inTradeName }}</span>
+            </ion-item>
+            <ion-item>
+                联系方式
+                <span class="item-note">
+                    <jn-tel-no num="{{ ctrl.vm.fixPhone }}" >
+                        {{ ctrl.vm.fixPhone }}
+                    </jn-tel-no>
+                </span>
+            </ion-item>
+            <ion-item>
+                法律实体类型
+                <span class="item-note">{{ ctrl.vm.orgType | jnConstant :5014 }}</span>
+            </ion-item>
+            <ion-item>
+                主营业务
+                <span class="item-note">{{ ctrl.vm.mainBusiness }}</span>
+            </ion-item>
+            <ion-item>
+                业务开始时间
+                <span class="item-note">{{ ctrl.vm.businessStartDt }}</span>
+            </ion-item>
+            <ion-item>
+                经营时间
+                <span class="item-note">{{ ctrl.vm.businessHours }}</span>
+            </ion-item>
+            <ion-item>
+                实际经营地址
+                <span class="item-note">{{ ctrl.vm.custAddr }}</span>
+            </ion-item>
+            <ion-item>
+                经营场所
+                <span
+                    class="item-note"
+                    ng-if="'1' === ctrl.vm.addressType"
+                >自有</span>
+                <span
+                    class="item-note"
+                    ng-if="'2' === ctrl.vm.addressType"
+                >租赁</span>
+                <span
+                    class="item-note"
+                    ng-if="'4' === ctrl.vm.addressType"
+                >{{ ctrl.vm.addressTypeOtherDesc }}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

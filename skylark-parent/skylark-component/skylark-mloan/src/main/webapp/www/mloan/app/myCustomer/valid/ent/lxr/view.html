@@ -1,0 +1,37 @@
+<ion-view view-title="联系人详情">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-if="'1' === ctrl.editable"
+             ng-click="ctrl.edit()"
+        >修改</button>
+    </ion-nav-buttons>
+	<ion-content>
+		<ion-list>
+			<ion-item>
+			    客户名称<span class="item-note">{{ ctrl.vm.custName }}</span>
+			</ion-item>
+			<ion-item>
+			    与客户关系<span class="item-note">{{ ctrl.vm.linkType | jnConstantList :5018 }}</span>
+			</ion-item>
+			<ion-item>
+			    身份证号<span class="item-note">{{ ctrl.vm.paperNo }}</span>
+			</ion-item>
+			<ion-item>
+			    联系方式
+			    <span class="item-note">
+			        <jn-tel-no num="{{ ctrl.vm.phoneNo }}" ></jn-tel-no>
+			    </span>
+			</ion-item>
+			<ion-item>
+			    工作单位<span class="item-note">{{ ctrl.vm.workUnit }}</span>
+			</ion-item>
+			<ion-item>
+			    联系地址<span class="item-note">{{ ctrl.vm.custAddr }}</span>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

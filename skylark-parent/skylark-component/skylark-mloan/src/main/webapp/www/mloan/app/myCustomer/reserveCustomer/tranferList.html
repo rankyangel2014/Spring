@@ -1,0 +1,52 @@
+<ion-view view-title="{{title}}" id="reserveCustomerAssignList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <button
+         class="button button-clear"
+         ng-click="transferCustomer();"
+         ng-if='true'
+     >移交</button>
+    </ion-nav-buttons>
+    <ion-content>
+    <form name="Ctrl.myForm">
+    		<ion-item class="item-divider">接受信息</ion-item>
+    		
+            <ion-item  style="white-space:normal;font-size:14px;">
+             <div >审批号：{{Ctrl.pendId}}</div>
+             <div style="max-width: 100%">
+                     <span>操作人：<strong>{{it2.afCustManagerName}}</strong></span>
+             </div>
+             <!-- <div ng-if="it2.asgnRemark">备注：{{ it2.asgnRemark }}</div> &nbsp&nbsp&nbsp日期：{{it2.asgnDate}}-->
+            </ion-item>
+            <ion-item class="item-divider">移交客户</ion-item>
+            <ion-item ng-if="0 < it.total"  style="white-space:normal;font-size:14px;" >
+	                <div ng-repeat="e in it.root" style="display:inline">
+	                        &nbsp&nbsp&nbsp<strong style="color: #007aff;" ng-click="claim(e)">{{e.custName}}</strong>
+	                </div>
+             </ion-item>
+            <ion-item class="item-divider">移交信息</ion-item>
+           <!--  <ion-item class='item-input'>
+                        <span class='input-label required'>分配给</span>
+                        <input type='text' name='userName' readonly="readonly" required ng-model='Ctrl.it3.userName' ng-click="assign();" placeholder="请选择分配对象">
+            </ion-item> -->
+            <ion-item class='item-input item-select'>
+	                    <span class='input-label required'>移交给</span>
+	                    <select required ng-model='it.stationType' name='stationType' >
+	                        <option value=''>--请选择--</option>
+							<option ng-if="isStation=='1'" value="3">决策岗</option>
+							<option value="1" ng-if="isStation=='3'">决策岗</option>
+							<option value="2" ng-if="isStation=='2'||isStation=='3'">团队经理</option>
+	                    </select>
+	            </ion-item>
+            <ion-item class='item-input'>
+                      <span class='input-label required' style="margin-top:-50px;">原因</span>
+                      <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32"  required
+                      ng-model='Ctrl.it3.asgnRemark'  name='asgnRemark' placeholder="请输入原因" jn-input-length="500"></textarea>
+                      
+            </ion-item>
+		    <div ng-if="0 === it.total" class="no_record" >暂无记录 </div>
+	</form>
+    </ion-content>
+</ion-view>

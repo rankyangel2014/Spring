@@ -1,0 +1,50 @@
+<ion-view view-title="我的业务" cache-view="false" id="myBusiness">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="paramsCtrl.search()"
+         >搜索</button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+       <ion-list ng-show="0 < paramsCtrl.list.items.length">
+	            <ion-item ng-repeat="l in paramsCtrl.list.items" 
+	            ng-click="toDetail(l.custNo,l.custType,l.loanNo,l.contTypId,l.contTyp,l.applAmt)">
+		        	<div class="type_status"
+                          data-type="{{ l.contTyp }}"
+                          data-status="{{ l.status }}"
+                          style="margin-bottom: 10px;">
+	                </div>
+	                <div>
+	                	<div class="jn-item-title">
+				                <a class="name" data-type="{{ l.custType }}" style="TEXT-DECORATION:none;max-width:60%" 
+				                	ng-click="custDetail(l.custNo,l.custType,$event)">{{ l.custName }}</a>
+				                <jn-tel-no num="{{l.phoneNo}}" hide-num></jn-tel-no>
+		                </div>
+	                	<div class="compact">
+					        <label>申请金额</label><!-- 
+					     	--><span class="content">{{ l.applAmt | jnCurrency }}</span><!-- 
+					     	--><label>申请日期</label><!-- 
+					     	--><span class="content">{{ l.applDt | jnDate }}</span>
+					    </div>
+					    <div class="compact" ng-if="l.custManagerName">
+					        <label>客户经理</label><!--
+					     	--><span class="content">{{ l.custManagerName }}</span>
+							<!--<label>借据号</label><span class="content">{{ l.loanNo }}</span>-->
+					    </div>
+	               </div>
+	            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === paramsCtrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="paramsCtrl.more()"
+            ng-show="paramsCtrl.list.items.length < paramsCtrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

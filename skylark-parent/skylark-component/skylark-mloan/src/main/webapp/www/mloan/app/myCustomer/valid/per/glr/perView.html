@@ -1,0 +1,87 @@
+<ion-view view-title="关联人详情">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-if="'1' === ctrl.editable"
+             ng-click="ctrl.edit()"
+        >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                客户名称
+                <span class="item-note">{{ ctrl.vm.custName }}</span>
+            </ion-item>
+            <ion-item>
+                客户类型
+                <span class="item-note">{{ ctrl.vm.custType | jnConstant :5028 }}</span>
+            </ion-item>
+            <ion-item>
+                与客户关系
+                <span class="item-note">{{ ctrl.vm.linkTypeName }}</span>
+            </ion-item>
+            <ion-item>
+                身份证号
+                <span class="item-note">{{ ctrl.vm.paperNo }}</span>
+            </ion-item>
+            <ion-item>
+                性别
+                <span class="item-note">{{ ctrl.vm.sex | jnConstant :306 }}</span>
+            </ion-item>
+            <ion-item>
+                出生日期
+                <span class="item-note">{{ ctrl.vm.paperNo | jnIdToBirth }}</span>
+            </ion-item>
+            <ion-item>
+                年龄
+                <span class="item-note">{{ ctrl.vm.paperNo | jnIdToAge }}</span>
+            </ion-item>
+            <ion-item>
+                婚姻状况
+                <span class="item-note">{{ ctrl.vm.marryStatus | jnConstant :5027 }}</span>
+            </ion-item>
+            <ion-item>
+                教育水平
+                <span class="item-note">{{ ctrl.vm.eduLevel | jnConstant :5047 }}</span>
+            </ion-item>
+            <ion-item>
+                手机
+                <span class="item-note">
+                    <jn-tel-no num="{{ ctrl.vm.mobPhone }}" ></jn-tel-no>
+                </span>
+            </ion-item>
+            <ion-item>
+                固定电话
+                <span class="item-note">
+                    <jn-tel-no num="{{ ctrl.vm.fixPhone }}" ></jn-tel-no>
+                </span>
+            </ion-item>
+            <ion-item>
+                居住情况
+                <span
+                    class="item-note"
+                    ng-if="'1' === ctrl.vm.housingStatus"
+                >自有</span>
+                <span
+                    class="item-note"
+                    ng-if="'2' === ctrl.vm.housingStatus"
+                >抵押</span>
+                <span
+                    class="item-note"
+                    ng-if="'3' === ctrl.vm.housingStatus"
+                >租赁</span>
+                <span
+                    class="item-note"
+                    ng-if="'4' === ctrl.vm.housingStatus"
+                >{{ ctrl.vm.housingDesc }}</span>
+            </ion-item>
+            <ion-item>
+                家庭地址
+                <span class="item-note">{{ ctrl.vm.custAddr }}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

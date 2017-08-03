@@ -1,0 +1,28 @@
+<ion-view view-title="实用工具">
+    <jn-back></jn-back>
+    <ion-content>
+        <style>
+            .icon_cal:before{
+                font-weight: normal;
+			    font-family: iconfont;
+			    content: '\e61f';
+			    color: #007aff;
+			    padding-right: 5px;
+			    font-size: 22px;
+			    vertical-align: middle
+            }
+        </style>
+        <ion-list>
+            <ion-item class="item item-icon-left item-icon-right" ui-sref="loanCalc">
+                <i class="icon icon_cal"></i>
+                                贷款试算器
+                <i class="icon  icon ion-ios-arrow-right" style="font-size: 22px;"></i>
+            </ion-item>
+            <ion-item class="item item-icon-left item-icon-right" ui-sref="utilRepayCalc">
+                <i class="icon icon_cal"></i>
+                                还款试算器
+                <i class="icon  icon ion-ios-arrow-right" style="font-size: 22px;"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

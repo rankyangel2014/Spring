@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.ApiRoleCtrlDao">
+	<select id="validateRoleCtrl" resultType="Integer">
+		SELECT COUNT(0)
+		FROM JNF_T6 T1,JNF_T7 T2
+		WHERE T1.C1 = T2.C2
+		AND T1.C2 = #{permission}
+		AND T2.C1 = #{mid}
+	</select>
+	
+	<sql id="columns">
+		T1.C1 as "apiRole.id",
+		T1.C2 as "apiRole.permission",
+		T1.C3 as "apiRole.desc",
+		T2.C1 as "mid",
+		T2.C2 as "perid"
+	</sql>
+	<sql id="joins"></sql>
+	<select id="findPlatRoles" resultType="ApiRoleCtrlDto">
+		SELECT 
+			T1.C1 as "apiRole.id",
+			T1.C2 as "apiRole.permission",
+			T1.C3 as "apiRole.desc" 
+		FROM JNF_T6 T1 
+	</select>
+</mapper>

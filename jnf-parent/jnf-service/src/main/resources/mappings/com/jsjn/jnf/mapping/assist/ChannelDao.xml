@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.ChannelDao">
+    <sql id="columns">
+        a.C1 as "channelId",
+        a.C2 as "channelName",
+        a.C3 as "fee",
+        a.C4 as "channelType"
+    </sql>
+    
+    
+    <select id="queryChannelById" resultType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+        SELECT 
+           T1.C1 as "channelId",
+           T1.C2 as "channelName",
+           T1.C3 as "fee",
+           T1.C4 as "channelType"
+        FROM JNF_T23 T1
+        WHERE T1.C1 = #{channelId}
+    </select>
+    
+    <select id="queryChannel" resultType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+        SELECT 
+           <include refid="columns"></include>
+        FROM JNF_T23 a 
+        ORDER BY a.C1 ASC
+    </select>
+    
+    <insert id="addChannel" parameterType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+        insert into jnf_t23(
+            C1,
+            C2,
+            C3,
+            C4
+        )
+        values(
+            #{channelId},
+            #{channelName},
+            #{fee},
+            #{channelType}
+        )
+    </insert>
+    
+    <update id="updateChannel" parameterType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+        UPDATE JNF_T23 SET 
+            C1 = #{channelId},
+            C2 = #{channelName},
+            C3 = #{fee},
+            C4 = #{channelType}
+        WHERE C1 = #{channelId}
+    </update>
+    
+    <delete id="delChannel" parameterType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+        DELETE FROM JNF_T23 WHERE C1 = #{channelId}
+    </delete>
+    
+    <select id="queryChannelByOrgNo" resultType="com.jsjn.jnf.bean.dto.assist.ChannelDto">
+    	SELECT 
+    		* 
+    	FROM 
+    	(
+    		SELECT 
+	        	T3.C1   channelId,
+		        T3.C2   channelName,
+		        T3.C3   fee,
+		        T3.C4   channelType
+	        FROM JNF_T2 T1, JNF_T24 T2, JNF_T23 T3
+	 		WHERE T1.C1 = T2.C2 AND T2.C3 = T3.C1
+		 		AND T1.C6='1' AND T1.C4 = '1' 
+		 		AND T2.C4='1' AND T1.C12 = #{orgNo}
+		     ORDER BY CHANNELID
+    	 )
+    	 WHERE ROWNUM = 1
+    </select>
+    
+    <select id="queryBusinessTypesByOrgNo" resultType="string">
+   		SELECT 
+	        T3.C4   channelType
+        FROM JNF_T2 T1, JNF_T24 T2, JNF_T23 T3
+ 		WHERE T1.C1 = T2.C2 AND T2.C3 = T3.C1
+	 		AND T1.C6='1' AND T1.C4 = '1' 
+	 		AND T2.C4='1' AND T1.C12 = #{orgNo}
+    </select>
+    
+</mapper>

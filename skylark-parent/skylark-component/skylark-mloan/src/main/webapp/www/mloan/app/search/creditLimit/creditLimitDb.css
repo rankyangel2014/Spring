@@ -1,0 +1,90 @@
+#creditLimitDb  ion-item {
+    font-size: 14px;
+}
+
+#creditLimitDb .list .name {
+    font-weight: bold;
+    line-height: 1.5em;
+    white-space: normal;
+    
+}
+
+#creditLimitDb .list {
+    color: #666;
+}
+
+#creditLimitDb .list>li>div:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#creditLimitDb .list>li>div:nth-child(2) {
+    color: #000;
+}
+
+#creditLimitDb .type_status {
+    line-height: 1;
+    font-size: 0px;
+    font-weight: normal;
+    text-align: right;
+}
+
+#creditLimitDb .type_status:before,
+#creditLimitDb .type_status:after {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    font-size: 14px;
+}
+
+#creditLimitDb .type_status:before {
+    content: attr(data-type);
+    color: #fff;
+}
+
+#creditLimitDb .type_status:after {
+    content: attr(data-status);
+    text-align: center;
+}
+
+#creditLimitDb .type_status[data-status="0"]:after {
+    border-color: navy;
+}
+
+#creditLimitDb .type_status[data-status="1"]:after {
+    border-color: crimson;
+}
+
+#creditLimitDb .type_status[data-status="0"]:before {
+    content: '有效';
+    background-color: navy;
+}
+
+#creditLimitDb .type_status[data-status="1"]:before {
+    content: '无效';
+    background-color: crimson;
+}
+
+#creditLimitDb .type_status[data-type="0"]:after {
+    content: '所有';
+}
+
+#creditLimitDb .type_status[data-type="1"]:after {
+    content: '信用';
+}
+
+#creditLimitDb .type_status[data-type="2"]:after {
+    content: '担保';
+}
+
+#creditLimitDb .type_status[data-type="3"]:after {
+    content: '抵押';
+}
+
+#creditLimitDb .type_status[data-type="4"]:after {
+    content: '质押';
+}
+
+#creditLimitDb .cd {
+    display: block;
+}

@@ -1,0 +1,163 @@
+<ion-view view-title="实体信息新增" id="custEntityAdd">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-clear "
+                ng-click="ctrl.submit()">保存
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <form name="ctrl.form.stxx" novalidate jn-edit-form>
+            <input type="hidden" name="custNo" ng-model="ctrl.stxx.custNo"/>
+            <input type="hidden" name="entCustNo" ng-model="ctrl.stxx.entCustNo"/>
+            <ion-item class="item-divider">基本信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">实体名称</span>
+                <input
+                        type="text"
+                        name="custName"
+                        ng-model="ctrl.stxx.custName"
+                        ng-required="true"
+                        jn-input-length="120"
+                        ng-disabled="ctrl.stxx.custNameDisabled"
+                        placeholder="请输入实体名称"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">三证合一</span>
+                <!-- select
+                        jn-options="5064"
+                        ng-model="ctrl.stxx.liceNoOrNewCard"
+                        name="liceNoOrNewCard"
+                        ng-required="true"
+                        ng-disabled="ctrl.stxx.liceNoOrNewCardDisabled"
+                        ng-change="ctrl.changeCardType(ctrl.stxx.liceNoOrNewCard)"></select> -->
+                <ion-radio ng-change="ctrl.changeCardType(ctrl.stxx.liceNoOrNewCard)" ng-disabled="ctrl.stxx.liceNoOrNewCardDisabled" style='border:0px;' name='liceNoOrNewCard'  ng-model='ctrl.stxx.liceNoOrNewCard'  ng-checked="ctrl.stxx.liceNoOrNewCard"  value='N' checked>否</ion-radio>
+                <ion-radio ng-change="ctrl.changeCardType(ctrl.stxx.liceNoOrNewCard)" ng-disabled="ctrl.stxx.liceNoOrNewCardDisabled" style='border:0px;' name='liceNoOrNewCard'  ng-model='ctrl.stxx.liceNoOrNewCard'  ng-checked="ctrl.stxx.liceNoOrNewCard"  value='Y' >是</ion-radio>
+            </ion-item>
+            <ion-item class="item-input" ng-if="ctrl.stxx.liceNoOrNewCard==='Y'">
+                <span class="input-label">统一信用代码</span>
+                <input
+                        type="text"
+                        name="liceNo"
+                        ng-model="ctrl.stxx.liceNo"
+                        jn-lice-no
+                        ng-disabled="ctrl.stxx.liceNoDisabled"
+                        placeholder="请输入统一信用代码"
+                        ng-change="ctrl.onChangeLiceNo(ctrl.stxx.liceNo)"/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="ctrl.stxx.liceNoOrNewCard==='N'">
+                <span class="input-label">营业执照</span>
+                <input
+                        type="text"
+                        name="regNo"
+                        ng-model="ctrl.stxx.regNo"
+                        jn-reg-no
+                        ng-disabled="ctrl.stxx.regNoDisabled"
+                        placeholder="请输入营业执照号码"
+                        ng-change="ctrl.onChangeRegNo(ctrl.stxx.regNo)"/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="ctrl.stxx.liceNoOrNewCard==='N'">
+                <span class="input-label">组织机构代码</span>
+                <input
+                        type="text"
+                        name="liceNo"
+                        ng-model="ctrl.stxx.liceNo"
+                        jn-org-no
+                        placeholder="请输入组织机构代码"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">主营业务</span>
+                <input
+                        type="text"
+                        name="mainBusiness"
+                        ng-model="ctrl.stxx.mainBusiness"
+                        jn-input-length="100"
+                        placeholder="请输入主营业务"/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">组织形式</span>
+                <select jn-options="899" ng-model="ctrl.stxx.orgForm" name="orgForm"></select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">法人代表</span>
+                <jn-select-customer
+                        type="text"
+                        name="corpReprst"
+                        ng-model="ctrl.stxx.corpReprst"
+                        cust-no="ctrl.stxx.custNo"
+                        on-select="ctrl.onSelect"
+                        cust-type="0"
+                        placeholder="请输入法人代表">
+                </jn-select-customer>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">雇员人数</span>
+                <input
+                        type="number"
+                        name="employeeNum"
+                        ng-model="ctrl.stxx.employeeNum"
+                        min="0"
+                        step="1"
+                        jn-positive
+                        placeholder="请输入雇员人数"
+                        ng-trim/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">法律实体</span>
+                <select jn-options="5014" ng-model="ctrl.stxx.orgType" name="orgType"></select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">固定电话</span>
+                <input
+                        type="text"
+                        name="fixPhone"
+                        ng-model="ctrl.stxx.fixPhone"
+                        placeholder="请输入固定电话"
+                        jn-phone/>
+            </ion-item>
+            <ion-item class="item-divider">经营信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">营业时间</span>
+                <input
+                        type="text"
+                        name="businessHours"
+                        ng-model="ctrl.stxx.businessHours"
+                        placeholder="请输入营业时间"/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">营业场所</span>
+                <select jn-options="900" ng-model="ctrl.stxx.addressType" name="addressType"></select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">场所面积(m2)</span>
+                <input
+                        type="number"
+                        name="addressArea"
+                        ng-model="ctrl.stxx.addressArea"
+                        min="0"
+                        max="9999999999999"
+                        placeholder="请输入经营场所面积"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">业务开始时间</span>
+                <input
+                        type="date"
+                        name="businessStartDt"
+                        ng-model="ctrl.stxx.businessStartDt"
+                        placeholder="请输入业务开始时间"
+                        ng-trim/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">实际经营地址</span>
+                <input
+                        type="text"
+                        name="address"
+                        jn-input-length="100"
+                        ng-model="ctrl.stxx.address"
+                        placeholder="请输入实际经营地址"/>
+            </ion-item>
+        </form>
+    </ion-content>
+</ion-view>

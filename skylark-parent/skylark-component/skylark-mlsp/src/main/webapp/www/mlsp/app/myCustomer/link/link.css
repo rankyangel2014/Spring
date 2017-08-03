@@ -1,0 +1,27 @@
+#mycustomer-link-list .name {
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+#mycustomer-link-list .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#mycustomer-link-list .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#mycustomer-link-list .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#mycustomer-link-list [data-link-status="1"] {
+    opacity: .5;
+}

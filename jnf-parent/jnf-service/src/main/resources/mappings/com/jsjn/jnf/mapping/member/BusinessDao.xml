@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jsjn.jnf.dao.member.BussinessDao">
+	<sql id="columns">
+		a.C1 as "mid",
+		a.C2 as "mName",
+		a.C3 as "busLcnsNo",
+		a.C4 as "phoneNo",
+		a.C5 as "addr",
+		a.C6 as "status",
+		a.C7 as "created",
+		a.C8 as "modified"
+	</sql>
+    
+	<sql id="joins">
+	</sql>
+	
+	<!-- 根据商户号查询商户信息-->
+	<select id="get" resultType="BussinessDto">
+		SELECT
+		a.C1 as "mid"
+		FROM JNF_T1 a
+		<where>
+			<if test="mid!=null and mid!=''">
+				and a.c1=#{mid}
+			</if> 
+			<if test="busLcnsNo!=null and busLcnsNo!=''">
+				and a.c3=#{busLcnsNo}
+			</if> 
+		</where>
+	</select>
+	
+	<insert id="insert" keyProperty="mid">
+		insert into jnf_t1(
+		C1,
+		C2,
+		C3,
+		C4,
+		C5,
+		C6,
+		C7,
+		C8
+		)
+		values(
+		#{mid},      
+		#{mName},    
+		#{busLcnsNo},
+		#{phoneNo},  
+		#{addr},     
+		#{status},   
+        sysdate,  
+		sysdate  
+		)
+	</insert>
+	
+	<insert id="createBizConfig" parameterType="BizConfigDto"   keyProperty="mid">
+			insert into jnf_t5(
+		C1,
+		C2,
+		C3,
+		C4,
+		C5,
+		C6
+		)
+		values(
+		#{mid},      
+		#{appkey},    
+		#{whiteList},
+		#{rsaPubKey},  
+		#{aesKey},     
+		#{digest}
+		)
+	</insert>
+	
+	<update id="update" parameterType="BussinessDto">
+		UPDATE JNF_T1 SET 
+			C1 = #{mid},
+			C2 = #{mName},
+			C3 = #{busLcnsNo},
+			C4 = #{phoneNo},
+			C5 = #{addr},
+			C6 = #{status}, 
+			C8 = sysdate 
+		WHERE C1 = #{mid}
+	</update>
+	
+	<update id="amendBizConfig" parameterType="BizConfigDto">
+	UPDATE JNF_T5 SET 
+	c2 = #{appkey},
+	c3 = #{whiteList},
+	c4 = #{rsaPubKey}
+	where c1 = #{mid}
+	</update>
+	
+	<!-- 根据商户号，商户名称，状态查询商户信息 -->
+	<select id="findBussiness" resultType="BussinessDto">
+		SELECT
+		<include refid="columns"></include>
+		FROM JNF_T1 a
+		<where>
+			<if test="mid!=null and mid!=''">
+				and a.c1=#{mid}
+			</if> 
+			<if test="mName!=null and mName!=''">
+				and a.c2=#{mName}
+			</if> 
+			<if test="status!=null and status!=''">
+				and a.c6=#{status}
+			</if>
+		</where>
+		ORDER BY a.C1 ASC
+	</select>
+	
+	<select id="qryBusnessByMid" resultType="BussinessDto">
+		SELECT
+		<include refid="columns"></include> 
+		  FROM JNF_T1 a
+		<where>
+			<if test="mid!=null and mid!=''">
+				 a.c1=#{mid}
+			</if>
+		</where>
+	</select>
+	
+	<select id="qryBussinessConfigByMid" resultType="BizConfigDto">
+		select a.c2 as appkey,
+		a.c3 as whiteList,
+		a.c4 as rsaPubKey from JNF_T5 a
+		<where>
+			<if test="mid!=null and mid!=''">
+				 a.c1=#{mid}
+			</if>
+		</where>
+	</select>
+	
+	<select id="qryApiRole" resultType="RoleDto">
+		select t2.c3 as des ,t2.c1 as rid from jnf_t7 t1,jnf_t6 t2 
+		 where t1.c2 = t2.c1
+		<if test="mid!=null and mid!=''">
+			and t1.c1 = #{mid}
+		</if>
+	</select>
+	
+	<select id="qryPerowRole" resultType="RoleDto">
+		select c1 as rid,c3 as des from jnf_t6
+	</select>
+	
+	<!-- 查询当前商户权限 -->
+	<select id="findBussinessAuth" resultType="String">
+		SELECT
+		a.c2 as perid 
+		FROM JNF_T7 a
+		where 
+		a.c1 = #{mid}
+	</select>
+	
+	<!-- 删除该商户下所有权限 -->
+	<delete id="deleteBussinessAuth" >
+		DELETE FROM JNF_T7 a WHERE a.c1 = #{mid}
+	</delete>
+	
+	<!-- 插入对应的权限 -->
+	<insert id="insertBussinessAuth" parameterType="List">  
+	    insert into JNF_T7  (c1,c2)  
+	    <foreach open="(" close=")" collection="list" item="item" index="index" separator="union" >  
+	       select 
+	        #{item.mid},#{item.perid} 
+	       from dual
+	    </foreach>  
+	</insert>  
+	
+	<!-- 修改商户接入配置 -->
+	<update id="updateBussinessConfig" parameterType="String">
+		UPDATE JNF_T5 SET 
+		C3 = #{whiteList},
+		C4 = #{rsaPubKey},
+		C5 = #{aesKey},
+		C6 = #{digest}
+		WHERE C1 = #{mid}
+	</update>
+	
+	<select id="regNoIsRegiset" parameterType="String" resultType="BussinessDto">
+		select 
+			<include refid="columns"></include> 
+		from jnf_t1 a
+		where a.C3 = #{busLcnsNo} and a.C1 != #{mid}
+	</select>
+	
+</mapper>

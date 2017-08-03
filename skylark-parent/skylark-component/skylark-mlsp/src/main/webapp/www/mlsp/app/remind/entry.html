@@ -1,0 +1,21 @@
+<ion-view title="待阅事项" cache-view="false">
+    <jn-back></jn-back>
+    <ion-content>
+        <ion-list>
+            <ion-item
+                ng-repeat="e in ctrl.groups.items"
+                class="item-icon-left item-icon-right"
+                ui-sref="remindTabs({messageType: '{{ e.messageType }}', messageName: '{{ e.messageName }}'})"
+                ui-sref-opts="{reload: true}"
+            >
+                <i class="icon ion-ios-email-outline positive" style="font-size: 30px"></i>
+                {{ e.messageName }}
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-hide="e.unReadTotal === '0'"
+                >{{ e.unReadTotal }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

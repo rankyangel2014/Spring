@@ -1,0 +1,208 @@
+<ion-view view-title="担保方式">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"
+                ng-click="guaranteeWayCtrl.saveForm()"
+                ng-if="!guaranteeWayCtrl.isReadOnly">
+                保存
+        </button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <ion-list>
+            <form jn-edit-form name="guaranteeWayCtrl.applyInfoForm">
+                <ion-item class="item-divider">担保方式</ion-item>
+                <ion-item class="jn-checkbox-group">
+                    <ion-checkbox
+                        class="item-checkbox-right"
+                        ng-model="guaranteeWayCtrl.gurTypeList.credit"
+                        ng-change="guaranteeWayCtrl.changeCredit(guaranteeWayCtrl.gurTypeList.credit)"
+                        ng-disabled="guaranteeWayCtrl.isReadOnly">
+                        信用
+                    </ion-checkbox>
+                </ion-item>
+                <ion-item class="jn-checkbox-group">
+                    <ion-checkbox
+                        class="item-checkbox-right"
+                        ng-model="guaranteeWayCtrl.gurTypeList.ensure"
+                        ng-change="guaranteeWayCtrl.changeEnsure(guaranteeWayCtrl.gurTypeList.ensure)"
+                        ng-disabled="guaranteeWayCtrl.isReadOnly || guaranteeWayCtrl.gurTypeList.credit">
+                        保证
+                    </ion-checkbox>
+                    <ion-checkbox
+                        class="item-checkbox-right"
+                        ng-model="guaranteeWayCtrl.gurTypeList.mortgage"
+                        ng-change="guaranteeWayCtrl.changeMortgage(guaranteeWayCtrl.gurTypeList.mortgage)"
+                        ng-disabled="guaranteeWayCtrl.isReadOnly || guaranteeWayCtrl.gurTypeList.credit">
+                        抵押
+                    </ion-checkbox>
+                    <ion-checkbox
+                        class="item-checkbox-right"
+                        ng-model="guaranteeWayCtrl.gurTypeList.pledge"
+                        ng-change="guaranteeWayCtrl.changePledge(guaranteeWayCtrl.gurTypeList.pledge)"
+                        ng-disabled="guaranteeWayCtrl.isReadOnly || guaranteeWayCtrl.gurTypeList.credit">
+                        质押
+                    </ion-checkbox>
+                </ion-item>
+                <!-- 保证 -->
+                <div ng-if="guaranteeWayCtrl.gurTypeList.ensure">
+                    <ion-item class="item-divider">保证</ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.ensureOptList[0].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.ensureOptList[0].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="item-input"
+                              ng-if="guaranteeWayCtrl.ensureOptList[0].value">
+                        <span class="input-label">名称</span>
+                        <input type="text"
+                               name="dbqymc"
+                               placeholder="请输入企业名称"
+                               ng-model="guaranteeWayCtrl.form.dbqymc"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               jn-input-length="60"/>
+                    </ion-item>
+                    <ion-item class="item-input"
+                              ng-if="guaranteeWayCtrl.ensureOptList[0].value">
+                        <span class="input-label">与借款人的关系</span>
+                        <input type="text"
+                               name="dbqyjkr"
+                               placeholder="请输入与借款人的关系"
+                               ng-model="guaranteeWayCtrl.form.dbqyjkr"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               jn-input-length="60"/>
+                    </ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.ensureOptList[1].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.ensureOptList[1].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                     <ion-item class="item-input"
+                               ng-if="guaranteeWayCtrl.ensureOptList[1].value">
+                        <span class="input-label">名称</span>
+                        <input type="text"
+                               name="dbgrmc"
+                               placeholder="请输入个人名称"
+                               ng-model="guaranteeWayCtrl.form.dbgrmc"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               jn-input-length="60"/>
+                    </ion-item>
+                    <ion-item class="item-input"
+                              ng-if="guaranteeWayCtrl.ensureOptList[1].value">
+                        <span class="input-label">与借款人的关系</span>
+                        <input type="text"
+                               name="dbgrjkr"
+                               placeholder="请输入与借款人的关系"
+                               ng-model="guaranteeWayCtrl.form.dbgrjkr"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               jn-input-length="60"/>
+                    </ion-item>
+                </div>
+                <!-- 抵押 -->
+                <div ng-if="guaranteeWayCtrl.gurTypeList.mortgage">
+                    <ion-item class="item-divider">抵押</ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[0].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[0].label}}
+                        </ion-checkbox>
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[1].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[1].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[2].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[2].label}}
+                        </ion-checkbox>
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[3].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[3].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[4].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[4].label}}
+                        </ion-checkbox>
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[5].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[5].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[6].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[6].label}}
+                        </ion-checkbox>
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.mortgageOptList[7].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.mortgageOptList[7].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="item-input"
+                              ng-if="guaranteeWayCtrl.mortgageOptList[7].value">
+                        <span class="input-label">【其他】补充说明：</span>
+                        <input type="text"
+                               name="dyStatusText"
+                               ng-model="guaranteeWayCtrl.form.dyStatusText"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               placeholder="请输入其他情况"/>
+                    </ion-item>
+                </div>
+                <!-- 质押 -->
+                <div ng-if="guaranteeWayCtrl.gurTypeList.pledge">
+                    <ion-item class="item-divider">质押</ion-item>
+                    <ion-item class="jn-checkbox-group">
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.pledgeOptList[0].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.pledgeOptList[0].label}}
+                        </ion-checkbox>
+                        <ion-checkbox
+                            class="item-checkbox-right"
+                            ng-model="guaranteeWayCtrl.pledgeOptList[1].value"
+                            ng-disabled="guaranteeWayCtrl.isReadOnly">
+                            {{guaranteeWayCtrl.pledgeOptList[1].label}}
+                        </ion-checkbox>
+                    </ion-item>
+                    <ion-item class="item-input"
+                              ng-if="guaranteeWayCtrl.pledgeOptList[1].value">
+                        <span class="input-label">【其他】补充说明：</span>
+                        <input type="text"
+                               name="zyStatusText"
+                               ng-model="guaranteeWayCtrl.form.zyStatusText"
+                               ng-readonly="guaranteeWayCtrl.isReadOnly"
+                               placeholder="请输入其他情况"/>
+                    </ion-item>
+                </div>
+            </form>
+        </ion-list>
+    </ion-content>
+</ion-view>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mcps:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mcps="http://www.jsjngf.com/schema/mcps">
+	<node name="skylark"  id="6666"></node>
+	<registery>
+	   <protocalId>mcps</protocalId>
+	   <protocalName>mcps</protocalName>
+	   <ip>172.31.101.84</ip>
+	   <port>4601</port>
+	   <subscribe>false</subscribe>
+	   <register/>
+	   <heartBeat>10000</heartBeat>
+	   <password></password>
+	   <username></username>
+	</registery>
+  	
+  	<application id="0000" name="pubsys-back" version="0.0.1" createdate="2013-12-01 12:01:01" verification="true">
+  		<reference id="contact" failover="retry" version="0.1.0" host="172.31.19.77:8082"/>
+  		<reference id="auth" failover="retry" version="0.1.0" host="172.31.19.77:8082"/>
+  		<reference id="analysis" failover="retry" version="0.1.0" host="172.31.19.77:8082"/>
+  		<reference id="office" failover="retry" version="0.1.0" host="172.31.19.77:8082"/>
+  	</application>
+  	
+</mcps:definitions>

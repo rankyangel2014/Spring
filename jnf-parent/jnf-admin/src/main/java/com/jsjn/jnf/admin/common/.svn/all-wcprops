@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/3496/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common
+END
+TreeController.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/3429/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/TreeController.java
+END
+ApiRoleCtrlServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/2316/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/ApiRoleCtrlServiceController.java
+END
+BussinessConfigController.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2316/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/BussinessConfigController.java
+END
+DictServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2316/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/DictServiceController.java
+END
+ChannelBankServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/3439/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/ChannelBankServiceController.java
+END
+FeeConfigController.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/3496/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/FeeConfigController.java
+END
+ChannelServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/3421/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/ChannelServiceController.java
+END
+MenuConfigController.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2316/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/common/MenuConfigController.java
+END

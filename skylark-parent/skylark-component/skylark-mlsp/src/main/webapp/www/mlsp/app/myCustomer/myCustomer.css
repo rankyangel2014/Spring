@@ -1,0 +1,267 @@
+#myCustomerList ion-item {
+    font-size: 14px;
+}
+
+#myCustomerList .name {
+    font-weight:bold;
+}
+#myCustomerList .phone a[href^="tel:"] {
+    display: block;
+    width: 90px;
+    padding-left: 2px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+
+#myCustomerList .phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 5px;
+    content: '\e616';
+}
+
+#myCustomerList .name:BEFORE {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+}
+
+#myCustomerList .name.pre:BEFORE{
+    content: '\e611';
+}
+
+#myCustomerList .name.pre[data-sex="M"]:BEFORE{
+    color: #19b4f4;
+     content: '\e645';
+}
+
+#myCustomerList .name.pre[data-sex="F"]:BEFORE{
+    color: #fe9a9c;
+     content: '\e646';
+}
+
+#myCustomerList .name.enb:BEFORE{
+    content: '\e644';
+}
+
+.show_bar_on {
+    color: #5677fc;
+    background-color: #fff;
+}
+
+.show_bar_off {
+    color: #fff;
+    background-color: #5677fc;
+}
+
+.page_footer {
+    position: fixed;
+    z-index: 10;
+    top: initial;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    padding: 0;
+}
+
+.show_nav {
+    display: inline-block;
+    width: 50%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 44px;
+    border-top: 1px solid #5677fc;
+}
+.show_nav_on {
+    color: #fff;
+    background-color: #5677fc;
+}
+.show_nav_off {
+    color: #5677fc;
+    background-color: #fff;
+}
+.show_radio{
+	max-width: 110px;
+	line-height: 10px;
+}
+
+#myCustomerList .id,
+#myCustomerList .manager {
+    color: #666;
+}
+
+#myCustomerList .id:before,
+#myCustomerList .manager:before {
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+}
+
+#myCustomerList .id:before {
+    content: '\e626';
+}
+
+#myCustomerList .manager:before {
+    content: '\e627';
+}
+
+
+
+#custOtherList ion-item {
+    font-size: 14px;
+}
+
+
+#custOtherList .list>ion-item>div:first-of-type {
+    font-weight:bold;
+}
+#custOtherList .div_overflow {
+       	width: 90%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		
+}
+
+#custOtherList .id:before{
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+}
+#custOtherList .id:before {
+    content: '\e626';
+}
+#custOtherList .phone a[href^="tel:"] {
+    display: block;
+    width: 90px;
+    padding-left: 2px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+}
+
+#custOtherList .phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 5px;
+    content: '\e616';
+}
+
+
+
+#custOtherList .label {
+    width: 7em;
+    display: inline-block;
+	vertical-align: top;
+	 padding: 5px;
+}
+
+#custOtherList .content{
+	white-space:normal;
+	width: 80%;
+    padding: 5px;
+     display: inline-block;
+    vertical-align: top;	
+}
+#custOtherList .pie {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+#editPerCustomer form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#addPerCustomer form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#custLinkAdd form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#custLinkEdit form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#addRelation form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#editRelation form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#editPartner form .required:after {
+    content: ' *';
+    color: #f00;
+}
+#addPartner form .required:after {
+    content: ' *';
+    color: #f00;
+}
+/* #custOtherList .pie::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 50%; height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    background-color: inherit;
+    transform-origin: left;
+    animation: spin 50s linear infinite,
+               bg 100s step-end infinite;
+    animation-play-state: paused;
+    animation-delay: inherit;
+}
+@keyframes spin {
+  to { transform: rotate(.5turn); }
+}
+
+@keyframes bg {
+  50% { background: #fc816f; }
+}
+#custOtherList .pie::after {
+    content: attr(data-percent)'%';
+    display: block;
+    position: absolute;
+    font-size: 9px;
+    right: 120%;
+} */
+
+#addPerCustomer .scan-idcard,
+#addPerCustomer .scan-vcard,
+#editPerCustomer .scan-idcard,
+#editPerCustomer .scan-vcard {
+    color: #007aff;
+}
+
+#addPerCustomer .scan-idcard::before,
+#addPerCustomer .scan-vcard::before,
+#editPerCustomer .scan-idcard::before,
+#editPerCustomer .scan-vcard::before {
+    margin-right: .5em;
+    font-family: 'iconfont';
+}
+
+#addPerCustomer .scan-idcard::before,
+#editPerCustomer .scan-idcard::before {
+    content: '\e635';
+}
+
+#addPerCustomer .scan-vcard::before,
+#editPerCustomer .scan-vcard::before {
+    content: '\e634';
+}

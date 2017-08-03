@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/1857/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao
+END
+TestMemberCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Zfjs/!svn/ver/1857/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao/TestMemberCommon.java
+END
+TestFindOrgNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/1816/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao/TestFindOrgNo.java
+END
+TestQueryMemberById.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/1814/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao/TestQueryMemberById.java
+END
+TestQueryInvestInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/1812/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao/TestQueryInvestInfo.java
+END
+TestFindCustId.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Zfjs/!svn/ver/1810/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/memberDao/TestFindCustId.java
+END

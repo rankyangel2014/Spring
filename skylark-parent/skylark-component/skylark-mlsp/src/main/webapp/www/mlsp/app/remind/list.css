@@ -1,0 +1,58 @@
+#remindList .item {
+    font-size: .875em;
+    padding: 10px;
+}
+
+#remindList .item-avatar{
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	min-height: 25px;
+	background-color: #E0E0E0;
+}
+
+#remindList .item-avatar[data-stat='0']{
+	background-color:cornflowerblue;
+	color: #fff;
+	
+}
+
+#remindList .item-avatar[data-stat='0'] h2{
+	color: #fff;
+}
+
+#remindList .item-avatar[data-operFlag='1']{
+	background-color: orange;
+	color: #fff;
+}
+#remindList .item-avatar[data-operFlag='1'] h2{
+	color: #fff;
+}
+
+#remindList .tabs-secondary{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	/* display: flex; */
+	line-height: 40px;
+	height: 40px;
+}
+
+#remindList .pendTime {
+    position: absolute;
+    right: 10px;
+}
+
+#remindList .tab-do{
+	color: #387ef5;
+	
+}
+
+#remindList .tab-do i{
+	
+}
+
+#remindList .tab-do span{
+		vertical-align: middle;
+	display: inline;
+	font-size: 14px;
+}

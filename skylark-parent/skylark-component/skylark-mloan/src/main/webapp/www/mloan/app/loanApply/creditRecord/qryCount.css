@@ -1,0 +1,27 @@
+#creditQryCount ion-item {
+    font-size: 14px;
+}
+
+#creditQryCount .summary tbody {
+    width: 100%;
+}
+
+#creditQryCount .summary tr {
+    text-align: center;
+}
+#creditQryCount .summary th {
+    text-align: center;
+    white-space: nowrap;
+}
+
+#creditQryCount .summary td {
+	width:30%;
+    color: #000;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle
+}
+#creditQryCount .summary input {
+	text-align: right;
+	width: 100%;
+}

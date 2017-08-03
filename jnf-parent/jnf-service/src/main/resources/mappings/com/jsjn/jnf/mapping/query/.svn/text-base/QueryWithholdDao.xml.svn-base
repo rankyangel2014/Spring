@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.query.QueryWithholdDao">
+
+	<select id ="queryWithHolds" resultType = "java.util.Map" parameterType="java.util.Map">
+		SELECT 
+			C13 AS status,
+			C14 AS failReason,
+			c1 as tradeNo
+		FROM JNF_T8  
+		<where>
+			<if test="tranNO!=null and tranNo!=''">
+		     C1 = #{tranNo}
+			</if>
+			<if test="serialNo!=null and serialNo!=''">
+				and c5= #{serialNo}
+			</if>
+		</where>
+	</select>
+
+
+	
+</mapper>

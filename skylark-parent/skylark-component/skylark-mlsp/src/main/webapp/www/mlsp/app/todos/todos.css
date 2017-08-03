@@ -1,0 +1,23 @@
+#todoGroup a {
+	text-decoration: none;
+	color: #007aff;
+	text-align: center;
+}
+
+#todoGroup .col {
+	border-bottom: 1px solid #e5e5f5;
+	line-height: 32px;
+	text-align: center;
+}
+
+#todoGroup .col-50 {
+	text-align: left;
+}
+
+#assignListView .item{
+	font-size: 14px;
+}
+
+#assignListView .pendContent{
+		white-space: normal;
+}

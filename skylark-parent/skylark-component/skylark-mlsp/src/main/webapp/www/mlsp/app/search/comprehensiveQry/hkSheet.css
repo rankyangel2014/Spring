@@ -1,0 +1,31 @@
+#hkSheet table {
+    font-size: 12px;
+    white-space: nowrap;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+#hkSheet tr {
+    border-top: 1px solid #ddd;
+}
+
+#hkSheet tbody tr:nth-child(even) {
+    color: #299bd1;
+}
+
+#hkSheet tbody tr:nth-child(odd) {
+    color: #e285ab;
+}
+
+#hkSheet th,
+#hkSheet td {
+    padding: 10px 5px;
+}
+
+#hkSheet td {
+    text-align: right;
+}
+
+#hkSheet tfoot {
+    font-weight: bold;
+}

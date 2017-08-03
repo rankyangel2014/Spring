@@ -1,0 +1,173 @@
+/*【贷款申请】tabSlideBox-scroll*/
+
+.jn-tabSlideBox-scroll {
+    height: 100%;
+}
+
+
+/*和.tabbed-slidebox .tsb-ic-wrp高度相同*/
+
+.jn-tabSlideBox-scroll-extraHeight {
+    height: 40px;
+}
+
+
+/*可折叠列表的item*/
+
+.jn-toggle-item {
+    color: #298ccf;
+}
+
+.jn-toggle-item>i {
+    font-size: 25px!important;
+    right: 8px!important;
+}
+
+.jn-item-radio {
+    border: 0px!important;
+}
+
+.jn-item-selected {
+    background: url(../../img/selected.png) no-repeat right bottom;
+    background-color: #DDD;
+}
+
+.jn-toggle-content {
+    margin-left: 40%;
+}
+
+.jn-input-textarea {
+    resize: none;
+    width: initial;
+    margin-right: 24px;
+}
+
+.jn-input-required:after {
+    content: ' *';
+    color: #f00;
+}
+
+
+/*展示列表css*/
+
+.jn-item-compact {
+    padding: 4px 0px 0px 0px;
+    font-size: 13.5px;
+    word-break: break-all;
+}
+
+.jn-list-item-content {
+    display: inline;
+    vertical-align: top;
+    padding: 0 5px 0 5px;
+    word-break: break-all;
+    white-space: normal;
+    color: #666;
+}
+
+.jn-list-item-btn {
+    position: absolute;
+    right: 5%;
+    border: 0px;
+    font-size: 13px;
+    height: 25px;
+    line-height: 20px;
+    padding: 0px 7px;
+    border-radius: 0px;
+    min-height: 20px
+}
+
+
+/*名称css*/
+
+.jn-name {
+    font-weight: bold;
+    line-height: 1.5em;
+    font-size: 16px;
+}
+
+.jn-name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+.jn-name[cust-type="0"]:before {
+    content: '\e645';
+}
+
+.jn-name[cust-type="1"]:before {
+    content: '\e644';
+}
+
+
+/*证件类型css*/
+
+.jn-card-id {
+    line-height: 1.5em;
+    color: #666;
+    font-size: 14px;
+}
+
+.jn-card-id:before {
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+    content: '\e626';
+}
+
+
+/*checkBox组*/
+
+.jn-checkbox-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 6px 0 5px 0px;
+}
+
+.jn-checkbox-group>label {
+    font-size: 14px;
+    border: 0px;
+}
+
+.crdtListItem .compact {
+    padding: 4px 0px 0px 0px;
+    font-size: 13.5px;
+    word-break: break-all;
+}
+
+.crdtListItem .compact label {
+    width: 20%;
+}
+
+.crdtListItem .compact .content {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+    padding: 0 5px 0 5px;
+    word-break: break-all;
+    white-space: normal;
+}
+
+
+/*#relatedPsnInfo .meta {
+    position: absolute;
+    right: .5em;
+    bottom: .5em;
+    color: grey;
+    font-size: .9em;
+}
+
+#relatedPsnInfo .meta>span:before {
+    margin-right: .3em;
+    color: #f98653;
+}*/

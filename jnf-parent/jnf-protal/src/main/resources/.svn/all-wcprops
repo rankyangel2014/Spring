@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Zfjs/!svn/ver/4072/group/dev/jnf-parent/jnf-protal/src/main/resources
+END
+spring-context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Zfjs/!svn/ver/1223/group/dev/jnf-parent/jnf-protal/src/main/resources/spring-context.xml
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Zfjs/!svn/ver/802/group/dev/jnf-parent/jnf-protal/src/main/resources/spring-mvc.xml
+END
+spring-context-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/149/group/dev/jnf-parent/jnf-protal/src/main/resources/spring-context-shiro.xml
+END
+soa.rss.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Zfjs/!svn/ver/4072/group/dev/jnf-parent/jnf-protal/src/main/resources/soa.rss.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Zfjs/!svn/ver/2332/group/dev/jnf-parent/jnf-protal/src/main/resources/log4j.properties
+END
+protal.properties
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Zfjs/!svn/ver/96/group/dev/jnf-parent/jnf-protal/src/main/resources/protal.properties
+END

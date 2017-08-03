@@ -1,0 +1,21 @@
+{
+    "total": 16,
+    "rows": [
+        { "channalName": "天下支付", "bankName": "中国银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "农业银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "工商银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "建设银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "邮储银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "招商银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "光大银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "广发银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "华夏银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "兴业银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "中信银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "平安银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "交通银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "民生银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "浦发银行", "quota": "5", "fee": "2.00"},
+        { "channalName": "天下支付", "bankName": "兰州银行", "quota": "5", "fee": "2.00"}
+    ]
+}

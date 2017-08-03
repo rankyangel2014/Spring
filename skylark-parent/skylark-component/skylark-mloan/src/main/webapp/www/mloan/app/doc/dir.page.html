@@ -1,0 +1,30 @@
+<ion-view view-title="电子档案" jn-page>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <jn-input-search
+            search="search"
+            delay="1000"
+            placeholder="输入名称搜索"
+        ></jn-input-search>
+        <ion-list>
+            <ion-item
+                class="item-icon-right item-complex"
+                ng-repeat="e in list"
+                ng-click="onClickNode(e)"
+            >
+                <a class="item-content">
+                    <i class="ion-document positive" ng-if="! e.children"></i>
+                    <i class="ion-folder positive" ng-if="e.children"></i>
+                    <div>
+                        <b>{{ e.text }}</b>
+                        <div class="path" ng-if="searching && e.path"
+                        >{{ e.path | jnJoin :'➙' }}</div>
+                    </div>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </a>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

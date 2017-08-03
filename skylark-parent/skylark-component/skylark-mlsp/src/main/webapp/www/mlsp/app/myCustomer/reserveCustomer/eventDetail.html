@@ -1,0 +1,24 @@
+<ion-view view-title="事件详情" id="reserveCustomerEventDetail">
+    <jn-back></jn-back>
+    <style>
+
+</style>
+    <ion-content>
+        <ion-list>
+                <!-- <div>事件ID<span class="item-note" ng-show='false'>{{it.eventId}} </span></div> -->
+                <!-- <div style='border:1px red;'><span ng-class="{true: 'name good', false: 'name bad'}[it.eventStatus=='0']" data-value='{{it.eventStatus|jnConstant:6030}}'></span></div>
+                <div  class='title'><span>{{it.eventTitle}} </span></div>
+                <div>开始时间<span class="item-note" style="color:black;">{{it.alertStrDate|jnDate}}&nbsp;{{it.alertStrTime}}</span></div>
+                <div style="white-space:normal;">备注<span class="item-note" style="max-width:60%;color:black;">{{it.eventDes}} </span></div> -->
+                
+                <div class="padding">
+	                <div class="noticeHead" >
+	                  {{it.eventTitle }}
+	                </div>
+	                <div class="noticeDate">{{ it.alertStrDate|jnDate }}&nbsp;&nbsp;{{ it.alertStrTime }}&nbsp;&nbsp;{{it.eventStatus|jnConstant : 6030}}</div>
+	                <div ng-bind-html=' it.eventDes  | toHtml' 
+	                      class="noticeContent"></div>
+                </div>
+            </ion-list>
+    </ion-content>
+</ion-view>

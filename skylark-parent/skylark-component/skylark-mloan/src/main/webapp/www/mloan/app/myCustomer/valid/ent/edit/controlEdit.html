@@ -1,0 +1,308 @@
+<style type="text/css">
+.jn_select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: none;
+    background: #fff;
+    color: #333;
+    text-indent: .01px;
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+}
+.jn_select:after {
+    position: absolute;
+    top: 50%;
+    right: 85px;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    color: #999;
+    content: "";
+    pointer-events: none;
+}
+</style>
+
+<ion-view view-title="实际控制人修改" id="controlEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	  <ion-nav-buttons side="secondary">
+        <button 
+             class="button button-clear "
+             ng-click="ctrl.submit()"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content >
+	<!-- 编辑表单 -->
+    <form name="ctrl.editForm" novalidate>
+    	   <input type="hidden" name="custNo" ng-model="ctrl.form.custNo" />
+            <input type="hidden" name="kpLinkCustNo" ng-model="ctrl.form.kpLinkCustNo" />
+            <input type="hidden" name="kcLinkCustNo" ng-model="ctrl.form.kcLinkCustNo" />
+            <input type="hidden" name="kpFixPhone" ng-model="ctrl.form.kpFixPhone" />
+            <ion-item class="item-input item-select">
+                    <span class="input-label required">控制人类型</span>
+                           <select
+                            name="linkCustType"
+                            ng-model="ctrl.form.linkCustType"
+                            required
+                            jn-options="5028"
+                        ></select>
+                  </ion-item>
+            <div ng-if="ctrl.form.linkCustType=='0'">
+               <input type="hidden" name="kpLinkCustNo" ng-model="ctrl.form.kpLinkCustNo" />
+                <ion-item class="item-input">
+                    <span class="input-label required">身份证号</span>
+                           <input
+                            style="width:85%"
+                            type="text"
+                            name="kpLinkPaperNo"
+                            ng-model="ctrl.form.kpLinkPaperNo"
+                            ng-change="ctrl.onChangeId()"
+                            required
+                            jn-id-no
+                            placeholder="身份证号" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">姓名</span>
+                           <input
+                            type="text"
+                            name="kpLinkCustName"
+                            ng-model="ctrl.form.kpLinkCustName "
+                            required
+                            placeholder="请输入姓名" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">手机</span>
+                           <input
+                            type="tel"
+                            name="kpMobPhone"
+                            ng-model="ctrl.form.kpMobPhone "
+                            required
+                            jn-mobile
+                            placeholder="请输入手机" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">婚姻状况</span>
+                           <select
+                            name="kpMarryStatus"
+                            ng-model="ctrl.form.kpMarryStatus"
+                            required
+                            jn-options="5027"
+                            >
+                        </select>
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">教育水平</span>
+                           <select
+                            name="kpEduLevel"
+                            ng-model="ctrl.form.kpEduLevel"
+                             jn-options="5047"
+                        ></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">居住情况</span>
+                    <div>
+                          <select
+                            name="kpHousingStatus"
+                            ng-model="ctrl.form.kpHousingStatus"
+                            required
+                            class="jn_select">
+                            <option value="">-- 请选择 --</option>
+                            <option value="1">自有</option>
+                            <option value="2">抵押</option>
+                            <option value="3">租赁</option>
+                            <option value="4">其他</option>
+                        </select>
+                      	<div>
+                         <input
+                            type="text"
+                            name="kpDomPlace"
+                            ng-model="ctrl.form.kpDomPlace "
+                            placeholder="请输入其他居住情况" 
+                            ng-if="ctrl.form.kpHousingStatus=='4'"/>
+                            </div>
+                    </div>
+                  </ion-item>
+                <ion-item class="item-input  ">
+                    <span class="input-label">家庭地址</span>
+                           <input
+                            type="text"
+                            name="kpHome"
+                            ng-model="ctrl.form.kpHome "
+                            placeholder="请输入家庭地址" />
+                  </ion-item>
+            	</div>
+            <div ng-if="ctrl.form.linkCustType === '0' && (ctrl.form.kpMarryStatus=='28' || ctrl.form.kpMarryStatus=='29')">
+                 <ion-item class="item-divider">配偶信息</ion-item>
+                 <input type="hidden" name="linkSpouseCustNo" ng-model="ctrl.form.linkSpouseCustNo" />
+                <ion-item class="item-input">
+                    <span class="input-label">配偶姓名</span>
+                           <input
+                            type="text"
+                            name="linkSpouseCustName"
+                            ng-model="ctrl.form.linkSpouseCustName "
+                            placeholder="请输入配偶姓名" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">身份证号</span>
+                           <input
+                            type="text"
+                            name="linkSpousePaperNo"
+                            ng-model="ctrl.form.linkSpousePaperNo "
+                            jn-id-no
+                            ng-blur="ctrl.onChangeSpouseId()"
+                            placeholder="请输入身份证号" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系方式</span>
+                           <input
+                            type="tel"
+                            name="linkSpouseMobPhone"
+                            jn-mobile
+                            ng-model="ctrl.form.linkSpouseMobPhone "
+                            placeholder="请输入联系方式" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                           <input
+                            type="text"
+                            name="linkSpouseWorkUnit"
+                            ng-model="ctrl.form.linkSpouseWorkUnit "
+                            placeholder="请输入工作单位" />
+                  </ion-item>
+            </div>
+            <div ng-if="ctrl.form.linkCustType=='1'">
+			<input type="hidden" name="kcLinkCustNo" ng-model="ctrl.form.kcLinkCustNo " />
+                <ion-item class="item-input">
+                    <span class="input-label required">企业名称</span>
+                           <input
+                            type="text"
+                            name="kcLinkCustName"
+                            ng-model="ctrl.form.kcLinkCustName "
+                            required
+                            placeholder="请输入企业名称"
+                           jn-input-length="60"/>
+                  </ion-item>
+                <ion-item class="item-input item-select">
+           			<span class="input-label required">三证合一</span>
+           		 	<div class="input">
+                		<select 
+                   	 	name="cardMerge"
+                    	ng-model="ctrl.form.cardMerge"
+                    	jn-options="5064"
+                    	required></select>
+                    </div>
+            	</ion-item>
+			 	<ion-item ng-if="'Y' === ctrl.form.cardMerge" class="item-input credit">
+           			<span class="input-label required">信用代码</span>
+                	<input
+                    	type="text"
+                    	name="kcLinkPaperNo"
+                    	ng-model="ctrl.form.kcLinkPaperNo"
+						required
+                        ng-change="ctrl.onChangeLiceNo()"
+                        jn-org-no
+                    	placeholder="请输入统一信用代码" />
+            		</ion-item>
+				<ion-item ng-if="'N' === ctrl.form.cardMerge" class="item-input">
+          	  		<span class="input-label required">营业执照</span>
+           	 		<div class="input">
+                	<input
+                    	type="text"
+                   	 	name="kcLinkPaperNo"
+                    	ng-model="ctrl.form.kcLinkPaperNo "
+						required
+                        jn-reg-no
+                        ng-change="ctrl.onChangeRegNo()"
+                    	placeholder="请输入营业执照号码" />
+                    </div>
+            		</ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">法人代表</span>
+                           <input
+                            type="text"
+                            name="kcCorpReprst"
+                            ng-model="ctrl.form.kcCorpReprst "
+                            placeholder="请输入法人代表" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">主营业务</span>
+                           <input
+                            type="text"
+                            name="kcMainBusiness"
+                            ng-model="ctrl.form.kcMainBusiness "
+                            placeholder="请输入主营业务" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">固定电话</span>
+                           <input
+                            type="text"
+                            data-limit="[\d-]+"
+                            name="kcFixPhone"
+                            ng-model="ctrl.form.kcFixPhone "
+                            jn-phone
+                            placeholder="请输入固定电话" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">实体类型</span>
+                           <select
+                            name="kcOrgType"
+                            ng-model="ctrl.form.kcOrgType"
+                            required
+                            jn-options="5014"
+                        ></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">经营地址</span>
+                           <input
+                            type="text"
+                            name="kcHome"
+                            ng-model="ctrl.form.kcHome "
+                            placeholder="请输入经营地址" />
+                  </ion-item>
+                </div>
+            <div ng-if="ctrl.form.linkCustType=='1'">
+                 <ion-item class="item-divider">联系人</ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系人</span>
+                           <input
+                            type="text"
+                            name="kcContactName"
+                            ng-model="ctrl.form.kcContactName "
+                            placeholder="请输入联系人" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系方式</span>
+                           <input
+                            type="tel"
+                            name="kcContactPhone"
+                            jn-tel
+                            ng-model="ctrl.form.kcContactPhone "
+                            placeholder="请输入联系方式" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">关系</span>
+                           <select
+                            name="kcContactLinkType"
+                            ng-model="ctrl.form.kcContactLinkType"
+                            jn-options="5018"
+                        ></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系地址</span>
+                           <input
+                            type="text"
+                            name="kcContactAddr"
+                            ng-model="ctrl.form.kcContactAddr "
+                            placeholder="请输入联系地址" />
+                  </ion-item>
+                 </div>
+	</form>
+    </ion-content>
+</ion-view>

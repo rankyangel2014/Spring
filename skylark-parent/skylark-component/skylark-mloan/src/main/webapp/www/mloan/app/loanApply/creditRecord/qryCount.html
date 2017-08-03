@@ -1,0 +1,73 @@
+<ion-view view-title="征信记录" id="creditQryCount">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+    <ion-item class="item-divider" ng-if="Ctrl.type == '0'">征信查询次数</ion-item>
+    <ion-item class="item-divider" ng-if="Ctrl.type == '1'">征信逾期次数</ion-item>
+        <table class="summary">
+            <tbody>
+            	<tr>
+                    <th style="width:40%">周期&nbsp;&nbsp;</th>
+                    <th style="width:30%" ng-if="Ctrl.type == '0'">查询次数</th>
+                    <th style="width:30%" ng-if="Ctrl.type == '0'">个人查询次数</th>
+                    <th style="width:30%" ng-if="Ctrl.type == '1'">逾期次数</th>
+                    <th style="width:30%" ng-if="Ctrl.type == '1'">贷款逾期次数</th>
+                </tr>
+                <tr>
+                    <td>6个月内</td>
+                    <td><input type="number"
+                       name="totalTimes6"
+                       ng-model="Ctrl.totalTimes6"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                    <td><input type="number"
+                       name="partTimes6"
+                       ng-model="Ctrl.partTimes6"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                </tr>
+                <tr>
+                    <td>12个月内</td>
+                    <td><input type="number"
+                       name="totalTimes12"
+                       ng-model="Ctrl.totalTimes12"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                    <td><input type="number"
+                       name="partTimes12"
+                       ng-model="Ctrl.partTimes12"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                </tr>
+                <tr>
+                    <td>18个月内</td>
+                    <td><input type="number"
+                       name="totalTimes18"
+                       ng-model="Ctrl.totalTimes18"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                    <td><input type="number"
+                       name="partTimes18"
+                       ng-model="Ctrl.partTimes18"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                </tr>
+                <tr>
+                    <td>24个月内</td>
+                    <td><input type="number"
+                       name="totalTimes24"
+                       ng-model="Ctrl.totalTimes24"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                    <td><input type="number"
+                       name="partTimes24"
+                       ng-model="Ctrl.partTimes24"
+                       ng-readonly="Ctrl.isReadOnly"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-positive" 
+    				ng-if="!Ctrl.isReadOnly"
+    				ng-click="Ctrl.saveForm()">
+	        <div class="title">
+	            <button class="button button-clear">
+	                    保存
+	            </button>
+	        </div>
+    </ion-footer-bar>
+</ion-view>

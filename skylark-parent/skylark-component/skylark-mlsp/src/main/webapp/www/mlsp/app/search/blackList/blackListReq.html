@@ -1,0 +1,33 @@
+<ion-view view-title="黑名单查询" cache-view="false" id="blackList">
+	<jn-back></jn-back>
+    <ion-content>
+        <ion-list ng-show="0 < blackListCtrl.blackList.items.length">
+            <ion-item ng-repeat="e in blackListCtrl.blackList.items" 
+            	style="white-space:normal">
+            		<div class="jn-item-title name" ng-click="custDetail(e.custNo,e.custType,$event)"
+            			 data-type="{{ e.custType }}">{{ e.custName }}</div>
+	                <div ng-if=" e.persNo != '' ">
+	                	 <a class="id_card"></a>
+	            		 <span class="content">{{ e.persNo }}</span>
+	                </div>
+	                <div ng-if=" e.regNo != '' ">
+	                	 <a class="business_card"></a>
+	            		 <span class="content">{{ e.regNo }}</span>
+	                </div>
+	                <div ng-if=" e.regNo == '' && e.liceNo != '' ">
+	                	 <a class="business_card"></a>
+	            		 <span class="content">{{ e.liceNo }}</span>
+	                </div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === blackListCtrl.blackList.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="blackListCtrl.more()"
+            ng-show="blackListCtrl.blackList.items.length < blackListCtrl.blackList.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,126 @@
+<ion-view view-title="业务详情" id="myBusinessDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ol class="progress">
+                <!--<li ng-if="  ('1' == contTyp || '2' == contTyp) "-->
+                    <!--ng-class="zcClass"><a>注册</a></li>-->
+
+                <!--&lt;!&ndash;普通贷款和最高额授信&ndash;&gt;-->
+                <!--<li ng-class="sqClass" ng-if=" '3' != contTyp">-->
+                    <!--<a ui-sref="loanDetailInfo({-->
+                                                    <!--custNo:custNo,-->
+                                                    <!--custType:custType,-->
+                                                    <!--loanNo:loanNo,-->
+                                                    <!--loanState:it.status,})">申请</a></li>-->
+                <!--&lt;!&ndash;用信修改&ndash;&gt;-->
+                <!--<li ng-class="sqClass" ng-if=" '3' == contTyp && it.status=='11' ">-->
+                    <!--<a ui-sref="creditLoanApplyAdd({-->
+                                                    <!--custNo:custNo,-->
+                                                    <!--custType:custType,-->
+                                                    <!--loanNo:loanNo,-->
+                                                    <!--crdtNo:crdtNo,-->
+                                                    <!--})">申请</a></li>-->
+                <!--&lt;!&ndash;用信详情&ndash;&gt;-->
+                <!--<li ng-class="sqClass" ng-if=" '3' == contTyp && it.status!='11' ">-->
+                    <!--<a ui-sref="creditLoanApplyView({-->
+                                                    <!--custNo:custNo,-->
+                                                    <!--custType:custType,-->
+                                                    <!--loanNo:loanNo,-->
+                                                    <!--crdtNo:crdtNo,-->
+                                                    <!--})">申请</a></li>-->
+
+
+                <li ng-class="sqClass"><a style="text-decoration: underline;color: blue;"
+                                          ng-click="clickLoanApply()">申请</a></li>
+                <li ng-class="dcClass"><a>调查</a></li>
+                <li ng-class="hsClass"><a>会审</a></li>
+                <li ng-class="qyClass"><a>签约</a></li>
+                <li ng-if=" ('1' == contTyp || '3' == contTyp) "
+                    ng-class="fkClass"><a>放款</a></li>
+            </ol>
+            <ion-item class="item" ng-if=" it.contNoExt != ''  && it.contNoExt != ' '  ">
+                <div style=" text-align:center;"><span>{{ it.contNoExt }}</span></div>
+            </ion-item>
+            <ion-item class="item-divider">贷款信息</ion-item>
+
+            <ion-item class="item">
+                业务类型
+                <span class="item-note">{{ contTyp | jnConstant :902 }}</span>
+            </ion-item>
+
+            <ion-item class="item">
+                借据号
+                <span class="item-note">{{ it.loanNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+                当前环节
+                <span class="item-note">{{ it.status | jnConstant :884 }}</span>
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+                客户
+                <div class="item-note" style="max-width:60%">
+                    {{ it.custName }}
+                    <span data-gender="{{ it.sex }}" data-age="{{ it.age }}"></span>
+                </div>
+            </ion-item>
+            <ion-item class="item">
+                手机
+                <span class="item-note" ng-if='it.mobPhone'><jn-tel-no num="{{it.mobPhone}}"></jn-tel-no> </span>
+            </ion-item>
+            <ion-item class="item">
+                客户经理
+                <span class="item-note">{{ it.custManagerName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                申请金额
+                <span class="item-note">{{ applAmt | jnCurrency }}</span>
+            </ion-item>
+            <ion-item class="item">
+                申请日期
+                <span class="item-note">{{ it.applDt }}</span>
+            </ion-item>
+            <ion-item class="item">
+                调查日期
+                <span class="item-note">{{ it.invtDt }}</span>
+            </ion-item>
+            <ion-item class="item">
+                会审日期
+                <span class="item-note">{{ it.meetingDt }}</span>
+            </ion-item>
+            <ion-item class="item">
+                放款日期
+                <span class="item-note">{{ it.intStartDt }}</span>
+            </ion-item>
+
+            <ion-item class="item-divider"></ion-item>
+            <ion-item
+                    class="item-icon-right"
+                    ng-click="goAttachment()">
+                电子档案
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                    class="item-icon-right"
+                    ng-if="checkAbled"
+                    ng-click="goLoanCheck()">
+                贷后检查
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                    class="item-icon-right"
+                    ng-if="loanApplyAbled"
+                    ui-sref="creditLoanApplyAdd({custNo:custNo, custType:custType, loanNo:'', crdtNo:loanNo})">
+                新增用信
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right"
+                      ui-sref="myBusinessLog({loanNo:it.loanNo,custType:it.custType,custNo:it.custNo})">
+                操作记录
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

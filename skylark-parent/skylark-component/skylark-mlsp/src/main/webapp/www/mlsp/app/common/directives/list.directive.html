@@ -1,0 +1,12 @@
+<ion-list ng-show="0 < model.items.length">
+    <ion-item ng-repeat="e in model.items" ng-transclude></ion-item>
+</ion-list>
+<div
+    ng-show="0 === model.items.length"
+    class="no_record"
+>暂无记录</div>
+<button
+    ng-click="more()"
+    ng-show="model.items.length < model.total"
+    class="button button-block button-positive"
+>点击加载更多</button>

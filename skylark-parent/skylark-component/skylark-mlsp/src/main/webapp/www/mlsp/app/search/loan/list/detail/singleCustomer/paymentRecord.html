@@ -1,0 +1,12 @@
+<ion-view view-title="{{title}}">
+	<jn-back></jn-back>
+    <ion-content >
+  		<ion-list>
+	            <ion-item class="item-divider"></ion-item>
+	            <ion-item class="item" ng-repeat='b in it'>
+	            	 <div >{{ b.interAccNm }}</div> 
+	            	 <div>{{b.setlPrcp|jnCurrency }}</div>
+	            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

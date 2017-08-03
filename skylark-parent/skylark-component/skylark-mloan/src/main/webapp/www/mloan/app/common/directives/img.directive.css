@@ -1,0 +1,15 @@
+jn-img {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 0;
+}
+
+jn-img img {
+    opacity: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+jn-img img.initialized {
+    opacity: 1;
+}

@@ -1,0 +1,19 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+	  		<div >
+	            <ion-item class="item-divider"></ion-item>
+	            <ion-item class="item" ng-repeat='b in it'>
+	            	 <div style='font-weight: bolder;'>{{ b.interAccNm }}</div> 
+	            	 <div>{{ b.setlPrcp }}</div>
+	            </ion-item>
+	         </div>
+		</ion-list>
+		<div
+				ng-show="0 === it.length" class="no_record"
+		>暂无记录</div>
+    </ion-content>
+</ion-view>

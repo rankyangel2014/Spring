@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.fee.TotalFeeDao">
+
+	<sql id="columns">
+		a.C1 as "id",
+		a.C2 as "mid",
+		a.C3 as "bussinessId",
+		a.C4 as
+		"custId",
+		a.C5 as "custName",
+		a.C6 as "idNo",
+		a.C7 as "bankCardNo",
+		a.C8
+		as "mobile",
+		a.C9 as "validateCode",
+		a.C10 as "state",
+		a.C11 as
+		"exception",
+		a.C12 as "ip",
+		a.C13 as "created",
+		a.C14 as "modified",
+		a.C15 as "pushFlag",
+		a.C16 as "token",
+		a.C17 as "bankName",
+		a.C18 as
+		"bankCode",
+		a.C19 as "resCode",
+		b.C7 as "fee"
+	</sql>
+	<!-- 获取序列号 -->
+
+	<!-- 查询计费汇总 -->
+	<select id="qryTotalFee" parameterType="TotalFeeDataBo"
+		resultType="TotalFeeDataBo">
+		select q.mname,q.insttuName,q.feeType,q.price,q.count,q.price *
+		q.count as totalMoney,q.mid,q.orgNo
+		from
+		(
+		select c.c2 as mname,d.c2 as
+		insttuName,a.c2 as feeType,b.c7 as price,
+		count(case when a.c13='0'
+		then 1 else null end ) as count,
+		c.c1 as mid,d.c12 as orgNo
+		from jnf_t17
+		a
+		left join jnf_t18 b on a.c12 = b.c2 and a.c3 = b.c3
+		left join jnf_t1 c
+		on a.c12 = c.c1
+		left join jnf_t2 d on a.c12 = d.c3 and a.c3 = d.c12
+		where 1 = 1
+		<if test="startTime!=null and startTime!=''">
+			and a.c11 >= to_date(#{startTime},'yyyy-mm-dd')
+		</if>
+		<if test="endTime!=null and endTime!=''">
+                        <![CDATA[ AND  a.C11 <= to_date(#{endTime},'yyyyMMdd') ]]>
+		</if>
+		<if test="mname!=null and mname!=''">
+			and c.c2 like '%${mname}%'
+		</if>
+		<if test="insttuName!=null and insttuName!=''">
+			and d.c2 = #{insttuName}
+		</if>
+		<if test="feeType!=null and feeType!=''">
+			and a.c2 like '%${feeType}%'
+		</if>
+		group by
+		c.c2,d.c2,a.c2,b.c7,c.c1,d.c12
+		) q
+	</select>
+
+	<!-- 查询对账详情 -->
+	<select id="queryAccount" parameterType="AccountDetailDataBO"
+		resultType="AccountDetailDataBO">
+		SELECT
+		<include refid="columns"></include>
+		FROM JNF_T14 a ,JNF_T18 b
+		WHERE
+		a.c2 = b.c2 AND a.c20 = b.c3 AND b.c4 =
+		'11'
+		<if test="mid!=null and mid!=''">
+			and a.c2 = #{mid}
+		</if>
+		<if test="orgNo!=null and orgNo!=''">
+			and a.c20 = #{orgNo}
+		</if>
+		<if test="created!=null and created!=''">
+                <![CDATA[ and a.c13 <= to_date(#{created},'yyyy-mm-dd') ]]>
+		</if>
+		<if test="modified!=null and modified!=''">
+			and a.c14 >= to_date(#{modified},'yyyy-mm-dd')
+		</if>
+
+	</select>
+
+
+	<!-- 查询计费统计信息 -->
+	<select id="queryFeeStatisticList" resultType="FeeStatisticDataBO">
+		SELECT
+			T1.mname,
+			T1.insttuId,
+			T1.insttuName,
+		    T2.C3 AS businessType,
+			T3.C3 AS channel,
+			T1.startTime,
+			T1.endTime,
+			T1.price,
+			T1.count,
+			T1.totalMoney
+		FROM
+		(
+		SELECT
+		T1.C2 AS mname,
+		T14.C20 AS insttuId,
+		T14.C5
+		AS insttuName,
+		'11' AS businessType,
+		'CH12' AS channel,--金农征信实名认证
+		min(T14.C14) AS
+		startTime,
+		max(T14.C14) AS endTime,
+		T14.C21 AS price,
+		count(1) AS count,
+		sum(T14.C21) AS totalMoney
+		FROM JNF_T14 T14
+		LEFT JOIN JNF_T1 T1
+		ON T14.C2
+		= T1.C1
+		<where>
+			<if test="startTime !=null and startTime != ''">
+                <![CDATA[AND T14.C14 >= TO_DATE(#{startTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="endTime != null and endTime != ''">
+                <![CDATA[ AND T14.C14 <= TO_DATE(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="mid != null and mid != ''">
+                <![CDATA[AND T14.C2 = #{mid}]]>
+			</if>
+			<if test="insttuId !=null and insttuId != ''">
+                <![CDATA[AND T14.C20 = #{insttuId}]]>
+			</if>
+		</where>
+		GROUP BY T14.C21, T14.C20,T1.C2, T14.C5
+
+		UNION ALL
+
+		SELECT
+		T1.C2 AS mname,
+		T9.C18 AS insttuId,
+		T2.C2 AS insttuName,
+		'1' AS businessType,--代扣
+		T9.C13 AS
+		channel,
+		min(T9.C15) AS
+		startTime,
+		max(T9.C15) AS
+		endTime,
+		T9.C19 AS price,
+		count(1) AS count,
+		sum(T9.C19) AS totalMoney
+		FROM JNF_T9 T9
+		LEFT JOIN
+		JNF_T1 T1
+		ON T9.C17 =
+		T1.C1
+		LEFT JOIN JNF_T2 T2
+		ON T9.C18 = T2.C12
+		<where>
+			<if test="startTime !=null and startTime != ''">
+	           <![CDATA[AND T9.C15 >= TO_DATE(#{startTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="endTime !=null and endTime != ''">
+	           <![CDATA[AND T9.C15 <= TO_DATE(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="mid != null and mid != ''">
+	           <![CDATA[AND T9.C17 = #{mid}]]>
+			</if>
+			<if test="insttuId != null and insttuId != ''">
+	           <![CDATA[AND T9.C18 = #{insttuId}]]>
+			</if>
+		</where>
+		GROUP BY T1.C2, T2.C2, T9.C19,T9.C18,T9.C13
+		) T1 
+		  INNER JOIN JNF_T13 T2
+		  ON  T2.C1='JNF_BUSINESS_TYPE' AND T1.businessType = T2.C2
+		  INNER JOIN JNF_T13 T3
+		  ON  T3.C1='WITHHOLD_CHANNEL' AND T1.channel = T3.C2
+		<where>
+			<if test="businessType != null and businessType != ''">
+				<![CDATA[AND businessType = #{businessType}]]>
+			</if>
+			<if test="channel != null and channel != ''">
+				<![CDATA[AND channel = #{channel}]]>
+			</if>
+		</where>
+		ORDER BY startTime ASC
+	</select>
+
+	<!--查询实名认证交易明细 -->
+	<select id='queryFeeRealnameDetail' resultType="FeeRealNameDto">
+		SELECT
+		C1 AS bussinessId,
+		C5 AS custName,
+		C6 AS idNo,
+		C7 AS bankCardNo,
+		C8
+		AS mobile,
+		C17 AS bankName,
+		C14 AS modified,
+		C21 AS fee
+		FROM JNF_T14
+		<where>
+			<if test="orgNo != null and orgNo != ''">
+	           <![CDATA[AND C20 = #{orgNo}]]>
+			</if>
+			<if test="startTime != null and startTime != ''">
+	           <![CDATA[AND C14 >= TO_DATE(#{startTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="endTime != null and endTime != ''">
+	           <![CDATA[AND C14 <= TO_DATE(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+		</where>
+	</select>
+
+	<!--查询代扣交易明细 -->
+	<select id='queryFeeWithholdDetail' resultType='FeeWithholdDto'>
+		SELECT
+		T9.C1 AS id,
+		T9.C3 AS tradeNo,
+		T9.C6 AS payAccount,
+		T2.C2 AS payer,
+		T9.C9 AS collAccount,
+		T3.C2 AS payee,
+		T13.C3 AS channel,
+		T_13.C3 AS status,
+		T9.C12 AS failReason,
+		T9.C15 AS tradeTime,
+		T9.C19 AS fee,
+		T9.C10
+		AS amount
+		FROM
+		JNF_T9 T9
+		LEFT JOIN JNF_T2 T2
+		ON T9.C4 = T2.C1
+		LEFT JOIN
+		JNF_T2 T3
+		ON T9.C7 = T3.C1
+		INNER JOIN JNF_T13 T13
+		ON T9.C13=T13.C2 AND T13.C1='WITHHOLD_CHANNEL'
+		INNER JOIN JNF_T13 T_13
+		ON T9.C11=T_13.C2 AND T_13.C1='TRADE_STATUS'
+		<where>
+			<if test="orgNo != null and orgNo != ''">
+               <![CDATA[AND T9.C18 = #{orgNo}]]>
+			</if>
+			<if test="channel != null and channel != ''">
+               <![CDATA[AND T9.C13 = #{channel}]]>
+			</if>
+			<if test="startTime != null and startTime != ''">
+               <![CDATA[AND T9.C15 >= TO_DATE(#{startTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+			<if test="endTime != null and endTime != ''">
+               <![CDATA[AND T9.C15 <= TO_DATE(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')]]>
+			</if>
+		</where>
+	</select>
+
+</mapper>

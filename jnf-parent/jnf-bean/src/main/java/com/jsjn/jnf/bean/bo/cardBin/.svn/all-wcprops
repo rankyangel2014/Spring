@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/1641/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/cardBin
+END
+CardBinQueryReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/1302/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/cardBin/CardBinQueryReqBO.java
+END
+CardBinQueryResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/1302/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/cardBin/CardBinQueryResBO.java
+END
+CardBinQueryReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/1641/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/cardBin/CardBinQueryReqDataBO.java
+END
+CardBinQueryResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/1532/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/cardBin/CardBinQueryResDataBO.java
+END

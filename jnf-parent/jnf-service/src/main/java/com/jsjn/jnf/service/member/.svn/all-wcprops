@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/4000/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/member
+END
+MemberService.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/3422/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/member/MemberService.java
+END
+BusinessService.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/3388/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/member/BusinessService.java
+END
+RealNameFlowService.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/4000/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/member/RealNameFlowService.java
+END

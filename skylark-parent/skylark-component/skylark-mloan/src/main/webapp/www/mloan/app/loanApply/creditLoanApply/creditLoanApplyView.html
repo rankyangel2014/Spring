@@ -1,0 +1,75 @@
+<ion-view view-title="用信贷款申请">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+       
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.myForm" id="creditLoanApplyAddForm">
+            <ion-item class="item-divider">授信信息</ion-item>
+             <ion-item style="font-size:14px;padding: 10px;"  class="crdtListItem">
+            	<div class="compact"><label>授信总额度</label><span class="content">{{ ctrl.credit.contAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>可用额度</label><span class="content">{{ ctrl.credit.exapCreAmt | jnCurrency}}</span></div>
+				<div class="compact"><label>剩余额度</label><span class="content">{{ ctrl.credit.ableAmt | jnCurrency}}</span></div>
+		    	<div class="compact"><label>最近申请日期</label><span class="content">{{ ctrl.credit.startDt | jnDate}} ~ {{ctrl.credit.endDt | jnDate}}</span></div>
+		      	<div class="compact"><label>主担保方式</label><span class="content">{{ ctrl.credit.mainGurTyp | jnConstant :5045}}</span></div>
+			</ion-item>
+			<!-- 详情 -->
+            <ion-item class="item-divider">用信申请</ion-item>
+            <ion-item  >
+           		<span>客户性质</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applCustProp | jnConstant :910 }}</span>
+            </ion-item>
+            <ion-item >
+           		<span>用款时间</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.reqDt | jnDate }}</span>
+           	</ion-item>
+           	 <ion-item>
+           		<span>申请时间</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applDt | jnDate }}</span>
+           	</ion-item>
+           	<ion-item>
+            	<span>金额（元）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applAmt | jnCurrency }}</span>
+            </ion-item>
+           	<ion-item>
+            	<span>年利率（%）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applIntRate*1.2 | number:4 }}</span>
+            </ion-item>
+            <ion-item>
+            	<span>月利率（‰）</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applIntRate | number:3 }}</span>
+            </ion-item>
+            <ion-item>
+            	<span>申请期限(月)</span>
+            	<span class="item-note" style="max-width:60%">{{ctrl.form.applPerd}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>还款方式</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applRepayTyp | jnConstant :327 }}</span>
+            </ion-item>
+            <ion-item >
+            	<span>每月还款日</span>
+				<span class="item-note" style="max-width:60%">{{ctrl.form.applDueDay}}</span>  
+            </ion-item>
+            <ion-item>
+           		<span>贷款目的</span>
+            	<span class="item-note" ng-if="ctrl.custType=='0'" style="max-width:60%">{{ctrl.form.applLoanUse | jnConstant :7602 }}</span>
+            	<span class="item-note" ng-if="ctrl.custType=='1'" style="max-width:60%">{{ctrl.form.applLoanUse | jnConstant :7603 }}</span>
+            </ion-item>
+             <ion-item >
+           		资金投向</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.applCapitalDirection }}</span>
+            </ion-item>
+            <ion-item class="item-divider ">用途描述</ion-item>
+            <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.applPurpose}}</span>
+			</ion-item>
+			<ion-item class="item-divider">其他放款条件</ion-item>
+			  <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.applOtherIssueCond}}</span>
+			</ion-item>
+        </form>
+    </ion-content>
+</ion-view>

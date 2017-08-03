@@ -1,0 +1,77 @@
+<ion-view view-title="信用卡">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button 
+        	 ng-if="!ctrl.data.isReadOnly && ctrl.data.btnStatus"
+             class="button button-clear"
+             ng-click="ctrl.edit();"
+         >修改</button>
+         <button 
+        	 ng-if="!ctrl.data.btnStatus"
+             class="button button-clear"
+             ng-click="ctrl.save();"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+		<form name="ctrl.creditInfoForm" id="creditInfoForm" jn-edit-form novalidate ng-if="!ctrl.data.isReadOnly && !ctrl.data.btnStatus">
+			<ion-item class="item-input">
+            	<span class="input-label ">信用卡总数</span>
+            	<input type="number" ng-model="ctrl.form.crdtCardNum"  pattern="[0-9]*" name="crdtCardNum" min="1" max="999" maxlength="3"
+            		 jn-Integer  placeholder="请输入信用卡总数"  />
+            </ion-item>
+            <ion-item class="item-input">
+            	<span class="input-label ">信用卡总额度</span>
+            	<input type="number" ng-model="ctrl.form.totalCrdtAmt"  pattern="^\d+(\.\d+)?$" maxLength="8" min="0.00" max="100000000000" 
+            		name="totalCrdtAmt"  string-to-number ng-blur="ctrl.onAmtChange()"   placeholder="请输入信用卡总额度" />
+            </ion-item>
+           	<ion-item class="item-input">
+            	<span class="input-label ">透支总金额</span>
+            	<input type="number" ng-model="ctrl.form.usedCrdtAmt"  pattern="^\d+(\.\d+)?$" maxLength="8" min="0.00" max="100000000000" 
+            		name="usedCrdtAmt"  string-to-number  ng-blur="ctrl.onAmtChange()"   placeholder="请输入透支总额度" />
+            </ion-item>
+            <ion-item  class="item-input">
+           		<span class="input-label">透支率（%）</span>
+           		<span  style="max-width:60%;color:#aaa; ">{{ctrl.form.tzRate | number:2 }}</span>
+            </ion-item>
+            <ion-item class="item-input">
+            	<span class="input-label ">近半年平均透支额</span>
+            	<input type="number" ng-model="ctrl.form.sixMonthAvg"  pattern="^\d+(\.\d+)?$" maxLength="8" min="0.00" max="99999999" 
+            		name="sixMonthAvg"  string-to-number   placeholder="请输入近半年平均透支额" />
+            </ion-item>
+			<ion-item class="item-divider">分期说明</ion-item>
+            <ion-item class="item-input" >
+				<span class="input-label" style="display: none">分期说明</span>
+				<textarea  rows="4" cols="30" name="crdtCardOverdueDesc"  jn-input-length="200" 
+					ng-model="ctrl.form.crdtCardOverdueDesc" placeholder="请在此处填写分期说明"></textarea> 
+			</ion-item>
+		</form>
+		<ion-list  ng-if="ctrl.data.isReadOnly || ctrl.data.btnStatus ">
+			 <ion-item  >
+           		<span>信用卡总数</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.crdtCardNum  }}</span>
+            </ion-item>
+             <ion-item  >
+           		<span>信用卡总额度</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.totalCrdtAmt | jnCurrency }}</span>
+            </ion-item>
+             <ion-item  >
+           		<span>透支总金额</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.usedCrdtAmt | jnCurrency }}</span>
+            </ion-item>
+             <ion-item  >
+           		<span>透支率（%）</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.tzRate | number:2 }}</span>
+            </ion-item>
+             <ion-item  >
+           		<span>近半年平均透支额</span>
+           		<span class="item-note" style="max-width:60%">{{ctrl.form.sixMonthAvg | jnCurrency }}</span>
+            </ion-item>
+              <ion-item class="item-divider ">分期说明</ion-item>
+            <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;color: #aaa;">{{ctrl.form.crdtCardOverdueDesc}}</span>
+			</ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

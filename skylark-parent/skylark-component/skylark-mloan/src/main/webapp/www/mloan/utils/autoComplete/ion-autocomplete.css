@@ -1,0 +1,37 @@
+.ion-autocomplete-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    display: none;
+    margin: auto;
+}
+
+.ion-autocomplete-container .ion-autocomplete-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+input.ion-autocomplete[readonly] {
+    background-color: transparent;
+    cursor: text;
+}
+
+.ion-autocomplete-loading-icon {
+    padding-left: 10px;
+}
+
+.ion-autocomplete-container .jn-tel-no {
+    line-height: 1.5em;
+    color: #666;
+    font-size: 14px;
+}
+
+.ion-autocomplete-container .jn-tel-no:before {
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+    content: '\e616';
+}

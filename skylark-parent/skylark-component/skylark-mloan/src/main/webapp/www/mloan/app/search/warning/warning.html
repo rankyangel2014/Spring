@@ -1,0 +1,65 @@
+<ion-view view-title="将到期预警查询">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="Ctrl.submit();"
+        >查询
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="Ctrl.myForm" novalidate>
+
+            <ion-item class="item-input item-select"
+                      ng-if="!Ctrl.justManager && !Ctrl.justTeamManager && !Ctrl.justSysManager">
+                <span class="input-label">团队</span>
+                <jn-select-team name="deptId" ng-model="Ctrl.form.deptId"></jn-select-team>
+            </ion-item>
+
+            <ion-item class="item-input item-select" ng-if="Ctrl.form.deptId">
+                <span class="input-label">客户经理</span>
+                <jn-select-manager ng-hide="Ctrl.justManager"
+                                   name="custManagerNo"
+                                   ng-model="Ctrl.form.custManagerNo"
+                                   team="Ctrl.form.deptId"
+                ></jn-select-manager>
+            </ion-item>
+
+            <ion-item class=" item-input">
+                <span class="input-label">客户名称</span>
+                <input type="text" name="custName" ng-model='Ctrl.form.custName' placeholder="请输入客户名称"
+                       jn-input-length="120"/>
+            </ion-item>
+
+            <ion-item class=" item-input">
+                <span class="input-label">贷款合同号</span>
+                <input type="text" name="contNoExt" ng-model='Ctrl.form.contNoExt' placeholder="请输入贷款合同号"
+                       jn-input-length="100"/>
+            </ion-item>
+
+            <ion-item class=" item-input">
+                <span class="input-label">借据号</span>
+                <input type="text" name="loanNo" ng-model='Ctrl.form.loanNo' placeholder="请输入借据号"
+                       jn-input-length="20"/>
+            </ion-item>
+
+            <ion-item class=" item-input">
+                <span class="input-label required">到期天数</span>
+                <select name="oper" ng-model="Ctrl.form.oper" class="item-select" style="border: 0px;margin-right: 10px;width:150px;">
+                    <option value="1">小于等于</option>
+                    <option value="2">小于</option>
+                    <option value="3">等于</option>
+                </select>
+                <input type="number" name="overdueDays" ng-required="true" min="1" max="9999"
+                       ng-model='Ctrl.form.overdueDays' ng-change="Ctrl.changeDay()"/>
+            </ion-item>
+
+            <ion-item class=" item-input">
+                <span class="input-label">贷款到期日</span>
+                <input format-date type="date" name="dueDate" ng-model='Ctrl.form.dueDate' ng-disabled="true"/>
+            </ion-item>
+        </form>
+    </ion-content>
+</ion-view>

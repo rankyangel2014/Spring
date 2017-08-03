@@ -1,0 +1,168 @@
+<style type="text/css">
+#custOtherDetail .noticeHead {
+	font-weight: bold;
+	color: #000000;
+	font-size: 14px;
+	text-shadow: 0px 0px 1px #aaaaaa;
+	word-break: break-all;
+}
+#custOtherDetail .noticeDate {
+	font-weight: normal;
+	font-size: 12px;
+	color: gray;
+}
+#custOtherDetail .noticeContent {
+	font-size:14px !important;
+	color: #000000;
+	padding: 0 3px;
+	overflow: auto;
+}
+#custOtherDetail .phone a[href^="tel:"] {
+    width: 100px;
+    padding-left: 0px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+    display: inline-block;
+}
+#custOtherDetail .phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 4px;
+    content: '\e616';
+}
+</style>
+
+
+<ion-view view-title="{{ctrl.title}}" id="custOtherDetail">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+	    <button ng-if="ctrl.actionFlag==='shares' && isManager && isQry!=1 "
+	             class="button button-clear "
+	             ng-click="edit()"
+	         >修改</button>
+        <button
+                class="button button-clear"
+                ng-if="ctrl.actionFlag==='relations' && isManager && isQry!=1 "
+                ui-sref="custRelationEdit({
+                'paperNo':paperNo,
+                'custPaperNo':custPaperNo,
+                'custName':custName,
+                'phoneNo':phoneNo,
+                'linkCustNo':linkCustNo,
+                'custNo':custNo})"
+        >编辑</button>
+
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='relations'"
+        ng-repeat="e in ctrl.list.items">
+             <ion-item  class="item" >
+            	客户名称 
+             <span class="item-note">{{ e.custName }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件类型
+             <span class="item-note">{{ e.paperType|jnConstant : 5029 }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	证件号码
+             <span class="item-note">{{ e.paperNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	联系电话
+            <!--  <span class="item-note phone" ng-if="e.phoneNo!=''">
+             	<a href="tel:{{e.phoneNo}}">{{e.phoneNo}}</a>
+             </span> -->
+             <jn-tel-no class="item-note" num="{{e.phoneNo}}" ></jn-tel-no>
+            </ion-item>
+        </ion-list>
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='shares'"
+        ng-repeat="e in ctrl.list.items">
+             <ion-item  class="item" >
+            	客户名称 
+             <span class="item-note">{{ e.custName }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	证件类型
+             <span class="item-note">{{ e.paperType|jnConstant : 5029 }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	证件号码
+             <span class="item-note">{{ e.paperNo }}</span>
+            </ion-item>
+            <ion-item  class="item phone" ng-if="e.phoneNo!=''">
+            	联系电话
+            <!--  <span class="item-note">
+             <a href="tel:{{e.phoneNo}}">{{e.phoneNo}}</a>
+             </span> -->
+              <jn-tel-no class="item-note" num="{{e.phoneNo}}" ></jn-tel-no>
+            </ion-item>
+            <ion-item  class="item" >
+            	出资金额(元)
+             <span class="item-note">{{ e.investAmt|jnCurrency }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	出资比例
+             <span class="item-note">{{ e.investPct }}%</span>
+            </ion-item>
+        </ion-list>
+        <ion-list  ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='custRelationInfos'"
+        ng-repeat="e in ctrl.list.items">
+             <ion-item  class="item" style="white-space:normal">
+            	主关联客户名称 
+             <span class="item-note" style="max-width: 55%">{{ e.custName }}</span>
+            </ion-item>
+             <ion-item  class="item" style="white-space:normal">
+            	被关联客户名称 
+             <div class="item-note" style="max-width: 55%">{{ e.linkCustName }}</div>
+            </ion-item>
+            <ion-item  class="item" >
+            	被关联客户类型
+             <span class="item-note">{{ e.linkCustType|jnConstant : 5028 }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	关系类型
+             <span class="item-note" >{{e.linkType|jnConstant : 5033}}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	拥有股份
+             <span class="item-note">{{ e.sharePct }}%</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	关系状态
+             <span class="item-note">{{e.linkStatus|jnConstant : 5030 }}</span>
+            </ion-item>
+            <ion-item  class="item" style="white-space:normal">
+            	备注
+             <!-- <span class="item-note">{{ e.remark }}</span> -->
+              <div class="item-note" style="max-width: 80%">{{ e.remark }}</div>
+            </ion-item>
+          </ion-list>
+         
+        <!-- 事件信息 -->
+        <ion-list ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='custEventInfos'"
+        ng-repeat="e in ctrl.list.items">
+            <div class="padding">
+	            <div class="noticeHead">
+				  {{ e.eventTitle }}
+				</div>
+				<div class="noticeDate">{{ e.alertStrDate|jnDate }}&nbsp;&nbsp;{{ e.alertStrTime }}&nbsp;&nbsp;{{e.eventStatus|jnConstant : 6030}}</div>
+				<div  ng-bind-html=' e.eventDes  | toHtml' 
+				      class="noticeContent"></div>
+				<!-- <div class="{{ null !=notices.items[0].attachName ?  'attend' :'' }}"
+				      ng-show=" null !=notices.items[0].attachName">
+					<span  style="" class='noticeAttachUrl' >{{ notices.items[0].attachName }}</span>
+				</div> -->
+            </div>
+            
+            
+        </ion-list>
+        <div
+            ng-show="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+    </ion-content>
+</ion-view>

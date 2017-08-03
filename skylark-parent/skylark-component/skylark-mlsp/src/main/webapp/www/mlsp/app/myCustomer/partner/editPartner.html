@@ -1,0 +1,93 @@
+<ion-view view-title="{{ctrl.title}}" id="editPartner">
+    <jn-back  ng-click="ctrl.back()"></jn-back>
+     <ion-nav-buttons side="secondary">
+        <!-- <button
+             class="button button-clear"
+             ng-click="ctrl.reset()" 
+         >清空</button> -->
+         <button
+             class="button button-clear" ng-if="ctrl.actionFlag==='shares'"
+             ng-click="ctrl.submit(ctrl.actionFlag)"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.myForm" novalidate>
+            <ion-list>
+                <ion-item  class="item-input item-select" >
+            	<span class="input-label">证件类型</span>
+	            <span ng-model="ctrl.form.paperType" name="paperType"  class="item-note">{{ ctrl.form.paperType|jnConstant : 5029 }}</span>
+	            </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">证件号码</span>
+                    <input
+                    	ng-required="true"
+                        type="text"
+                        name="paperNo"
+                        jn-id-no
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" 
+                        ng-blur="lostBlurSetName()"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">姓名</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" 
+                        ng-disabled="ctrl.nameDisable"
+                        ng-required="true"
+                        jn-input-length="60"
+                       />
+                </ion-item>
+       			<ion-item class="item-input">
+                    <span class="input-label required">出资金额</span>
+                    <input
+                        type="number"
+                        name="investAmt"
+                        value="" min="1" 
+                        ng-model="ctrl.form.investAmt"
+                        placeholder="请输入出资金额" 
+                        ng-required="true"
+                       /><!-- ng-blur="lostBlur()" -->
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">出资比例(%)</span>
+                    <input
+                        type="number"
+                        name="investPct"
+                        ng-model="ctrl.form.investPct"
+                        placeholder="请输入出资比例" 
+                        value="" min="0"   max="100"
+                        ng-required="true"
+                       />
+                </ion-item>
+       
+                <ion-item class="item-input">
+                    <span class="input-label required">联系电话</span>
+                    <input
+                        type="tel"
+                        jn-tel
+                        ng-model="ctrl.form.phoneNo"
+                        placeholder="请输入客户联系电话" 
+                        name="phoneNo"
+                        ng-required="true"
+                        />
+                </ion-item>
+            
+            </ion-list>
+            
+        </form>
+    </ion-content>
+<!-- <ion-footer-bar align-title="left" class="page_footer" >
+  <div  class="show_nav show_nav_on" >
+    	个人
+  </div>
+  <div class="show_nav"  ng-click="ctrl.jump('custAddCB')">
+ 	 企业
+  </div>
+</ion-footer-bar> -->
+</ion-view>

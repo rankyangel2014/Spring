@@ -1,0 +1,39 @@
+<ion-view view-title="还款计划表" id="hkSheet">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content direction="xy">
+                 <div class="page_body">
+			        <table class="scrollable" >
+			            <thead>
+			                <tr>
+			                    <th>账单日</th>
+			                    <th>应还本金</th>
+			                    <th>实收本金</th>
+			                    <th>应还利息</th>
+			                    <th>实收利息</th>
+			                    <th>应还罚息</th>
+			                    <th>实收罚息</th>
+			                    <th>应还复利</th>
+			                    <th>实收复利</th>
+			                    <th>结清</th>
+			                </tr>
+			            </thead>
+	            		<tbody>
+			                <tr ng-repeat='r in it '>
+			                    <th>{{ r.billDt|jnDate }}</th>
+			                    <td>{{ r.receivablePrcp|jnCurrency }}</td>
+			                    <td>{{ r.setlPrcp|jnCurrency }}</td>
+			                    <td>{{ r.receivableInt|jnCurrency }}</td>
+			                    <td>{{ r.setlInt|jnCurrency }}</td>
+			                    <td>{{ r.receivableOdInt|jnCurrency }}</td>
+			                    <td>{{ r.setlOdInt|jnCurrency }}</td>
+			                    <td>{{ r.receivableCmpdInt|jnCurrency }}</td>
+			                    <td>{{ r.setlCmpdInt|jnCurrency }}</td>
+			                    <td>{{ r.setlFlag }}</td>
+			                </tr>
+			            </tbody>
+        			</table>
+    			</div>
+    </ion-content>
+</ion-view>

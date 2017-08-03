@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Zfjs/!svn/ver/1824/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/trade
+END
+TestTradeFlowQry.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/1824/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/trade/TestTradeFlowQry.java
+END
+TestQryTransBySta.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/1824/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/trade/TestQryTransBySta.java
+END
+TestTradeCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/1824/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/trade/TestTradeCommon.java
+END
+TestQryTransByTrade.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/1824/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/trade/TestQryTransByTrade.java
+END

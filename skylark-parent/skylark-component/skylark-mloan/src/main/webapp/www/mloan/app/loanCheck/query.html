@@ -1,0 +1,147 @@
+<ion-view view-title="贷后检查">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="ctrl.submit()"
+        >查询
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.myForm" novalidate>
+            <ion-list>
+
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="!ctrl.justManager && !ctrl.justTeamManager && !ctrl.justSysManager"
+                >
+                    <span class="input-label">团队</span>
+                    <jn-select-team
+                            name="deptId"
+                            ng-model="ctrl.form.deptId"
+                    ></jn-select-team>
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                        ng-if="ctrl.form.deptId">
+                    <span class="input-label">客户经理</span>
+                    <jn-select-manager ng-hide="ctrl.justManager"
+                                       name="custManagerNo"
+                                       ng-model="ctrl.form.custManagerNo"
+                                       team="ctrl.form.deptId"></jn-select-manager>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                            type="text"
+                            name="custName"
+                            ng-model="ctrl.form.custName"
+                            placeholder="请输入客户名称"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">贷款合同号</span>
+                    <input
+                            type="text"
+                            name="contNoExt"
+                            ng-model="ctrl.form.contNoExt"
+                            placeholder="请输入贷款合同号"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">借据号</span>
+                    <input
+                            type="text"
+                            ng-model="ctrl.form.loanNo"
+                            placeholder="请输入借据号"/>
+                </ion-item>
+
+
+                <ion-item class="item-input">
+                    <span class="input-label">贷款本金（至少）</span>
+                    <input
+                            type="number"
+                            ng-model="ctrl.form.prcpOrigStart"
+                            name="prcpOrigStart"
+                            jn-Positive
+                            placeholder="至少"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款本金（至多）</span>
+                    <input
+                            type="number"
+                            ng-model="ctrl.form.prcpOrigEnd"
+                            name="prcpOrigEnd"
+                            jn-Positive
+                            placeholder="至多"
+                    />
+                </ion-item>
+
+
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">贷款状态</span>
+                    <select
+                            ng-required="true"
+                            ng-model="ctrl.form.loanStatus"
+                            jn-options="5150"
+                            name="loanStatus"
+                    ></select>
+                </ion-item>
+
+
+                <ion-item class="item-input item-select">
+                    <span class="input-label">检查结果</span>
+                    <select
+                            ng-model="ctrl.form.checkStatus"
+                            jn-options="5055"
+                            name="checkStatus"
+                    ></select>
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label">起息日期（从）</span>
+                    <input
+                            format-date
+                            type="date"
+                            ng-model="ctrl.form.loanDateStart"
+                            name="loanDateStart"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">起息日期（至）</span>
+                    <input
+                            format-date
+                            type="date"
+                            ng-model="ctrl.form.loanDateEnd"
+                            name="loanDateEnd"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">检查日期（从）</span>
+                    <input
+                            format-date
+                            type="date"
+                            ng-model="ctrl.form.lastCheckDateStart"
+                            name="lastCheckDateStart"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">检查日期（至）</span>
+                    <input
+                            format-date
+                            type="date"
+                            ng-model="ctrl.form.lastCheckDateEnd"
+                            name="lastCheckDateEnd"
+                    />
+                </ion-item>
+
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

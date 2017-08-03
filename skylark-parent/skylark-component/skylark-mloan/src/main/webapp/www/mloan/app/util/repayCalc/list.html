@@ -1,0 +1,50 @@
+<ion-view view-title="还款试算器" id="utilRepayCalcList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+
+
+
+    <ion-content overflow-scroll="true">
+        <ion-list ng-show="0 < ctrl.records.items.length">
+            <ion-item
+                ng-repeat="e in ctrl.records.items"
+                ui-sref="utilRepayCalcCalc({custNo: e.custNo, loanNo: e.loanNo, repayTyp: e.repayTyp, intStartDt: e.intStartDt, contNoExt: e.contNoExt})"
+            >
+                <div class="jn-item-title jnCustName" data-type="{{ e.custType }}">{{ e.custName }}</div>
+                <div class="jn-item-title jnContNoExt ">{{ e.contNoExt }}</div>
+                <div class="jnPrcp">本金：{{ e.prcpOrig | jnCurrency }} 剩余：{{ e.prcpBal | jnCurrency }}</div>
+                <div class="jnManager" ng-if="e.custManagerName!=''">{{ e.custManagerName }}</div>
+                <div
+                    ng-show="'P' === e.repayTyp"
+                    class="ion-android-checkmark-circle jnRepayTyp"
+                >等额本金</div>
+                <div
+                    ng-show="'T' === e.repayTyp"
+                    class="ion-android-checkmark-circle jnRepayTyp"
+                >等额本息</div>
+                <div
+                    ng-show="'X' === e.repayTyp"
+                    class="ion-android-checkmark-circle jnRepayTyp"
+                >按期还息到期还本</div>
+                <div
+                    ng-show="'B' === e.repayTyp"
+                    class="ion-android-checkmark-circle jnRepayTyp"
+                >利随本清</div>
+                <div
+                    ng-show="'Q' === e.repayTyp"
+                    class="ion-android-checkmark-circle jnRepayTyp"
+                >气球贷</div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === ctrl.records.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-show="ctrl.records.items.length < ctrl.records.total"
+            class="button button-full button-clear button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

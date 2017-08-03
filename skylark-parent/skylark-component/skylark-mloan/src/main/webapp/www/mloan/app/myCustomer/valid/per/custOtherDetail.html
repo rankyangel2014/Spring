@@ -1,0 +1,171 @@
+<ion-view view-title="{{ctrl.title}}" id="custOtherDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+     <button ng-if="ctrl.actionFlag==='grxx' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+     <button ng-if="ctrl.actionFlag==='glrxx' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+     <button ng-if="ctrl.actionFlag==='stxiangx' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+     <button ng-if="ctrl.actionFlag==='gtjyz' && isDetail=='0'"
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+    	<!-- 共同经营者信息-->
+        <ion-list   ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='gtjyz'"
+        ng-repeat="e in ctrl.list.items">
+        	
+            <ion-item class="item">客户类别
+            <span class="item-note">{{e.custType |jnConstant:5028 }}</span>
+            </ion-item>
+             <ion-item  class="item" >
+            	客户名称 
+             <span class="item-note">{{ e.custName }}</span>
+            </ion-item>
+            <ion-item class="item">
+                   	 与客户关系
+					<!-- <select  style="color: #aaa" disabled="disabled" >
+                        <option value="14" ng-selected="true" >合伙人</option>
+                    </select> -->
+                     <span class="item-note">合伙人</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	证件号码
+             <span class="item-note">{{ e.paperNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	手机号码
+             <jn-tel-no class="item-note" num="{{e.phoneNo}}" ></jn-tel-no>
+            </ion-item>
+            <ion-item  class="item" ng-if=" e.custType == '1' ">
+            	股份占比
+             <span class="item-note" >{{ e.soWnedClient }}%</span>
+            </ion-item>
+            <ion-item  class="item" ng-if=" e.custType == '0' ">
+            	工作单位
+             <span class="item-note">{{ e.workUnit }}</span>
+            </ion-item>
+            <ion-item  class="item" >
+            	联系地址
+             <span class="item-note">{{ e.custAddr }}</span>
+            </ion-item>
+        </ion-list>
+    	<!-- 关联人信息 -->
+        <!-- 紧急联系人信息 -->
+        <!-- 实体信息详情 -->
+        <ion-list  ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='stxiangx'"
+        ng-repeat="e in ctrl.list.items">
+            <ion-item class="item-divider">基本信息</ion-item>
+            <ion-item  class="item" >实体名称
+                <span class="item-note">{{e.custName }}</span>
+            </ion-item>
+            <ion-item  class="item" ng-if="e.liceNo.length!=18">营业执照
+                <span class="item-note">{{e.regNo }}</span>
+            </ion-item>
+            <ion-item  class="item" ng-if="e.liceNo.length!=18">组织机构代码
+                <span class="item-note">{{e.liceNo }}</span>
+            </ion-item>
+            <ion-item  class="item" ng-if="e.liceNo.length==18">统一信用代码
+                <span class="item-note">{{e.liceNo }}</span>
+            </ion-item>
+            <ion-item  class="item" >主营业务
+                <span class="item-note">{{e.mainBusiness }}</span>
+            </ion-item>
+            <ion-item  class="item" >组织形式
+                <span class="item-note">{{e.orgForm | jnConstant:899}}</span>
+            </ion-item>
+            <ion-item  class="item" >法人代表
+                <span class="item-note">{{e.corpReprst }}</span>
+            </ion-item>
+            <ion-item  class="item" >雇员人数
+                <span class="item-note">{{e.employeeNum }}</span>
+            </ion-item>
+            <ion-item  class="item" >法律实体
+                <span class="item-note">{{e.orgType | jnConstant:5014}}</span>
+            </ion-item>
+            <ion-item  class="item" >固定电话
+                <span class="item-note">{{e.fixPhone }}</span>
+            </ion-item>
+            <ion-item class="item-divider">经营信息</ion-item>
+            <ion-item  class="item" >营业时间
+                <span class="item-note">{{e.businessHours }}</span>
+            </ion-item>
+            <ion-item  class="item" >营业场所
+                <span class="item-note">{{e.addressType|jnConstant:900 }}</span>
+            </ion-item>
+            <ion-item  class="item" >场所面积(m2)
+                <span class="item-note">{{e.addressArea }}</span>
+            </ion-item>
+            <ion-item  class="item" >业务开始时间
+                <span class="item-note">{{e.businessStartDt |jnDate }}</span>
+            </ion-item>
+            <ion-item  class="item" >实际经营地址
+                <span class="item-note">{{e.address }}</span>
+            </ion-item>
+             <ion-item class="item-divider"></ion-item>
+             <ion-item class="item-icon-right" 
+            		 ng-click="ctrl.toDetail()">
+                	共同经营者
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+          </ion-list>
+          <!-- 个人信息 -->
+        <ion-list   ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='grxx'" 
+        ng-repeat="it in ctrl.list.items">
+            <ion-item class="item" >客户来源
+                <span class="item-note">{{ it.adTypeId|jnConstant :895  }}</span>
+            </ion-item>
+            <ion-item class="item" >出生日期
+                <span class="item-note">{{ it.birthday }}</span>
+            </ion-item>
+            <ion-item class="item" >婚姻状况
+                <span class="item-note">{{ it.marryStatus |jnConstant:5027}}</span>
+            </ion-item>
+            <ion-item class="item" >户籍所在地
+                <span class="item-note">{{ it.domPlace }}</span>
+            </ion-item>
+        <div ng-if=" '28' === it.marryStatus || '29' === it.marryStatus ">
+            <ion-item class="item-divider">配偶</ion-item>
+            <ion-item class="item" >姓名
+                <span class="item-note">{{ it.spouseCustName }}</span>
+            </ion-item>
+            <ion-item class="item" >证件号码
+                <span class="item-note">{{ it.spousePaperNo }}</span>
+            </ion-item>
+            <ion-item class="item" >性别
+                <span class="item-note">{{ it.spouseSex |jnConstant:306}}</span>
+            </ion-item>
+            <ion-item class="item" >出生日期
+                <span class="item-note">{{ it.spouseBirthday|jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" >手机号码
+                <span class="item-note" >
+                <jn-tel-no num="{{it.spouseMobPhone}}" ></jn-tel-no></span>
+            </ion-item>
+            <ion-item class="item" >工作单位
+                <span class="item-note">{{ it.spouseWorkUnit }}</span>
+            </ion-item>
+        </div>
+          <ion-item class="item-divider">其他</ion-item>
+          <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/per/jjlxr/list?custNo={{ it.custNo }}&editable={{ '0' === isDetail ? 1 : 0 }}">
+                   紧急联系人
+                <i class="icon ion-ios-arrow-right"></i>
+           </ion-item>
+        </ion-list>
+        <div
+            ng-if="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+    </ion-content>
+</ion-view>

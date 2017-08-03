@@ -1,0 +1,10 @@
+<div style='height: auto;width: auto;'>
+	<textarea  style="resize: none; width: 99%;
+		name="remark" ng-model="data.remark" rows='4' cols="32"
+		placeholder="请输入备注信息不超过500个字！"></textarea>
+	<label class='input-label' style='width:auto;padding:10px 0;'>请选择客户经理<span style='color:red;'> *</span></label>
+	<ion-radio ng-repeat="item in devList" ng-model="data.userId"  ng-value='item.userId'>
+        <div>{{item.userName}}</div>
+        <div ng-if='item.mobile'>{{item.mobile}}</div> 
+    </ion-radio>
+</div>

@@ -1,0 +1,50 @@
+<ion-view view-title="分享">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="button-bar bar-assertive">
+            <button class="button" ng-click="ctrl.checkWechat()">
+                微信是否安装
+            </button>
+        </div>
+        <div class="jn-whitespace" jn-mode="10px"></div>
+        <div class="button-bar bar-positive">
+            <button class="button" ng-click="ctrl.shareTextToTimeline()">
+                分享文字到朋友圈
+            </button>
+            <button class="button" ng-click="ctrl.shareTextToWechat()">
+                分享文字到微信好友
+            </button>
+        </div>
+  <!--       <div class="jn-whitespace" jn-mode="10px"></div>
+        <div class="button-bar bar-positive">
+            <button class="button" ng-click="ctrl.shareImgToTimeline()">
+                分享图片到朋友圈
+            </button>
+            <button class="button" ng-click="ctrl.shareImgToWechat()">
+                分享图片到微信好友
+            </button>
+        </div> -->
+        <div class="jn-whitespace" jn-mode="10px"></div>
+        <div class="button-bar bar-assertive">
+            <button class="button" ng-click="ctrl.checkQQ()">
+                qq是否安装
+            </button>
+        </div>
+        <div class="jn-whitespace" jn-mode="10px"></div>
+        <div class="button-bar bar-positive">
+            <button class="button" ng-click="ctrl.shareTextToQQ()">
+                QQ分享
+            </button>
+            <button class="button" ng-click="ctrl.shareTextToQzone()">
+                QZone分享
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+

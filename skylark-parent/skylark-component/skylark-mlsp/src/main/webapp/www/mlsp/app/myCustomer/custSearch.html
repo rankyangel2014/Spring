@@ -1,0 +1,198 @@
+<ion-view view-title="正式客户搜索">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="ctrl.searchForm" novalidate ng-if="isManagerFlag">
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">客户类型</span>
+                    <select
+                        ng-model="ctrl.form.custType"
+                        ng-change="ctrl.onChangeCustType()"
+                        jn-options="5028"
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                    ng-if="ctrl.form.custType === '0'"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="ctrl.form.paperType"
+                        ng-change="ctrl.onChangePaperType()"
+                        jn-options="5024"
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                    ng-if="ctrl.form.custType === '1'"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="ctrl.form.paperType"
+                        ng-change="ctrl.onChangePaperType()"
+                        jn-options="5025"
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'' !== ctrl.form.paperType && undefined !== ctrl.form.paperType && (('0' === ctrl.form.custType && '0' !== ctrl.form.paperType) || ('1' === ctrl.form.custType && '10' !== ctrl.form.paperType && '11' !== ctrl.form.paperType))"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperType"
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'' !== ctrl.form.paperType && undefined !== ctrl.form.paperType && '0' === ctrl.form.custType && '0' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperType"
+                        ng-model="ctrl.form.paperNo"
+                        jn-id-no
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'' !== ctrl.form.paperType && undefined !== ctrl.form.paperType && '1' === ctrl.form.custType && '10' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperType"
+                        ng-model="ctrl.form.paperNo"
+                        jn-reg-no
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'' !== ctrl.form.paperType && undefined !== ctrl.form.paperType && '1' === ctrl.form.custType && '11' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperType"
+                        ng-model="ctrl.form.paperNo"
+                        jn-org-no
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">客户类别</span>
+                    <select
+                        ng-model="ctrl.form.custClass"
+                        jn-options="7507"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">做过担保业务</span>
+                    <select
+                        ng-model="ctrl.form.grntFlag"
+                        jn-options="5031"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">做过贷款业务</span>
+                    <select
+                        ng-model="ctrl.form.loanFlag"
+                        jn-options="5031"
+                    ></select>
+                </ion-item>
+            </ion-list>
+        </form>
+        <form name="ctrl.searchForm" novalidate ng-if="!isManagerFlag">
+            <ion-list>
+                <ion-item class="item-input item-select" >
+                        <span class="input-label">客户经理</span>
+                        <select
+                            ng-model="ctrl.form.custManagerNo"
+                            jn-manager-select
+                            name = "custManagerNo" 
+                        ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="ctrl.form.paperType"
+                        ng-change="ctrl.onChangePaperType()"
+                        jn-options="5029"
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'0' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        jn-id-no
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'11' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        jn-org-no
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="'10' === ctrl.form.paperType"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        jn-reg-no
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                    ng-if="['0', '10', '11'].indexOf(ctrl.form.paperType) < 0"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码" />
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

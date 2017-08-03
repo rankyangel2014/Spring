@@ -1,0 +1,88 @@
+<ion-view view-title="{{ctrl.title}}" id="custOtherList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+    
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='relations'">
+            <ion-item ng-repeat="e in ctrl.list.items" >
+                <div class="name">{{ e.custName }}</div>
+                <div class="id">{{ e.paperNo }}</div>
+                <div class="phone"><a href="tel:{{ e.phoneNo }}">{{ e.phoneNo }}</a></div>
+            </ion-item>
+        </ion-list>
+        <ion-list   ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='shares'">
+            <ion-item ng-repeat="e in ctrl.list.items" >
+                <div class="name">{{ e.custName }}</div>
+                <div class="id">{{ e.paperNo }}</div>
+                <div class="phone"><a href="tel:{{ e.phoneNo }}">{{ e.phoneNo }}</a></div>
+                <div >出资金额：{{e.investAmt|jnCurrency}}&nbsp;&nbsp; 出资比例(%):{{e.investPct}}</div>
+            </ion-item>
+        </ion-list>
+        <ion-list  ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='custRelationInfos'">
+            <ion-item ng-repeat="e in ctrl.list.items"  class="item-icon-right" ng-click="ctrl.expand('event',$index)">
+               <div   class="div_overflow">{{ e.custName }}&nbsp;&nbsp;{{e.linkCustName}}
+              	  <i class=" icon {{e.expandFlag=='1'?'ion-ios-arrow-up':'ion-ios-arrow-down switch'}}" style=" position: absolute; right: 0;top: 0;width: 50px;height: 50px;"></i>
+               </div>
+                <div class="{{e.expandFlag=='1'?'show':'hide'}}">
+	               <div >
+	               		<label class="label">被关联客户类型</label>
+	               		<span class="content">{{e.linkCustType|jnConstant : 5028}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">关系类型</label>
+	               		<span ng-if="e.linkCustType==='0'" class="content">{{e.linkType|jnConstant : 5017}}</span>
+	               		<span ng-if="e.linkCustType==='1'" class="content">{{e.linkType|jnConstant : 5018}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">拥有股份(%)</label>
+	               		<span class="content">{{e.investPct}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">关系状态</label>
+	               		<span class="content">{{e.linkStatus|jnConstant : 5030}}</span>
+	               	</div>
+                </div>
+            </ion-item>
+          </ion-list>
+        <ion-list  ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='assignHistoryInfos'">
+            <ion-item ng-repeat="e in ctrl.list.items" >
+                <div >{{ e.asgnDate|jnDate }}</div>
+                <div >{{ e.bfCustManagerName }}&nbsp分配给&nbsp{{e.afCustManagerName}}</div>
+                <div >备注：{{ e.phoneNo }}</div>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-show="0 < ctrl.list.items.length && ctrl.actionFlag==='custEventInfos'">
+            <ion-item ng-repeat="e in ctrl.list.items" class="item-icon-right" ng-click="ctrl.expand('event',$index)">
+                <div >{{e.alertStrDate|jnDate}}&nbsp;{{e.alertStrTime}}&nbsp;&nbsp;{{ e.custName }}
+              	  <i class=" icon {{e.expandFlag=='1'?'ion-ios-arrow-up':'ion-ios-arrow-down switch'}}" style=" position: absolute; right: 0;top: 0;width: 50px;height: 50px;"></i>
+               </div>
+                <div class="{{e.expandFlag=='1'?'show':'hide'}}">
+	               <div >
+	               		<label class="label">标题</label>
+	               		<span class="content">{{e.eventTitle}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">状态</label>
+	               		<span class="content">{{e.eventStatus|jnConstant : 6030}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">备注</label>
+	               		<span class="content">{{e.eventDes}}</span>
+	               	</div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.list.more()"
+            ng-show="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

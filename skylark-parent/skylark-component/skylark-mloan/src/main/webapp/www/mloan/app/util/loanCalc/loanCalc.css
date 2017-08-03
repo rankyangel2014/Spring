@@ -1,0 +1,49 @@
+
+#loanCalc .table {
+	width: 100%;
+	text-align: left;
+	margin-bottom: 22px;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+#loanCalc .table thead {
+	border-bottom: 1px solid #DDD;
+}
+
+#loanCalc .table thead th {
+	color: #000;
+	text-align: right;
+	vertical-align: middle;
+	padding: 0 5px 0 5px;
+}
+#loanCalc .table thead th:nth-child(1) {
+	text-align: center;
+}
+
+#loanCalc .table>tbody>tr:nth-child(2n) td {
+	color: #299BD1;
+}
+
+#loanCalc .table>tbody>tr:nth-child(2n+1) td {
+	color: #E285AB;
+}
+
+#loanCalc .table tr {
+	height: 32px;
+}
+
+#loanCalc .table td {
+	vertical-align: middle;
+	border-bottom: 1px solid #DDD;
+	text-align: right;
+	padding: 0 5px 0 5px;
+}
+
+#loanCalc .table td:nth-child(1) {
+	vertical-align: middle;
+	border-bottom: 1px solid #DDD;
+	text-align: center;
+	width: 25px;
+}

@@ -1,0 +1,36 @@
+<ion-view view-title="{{title}}" id="reserveCustomerTransfer">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="transferCustomer();"
+             ng-if='true'
+         >分配</button>
+    </ion-nav-buttons>
+    <ion-content> 
+        <form name="Ctrl.myForm">
+            <ion-list>
+               <!--  <ion-item class="item-input">
+                        <span class='input-label'>客户名称</span>
+                        <span style="max-width:60%;">{{it.custName }} </span>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class='input-label'>电话 </span>
+                    <span>{{it.phoneNo }} </span>
+                </ion-item> -->
+                <ion-item class='item-input'>
+                        <span class='input-label required'>分配给</span>
+                        <input type='text' name='userName' readonly="readonly" required ng-model='it.userName' ng-click="assign();" placeholder="请选择分配对象">
+                </ion-item>
+                <ion-item class='item-input'>
+                          <span class='input-label required'>原因</span>
+                          <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32"  required
+                          ng-model='it.asgnRemark'  name='asgnRemark' placeholder="请输入原因" jn-input-length="60"></textarea>
+                          </div>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

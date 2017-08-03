@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.MessageDao">
+
+	<!-- 插入消息 -->	
+	<insert id="insertMessage" parameterType="java.util.List">
+		INSERT INTO 
+			JNF_T26
+				(C1, C2,  C3, C4, C5)
+	   <foreach open="(" close=")" collection="list" item="item"
+            index="index" separator="union">
+            select
+               #{item.pushId}, #{item.mid}, #{item.pushContent}, #{item.pushType},  #{item.pushState}
+            from dual
+        </foreach>
+	</insert>
+
+	<!-- 修改消息 -->
+	<update id="updateMessage" parameterType="MessageDto">
+		UPDATE 
+		  JNF_T26
+		SET
+		  C5 = #{pushState}
+		WHERE 
+		  C1 = #{pushId}
+	</update>
+	
+	
+	<!-- 查询待发送报文 -->
+	<select id="queryMessageList" resultType="MessageDto">
+		SELECT
+			a.C1 as pushId,
+			a.C2 as mid,
+			a.C3 as pushContent,
+			a.C4 as pushType,
+			a.C5 as pushState
+		FROM JNF_T26 a
+        WHERE  a.C5 = '1' AND ROWNUM &lt;= #{limit}
+	</select>
+
+</mapper>

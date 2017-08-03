@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.payment.PaymentDao">
+	<!-- 插入交易 -->
+	<insert id="insert">
+		INSERT INTO JNF_T9(
+			C1, 
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13,
+			C14,
+			C15,
+			C16,
+			C17,
+			C18,
+			C19,
+			C20,
+			C21,
+			C22,
+			C23
+		) VALUES (
+			#{orderNo}, 
+			#{orderType}, 
+			#{tradeNo}, 
+			#{payer}, 
+			#{payBank}, 
+			#{payAccount},
+			#{payee},
+			#{collBank},
+			#{collAccount},
+			#{amount},
+			#{status}, 
+			#{failReason},
+			#{channel},
+			<choose>
+			  <when test="created != null and created !=''">
+			      to_date(#{created},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			      to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>
+			<choose>
+			  <when test="modified != null and modified !=''">
+			      to_date(#{modified},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			      to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>
+			#{digest},
+			#{mid},
+			#{orgNo},
+			#{fee},
+			#{idNo},
+			#{mobile},
+			#{isBatch},
+			#{loanNo}
+		)
+	</insert>
+	
+	
+	<sql id="tranColumns">
+		T1.C1 	as 	"orderNo",
+		T1.C2 	as 	"orderType",
+		T1.C3 	as 	"tradeNo",
+		T1.C4 	as 	"payer",
+		T1.C5 	as 	"payBank",
+		T1.C6 	as 	"payAccount",
+		T1.C7 	as 	"payee",
+		T1.C8 	as 	"collBank",
+		T1.C9 	as 	"collAccount",
+		T1.C10 	as 	"amount",
+		T1.C11 	as 	"status",
+		T1.C12 	as 	"failReason",
+		T1.C13 	as 	"channel",
+		T1.C14 	as 	"created",
+		T1.C15 	as 	"modified",
+		T1.C16  as  "digest",
+		T1.C17  as  "mid",
+		T1.C18  as  "orgNo",
+		T1.C19  as  "fee",
+		T1.C20  as  "idNo",
+		T1.C21  as  "mobile",
+		T1.C22  as  "isBatch"
+ 	</sql>
+	
+	<!-- 根据orderNo获取支付信息 -->
+	<select id="getPaymentInfoByOrderNo" resultType="PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		WHERE T1.C1 = #{orderNo}
+	</select>
+	
+	<!-- 根据status获取支付信息 -->
+	<select id="getOrdersByStatus" resultType="PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		WHERE T1.C11 = #{status}
+	</select>
+	
+	<!-- 根据tradeNo获取支付信息 -->
+	<select id="getOrdersByTradeNo" resultType="PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		WHERE T1.C3 = #{tradeNo}
+	</select>
+	
+	
+	<!-- 根据orderNo获取支付信息 -->
+	<select id="queryPaymentsByStatus" resultType="PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		WHERE T1.C11 = #{status}
+	</select>
+	
+	<!-- 更新支付表 -->
+	<update id="updatePayment">
+		UPDATE JNF_T9 SET 
+			C11 = #{status}, 
+			<choose>
+			  <when test="modified != null and modified !=''">
+			     C15 =  to_date(#{modified},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			     C15 = to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>
+			C16 = #{digest},
+			C12 = #{failReason}
+		WHERE C1 = #{orderNo}
+		AND C11 = 1
+	</update>
+	
+	<!-- 更新支付表 -->
+    <update id="updatePaymentFee">
+        UPDATE JNF_T9 SET 
+            C15 = to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+            C19 = #{fee}
+        WHERE C1 = #{orderNo}
+    </update>
+	
+	<select id="findPaymentInfoByCondition" parameterType="com.jsjn.jnf.bean.dto.payment.PaymentDto" resultType="com.jsjn.jnf.bean.dto.payment.PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		<where> 
+			<if test="orderNo!=null and orderNo!=''">
+				and T1.C1=#{orderNo}
+			</if> 
+			<if test="payAccount!=null and payAccount!=''">
+				and T1.C6=#{payAccount}
+			</if> 
+			<if test="amountMin !=null and amountMin!=''">
+				and T1.C10 >= TO_NUMBER(#{amountMin})
+			</if> 
+			<if test="amountMax !=null and amountMax!=''">
+				<![CDATA[ and T1.C10 <= TO_NUMBER(#{amountMax})]]> 
+			</if> 
+			<if test="modifiedMin !=null and modifiedMin!=''">
+				and T1.C15 >= TO_DATE(#{modifiedMin},'yyyyMMdd')
+			</if> 
+			<if test="modifiedMax !=null and modifiedMax!=''">
+				<![CDATA[ and T1.C15 <= TO_DATE(#{modifiedMax},'yyyyMMdd')]]> 
+			</if> 
+		</where>
+		ORDER BY T1.C1 DESC
+	</select>
+	
+	<!-- 查询异常支付信息 -->
+	<select id="findExceptionPaymentInfo" parameterType="com.jsjn.jnf.bean.dto.payment.PaymentDto" resultType="com.jsjn.jnf.bean.dto.payment.PaymentDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T9 T1
+		WHERE T1.C11 = '1'  AND to_date(to_char(sysdate,'yyyyMMdd'),'yyyyMMdd') > T1.C14 + #{day}  
+		<if test="orderNo!=null and orderNo!=''">
+			and T1.C1=#{orderNo}
+		</if> 
+		<if test="payAccount!=null and payAccount!=''">
+			and T1.C6=#{payAccount}
+		</if> 
+		<if test="amountMin !=null and amountMin!=''">
+			and T1.C10 >= TO_NUMBER(#{amountMin})
+		</if> 
+		<if test="amountMax !=null and amountMax!=''">
+			<![CDATA[ and T1.C10 <= TO_NUMBER(#{amountMax})]]> 
+		</if> 
+		<if test="modifiedMin !=null and modifiedMin!=''">
+			and T1.C15 >= TO_DATE(#{modifiedMin},'yyyyMMdd')
+		</if> 
+		<if test="modifiedMax !=null and modifiedMax!=''">
+			<![CDATA[ and T1.C15 <= TO_DATE(#{modifiedMax},'yyyyMMdd')]]> 
+		</if> 
+		ORDER BY T1.C1 DESC
+	</select>
+	
+	<!-- 根据订单状态查订单以及该订单的收款人账号信息 -->
+	<select id="queryOrderListByStatus" resultType="map">
+	    select t9.c1  as ORDERNO,
+		       t9.c3  as TRADENO,
+		       to_char(t9.c14,'yyyyMMddHH24miss') as TRADETIME,
+		       t9.c22 as ISBATCH,
+		       t9.c13 as CHANNELCODE,
+		       t24.c5 as BINDACCNO,
+		       t24.c6 as SPIDKEY,
+		       t9.c23 as LOANNO,
+		       TO_CHAR(T9.C14,'YYYYMMDD') AS TRANDT
+		  from jnf_t9 t9
+		  left join jnf_t24 t24
+		    on t9.c13 = t24.c3
+		   and t9.c7 =  t24.c2
+		   and t24.c4 = '1'
+		 where t9.c11 = #{status} --状态为处理中
+		   and t9.c2 = #{orderType} --类型为代扣或代付
+	</select>
+</mapper>

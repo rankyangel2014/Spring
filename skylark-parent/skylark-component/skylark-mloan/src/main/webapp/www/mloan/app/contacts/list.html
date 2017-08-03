@@ -1,0 +1,49 @@
+<ion-view view-title="{{title}}" id="contactsSearch" style='background-color: #f5f5f5;'>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content lazy-scroll>
+         <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper"> 
+            <i class="icon  ion-ios-search-strong placeholder-icon"></i>
+                <input type="search" placeholder="输入姓名/电话/邮箱搜索" ng-model="Ctrl.keywords" ng-change="search()">
+            </label>
+        </div>
+		<div ng-repeat="data in it">
+		     <ion-item class=' item-divider deptName ' ng-if='data.members.length>0' style='white-space:nomarl'> 
+		     <div style="white-space:normal;">
+		     <span style="max-width:60%;">{{data.name}}</span>
+		     </div>
+		     </ion-item>
+			 <ion-item ng-repeat=" member in data.members">
+				<div ui-sref="contactsView({
+				head:member.head,
+				name:member.name,
+				gender:member.gender,
+				birthday:member.birthday,
+				title:member.title,
+				mobile:member.mobile,
+				groupNo:member.groupNo,
+				phoneNo:member.phoneNo,
+				email:member.email,
+				weiChatId:member.weiChatId,
+				qq:member.qq})">
+					 <div class="avatar" 
+					     data-first_letter="{{  member.name.charAt(0) }}"
+					     data-color_index="{{  member.mobile[member.mobile.length - 1] }}" >
+					     <img image-lazy-src="{{member.head}}" ng-if='member.head'/>
+					 </div>
+					 <div class="info">
+					     <div class="name">{{ member.name }}</div>
+					     <div class="desc">{{ member.title }}</div>
+					 </div>
+				 </div>
+				 <div class="shortcuts">
+				     <a class="mobile" href="tel:{{ member.mobile }}"></a>
+				     <a class="tel" href="tel:{{ member.phoneNo }}"></a>
+				     <a class="sms" href="sms:{{ member.mobile }}"></a>
+				 </div>
+			</ion-item>
+		</div>
+    </ion-content>
+</ion-view>

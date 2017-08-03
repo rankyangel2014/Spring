@@ -1,0 +1,29 @@
+<ion-view view-title="电子档案" jn-page>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear ion-plus"
+             ng-click="goUpload()"
+             ng-if="! readonly"
+        ></button>
+    </ion-nav-buttons>
+    <ion-content lazy-scroll>
+        <ul>
+            <li ng-repeat="group in groups">
+                <div class="group-name">{{ group.path | jnJoin :'➙' }}</div>
+                <ul class="group-docs">
+                    <li ng-repeat="file in group.files">
+                        <div class="img-wrapper">
+                            <img
+                                image-lazy-src="{{ file.thumbSrc }}"
+                                ng-click="viewImage(group, file)"
+                            />
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

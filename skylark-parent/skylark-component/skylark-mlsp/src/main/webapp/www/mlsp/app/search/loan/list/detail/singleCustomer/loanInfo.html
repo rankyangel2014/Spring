@@ -1,0 +1,80 @@
+<ion-view view-title="{{title}}">
+	<jn-back></jn-back>
+    <ion-content >
+  		<ion-list>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item" >
+            	客户名称 
+            	 <span class="item-note">{{ it.custName }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	还款日期
+            	<span class="item-note">{{ it.setlDt|jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	还款方式
+            	<span class="item-note">{{ it.txTyp | jnConstant:9820 }}</span>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <div ng-repeat='l in it.loanList'>
+            <div ui-sref='singleCustomerLoanDetail({
+            		  crtTxNo: l.crtTxNo ,
+            		  crtDt: l.crtDt ,
+            		  custNo: l.custNo ,
+            		  })' >
+	            <ul class="row" >
+	              <li class='col col-100' style='font-weight: bolder;text-align: center;'>{{l.contNoExt }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-30'>借据号：</li>
+	              <li class='col col-70'>{{ l.loanNo }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-20'>起息日</li>
+	              <li class='col col-30'>{{ l.intStartDt|jnDate }}</li>
+	              <li class='col col-20'>到期日</li>
+	              <li class='col col-30'>{{ l.lastDueDt|jnDate }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还金额</li>
+	              <li class='col col-25'>{{l.receivableAmt|jnCurrency}}</li>
+	              <li class='col col-25'>应还本金</li>
+	              <li class='col col-25'>{{l.receivablePrcp|jnCurrency}}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还利息</li>
+	              <li class='col col-25'>{{l.receivableInt|jnCurrency}}</li>
+	              <li class='col col-25'>应还罚息</li>
+	              <li class='col col-25'>{{l.receivableOdInt|jnCurrency}}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还复利</li>
+	              <li class='col col-25'>{{l.receivableCmpdInt|jnCurrency}}</li>
+	              <li class='col col-25'>计提金额</li>
+	              <li class='col col-25'>{{ l.prvsnIntRemain|jnCurrency}}</li>
+	            </ul>
+            </div>
+            </div>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  ui-sref='singleCustomerPaymentRecord({
+            		  crtTxNo: it.crtTxNo ,
+            		  crtDt: it.crtDt ,
+            		  custNo: it.custNo ,
+            		  })'>
+                	收款记录
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='singleCustomerBalanceTreatment({
+            		  crtTxNo: it.crtTxNo ,
+            		  crtDt: it.crtDt ,
+            		  custNo: it.custNo ,
+            		  })'>
+                	费用及余款处理
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

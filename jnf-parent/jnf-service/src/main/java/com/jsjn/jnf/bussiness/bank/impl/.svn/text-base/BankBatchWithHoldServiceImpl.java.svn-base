@@ -1,0 +1,171 @@
+package com.jsjn.jnf.bussiness.bank.impl;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.google.common.base.CharMatcher;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
+import com.jsjn.jnf.bean.bo.bank.BatchWithHoldReqBO;
+import com.jsjn.jnf.bean.bo.bank.BatchWithHoldReqDataBO;
+import com.jsjn.jnf.bean.bo.bank.BatchWithHoldResBO;
+import com.jsjn.jnf.bean.dto.withhold.BatchWithholdDto;
+import com.jsjn.jnf.bussiness.bank.BankBatchWithHoldService;
+import com.jsjn.jnf.common.config.ReturnCode;
+import com.jsjn.jnf.common.config.TabsConstant;
+import com.jsjn.jnf.common.exception.BussinessException;
+import com.jsjn.jnf.common.security.Digests;
+import com.jsjn.jnf.common.utils.Logger;
+import com.jsjn.jnf.common.utils.StringUtils;
+import com.jsjn.jnf.common.utils.ValidatorUtil;
+import com.jsjn.jnf.common.utils.network.SFtpClient;
+import com.jsjn.jnf.service.assist.DictService;
+import com.jsjn.jnf.service.assist.LockService;
+import com.jsjn.jnf.service.assist.utils.SequenceUtils;
+import com.jsjn.jnf.service.withhold.BatchWithholdService;
+import com.jsjn.panda.setup.ParseSpring;
+
+/**
+ * 批量代扣
+ * 
+ * @author xiekx
+ * 
+ */
+@Service
+public class BankBatchWithHoldServiceImpl implements BankBatchWithHoldService {
+
+	private final static Logger logger = Logger.getLogger(BankBatchWithHoldServiceImpl.class);
+	private BatchWithholdService batchWithHoldService = (BatchWithholdService) ParseSpring.context.getBean("batchWithholdServiceImpl");
+	// 字典表T12
+	private DictService dictService = (DictService) ParseSpring.context.getBean("dictServiceImpl");
+	// 锁表
+	private LockService lockService = (LockService) ParseSpring.context.getBean("lockServiceImpl");
+
+	/**
+	 * 验证字段是否合法
+	 * 
+	 * @param reqDataBo
+	 * @throws Exception
+	 */
+	public void verifyReqFieldIsValid(BatchWithHoldReqDataBO reqDataBo) throws BussinessException {
+		String errMsg = ValidatorUtil.validObj(reqDataBo);
+		if (!StringUtils.isBlank(errMsg)) {
+			logger.error("执行[批量代扣业务]操作请求参数不合法！" + errMsg);
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE, errMsg);
+		}
+		logger.info("请求字段合法！");
+	}
+
+	@Override
+	public BatchWithHoldResBO batchWithhold(BatchWithHoldReqBO reqBO) throws BussinessException {
+
+		BatchWithHoldReqDataBO reqData = reqBO.getReqData();
+		BatchWithHoldResBO resDto = new BatchWithHoldResBO();
+		// 校验请求字段是否合法
+		verifyReqFieldIsValid(reqData);
+
+		/**
+		 * 摘要
+		 */
+		String sign = reqData.getSign();
+		/**
+		 * 商户号
+		 */
+		String mid = reqBO.getMid();
+
+		/**
+		 * 批次号
+		 */
+		String batchNo = reqData.getBatchNo();
+
+		logger.info("批量代扣锁表 开始：");
+
+		// 交易表 锁表
+		try {
+			lockService.insertLock(mid, TabsConstant.LOCK_TYPE_BATCHWITHHOLD.val(), batchNo);
+		} catch (Exception e) {
+			logger.error("存在相同批次号：" + batchNo + ",请核实！", e);
+			throw new BussinessException(ReturnCode.FAIL, "存在相同批次号：" + batchNo + ",请核实！");
+		}
+
+		logger.info("批量代扣锁表 结束：");
+
+		String host = dictService.findByType("SFTP_HOST");
+		String port = dictService.findByType("SFTP_PORT");
+		String user = dictService.findByType("SFTP_USER");
+		String password = dictService.findByType("SFTP_PASSWORD");
+
+		/**
+		 * MD5摘要盐
+		 */
+		String batchWithholdSalt = dictService.findByType("BATCHWITHHOLD_SALT");
+
+		/**
+		 * 根据文件路径获取数据
+		 */
+		String content = StringUtils.EMPTY;
+
+		/**
+		 * 文件名称
+		 */
+		String fileName = reqData.getFileName();
+		try {
+			//获取文件内容
+			content = SFtpClient.getData(host, port, user, password, fileName);
+		} catch (JSchException e1) {
+			logger.error(e1.getMessage(), e1);
+			throw new BussinessException(ReturnCode.FAIL_CONNECT_SFTP, "SFTP服务异常-连接失败获取session异常");
+		} catch (SftpException e1) {
+			throw new BussinessException(ReturnCode.FAIL_LOAD_DATA_SFTP, "SFTP服务异常-文件不存在");
+		} catch (IOException e1) {
+			logger.error(e1.getMessage(), e1);
+			throw new BussinessException(ReturnCode.FAIL_NETWORK_SFTP, "SFTP服务异常-IO异常");
+		}
+		List<String> reqList = Splitter.on(CharMatcher.BREAKING_WHITESPACE).splitToList(content);
+		/**
+		 * 连接字符获取MD5摘要数据
+		 */
+		String sign2 = Digests.md5(content + batchWithholdSalt);
+
+		if (!StringUtils.equals(sign, sign2)) {
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE_FILEMD5_BATCHWITHHOLD, "文件摘要不匹配，校验失败！");
+		}
+		try {
+			List<BatchWithholdDto> list = Lists.newArrayList();
+			for (String string : reqList) {
+				//最后一行如果是换行符跳过
+				if (!CharMatcher.BREAKING_WHITESPACE.matchesAllOf(string)) {
+					List<String> strArr = Splitter.on(TabsConstant.SPLIT_CHAR.val()).splitToList(string);
+					BatchWithholdDto batchWithholdDto = new BatchWithholdDto();
+					String id = SequenceUtils.getBatchWithholdSeq(mid);
+					batchWithholdDto.setId(id);
+					batchWithholdDto.setSerialNo(strArr.get(0));
+					batchWithholdDto.setOrgNo(strArr.get(1));
+					batchWithholdDto.setLoanNo(strArr.get(2));
+					batchWithholdDto.setCardSignNo(strArr.get(3));
+					batchWithholdDto.setCustName(strArr.get(4));
+					batchWithholdDto.setCustIdNo(strArr.get(5));
+					batchWithholdDto.setAmount(new BigDecimal(strArr.get(6)));
+					batchWithholdDto.setCurCode("01");
+					batchWithholdDto.setRemark(strArr.get(8));
+					batchWithholdDto.setIsValid("Y");
+					batchWithholdDto.setMid(mid);
+					list.add(batchWithholdDto);
+				}
+
+			}
+			batchWithHoldService.batchInsertWithhold(list);
+		} catch (Exception e) {
+			logger.error("批量插入失败" + fileName, e);
+			throw new BussinessException(ReturnCode.FAIL_BATCHINSERT_BATCHWITHHOLD, "批量插入失败" + fileName);
+		}
+		resDto.setResCode(ReturnCode.SUCCESS);
+		resDto.setResMsg("批量代扣请求已受理，正在处理中！");
+		return resDto;
+	}
+}

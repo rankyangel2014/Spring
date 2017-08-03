@@ -1,0 +1,74 @@
+<ion-view view-title="联系人新增" id="entDetailEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	  <ion-nav-buttons side="secondary">
+        <button 
+             class="button button-clear "
+             ng-click="ctrl.submit()"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content >
+	<!-- 新增表单 -->
+    <form name="ctrl.addForm" novalidate>
+    	    <input type="hidden" name="custNo" ng-model="ctrl.form.custNo" />
+            <input type="hidden" name="linkCustNo" ng-model="ctrl.form.linkCustNo" />
+                <ion-item class="item-input">
+                    <span class="input-label">身份证号</span>
+                           <input
+                            type="text"
+                            name="linkPaperNo"
+                            ng-model="ctrl.form.linkPaperNo"
+                            data-validate="id"
+                            placeholder="请输入身份证号"
+                            ng-blur="ctrl.custSearch(ctrl.form.linkPaperNo,'0')"
+                            jn-id-no
+                            ng-readonly="ctrl.form.linkCustNo"/>
+                    </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">名称</span>
+                           <input
+                            type="text"
+                            name="linkCustName"
+                            ng-model="ctrl.form.linkCustName"
+                            placeholder="请输入名称" 
+                             ng-readonly="ctrl.form.linkCustNo"
+                             />
+                    </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">联系方式</span>
+                           <input
+                            type="tel"
+                            name="linkPhoneNo"
+                            required
+                            jn-mobile
+                            ng-model="ctrl.form.linkPhoneNo"
+                            placeholder="请输入手机号码" />
+                    </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">关系类型</span>
+                           <select
+                            name="linkType"
+                            ng-model="ctrl.form.linkType"
+                            jn-options="5018"
+                            ></select>
+                    </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                           <input
+                            type="text"
+                            name="linkWorkUnit"
+                            ng-model="ctrl.form.linkWorkUnit"
+                            placeholder="请输入工作单位" />
+                    </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系地址</span>
+                           <input
+                            type="text"
+                            name="linkCustAddr"
+                            ng-model="ctrl.form.linkCustAddr"
+                            placeholder="请输入联系地址" />
+                    </ion-item>
+		</form>
+    </ion-content>
+</ion-view>

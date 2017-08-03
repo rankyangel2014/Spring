@@ -1,0 +1,37 @@
+<ion-view view-title="历史融资">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+    	 <button 
+        	 ng-if="!ctrl.data.isReadOnly && ctrl.data.btnStatus"
+             class="button button-clear"
+             ng-click="ctrl.edit();"
+         >修改</button>
+         <button 
+        	 ng-if="!ctrl.data.btnStatus"
+             class="button button-clear"
+             ng-click="ctrl.save();"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+		<ion-list  ng-if="ctrl.data.isReadOnly || ctrl.data.btnStatus">
+			<div ng-if="0<ctrl.his.total" ng-repeat="e in ctrl.his.data" >
+				<ion-item class="item-divider">{{e.lastFinaDt}}</ion-item>
+				<ion-item style="min-height: 40px;">
+					<span style="text-overflow: initial;white-space: normal;color: #aaa;">{{e.lastFinaState}}</span>
+				</ion-item>
+			</div>
+		</ion-list>
+		<form name="ctrl.hisLoanForm" id="hisLoanForm" jn-edit-form novalidate ng-if="!ctrl.data.isReadOnly && !ctrl.data.btnStatus">
+			<div ng-if="0<ctrl.his.total" ng-repeat="e in ctrl.his.data" >
+				<ion-item class="item-divider">{{e.lastFinaDt}}</ion-item>
+            	<ion-item class="item-input" >
+					<span class="input-label" style="display: none">{{e.lastFinaDt}}</span>
+					<textarea  rows="4" cols="30" name="loanHis{{$index}}"  jn-input-length="1000" 
+						ng-model="ctrl.his.data[$index].lastFinaState" placeholder="请在此处填写融资说明"></textarea> 
+				</ion-item>
+			</div>
+		</form>
+    </ion-content>
+</ion-view>

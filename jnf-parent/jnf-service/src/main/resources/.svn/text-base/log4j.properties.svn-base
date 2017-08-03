@@ -1,0 +1,31 @@
+log4j.rootLogger=INFO, Console, RollingFile
+log4j.additivity.RollingFile=false
+
+#Console
+log4j.appender.Console=com.jsjn.log4p.appender.Log4pConsoleAppender
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=[%X{LOGGERID}] , [%-5p], %d{yyyy-MM-dd HH:mm:ss} , %X{LOCALIP}, %c,  %m%n
+
+#RollingFile
+log4j.appender.RollingFile=com.jsjn.log4p.appender.Log4pDailyRollingFileAppender
+#log4j.appender.RollingFile.File=/Users/admin/Documents/logs/jnf-server.log
+log4j.appender.RollingFile.File=D://logs/jnf-server.log
+log4j.appender.RollingFile.layout=org.apache.log4j.PatternLayout
+log4j.appender.RollingFile.layout.ConversionPattern=[%X{LOGGERID}] , [%-5p], %d{yyyy-MM-dd HH:mm:ss} , %X{LOCALIP}, %c,  %m%n
+
+
+log4j.logger.java.sql.ResultSet=INFO  
+log4j.logger.org.apache=INFO  
+log4j.logger.java.sql.Connection=DEBUG  
+log4j.logger.java.sql.Statement=DEBUG  
+log4j.logger.java.sql.PreparedStatement=DEBUG
+
+#db
+#log4j.appender.db=org.apache.log4j.jdbc.JDBCAppender
+#log4j.appender.db.BufferSize=8
+#log4j.appender.db.driver=oracle.jdbc.driver.OracleDriver
+#log4j.appender.db.URL=jdbc:oracle:thin:@172.31.18.30:1521/ora10g
+#log4j.appender.db.user=as_jnf
+#log4j.appender.db.password=password
+#log4j.appender.db.sql=insert into jnf_t19 (C1,C2,C3,C4,C5,C6) values ('[%-5p]','%l','%d{yyyy-MM-dd HH:mm:ss}','','%X{userId}','%m%n')
+#log4j.appender.db.layout=org.apache.log4j.PatternLayout

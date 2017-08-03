@@ -1,0 +1,64 @@
+.pageLink {
+	font-weight: bold;
+}
+
+.pageLink:before {
+	font-weight: normal;
+	font-family: iconfont;
+	content: '\e60d';
+	color: #007aff;
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+#noticeViw .attend:before {
+	font-family: iconfont;
+	content: '\e61e';
+	color: #007aff;
+	font-size: 14px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+
+#noticeViw .noticeHead {
+	font-weight: bold;
+	color: #000000;
+	font-size: 14px;
+	text-shadow: 0px 0px 1px #aaaaaa;
+}
+
+#noticeViw .noticeDate {
+	font-weight: normal;
+	font-size: 12px;
+	color: gray;
+}
+
+#noticeViw .noticeContent {
+	font-size:12px !important;
+	color: #000000;
+	padding: 0 3px;
+	overflow: auto;
+}
+
+#noticeViw p ,#noticeViw font ,#noticeViw table,#noticeViw span{
+	font-size:12px !important;
+	color: #000000;
+	overflow: auto;
+}
+
+#noticeViw table{
+	width: 100%;
+	text-align: center;
+}
+
+#noticeViw td ,#noticeViw th{
+	border: 1px solid #aaa;
+	vertical-align: middle;
+	
+}
+
+#noticeViw .noticeAttachUrl {
+	text-decoration: none;
+	color: blue;
+	font-size:12px
+}

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/3385/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/member
+END
+BusinessServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2318/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/member/BusinessServiceController.java
+END
+MemberQueryController.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2318/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/member/MemberQueryController.java
+END
+QryNewBussnessMgr.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/3385/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/member/QryNewBussnessMgr.java
+END
+BindCardServiceController.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2318/group/dev/jnf-parent/jnf-admin/src/main/java/com/jsjn/jnf/admin/member/BindCardServiceController.java
+END

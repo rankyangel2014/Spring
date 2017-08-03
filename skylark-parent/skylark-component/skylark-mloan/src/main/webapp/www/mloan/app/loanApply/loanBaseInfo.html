@@ -1,0 +1,125 @@
+<ion-view view-title="贷款模板选择" id="loanBaseInfo" cache-view="false">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="loanBaseInfoCtrl.saveForm();">下一步</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form jn-edit-form name="loanBaseInfoCtrl.loanBaseInfoForm">
+            <ion-list>
+                <ion-item class="item-divider">贷款模板选择</ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label jn-input-required">业务类型</span>
+                    <select name="contTyp"
+                            ng-model="loanBaseInfoCtrl.form.contTyp"
+                            jn-options="902"
+                            jn-options-exclude="2"
+                            required>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select"
+                          ng-if="loanBaseInfoCtrl.form.contTyp === '1'">
+                    <span class="input-label jn-input-required">客户类型</span>
+                    <select name="custType"
+                            ng-model="loanBaseInfoCtrl.form.custType"
+                            jn-options="5028"
+                            ng-change="loanBaseInfoCtrl.changeCustType()"
+                            required>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select"
+                          ng-if="loanBaseInfoCtrl.form.contTyp === '1' && loanBaseInfoCtrl.form.custType">
+                    <span class="input-label jn-input-required">产品类型</span>
+                    <select name="prodNo"
+                            ng-model="loanBaseInfoCtrl.form.prodNo"
+                            ng-options="m.paramKey as m.paramValue for m in loanBaseInfoCtrl.prodTypeList.items"
+                            required>
+                        <option value="">-- 请选择 --</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input"
+                          ng-if="loanBaseInfoCtrl.form.contTyp === '3'">
+                    <span class="input-label jn-input-required">授信贷款</span>
+                    <input name="contNoExt"
+                           type="text"
+                           ng-model="loanBaseInfoCtrl.form.contNoExt"
+                           placeholder="点击选择授信贷款"
+                           ng-click="loanBaseInfoCtrl.crdtLoanModalConf.openCrdtLoanModal();"
+                           readonly
+                           required/>
+                </ion-item>
+
+                <ion-item class="item-divider"
+                          ng-if="loanBaseInfoCtrl.form.contTyp === '1'">
+                          客户基本信息
+                </ion-item>
+                <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.contTyp === '1'">
+                    <span class="input-label jn-input-required">客户名称</span>
+                    <input name="custName"
+                           type="text"
+                           ng-model="loanBaseInfoCtrl.form.custName"
+                           placeholder="点击选择客户"
+                           ng-click="loanBaseInfoCtrl.custNameModalConf.openCustNameModal();"
+                           readonly
+                           required/>
+                </ion-item>
+                <!-- 个人 -->
+                <ion-item class="item-input"
+                          ng-if="loanBaseInfoCtrl.form.custType == '0' && loanBaseInfoCtrl.form.contTyp === '1'">
+                    <span class="input-label jn-input-required">身份证号</span>
+                    <input name="paperNo"
+                           type="text"
+                           placeholder="请输入身份证号"
+                           ng-model="loanBaseInfoCtrl.form.paperNo"
+                           jn-id-no
+                           ng-readonly="loanBaseInfoCtrl.selectPrefix != 'reserve'"
+                           required/>
+                </ion-item>
+                <!-- 企业 -->
+                <ion-item class="item-input"
+                          ng-if="loanBaseInfoCtrl.form.custType == '1' && loanBaseInfoCtrl.form.contTyp === '1'">
+                    <span class="input-label">三证合一</span>
+                    <ion-radio class="jn-item-radio"
+                               name="cardMerge"
+                               ng-model="loanBaseInfoCtrl.form.cardMerge"
+                               ng-checked="loanBaseInfoCtrl.form.cardMerge == 'N'"
+                               ng-disabled="loanBaseInfoCtrl.isCardMergeDisabled == 'disabled'"
+                               value="N">
+                               否
+                    </ion-radio>
+                    <ion-radio class="jn-item-radio"
+                               name="cardMerge"
+                               ng-model="loanBaseInfoCtrl.form.cardMerge"
+                               ng-checked="loanBaseInfoCtrl.form.cardMerge == 'Y'"
+                               ng-disabled="loanBaseInfoCtrl.isCardMergeDisabled == 'disabled'"
+                               value="Y">
+                               是
+                    </ion-radio>
+                </ion-item>
+                <ion-item class="item-input"
+                          ng-if="loanBaseInfoCtrl.form.cardMerge=='Y' && loanBaseInfoCtrl.form.custType==1 && loanBaseInfoCtrl.form.contTyp === '1'" >
+                    <span class="input-label jn-input-required">统一信用代码</span>
+                    <input type="text"
+                           name="liceNo"
+                           jn-lice-no
+                           ng-model="loanBaseInfoCtrl.form.liceNo"
+                           ng-readonly="loanBaseInfoCtrl.isCardMergeDisabled == 'disabled'"
+                           placeholder="请输入统一信用代码"
+                           required/>
+                </ion-item>
+                <ion-item class="item-input"
+                          ng-if="loanBaseInfoCtrl.form.cardMerge == 'N' && loanBaseInfoCtrl.form.custType==1 && loanBaseInfoCtrl.form.contTyp === '1'">
+                    <span class="input-label jn-input-required">营业执照</span>
+                    <input name="regNo"
+                           type="text"
+                           jn-reg-no
+                           ng-model="loanBaseInfoCtrl.form.regNo"
+                           ng-readonly="loanBaseInfoCtrl.isCardMergeDisabled == 'disabled'"
+                           placeholder="请输入营业执照号码"
+                           required/>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

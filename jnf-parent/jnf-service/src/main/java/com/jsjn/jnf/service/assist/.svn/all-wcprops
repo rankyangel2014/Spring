@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/4060/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist
+END
+ApiRoleCtrlService.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/1215/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/ApiRoleCtrlService.java
+END
+BusinessConfigService.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/1587/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/BusinessConfigService.java
+END
+InterfaceXmlService.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/2029/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/InterfaceXmlService.java
+END
+DictService.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/3409/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/DictService.java
+END
+ChannelBankService.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/4248/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/ChannelBankService.java
+END
+MenuService.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/2201/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/MenuService.java
+END
+MessageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/3712/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/MessageService.java
+END
+FeeConfigService.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/3499/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/FeeConfigService.java
+END
+ChannelService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/4159/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/ChannelService.java
+END
+LockService.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/2935/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/LockService.java
+END
+ReqXmlService.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/1241/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/ReqXmlService.java
+END
+SequenceService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/335/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/assist/SequenceService.java
+END

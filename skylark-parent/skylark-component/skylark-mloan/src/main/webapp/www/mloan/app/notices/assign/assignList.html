@@ -1,0 +1,20 @@
+<ion-view view-title="{{title}}" id="noticeViw">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+<ion-content class="padding"  overflow-scroll="true">
+            <div class="noticeHead">
+              {{ it.noticeHead }}
+            </div>
+            <div class="noticeDate">{{ it.noticeDate | jnDateFormat }}</div>
+            <div
+                 ng-bind-html='it.noticeContent | toHtml'
+                 class="noticeContent"
+                 style="-webkit-user-select: auto;"
+             ></div>
+            <div class="{{ null !=it.attachName ?  'attend' :'' }}"
+                  ng-show=" null !=it.attachName">
+                <span class='noticeAttachUrl' >{{ it.attachName }}</span>
+            </div>
+    </ion-content>
+</ion-view>

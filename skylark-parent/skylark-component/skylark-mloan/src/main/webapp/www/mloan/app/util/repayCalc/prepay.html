@@ -1,0 +1,48 @@
+<ion-view view-title="提前还款计划表">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content style="overflow-x: auto;" overflow-scroll="true">
+        <table class="jnTable">
+            <thead>
+                <tr>
+                    <th>还款日期</th>
+                    <th>期数</th>
+                    <th>计息天数</th>
+                    <th>还款</th>
+                    <th>本金</th>
+                    <th>利息</th>
+                    <th>执行利率%</th>
+                    <th>剩余本金</th>
+                    <th>提前还款额</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in ctrl.list">
+                    <td>{{ e.dueDt }}</td>
+                    <td>{{ e.perdNo }}</td>
+                    <td>{{ e.numberOfDays }}</td>
+                    <td>{{ e.instmAmt | jnCurrency }}</td>
+                    <td>{{ e.instmPrcp | jnCurrency }}</td>
+                    <td>{{ e.instmInt | jnCurrency }}</td>
+                    <td>{{ e.intRate | number:4 }}</td>
+                    <td>{{ e.contPrcpEnd | jnCurrency }}</td>
+                    <td>{{ e.aheadSetlPrcp | jnCurrency }}</td>
+                </tr>
+                <tr>
+                    <th
+                        style="text-align: center; vertical-align: middle;"
+                    >合计</th>
+                    <td></td>
+                    <td><b>{{ ctrl.numberOfDaysSum }}</b></td>
+                    <td><b>{{ ctrl.instmAmtSum | jnCurrency }}</b></td>
+                    <td><b>{{ ctrl.instmPrcpSum | jnCurrency }}</b></td>
+                    <td><b>{{ ctrl.instmIntSum | jnCurrency }}</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-content>
+</ion-view>

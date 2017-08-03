@@ -1,0 +1,60 @@
+<ion-view view-title="检查登记">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear"
+                ng-click="submit()"
+        >保存
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <jn-form validator="validateForm">
+            <ion-item class="item-input">
+                <span class="input-label required">实际检查日期</span>
+                <input
+                    format-date
+                    type="date"
+                    ng-model="form.realCheckDateStr"
+                    jn-validate-name="实际检查日期"
+                    jn-validate="required"
+                    name="realCheckDateStr"
+                />
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label required">检查方式</span>
+                <select
+                    ng-model="form.surveyType"
+                    jn-options="9011"
+                    jn-validate-name="检查方式"
+                    jn-validate="required"
+                ></select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">过程描述</span>
+                <textarea
+                    style="resize: none;width: initial;margin-right:24px;"
+                    rows='4'
+                    cols="32"
+                    ng-model='form.content'
+                    jn-validate-name="过程描述"
+                    jn-validate="required and maxlen(2000)"
+                    placeholder="请输入过程描述"
+                ></textarea>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">检查结论与建议</span>
+                <textarea name='propose'
+                    style="resize: none;width: initial;margin-right:24px;"
+                    rows='4'
+                    cols="32"
+                    ng-model='form.propose'
+                    jn-validate-name="检查结论与建议"
+                    jn-validate="required and maxlen(2000)"
+                    placeholder="请输入检查结论与建议"
+                ></textarea>
+            </ion-item>
+        </jn-form>
+    </ion-content>
+</ion-view>

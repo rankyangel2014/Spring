@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/4048/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config
+END
+MenuCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/654/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/MenuCode.java
+END
+Global.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Zfjs/!svn/ver/3571/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/Global.java
+END
+SecurityReturnCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/4166/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/SecurityReturnCode.java
+END
+ChannelCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/4114/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/ChannelCode.java
+END
+TabsConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/4116/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/TabsConstant.java
+END
+BankInterfaceCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/2338/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/BankInterfaceCode.java
+END
+ReturnCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/4165/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/ReturnCode.java
+END
+TradeCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/2619/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/config/TradeCode.java
+END

@@ -1,0 +1,16 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+	            <ion-item class="item" ng-repeat='f in it.root'>
+	            	 <div style='font-weight: bolder;'>{{  f.feeCde |jnConstant:9210 }} {{f.setlPrcp|jnCurrency}}</div> 
+	            	 <div style='white-space: normal;'>{{  f.feeDesc }}</div>
+	            </ion-item>
+		</ion-list>
+		<div
+            ng-show="0 === it.root.length" class="no_record"
+        >暂无记录</div>
+    </ion-content>
+</ion-view>

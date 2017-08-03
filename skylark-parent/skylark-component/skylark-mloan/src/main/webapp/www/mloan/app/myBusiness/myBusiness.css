@@ -1,0 +1,206 @@
+#myBusiness .page>.page_body {
+    padding-bottom: 0;
+}
+#myBusiness .list .content {
+    color: #666;
+}
+#myBusiness .label {
+      width: 20%;
+    white-space: nowrap;
+}
+#myBusiness .label:after {
+    content:'';
+}
+#myBusiness .type_status:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#myBusiness .name {
+    font-weight: bold;
+}
+
+#myBusiness .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#myBusiness .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#myBusiness .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#myBusiness .compact label {
+    width: 20%;
+}
+
+#myBusiness .list .content {
+	display: inline-block;
+    vertical-align: top;
+	width: 30%;
+    padding: 0 5px 0 5px;
+    word-break: break-all;
+    white-space: normal;
+}
+
+#myBusiness .compact {
+    padding: 4px 0px 0px 0px;
+	font-size: 13.5px;
+    word-break: break-all;
+}
+
+#myBusiness .type_status {
+    line-height: 1;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#myBusiness .type_status:before,
+#myBusiness .type_status:after {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    margin: -2px;
+}
+
+#myBusiness .type_status:before {
+    content: attr(data-type);
+    color: #fff;
+}
+
+#myBusiness .type_status:after {
+    content: attr(data-status);
+    width: 5em;
+    text-align: center;
+}
+
+#myBusiness .type_status[data-type="1"]:after {
+    border-color: navy;
+}
+
+#myBusiness .type_status[data-type="2"]:after {
+    border-color: orange;
+}
+
+#myBusiness .type_status[data-type="3"]:after {
+    border-color: green;
+}
+
+#myBusiness .type_status[data-type="1"]:before {
+    content: '贷款';
+    background-color: navy;
+}
+
+#myBusiness .type_status[data-type="2"]:before {
+    content: '授信';
+    background-color: orange;
+}
+
+#myBusiness .type_status[data-type="3"]:before {
+    content: '用信';
+    background-color: green;
+}
+#myBusiness .type_status[data-status="10"]:after {
+    content: '已申请';
+}
+
+#myBusiness .type_status[data-status="11"]:after {
+    content: '提交申请';
+}
+
+#myBusiness .type_status[data-status="12"]:after {
+    content: '申请审批';
+}
+
+#myBusiness .type_status[data-status="20"]:after {
+    content: '调查';
+}
+
+#myBusiness .type_status[data-status="21"]:after {
+    content: '提交调查';
+}
+
+#myBusiness .type_status[data-status="22"]:after {
+    content: '调查预审';
+}
+
+#myBusiness .type_status[data-status="23"]:after {
+    content: '调查合规';
+}
+
+#myBusiness .type_status[data-status="24"]:after {
+    content: '决议变更';
+}
+
+#myBusiness .type_status[data-status="30"]:after {
+    content: '会审';
+}
+
+#myBusiness .type_status[data-status="40"]:after {
+    content: '签约';
+}
+
+#myBusiness .type_status[data-status="41"]:after {
+    content: '提交签约';
+}
+
+#myBusiness .type_status[data-status="42"]:after {
+    content: '签约审批';
+}
+
+#myBusiness .type_status[data-status="49"]:after {
+    content: '已签约';
+}
+
+#myBusiness .type_status[data-status="50"]:after {
+    content: '放款申请';
+}
+
+#myBusiness .type_status[data-status="51"]:after {
+    content: '放款审批';
+}
+
+#myBusiness .type_status[data-status="60"]:after {
+    content: '会计放款';
+}
+
+#myBusiness .type_status[data-status="61"]:after {
+    content: '已放款';
+}
+
+#myBusiness .type_status[data-status="70"]:after,
+#myBusiness .type_status[data-status="71"]:after,
+#myBusiness .type_status[data-status="72"]:after,
+#myBusiness .type_status[data-status="73"]:after,
+#myBusiness .type_status[data-status="74"]:after,
+#myBusiness .type_status[data-status="75"]:after,
+#myBusiness .type_status[data-status="76"]:after,
+#myBusiness .type_status[data-status="78"]:after {
+    content: '被拒绝';
+}
+
+#myBusiness .type_status[data-status="77"]:after {
+    content: '被抹账';
+}
+
+#historyDeatils .div{
+	
+	font-size: 14px !important;
+}
+
+#historyDeatils  .meta {
+	position: absolute;
+	right: .5em;
+	bottom: .5em;
+	color: grey;
+	font-size: .9em;
+}

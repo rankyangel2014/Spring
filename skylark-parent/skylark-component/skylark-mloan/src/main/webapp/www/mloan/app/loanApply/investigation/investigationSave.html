@@ -1,0 +1,60 @@
+<ion-view view-title="综合评价" id="investigationSave">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="Ctrl.save()"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="false">
+        <form name="Ctrl.myForm" jn-edit-form novalidate>
+            <ion-list >
+            	<ion-item class="item-input item-select">
+	                <span class="input-label required">主题</span>
+	                <select name="subType0"
+	                        ng-model="Ctrl.form.subType0"
+	                        jn-options="5900"
+	                        ng-change="Ctrl.paramQry()"
+	                        required>
+	                </select>
+	            </ion-item>
+	            <ion-item class='item-input' ng-show="Ctrl.form.subType0 == '9' ">
+                    <span class='input-label'>其他</span>
+                    <textarea name='subjectTmp'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='4'
+                            cols="32"
+                            ng-model='Ctrl.form.subjectTmp'
+                            jn-input-length="100" 
+                            placeholder="请输入">
+                  </textarea>
+                </ion-item>
+                <ion-item class='item-input'>
+                    <span class='input-label'>副标题</span>
+                    <textarea name='outlineTmp'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='4'
+                            cols="32"
+                            ng-model='Ctrl.form.outlineTmp'
+                            jn-input-length="100" 
+                            placeholder="请输入副标题"
+                            ng-readonly="oFlag">
+                  </textarea>
+                </ion-item>
+                <ion-item class='item-input'>
+                    <span class='input-label'>内容</span>
+                    <textarea name='details0'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='6'
+                            cols="32"
+                            ng-model='Ctrl.form.details0'
+                            jn-input-length="500" 
+                            placeholder="请输入内容">
+                  </textarea>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

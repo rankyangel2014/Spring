@@ -1,0 +1,454 @@
+package com.jsjn.jnf.bussiness.bank.impl;
+
+import java.math.BigDecimal;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.jsjn.jnf.bean.bo.bank.SingleWithHoldReqBO;
+import com.jsjn.jnf.bean.bo.bank.SingleWithHoldReqDataBO;
+import com.jsjn.jnf.bean.bo.bank.SingleWithHoldResBO;
+import com.jsjn.jnf.bean.bo.bank.SingleWithHoldResDataBO;
+import com.jsjn.jnf.bean.dto.assist.BizConfigDto;
+import com.jsjn.jnf.bean.dto.assist.ChannelBankDto;
+import com.jsjn.jnf.bean.dto.assist.ChannelDto;
+import com.jsjn.jnf.bean.dto.member.MemberDto;
+import com.jsjn.jnf.bean.dto.payment.PaymentDto;
+import com.jsjn.jnf.bean.dto.trade.TransactionDto;
+import com.jsjn.jnf.bean.dto.withhold.InvestorChannelDto;
+import com.jsjn.jnf.bean.dto.withhold.SignInfoDto;
+import com.jsjn.jnf.bean.dto.withhold.UserThirdAccountDto;
+import com.jsjn.jnf.bean.pojo.integration.SingleWithHoldPojo;
+import com.jsjn.jnf.bean.pojo.integration.SingleWithHoldResPojo;
+import com.jsjn.jnf.bussiness.bank.BankSingleWithHoldService;
+import com.jsjn.jnf.bussiness.bank.result.BankSingleWithHoldResultHandle;
+import com.jsjn.jnf.common.config.ReturnCode;
+import com.jsjn.jnf.common.config.TabsConstant;
+import com.jsjn.jnf.common.config.TradeCode;
+import com.jsjn.jnf.common.exception.BussinessException;
+import com.jsjn.jnf.common.security.Cryptos;
+import com.jsjn.jnf.common.security.VerifyRSASign;
+import com.jsjn.jnf.common.utils.DateUtils;
+import com.jsjn.jnf.common.utils.Logger;
+import com.jsjn.jnf.common.utils.StringUtils;
+import com.jsjn.jnf.common.utils.ValidatorUtil;
+import com.jsjn.jnf.integration.bank.strategy.SingleWithHoldStrategy;
+import com.jsjn.jnf.service.assist.BusinessConfigService;
+import com.jsjn.jnf.service.assist.ChannelBankService;
+import com.jsjn.jnf.service.assist.ChannelService;
+import com.jsjn.jnf.service.assist.LockService;
+import com.jsjn.jnf.service.assist.ReqXmlService;
+import com.jsjn.jnf.service.assist.utils.SequenceUtils;
+import com.jsjn.jnf.service.member.MemberService;
+import com.jsjn.jnf.service.payment.PaymentService;
+import com.jsjn.jnf.service.trade.TransactionService;
+import com.jsjn.jnf.service.withhold.InvestorChannelService;
+import com.jsjn.jnf.service.withhold.SignInfoService;
+import com.jsjn.jnf.service.withhold.UserThirdAccountService;
+import com.jsjn.panda.setup.ParseSpring;
+
+/**
+ * 单笔代扣 实现类
+ * 
+ * @author yincy
+ * 
+ */
+@Service
+public class BankSingleWithHoldServiceImpl implements BankSingleWithHoldService {
+
+	private final static Logger logger = Logger.getLogger(BankSingleWithHoldServiceImpl.class);
+
+	// 报文防重复
+	private ReqXmlService reqXmlService = (ReqXmlService) ParseSpring.context.getBean("reqXmlServiceImpl");
+
+	// 商户配置表
+	private BusinessConfigService businessConfigService = (BusinessConfigService) ParseSpring.context.getBean("businessConfigServiceImpl");
+
+	// 锁表
+	private LockService lockService = (LockService) ParseSpring.context.getBean("lockServiceImpl");
+
+	// 交易表T8
+	private TransactionService tranService = (TransactionService) ParseSpring.context.getBean("transactionServiceImpl");
+
+	// 支付表
+	private PaymentService paymentService = (PaymentService) ParseSpring.context.getBean("paymentServiceImpl");
+
+	// 用户绑卡表T21
+	private UserThirdAccountService userThirdAccountService = (UserThirdAccountService) ParseSpring.context.getBean("userThirdAccountServiceImpl");
+
+	// 签约信息表T22
+	private SignInfoService signInfoService = (SignInfoService) ParseSpring.context.getBean("signInfoServiceImpl");
+
+	// 用户表T2
+	private MemberService memberService = (MemberService) ParseSpring.context.getBean("memberServiceImpl");
+
+	// 投资人渠道关系表T24
+	private InvestorChannelService investorChannelService = (InvestorChannelService) ParseSpring.context.getBean("investorChannelService");
+
+	// 渠道银行关系表T25
+	private ChannelBankService channelBankService = (ChannelBankService) ParseSpring.context.getBean("channelBankServiceImpl");
+
+	// 渠道表T23
+	private ChannelService channelService = (ChannelService) ParseSpring.context.getBean("channelServiceImpl");
+
+	// 调用集成层得到结果后的处理类
+	private BankSingleWithHoldResultHandle resultHandle = (BankSingleWithHoldResultHandle) ParseSpring.context.getBean("bankSingleWithHoldResultHandle");
+
+	/**
+	 * 单笔代扣
+	 * 
+	 * @throws BussinessException
+	 */
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW, rollbackFor = { RuntimeException.class,
+			BussinessException.class })
+	@Override
+	public SingleWithHoldResBO singleWithHold(SingleWithHoldReqBO reqDto, boolean flag) throws BussinessException {
+
+		/**
+		 * 校验请求字段是否合法 初始化请求参数
+		 * 
+		 */
+		SingleWithHoldReqDataBO reqDataDto = reqDto.getReqData();
+
+		SingleWithHoldResBO resDto = new SingleWithHoldResBO();
+		SingleWithHoldResDataBO resDataDto = new SingleWithHoldResDataBO();
+
+		// 校验请求字段是否合法
+		verifyReqFieldIsValid(reqDataDto);
+
+		String reqMid = reqDto.getMid();// 商户编号
+		String reqSerialNo = reqDataDto.getSerialNo();// 业务编号（业务系统传过来）需要校验
+														// 用作交易表字段
+		String reqOrgNo = reqDataDto.getOrgNo();// 机构号
+		String reqLoanNo = reqDataDto.getLoanNo();// 借据号
+		String reqCardSignNo = reqDataDto.getCardSignNo();// 签约协议号
+		String reqCustName = reqDataDto.getCustName();// 姓名
+		String reqCustIdNo = reqDataDto.getCustIdNo();// 身份证号
+		BigDecimal reqAmount = reqDataDto.getAmount();// 交易金额
+		String reqCurCode = reqDataDto.getCurCode();
+
+		/**
+		 * 单笔代扣成功后短信模板
+		 */
+		String remark = reqDataDto.getRemark();
+
+		// 交易币种默认为 '01':人民币 暂且没有用
+		if (StringUtils.isBlank(reqCurCode)) {
+			reqCurCode = "01";
+		}
+
+		//只有单笔代扣才需要二次验签
+		if (flag) {
+			String reqXml = reqDto.getXml();// xml报文
+			/**
+			 * 商户报文防重复 **************************** 新事务（不回滚）
+			 */
+			preventXmlRepeat(reqXml);
+			/**
+			 * **************************** 二次验签 ****************************
+			 */
+			verifySinglePaySign(reqMid, reqXml);
+		}
+
+		/**
+		 * 校验【付款账户】【收款账户】【贷款信息】等
+		 */
+		// 根据协议号查询签约信息
+		SignInfoDto signInfoDto = signInfoService.querySignInfoByAid(reqCardSignNo, reqMid);
+		String queryBindChannelCode = signInfoDto.getBindChannel();
+
+		// 根据机构号查询对应投资人信息
+		MemberDto memberDto = memberService.queryMemberByInsttuId(reqOrgNo, reqMid);
+		String queryPayeeId = memberDto.getCustId();// 收款人id
+		String queryPayeeName = Cryptos.aesDecrypt(memberDto.getCustName());
+
+		// 根据【渠道】和【投资人客户号】查询对应的投资人账户详细信息
+		InvestorChannelDto investorDto = investorChannelService.queryInverstor(queryBindChannelCode,
+				signInfoDto.getPayeeUserId());
+		String queryPayeeAccNo = investorDto.getBindAccNo();
+
+		// 根据账户号查询对应借款人账户信息
+		UserThirdAccountDto custAcctDto = userThirdAccountService.queryUserThirdAcctByAccNo(signInfoDto.getPayerBindAccId(),
+				reqMid);
+		String quertPayerId = custAcctDto.getCustId();// 付款人id
+		String queryPayerName = Cryptos.aesDecrypt(custAcctDto.getCustName());
+		String idNo = custAcctDto.getCustIdNo();
+		String mobile = custAcctDto.getMobile();
+		String queryPayerIdNo = Cryptos.aesDecrypt(idNo);
+		String queryPayerCardNo = Cryptos.aesDecrypt(custAcctDto.getBindAccNo());
+		String queryMobile = Cryptos.aesDecrypt(mobile);
+
+		// 根据渠道、金农银行编码查询对应渠道的银行信息
+		ChannelBankDto channelBankDto = channelBankService.queryBankInfo(queryBindChannelCode,
+				custAcctDto.getCardBankCode());
+		String queryPayerCardBankName = channelBankDto.getBankName();
+		String queryPayerCardBankCode = channelBankDto.getChannelBankCode();
+
+		// 查询支付渠道信息
+		ChannelDto channelDto = channelService.queryChannelById(queryBindChannelCode);
+		String queryChannelName = channelDto.getChannelName();
+
+		// 校验【机构号】和【签约信息】是否匹配
+		if (!memberDto.getCustId().equals(signInfoDto.getPayeeUserId())) {
+			logger.error("该笔签约不属于当前机构");
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE, "该笔签约不属于当前机构");
+		}
+
+		// 校验【借据号】和【签约信息】是否匹配
+		if (!reqLoanNo.equals(signInfoDto.getLoanNo())) {
+			logger.error("贷款和签约不匹配");
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE, "贷款和签约不匹配");
+		}
+
+		// 校验【借款人】和【签约信息】是否匹配
+		if (!(reqCustName.equals(queryPayerName) && reqCustIdNo.equals(queryPayerIdNo))) {
+			logger.error("借款人信息和签约不匹配");
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE, "借款人信息和签约不匹配");
+		}
+
+		logger.info("该笔代扣的交易信息列表：");
+		logger.info("签约协议号：" + signInfoDto.getAid());
+		logger.info("投资人名称：" + queryPayeeName);
+		logger.info("投资人账户：" + queryPayeeAccNo);
+		logger.info("借款人名称：" + queryPayerName);
+		logger.info("借款人身份证号：" + queryPayerIdNo);
+		logger.info("借款人账户：" + queryPayerCardNo);
+		logger.info("借款人手机号：" + queryMobile);
+		logger.info("借款人银行卡所属银行名称：" + queryPayerCardBankName);
+		logger.info("借款人银行卡在对应渠道的编码" + queryPayerCardBankCode);
+		logger.info("支付渠道：" + queryChannelName);
+
+		/**
+		 * 判断该笔交易是否已经存在 防止第一次返回给业务是：失败或者处理中，之后定时任务更新为：成功。此时需要直接返回对应状态。
+		 * 
+		 * TODO 问题：若业务不再请求，则有可能导致两边状态不一致
+		 */
+		logger.info("判断该笔交易是否已经存在 开始：");
+
+		TransactionDto transDto = tranService.queryTransactionByMSerialNo(reqMid, reqSerialNo);
+
+		if (transDto.getStatus() != null) {
+			if (transDto.getStatus().equals(TabsConstant.TRANSACTION_STATUS_SUCC.val())) {// 成功
+																							// 直接返回成功响应
+				resDataDto.setStatus(TradeCode.TRADE_SUCCESS.getCode());
+				resDataDto.setSerialNo(transDto.getMSerialNo());
+				resDataDto.setTranNo(transDto.getTradeNo());
+				resDto.setResMsg("该笔代扣之前已经成功！");
+				resDto.setResCode(ReturnCode.SUCCESSED);
+				resDto.setResData(resDataDto);
+				return resDto;
+			} else if (transDto.getStatus().equals(TabsConstant.TRANSACTION_STATUS_DEAL.val())) {// 处理中
+				logger.info("该笔交易正在处理中，请耐心等待");
+				resDto.setResMsg("该笔交易正在处理中，请耐心等待");
+				resDto.setResCode(ReturnCode.FAIL_TRADE_WAIT);
+				return resDto;
+			}
+		}
+
+		logger.info("判断该笔交易是否已经存在 结束：");
+
+		/**
+		 * 锁表(交易表) 场景：第一次交易失败 或者 新的交易
+		 */
+		logger.info("交易表锁表 开始：");
+
+		// 交易表 锁表
+		try {
+			lockService.insertLock(reqMid, TabsConstant.LOCK_TYPE_TRANSACTION.val(), reqSerialNo);
+		} catch (Exception e) {
+			logger.error("存在相同商户业务编号为" + reqSerialNo + "的代扣交易,请核实！");
+			throw new BussinessException(ReturnCode.FAIL, "存在相同商户业务编号为" + reqSerialNo + "的代扣交易,请核实！");
+		}
+
+		logger.info("交易表锁表 结束：");
+
+		/**
+		 * 插入或者更新交易表
+		 */
+		logger.info("插入或者更新交易表 开始：");
+
+		// 第一次交易失败
+		if (transDto.getStatus() != null && transDto.getStatus().equals(TabsConstant.TRANSACTION_STATUS_FAIL.val())) {
+			// 更新交易表状态为处理中
+			transDto.setStatus(TabsConstant.TRANSACTION_STATUS_DEAL.val());
+			tranService.updateTransactionByTradeNo(transDto.getTradeNo(),
+					TabsConstant.TRANSACTION_STATUS_DEAL.val(),
+					transDto.buildDigest(),
+					null,
+					null,
+					DateUtils.getDate("yyyyMMddHHmmss"));
+		} else {
+			// 新交易 新增交易记录
+			transDto.setTradeType(TabsConstant.TRANSACTION_TRADETYPE_WITHHOLD.val());
+			transDto.setTradeNo(SequenceUtils.getTrasaction(reqMid, transDto.getTradeType()));
+			transDto.setbNo(SequenceUtils.getTrasactionBNo());
+			transDto.setMid(reqMid);
+			transDto.setMSerialNo(reqSerialNo);
+			transDto.setExternLoanNo(reqLoanNo);
+			transDto.setPayer(quertPayerId);// 付款人用户编号
+			transDto.setPayerName(Cryptos.aesEncrypt(queryPayerName));// 付款人名称
+			transDto.setPayerBankCardNo(Cryptos.aesEncrypt(queryPayerCardNo));// 付款人银行卡号
+			transDto.setPayee(queryPayeeId);// 收款人用户编号
+			transDto.setPayeeName(Cryptos.aesEncrypt(queryPayeeName));// 收款人名称
+			transDto.setAmount(reqAmount);
+			transDto.setStatus(TabsConstant.TRANSACTION_STATUS_DEAL.val());
+			transDto.setOrgNo(reqOrgNo);
+			transDto.setDesc("代扣  " + DateUtils.getDate() + "  客户号：" + transDto.getPayer() + " 交易金额："
+					+ transDto.getAmount());
+			transDto.setDigest(transDto.buildDigest());
+			transDto.setCreated(DateUtils.getDate("yyyyMMddHHmmss"));
+			transDto.setModified(transDto.getCreated());
+
+			//add by xiekx 新增身份证号和手机号
+			transDto.setIdNo(idNo);
+			transDto.setMobile(mobile);
+			/**
+			 * 根据模板组织短信内容
+			 */
+			String content = StringUtils.replace(remark, "{payerAccount}", StringUtils.substring(queryPayerCardNo, -4));
+			transDto.setMessage(content);
+
+			// 插入交易表
+			try {
+				tranService.insertTransaction(transDto);
+				logger.info("插入交易表成功！");
+			} catch (Exception e) {
+				logger.error("插入交易表失败" + transDto.toString(), e);
+				throw new BussinessException(ReturnCode.FAIL, "新增交易失败！");
+			}
+		}
+		logger.info("插入或者更新交易表 结束：");
+
+		/**
+		 * 插入支付表
+		 */
+		logger.info("插入支付表 开始：");
+
+		String paymentType = TabsConstant.PAYMENT_ORDERTYPE_WITHHOLD.val();// 支付类型
+		String paymentNo = SequenceUtils.getPaymentOrder(reqMid, paymentType);// 支付订单编号
+		String paymentSatus = TabsConstant.PAYMENT_ORDER_STATUS_DEAL.val();// 支付状态
+		String paymentCreatedTime = DateUtils.getDate("yyyyMMddHHmmss");
+
+		PaymentDto paymentDto = new PaymentDto();
+		paymentDto.setOrderNo(paymentNo);
+		paymentDto.setOrderType(paymentType);
+		paymentDto.setTradeNo(transDto.getTradeNo());
+		paymentDto.setPayer(quertPayerId);
+		paymentDto.setPayBank(queryPayerCardBankName);
+		paymentDto.setPayAccount(Cryptos.aesEncrypt(queryPayerCardNo));// 付款账号
+																		// 加密存储
+		paymentDto.setPayee(queryPayeeId);
+		paymentDto.setCollBank(queryChannelName);
+		paymentDto.setCollAccount(Cryptos.aesEncrypt(queryPayeeAccNo));// 收款账号
+																		// 加密存储
+		paymentDto.setAmount(reqAmount);
+		paymentDto.setStatus(paymentSatus);
+		paymentDto.setChannel(queryBindChannelCode);
+		paymentDto.setDigest(paymentDto.buildDigest());
+		paymentDto.setMid(reqMid);
+		paymentDto.setOrgNo(reqOrgNo);
+		// TODO 费用下一阶段实现
+		// paymentDto.setFee(channelDto.getFee());
+		paymentDto.setCreated(paymentCreatedTime);
+		paymentDto.setModified(paymentCreatedTime);
+
+		//设置是否用于批量代扣标记
+		paymentDto.setIsBatch(flag ? TabsConstant.NOT_BATCH.val() : TabsConstant.IS_BATCH.val());
+		//add by xiekx 新增身份证号和手机号
+		paymentDto.setIdNo(idNo);
+		paymentDto.setMobile(mobile);
+
+		// 插入支付表
+		try {
+			paymentService.createOrder(paymentDto);
+			logger.info("插入支付表成功！");
+		} catch (Exception e) {
+			logger.error("插入支付表失败" + paymentDto.toString(), e);
+			throw new BussinessException(ReturnCode.FAIL, "新增支付失败！");
+		}
+
+		logger.info("插入支付表 结束：");
+
+		/**
+		 * 调用集成层进行交易
+		 */
+		logger.info("调用集成层进行交易 开始");
+		// 初始化集成层参数
+		SingleWithHoldPojo pojo = new SingleWithHoldPojo();
+		pojo.setInvestorAccount(queryPayeeAccNo);
+		pojo.setInvestorKey(investorDto.getKey());
+		pojo.setCustName(queryPayerName);
+		pojo.setCustIdNo(queryPayerIdNo);
+		pojo.setCardNo(queryPayerCardNo);
+		pojo.setMobile(queryMobile);
+		pojo.setBankName(channelBankDto.getBankName());
+		pojo.setBankCode(channelBankDto.getChannelBankCode());
+		pojo.setAmount(reqAmount);
+		pojo.setTradeNo(paymentNo);// 支付表编号作为 金农付交易的流水号
+		pojo.setTradeTime(paymentCreatedTime);
+		pojo.setCurCode(reqCurCode);
+		pojo.setPostScript("JNFDK" + paymentNo);// 附言：规则：JNFDK + 支付流水号
+
+		// 根据渠道信息 调用相应集成层方法
+		SingleWithHoldStrategy strategy = new SingleWithHoldStrategy(queryBindChannelCode);
+
+		// important !!! 此处以下的代码不会导致【回滚】操作。此处显式commit。因为基于注解的事务管理，不能精确到代码块级别
+		SingleWithHoldResPojo resPojo = strategy.singleWithHold(pojo);
+
+		logger.info("调用集成层进行交易 结束");
+
+		/**
+		 * 处理返回结果
+		 */
+		return resultHandle.withHoldResultHandle(resPojo, paymentDto, transDto, investorDto.getKey(), reqSerialNo);
+	}
+
+	/**
+	 * 防止报文重复
+	 * 
+	 * @throws Exception
+	 */
+	public void preventXmlRepeat(String reqXml) throws BussinessException {
+		if (!reqXmlService.insertReqXML(reqXml)) {
+			logger.error("插入请求报文表失败" + reqXml);
+			throw new BussinessException(ReturnCode.FAIL_REPEAT_SUBMIT, "请求报文重复,请核实！");
+		}
+
+		logger.info("插入请求报文成功！");
+	}
+
+	/**
+	 * 验证字段是否合法
+	 * 
+	 * @param reqDataBo
+	 * @throws Exception
+	 */
+	public void verifyReqFieldIsValid(SingleWithHoldReqDataBO reqDataBo) throws BussinessException {
+		String errMsg = ValidatorUtil.validObj(reqDataBo);
+		if (!StringUtils.isBlank(errMsg)) {
+			logger.error("执行[单笔代扣业务]操作请求参数不合法！" + errMsg);
+			throw new BussinessException(ReturnCode.FAIL_VALIDATE, errMsg);
+		}
+		logger.info("请求字段合法！");
+	}
+
+	/**
+	 * 二次验签
+	 * 
+	 * @param reqMid
+	 * @param reqXml
+	 * @throws Exception
+	 */
+	public void verifySinglePaySign(String reqMid, String reqXml) throws BussinessException {
+		BizConfigDto config = new BizConfigDto();
+		config.setMid(reqMid);
+		String publicKey = businessConfigService.queryBussinessConfig(config).getRsaPubKey();
+		if (!VerifyRSASign.verifySign(reqXml, publicKey)) {
+			logger.error("验签失败，请求拒绝！！");
+			throw new BussinessException(ReturnCode.FAIL_INVALID_SECONED_SIGN, "二次验签失败，本次交易存在风险！");
+		}
+
+		logger.info("二次验签成功");
+	}
+}

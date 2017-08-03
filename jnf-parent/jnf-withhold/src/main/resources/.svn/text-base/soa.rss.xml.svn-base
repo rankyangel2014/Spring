@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mcps:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mcps="http://www.jsjngf.com/schema/mcps">
+	<node name="admin"  id=""></node>
+	
+	<registery>
+		<protocalId>mcps</protocalId>
+		<protocalName>mcps</protocalName>
+		<ip>127.0.0.1</ip>
+		<port>4601</port>
+		<subscribe>true</subscribe>
+		<register/>
+		<heartBeat>100000000</heartBeat>
+		<password></password>
+		<username></username>
+	</registery>
+	
+	<application id="0020" name="金农付服务层" version="0.0.1" createdate="2013-12-01 12:01:01" verification="true">
+
+		<reference id="getSysConfigByTypes" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findBussiness" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="saveBusinessInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateBussinessInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findAllMenuCode" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findPlatRoles" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findBussinessAuth" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateBussinessAuth" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryBussinessConfigByMid" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="saveBussinessConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findPaymentInfoByCondition" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryTransactionByCondition" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="dealException" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findExceptionPaymentInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryMembers" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryUserBindCardInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateUserCardState" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="regInvest" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="qryXmlFlow" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="qryTotalFee" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryAccount" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="qryDictInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="addDictInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateDictInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="delDictInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="qryFeeConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="addFeeConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateFeeConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="delFeeConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="addMenu" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateMenu" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="delMenu" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="getInvestorChannelList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="saveWithhold" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateWithholdStatus" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryInvestorChannelCount" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+
+		<reference id="findWithholdInfoByCondition" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="cardInfoQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryBankList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="getSignList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="getSignTempInfoCount" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="saveSignTempInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findAllMenuByCode" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findWithholdInfoByCondition" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="cardInfoQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryBankList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="getSignTempInfoList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="getSignTempInfoCount" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="saveSignTempInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="qryChannelByInvestorId" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="querySignTempInfoById" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="findContNoByCondition" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateTaskinstanceId" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryJnBankCode" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="sendSmsVerifyCode" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="updateSignTempFilesInfo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="cardBINQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+
+        <!-- 新增待办 -->
+		<reference id="addApprove" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 提交审批 -->
+		<reference id="submitApprove" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 代扣签约 -->
+		<reference id="sign" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 代扣签约解约 -->
+		<reference id="cancel" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 查询（小微贷）机构信息 机构类型（insttuTy）为（02 ，93 ）-->
+		<reference id="getOrgList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!--代扣签约查询-->
+		<reference id="getSignInfoList" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 更新签约状态 -->
+		<reference id="updateSignInfoStatus" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<!-- 根据签约协议号查询签约临时信息 -->
+		<reference id="querySignTempInfoByIds" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		 <!-- 发送短信 -->
+		<reference id="sendSms" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		 <!-- 根据机构号和业务类型查询渠道信息 -->
+		<reference id="queryChannelByOrgNoAndType" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		 <!-- 根据业务类型查询渠道信息 -->
+		<reference id="queryChannelByBusinessType" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+
+	</application>
+</mcps:definitions>

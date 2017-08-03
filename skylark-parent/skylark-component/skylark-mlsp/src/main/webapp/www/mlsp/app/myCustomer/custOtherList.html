@@ -1,0 +1,177 @@
+<style type="text/css">
+#custOtherList .pageLink:before {
+	font-weight: normal;
+	font-family: iconfont;
+	content: '\e617';
+	color: #007aff;
+	padding-right: 5px;
+	font-size: 1.4em;
+	vertical-align: middle;
+}
+
+#custOtherList .meta {
+	font-family: iconfont;
+    position: absolute;
+    right: .5em;
+    bottom: .5em;
+    color: grey;
+    font-size: .9em;
+}
+
+#custOtherList .meta>span:before {
+    margin-right: .3em;
+    color: #f98653;
+}
+
+#custOtherList .name {
+    line-height: 1.5em;
+}
+
+#custOtherList .name {
+    font-weight: bold;
+}
+
+#custOtherList .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#custOtherList .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#custOtherList .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#custOtherList .address:not(:empty):before{
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    padding-right: 0.25px;
+    font-size: 20px;
+    color: salmon;
+}
+
+</style>
+<ion-view view-title="{{ctrl.title}}" id="custOtherList">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button  ng-if="ctrl.actionFlag==='shares' &&  '1' != isDetail &&  '1' != custClass  && isManager && isQry!=1  "
+             class="button button-clear "
+             ng-click="ctrl.add(ctrl.actionFlag)"
+         >新增</button>
+        <button
+                class="button button-clear"
+                ng-if="ctrl.actionFlag==='relations' &&  '1' != custClass && isManager && isQry!=1 "
+                ui-sref="custRelationAdd({'custNo':custNo,'custPaperNo':custPaperNo})"
+        >新增</button>
+    </ion-nav-buttons>
+    <ion-content >
+         <!-- 联系人 -->
+        <ion-list   ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='relations'">
+            <ion-item ng-repeat="e in ctrl.list.items">
+                <div ng-click="ctrl.toDetail(ctrl.totalCustNo,25,'relations',$index,e)">
+                    <div class="name">{{ e.custName }}</div>
+                    <div class="id">{{ e.paperNo }}</div>
+                    <!-- <div class="phone" ng-hide="{{ e.phoneNo==''}}"><a href="tel:{{ e.phoneNo }}">{{ e.phoneNo }}</a></div> -->
+                    <jn-tel-no num="{{ e.phoneNo}}"></jn-tel-no>
+                </div>
+                <ion-option-button
+                        class="button-assertive"
+                        ng-click="ctrl.delRelation(e)"
+                        ng-if="isManager && isQry!=1 "
+                >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <!-- 合伙人 -->
+        <ion-list   ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='shares'">
+            <ion-item class="item-icon-right" ng-repeat="e in ctrl.list.items" 
+            >
+            <div ng-click="ctrl.toDetail(ctrl.totalCustNo,24,'shares',$index,e)" >
+                <div class="name">{{ e.custName }}</div>
+               <!--  <div class="pie" data-percent="{{e.investPct}}" style="animation-delay: -{{e.investPct}}s;"></div> -->
+                <jn-pie-chart class="pie" value="{{e.investPct}}"></jn-pie-chart>
+                <div class="id">{{ e.paperNo }}</div>
+               <!--  <div class="phone" ng-hide="{{ e.phoneNo==''}}" ng-click="ctrl.telClick(this)"><a href="tel:{{ e.phoneNo }}" >{{ e.phoneNo }}</a></div> -->
+               <jn-tel-no num="{{ e.phoneNo}}" ></jn-tel-no>
+               </div>
+               <ion-option-button
+                  ng-if=" isManager && isQry!=1"
+                   class="button-assertive"
+                   ng-click="rmSHA(e)"
+               >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <!-- 客户关系 -->
+        <ion-list  ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='custRelationInfos'">
+            <ion-item  ng-repeat="e in ctrl.list.items"   ng-click="ctrl.toDetail(ctrl.totalCustNo,25,'custRelationInfos',$index,e)">
+                <!-- <div class="name" ng-if="e.custNo!=ctrl.totalCustNo">{{ e.custName }}（主）</div>
+                <div class="name" ng-if="e.custNo===ctrl.totalCustNo">{{ e.linkCustName }}（被）</div>
+                <div class="pie" data-percent="{{e.sharePct}}" style="animation-delay: -{{e.sharePct}}s;"></div>
+                <jn-pie-chart class="pie" value="{{e.sharePct}}" ></jn-pie-chart>
+                 <div >
+	               		关系类型
+	               		<span >{{(e.linkType|jnConstant : 5033)}}</span>
+	              </div> -->
+	              <div class="jn-item-title name" ng-if="e.custNo!=ctrl.totalCustNo" data-type="{{e.custType}}">{{ e.custName }}</div>
+                  <div class="jn-item-title name" ng-if="e.custNo===ctrl.totalCustNo" data-type="{{e.linkCustType}}">{{ e.linkCustName }}</div>
+	           <!-- 	<div class="meta">
+	               		<span class="ion-android-checkmark-circle">{{(e.linkType|jnConstant : 5033)}}</span>
+	              </div> -->
+            </ion-item>
+          </ion-list>
+        <ion-list  ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='assignHistoryInfos'">
+            <ion-item ng-repeat="e in ctrl.list.items" style="white-space:normal">
+                <div >{{ e.asgnDate|jnDate }}</div>
+                <div style="max-width: 100%">
+	                	<span>操作员<strong >{{e.operNo}}</strong>将<strong >{{e.bfCustManagerName }}</strong>名下的客户<strong style="color: #007aff;">{{e.custName}}</strong>分配给<strong >{{e.afCustManagerName}}</strong></span>
+                </div>
+                <div ng-if="e.remark">备注：{{ e.remark }}</div>
+            </ion-item>
+        </ion-list>
+        <!-- 客户事件 -->
+        <ion-list ng-if="0 < ctrl.list.items.length && ctrl.actionFlag==='custEventInfos'">
+            <ion-item ng-repeat="e in ctrl.list.items" class="item item-icon-left item-icon-right"  ng-click="ctrl.toDetail(e.custNo,25,'custEventInfos',$index,e)">
+               <!--  <div ng-click="ctrl.toDetail(e.custNo,25,'custEventInfos',$index)" >
+                	{{e.alertStrDate|jnDate}}&nbsp;{{e.alertStrTime}}&nbsp;&nbsp;{{e.eventId}}
+               </div>
+              	  <i ng-click="ctrl.expand('event',$index)" class=" icon {{e.expandFlag=='1'?'ion-ios-arrow-up':'ion-ios-arrow-down switch'}}" style=" position: absolute; right: 0;top: 0;width: 50px;height: 50px;"></i>
+                <div class="{{e.expandFlag=='1'?'show':'hide'}}" >
+	               <div >
+	               		<label class="label">标题</label>
+	               		<span class="content">{{e.eventTitle}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">状态</label>
+	               		<span class="content">{{e.eventStatus|jnConstant : 6030}}</span>
+	               	</div>
+	               <div >
+	               		<label class="label">备注</label>
+	               		<span class="content">{{e.eventDes}}</span>
+	               	</div>
+                </div> -->
+                 <i class=" icon pageLink" style="font-size: 16px;"></i>
+                 <span style='font-weight: bolder;'>{{ e.eventTitle }}</span>
+                 <i class=" icon ion-ios-arrow-right" style="font-size: 22px;"></i>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-if="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-if="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,65 @@
+#searchCustomerList ion-item {
+    font-size: 14px;
+}
+
+#searchCustomerList .name,
+#searchCustomerList .id,
+#searchCustomerList .manager {
+    line-height: 1.5em;
+}
+
+#searchCustomerList .name {
+    font-weight: bold;
+}
+
+#searchCustomerList .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#searchCustomerList .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#searchCustomerList .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#searchCustomerList .id,
+#searchCustomerList .manager {
+    color: #666;
+}
+
+#searchCustomerList .id:before,
+#searchCustomerList .manager:before {
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+}
+
+#searchCustomerList .id:before {
+    content: '\e626';
+}
+
+#searchCustomerList .manager:before {
+    content: '\e627';
+}
+
+#searchCustomerList .meta {
+    position: absolute;
+    right: .5em;
+    bottom: .5em;
+    color: grey;
+    font-size: .9em;
+}
+
+#searchCustomerList .meta>span:before {
+    margin-right: .3em;
+    color: #f98653;
+}

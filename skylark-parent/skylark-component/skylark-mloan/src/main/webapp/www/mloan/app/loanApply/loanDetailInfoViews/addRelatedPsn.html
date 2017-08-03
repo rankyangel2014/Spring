@@ -1,0 +1,126 @@
+<ion-view view-title="{{addRelatedPsnCtrl.title}}信息" cache-view="false">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"
+                ng-click="addRelatedPsnCtrl.saveForm()"
+                ng-if="!addRelatedPsnCtrl.isReadOnly">
+                保存
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" has-bouncing="false">
+        <ion-list>
+            <form jn-edit-form name="addRelatedPsnCtrl.addRelatedPsnForm">
+                <ion-item class="item-input item-select">
+                    <span class="input-label jn-input-required">客户类型</span>
+                    <select name="custType"
+                            ng-model="addRelatedPsnCtrl.form.custType"
+                            ng-change="addRelatedPsnCtrl.changeCustType()"
+                            ng-disabled="addRelatedPsnCtrl.isReadOnly || addRelatedPsnCtrl.isCustTypeDisabled == 'disabled'"
+                            jn-options="5028"
+                            required>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input" ng-show="addRelatedPsnCtrl.form.custType">
+                    <span class="input-label jn-input-required">关联{{addRelatedPsnCtrl.custTypeText}}</span>
+                    <input name="custName"
+                           type="text"
+                           ng-model="addRelatedPsnCtrl.form.custName"
+                           placeholder="点击编辑关联{{addRelatedPsnCtrl.custTypeText}}信息"
+                           ng-click="addRelatedPsnCtrl.openRelatedForm();"
+                           readonly
+                           required/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label jn-input-required">与客户关系</span>
+                    <jn-multi-select
+                        name="linkType"
+                        options="addRelatedPsnCtrl.linkTypeOptions"
+                        required
+                        ng-model="addRelatedPsnCtrl.form.linkType"
+                        ng-disabled="addRelatedPsnCtrl.isReadOnly || addRelatedPsnCtrl.isLinkTypeDisabled == 'disabled'"
+                        placeholder="请选择与客户关系">
+                    </jn-multi-select>
+                </ion-item>
+                <ion-item class="item-input"
+                          ng-if="addRelatedPsnCtrl.isSharePcthide != 'hidden'">
+                    <span class="input-label">出资金额(元)</span>
+                    <input type="number"
+                           placeholder="请输入出资金额"
+                           name="shareAmt"
+                           ng-model="addRelatedPsnCtrl.form.shareAmt"
+                           ng-readonly="addRelatedPsnCtrl.isReadOnly"
+                           min="0"
+                           max="9999999999999999"/>
+                </ion-item>
+                <ion-item class="item-input"
+                          ng-if="addRelatedPsnCtrl.isSharePcthide != 'hidden'">
+                    <span class="input-label">业务股份占比(%)</span>
+                    <input type="number"
+                           placeholder="请输入业务股份占比"
+                           name="sharePct"
+                           ng-model="addRelatedPsnCtrl.form.sharePct"
+                           ng-readonly="addRelatedPsnCtrl.isReadOnly"
+                           min="0"
+                           max="100"/>
+                </ion-item>
+                <ion-item class="item-divider">关联关系说明</ion-item>
+                <ion-item class='item-input'>
+                    <textarea rows="4"
+                              cols="32"
+                              name="relationRemark"
+                              jn-input-length="500"
+                              ng-model="addRelatedPsnCtrl.form.relationRemark"
+                              ng-readonly="addRelatedPsnCtrl.isReadOnly"
+                              placeholder="请在此处填写关联关系说明">
+                    </textarea>
+                </ion-item>
+                <ion-item class="item-divider"
+                          ng-if="addRelatedPsnCtrl.isTogetherOpt"
+                          style="font-size: inherit;">
+                    共同经营者在家庭或在社会经济网中的状况
+                </ion-item>
+                <ion-item class='item-input'
+                          ng-if="addRelatedPsnCtrl.isTogetherOpt">
+                    <textarea rows="4"
+                              cols="32"
+                              name="conditionInfo"
+                              jn-input-length="500"
+                              ng-model="addRelatedPsnCtrl.form.conditionInfo"
+                              ng-readonly="addRelatedPsnCtrl.isReadOnly"
+                              placeholder="请在此处填写共同经营者在家庭或在社会经济网中的状况">
+                    </textarea>
+                </ion-item>
+                <ion-item class="item-divider"
+                          ng-if="addRelatedPsnCtrl.isShareholder">
+                    股权变更历史
+                </ion-item>
+                <ion-item class='item-input'
+                          ng-if="addRelatedPsnCtrl.isShareholder">
+                    <textarea rows="4"
+                              cols="32"
+                              name="equityHis"
+                              jn-input-length="500"
+                              ng-model="addRelatedPsnCtrl.form.equityHis"
+                              ng-readonly="addRelatedPsnCtrl.isReadOnly"
+                              placeholder="请在此处填写股权变更历史">
+                    </textarea>
+                </ion-item>
+            </form>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right jn-toggle-item"
+                      ng-click="addRelatedPsnCtrl.toggleItem('pBase')"
+                      ng-class="{'item-divider':addRelatedPsnCtrl.checked.pBase}"
+                      ng-model='addRelatedPsnCtrl.checked.pBase'>
+                <span>关联{{addRelatedPsnCtrl.custTypeText}}详情</span>
+                <i class="icon"
+                   ng-class="{true:'ion-ios-arrow-up',false:'ion-ios-arrow-down'}[addRelatedPsnCtrl.checked.pBase]"></i>
+            </ion-item>
+            <!-- 个人 -->
+            <ng-include src="'app/loanApply/loanDetailInfoViews/personalRelatedFrag.html'" autoscroll></ng-include>
+            <!-- 企业 -->
+            <ng-include src="'app/loanApply/loanDetailInfoViews/companyRelatedFrag.html'" autoscroll></ng-include>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,254 @@
+import java.math.BigDecimal;
+
+import com.alibaba.fastjson.JSONObject;
+import com.jsjn.jnf.bean.bo.bank.RealtimeBalQueryReqBO;
+import com.jsjn.jnf.bean.bo.bank.RealtimeBalQueryReqDataBO;
+import com.jsjn.jnf.bean.bo.bank.RealtimeBalQueryResBO;
+import com.jsjn.jnf.bean.bo.bank.SingleFlowStateQueryReqBO;
+import com.jsjn.jnf.bean.bo.bank.SingleFlowStateQueryReqDataBO;
+import com.jsjn.jnf.bean.bo.bank.SingleFlowStateQueryResBO;
+import com.jsjn.jnf.bean.bo.bank.SinglePaymentTradeReqBO;
+import com.jsjn.jnf.bean.bo.bank.SinglePaymentTradeReqDataBO;
+import com.jsjn.jnf.bean.bo.bank.SinglePaymentTradeResBO;
+import com.jsjn.jnf.bean.bo.cardBin.CardBinQueryReqBO;
+import com.jsjn.jnf.bean.bo.integration.jsyh.request.JsReqBase;
+import com.jsjn.jnf.bean.bo.integration.jsyh.request.JsReqBaseHead;
+import com.jsjn.jnf.bean.bo.integration.jsyh.request.JsReqRealtimeBalQueryBody;
+import com.jsjn.jnf.bean.dto.withhold.InvestorChannelDto;
+import com.jsjn.jnf.bussiness.bank.BankRealtimeBalQueryService;
+import com.jsjn.jnf.bussiness.bank.BankSingleFlowStateQueryService;
+import com.jsjn.jnf.common.config.BankInterfaceCode;
+import com.jsjn.jnf.common.config.Global;
+import com.jsjn.jnf.common.exception.BussinessException;
+import com.jsjn.jnf.common.mapper.JaxbMapper;
+import com.jsjn.jnf.common.utils.DateUtils;
+import com.jsjn.jnf.integration.bank.RealtimeBalQueryInterface;
+import com.jsjn.jnf.integration.bank.factory.JsyhReqFactory;
+import com.jsjn.jnf.integration.bank.impl.JsyhRealTimeBalQueryImpl;
+import com.jsjn.jnf.integration.bank.strategy.RealtimeBalQueryStrategy;
+import com.jsjn.jnf.panda.client.PandaClient2;
+import com.jsjn.jnf.service.withhold.InvestorChannelService;
+import com.jsjn.log4p.pandaclient.Log4pPandaClient;
+import com.jsjn.panda.client.Result;
+import com.jsjn.panda.setup.ParseSpring;
+
+public class ServiceTest {
+	public static void main(String[] args) throws Exception {
+		ServiceTest test = new ServiceTest();
+
+		//		test.flowState();
+
+		//		test.realtimeBal();
+		//		test.singlePay();
+		//		test.strategyTest();
+		//		test.factoryTest();
+		//		test.cardBinTest();
+		//		test.timeTest();
+		test.test();
+		//		test.新增签约渠道信息();
+	}
+
+	public void test() throws Exception {
+		PandaClient2.subscribe();
+		Thread.sleep(1000);
+
+		//		QuerySignInfoReqBo initDto = new QuerySignInfoReqBo();
+
+		//		Result result = PandaClient2.invoke(Global.SERVICE_PANDA_ID, "testPanda2");
+		Result result = PandaClient2.invoke(Global.SERVICE_PANDA_ID, "queryLoanInfo");
+		System.out.println(result.getResult());
+	}
+
+	public void flowState() throws BussinessException {
+		BankSingleFlowStateQueryService singleFlowStateQueryService = (BankSingleFlowStateQueryService) ParseSpring.context.getBean("bankSingleFlowStateQueryServiceImpl");
+
+		SingleFlowStateQueryReqBO initDto = new SingleFlowStateQueryReqBO();
+		SingleFlowStateQueryReqDataBO initDtoData = new SingleFlowStateQueryReqDataBO();
+
+		initDtoData.setTranNo("JNF0001");
+
+		initDto.setReqData(initDtoData);
+
+		initDto.setAppkey("appkeytest");
+		initDto.setCharset("UTF-8");
+		initDto.setSign("signtest");
+		initDto.setSignType("RSA");
+
+		String reqXML = JaxbMapper.toXml(initDto, false);
+		System.out.println("****************客户端请求数据为********************");
+		System.out.println(reqXML);
+
+		SingleFlowStateQueryResBO outDto = singleFlowStateQueryService.singleFlowStateQuery(initDto);
+
+		String resXML = JaxbMapper.toXml(outDto, false);
+		System.out.println("****************客户端收到数据为********************");
+		System.out.println(resXML);
+	}
+
+	public void singlePay() throws Exception {
+		Log4pPandaClient.subscribe();
+		Thread.sleep(1000);
+		//		BankSinglePaymentTradeService singlePaymentTradeService = (BankSinglePaymentTradeService) ParseSpring.context.getBean("bankSinglePaymentTradeServiceImpl");
+
+		SinglePaymentTradeReqBO initDto = new SinglePaymentTradeReqBO();
+		SinglePaymentTradeReqDataBO initDtoData = new SinglePaymentTradeReqDataBO();
+
+		initDtoData.setSerialNo("JNF0001");
+		initDtoData.setAmount(new BigDecimal("20000.00"));
+		initDtoData.setCurCode("01");
+		initDtoData.setPayorAccountName("封腺痛一征蒂拭悟所");
+		initDtoData.setPayorAccountNo("60340188000068642");
+		initDtoData.setPayeeAccountName("疆酥枷得商么友线公司");
+		initDtoData.setPayeeAccountNo("70560188000150035");
+		initDtoData.setPayeeBankName("");
+		initDtoData.setPayeeBankNo("");
+		initDtoData.setUrgencyFlag("0");
+		initDtoData.setPurpose("这是目的这是目的这是目的");
+
+		initDto.setReqData(initDtoData);
+
+		initDto.setAppkey("appkeytest");
+		initDto.setCharset("UTF-8");
+		initDto.setSign("signtest");
+		initDto.setSignType("RSA");
+
+		String reqDataXML = JaxbMapper.toXml(initDto, false);
+		System.out.println("****************客户端请求数据 start********************");
+		System.out.println(reqDataXML);
+		System.out.println("****************客户端请求数据 end********************");
+
+		//		SinglePaymentTradeResBO outDto = singlePaymentTradeService.singlePaymentTrade(initDto);
+
+		Result result = Log4pPandaClient.invoke(Global.SERVICE_PANDA_ID, "bankSinglePaymentTrade", initDto);
+
+		SinglePaymentTradeResBO outDto = new SinglePaymentTradeResBO();
+		// 获取响应数据
+		outDto = JSONObject.parseObject(result.getResult(), outDto.getClass());
+
+		String resDataXML = JaxbMapper.toXml(outDto, false);
+		System.out.println("****************客户端收到数据 start********************");
+		System.out.println(resDataXML);
+		System.out.println("****************客户端收到数据 end********************");
+	}
+
+	public void realtimeBal() throws Exception {
+
+		//		PandaClient2.subscribe();
+		//		Thread.sleep(1000);
+		BankRealtimeBalQueryService realtimeBalQueryService = (BankRealtimeBalQueryService) ParseSpring.context.getBean("bankRealtimeBalQueryServiceImpl");
+
+		RealtimeBalQueryReqBO initDto = new RealtimeBalQueryReqBO();
+		RealtimeBalQueryReqDataBO initDtoData = new RealtimeBalQueryReqDataBO();
+
+		initDtoData.setAccountNo("70560188000150035");
+		initDtoData.setCurCode("01");
+
+		initDto.setReqData(initDtoData);
+
+		initDto.setAppkey("appkeytest");
+		initDto.setCharset("UTF-8");
+		initDto.setSign("signtest");
+		initDto.setSignType("RSA");
+
+		String reqDataXML = JaxbMapper.toXml(initDto, false);
+		System.out.println("****************客户端请求数据为********************");
+		System.out.println(reqDataXML);
+
+		RealtimeBalQueryResBO outDto = realtimeBalQueryService.realtimeBalQuery(initDto);
+
+		//		Result result = PandaClient2.invoke(Global.SERVICE_PANDA_ID, "bankRealtimeBalanceQuery" , initDto);
+		//		
+		//		RealtimeBalQueryResBO outDto = new RealtimeBalQueryResBO();
+		//		// 获取响应数据
+		//		outDto = JSONObject.parseObject(result.getResult(), outDto.getClass());
+
+		String resDataXML = JaxbMapper.toXml(outDto, false);
+		System.out.println("****************客户端收到数据为********************");
+		System.out.println(resDataXML);
+	}
+
+	public void timeTest() {
+		String d1 = DateUtils.getDate();
+		String d2 = DateUtils.getDate("yyyyMMdd");
+
+		String t1 = DateUtils.getTime();
+		String t2 = DateUtils.getTime("hhmmss");
+
+		System.out.println(d1);
+		System.out.println(d2);
+
+		System.out.println(t1);
+		System.out.println(t2);
+
+	}
+
+	public void factoryTest() {
+		//初始化ct机请求报文对象
+		JsReqBase ctReqDto = JsyhReqFactory.creatReqObj(BankInterfaceCode.JSYH_REALTIME_QUERY.getCode());
+
+		JsReqRealtimeBalQueryBody body = (JsReqRealtimeBalQueryBody) ctReqDto.getBody();
+
+		JsReqBaseHead head = ctReqDto.getHead();
+
+		head.setTr_code("");
+		head.setFile_flag("0");
+
+		body.setCur_code("0000000");
+		body.setAcno("66666");
+
+		String resDataXML = JaxbMapper.toXml(ctReqDto, false);
+
+		System.out.println(resDataXML);
+	}
+
+	public void strategyTest() {
+		RealtimeBalQueryInterface strategy = new JsyhRealTimeBalQueryImpl();
+
+		RealtimeBalQueryStrategy impl = new RealtimeBalQueryStrategy(strategy);
+
+		RealtimeBalQueryReqBO req = new RealtimeBalQueryReqBO();
+
+		RealtimeBalQueryReqDataBO reqData = new RealtimeBalQueryReqDataBO();
+
+		reqData.setAccountNo("70560188000150035");
+		reqData.setCurCode("01");
+
+		req.setReqData(reqData);
+
+		RealtimeBalQueryResBO res = new RealtimeBalQueryResBO();
+
+		res = impl.query(req);
+
+		String resXML = JaxbMapper.toXml(res, false);
+
+		System.out.println(resXML);
+	}
+
+	public void cardBinTest() throws Exception {
+		PandaClient2.subscribe();
+		Thread.sleep(1000);
+
+		CardBinQueryReqBO obj = new CardBinQueryReqBO();
+
+		Result result = PandaClient2.invoke(Global.SERVICE_PANDA_ID, "cardBINQuery", obj);
+		System.out.println(result.getResult());
+	}
+
+	/**
+	 * 配置表
+	 */
+	private final InvestorChannelService investorChannelService = (InvestorChannelService) ParseSpring.context.getBean("investorChannelService");
+
+	public void 新增签约渠道信息() throws Exception {
+		InvestorChannelDto dto = new InvestorChannelDto();
+		dto.setBindAccNo("");
+		dto.setMId("1002");//默认
+		dto.setCustId("320202301");//机构ID
+		dto.setCustName("无锡市崇安区利民农村小额贷款有限公司");//机构名称
+		dto.setChannelId("CH10");//渠道ID CH10:苏宁  ,CH11:	宏图三胞 
+		dto.setCardNo("123123");//提现卡号
+		dto.setBindAccNo("123123");//商户号
+		dto.setKey("");//密钥
+		investorChannelService.saveWithhold(dto);
+	}
+}

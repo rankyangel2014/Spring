@@ -1,0 +1,48 @@
+<ion-view view-title="客户关系信息" id="mycustomer-link-list">
+    <jn-back></jn-back>
+    <ion-nav-buttons
+        side="secondary"
+    >
+        <button
+            ng-if="ctrl.editable"
+            class="button button-clear"
+            ng-click="ctrl.addLink()"
+        >新增</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list
+            ng-if="0 < ctrl.list.items.length"
+        >
+            <ion-item
+                ng-repeat="e in ctrl.list.items"
+                ng-click="ctrl.viewLink(e)"
+                data-link-status="{{ e.linkStatus }}"
+            >
+                <div
+                    class="jn-item-title name"
+                    ng-if="e.custNo !== ctrl.custNo"
+                    data-type="{{ e.custType }}"
+                >{{ e.custName }}</div>
+                <div
+                    class="jn-item-title name"
+                    ng-if="e.custNo === ctrl.custNo"
+                    data-type="{{ e.linkCustType }}"
+                >{{ e.linkCustName }}</div>
+                <ion-option-button
+                    class="button-assertive"
+                    ng-if="ctrl.editable && e.custNo === ctrl.custNo"
+                    ng-click="ctrl.delLink($event, e)"
+                >作废</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-if="0 === ctrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-if="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,39 @@
+#todoGroup a {
+	text-decoration: none;
+	color: #007aff;
+	text-align: center;
+}
+
+#todoGroup .col {
+	border-bottom: 1px solid #e5e5f5;
+	line-height: 32px;
+	text-align: center;
+}
+
+#todoGroup .col-50 {
+	text-align: left;
+}
+
+#assignListView .item{
+	font-size: 14px;
+}
+
+#assignListView .pendContent{
+		white-space: normal;
+}
+
+#assignListView .claim{
+	color: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 12px;
+    vertical-align: middle;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 25px;
+    border-radius: 2px;
+    line-height: 25px;
+    background-color: #dd514c;
+    width: 60px;
+    text-align: center;
+}

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/2337/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response
+END
+JsResCashSweepQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResCashSweepQuery.java
+END
+JsResBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResBase.java
+END
+JsResBaseHead.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResBaseHead.java
+END
+JsResFlowStateQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/Zfjs/!svn/ver/2337/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResFlowStateQueryBody.java
+END
+JsResSinglePaymentTradeBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResSinglePaymentTradeBody.java
+END
+JsResFlowStateQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/2337/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResFlowStateQuery.java
+END
+JsResSinglePaymentTrade.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResSinglePaymentTrade.java
+END
+JsResRealtimeBalQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResRealtimeBalQueryBody.java
+END
+JsResCashSweepQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResCashSweepQueryBody.java
+END
+JsResRealtimeBalQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/response/JsResRealtimeBalQuery.java
+END

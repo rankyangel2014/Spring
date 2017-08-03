@@ -1,0 +1,164 @@
+
+import com.jsjn.jnf.common.utils.HttpUtils;
+
+/**
+ * 
+ */
+
+/**
+ * @author ZSMJ
+ *
+ */
+public class APITest {
+
+	//@Test
+	public void realNameAuthBy4Element() throws Exception {
+		String service = "realNameAuthBy4Element";
+		String reqData = "<reqData><custName>张三</custName><idNo>140602199106019015</idNo><bankCardNo>9558800200135073266</bankCardNo><mobile>15656565656</mobile></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	//@Test
+	public void realNameAuthByMessage() throws Exception {
+		String service = "realNameAuthByMessage";
+		String reqData = "<reqData><custName>张三</custName><idNo>140602199106019015</idNo><bankCardNo>9558800200135073266</bankCardNo><mobile>15656565656</mobile><token>ac97e0a20cc84c6192b40badeec5ad15</token><code>2244</code></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	//@Test
+	public void cardBINQuery() throws Exception {
+		//		for(int i = 0 ; i < 3 ; i++){
+		//			String service = "cardBINQuery";
+		//			String reqData = "<reqData><bankCardNo>6217000830000123038</bankCardNo></reqData>";
+		//			HttpUtilsTest.test(service, reqData);
+		//		}
+		//		
+		//		Thread.sleep(11000);
+
+		String service = "cardBINQuery";
+		String reqData = "<reqData><bankCardNo>6217000830000123038</bankCardNo></reqData>";
+		HttpUtilsTest.test(service, reqData);
+
+	}
+
+	//@Test
+	public void tradeFlowQuery() throws Exception {
+		String service = "tradeFlowQuery";
+		String reqData = "<reqData><startDt>20160415</startDt><endDt>20160415</endDt></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	//@Test
+	public void singlePaymentQuery() throws Exception {
+		String service = "singlePaymentQuery";
+		String reqData = "<reqData><serialNo>JNF0031</serialNo>" + "<orgNo>320581002</orgNo>" + "<loanNo>0001</loanNo>"
+				+ "<cardSignNo>C100120160906000005</cardSignNo>" + "<custName>张借款</custName>"
+				+ "<custIdNo>623024199209163522</custIdNo>" + "<curCode></curCode>"
+				+ "<amount>2000.01</amount></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	//@Test
+	public void clearCache() throws Exception {
+		HttpUtils.sendPost("http://172.31.210.59:8080/jnf-protal/test/clearCache", "");
+	}
+
+	//@Test
+	public static void singlePayTest() throws Exception {
+		String service = "bankSinglePaymentTrade";
+		String reqData = "<reqData><serialNo>JNF0009</serialNo>" + "<amount>30000.00</amount>" + "<curCode>01</curCode>"
+				+ "<externLoanNo>JNF支付合同号0001</externLoanNo>" + "<payeeAccountName>疆酥枷得商么友线公司</payeeAccountName>"
+				+ "<payeeAccountNo>70560188000150035</payeeAccountNo>" + "<payeeBankName></payeeBankName>"
+				+ "<payeeBankNo></payeeBankNo>" + "<payorAccountName>酞洲恃姜堰溘乎颈区旅酉罚蘸有限宫丝</payorAccountName>"
+				+ "<payorAccountNo>16200188000286264</payorAccountNo>" + "<purpose>这是目的这是目的这是目的</purpose>"
+				+ "<urgencyFlag>0</urgencyFlag></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	//@Test
+	public void testWithHoldInfo() throws Exception {
+		String service = "queryWithholdinginfos";
+		StringBuffer reqData = new StringBuffer("<reqData>");
+		reqData.append("<tranNo>T10010016082200000181</tranNo>");
+		reqData.append("<serialNo>JNF0002</serialNo>");
+		reqData.append("</reqData>");
+		HttpUtilsTest.test(service, reqData.toString());
+	}
+
+	//@Test
+	public void testQuerySignInfos() throws Exception {
+		String service = "querySignInfo";
+		StringBuffer reqData = new StringBuffer("<reqData>");
+		reqData.append("<loanNo>112233</loanNo>");
+		reqData.append("<orgNo>2233</orgNo>");
+		reqData.append("</reqData>");
+		HttpUtilsTest.test(service, reqData.toString());
+	}
+
+	/**
+	 * 单笔代扣
+	 * 
+	 * @throws Exception
+	 */
+	//@Test
+	public void singleWithHold() throws Exception {
+		String service = "singleWithHold";
+		//		String reqData = "<reqData><serialNo>GUOCAI1004</serialNo>"
+		//				+ "<orgNo>320582301</orgNo>"
+		//				+ "<loanNo>101</loanNo>"
+		//				+ "<cardSignNo>C100220160920000023</cardSignNo>"
+		//				+ "<custName>张借款</custName>"
+		//				+ "<custIdNo>623024199209163522</custIdNo>"
+		//				+ "<curCode></curCode>"
+		//				+ "<amount>3300.01</amount></reqData>";
+		String reqData = "<reqData><serialNo>GUOCAI114</serialNo>" + "<orgNo>320000114</orgNo>" + "<loanNo>1</loanNo>"
+				+ "<cardSignNo>C100220160924000056</cardSignNo>" + "<custName>张三</custName>"
+				+ "<custIdNo>610111195901070059</custIdNo>" + "<curCode></curCode>"
+				+ "<amount>100.01</amount></reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	/**
+	 * pl代扣
+	 * 
+	 * @throws Exception
+	 */
+	//@Test
+	public void batchWithHold() throws Exception {
+		String service = "batchWithHold";
+<<<<<<< .mine
+		String reqData = "<reqData>" 
+								+ "<batchNo>GUOCAI1004</batchNo>"
+								+ "<sign>E428B08661E6B67B86ADA33BAF1227E1</sign>"
+								+ "<fileName>/opt/vsftpd/xftp/320000114_20170119131540</fileName>"+
+						 "</reqData>";
+=======
+		String reqData = "<reqData>" + "<batchNo>GUOCAI1004</batchNo>" + "<sign>E428B08661E6B67B86ADA33BAF1227E1</sign>"
+				+ "<fileName>/opt/vsftpd/xftp/320000114_20170119131540</fileName>" + "</reqData>";
+>>>>>>> .r3724
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	/**
+	 * 对账
+	 * 
+	 * @throws Exception
+	 */
+	//	@Test
+	public void verifyAcct() throws Exception {
+		String service = "verifyAcct";
+		String reqData = "<reqData>" + "<verifyDate>20170123</verifyDate>"
+				+ "<fileName>/opt/vsftpd/xftp/a.txt</fileName>" + "</reqData>";
+		HttpUtilsTest.test(service, reqData);
+	}
+
+	public static void main(String[] args) throws Exception {
+		APITest test = new APITest();
+		//		test.singleWithHold();
+		test.verifyAcct();
+		//		singlePayTest();
+		//		singlePayTest();
+
+	}
+
+}

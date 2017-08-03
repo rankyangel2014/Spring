@@ -1,0 +1,354 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            has-bouncing="false"
+            ng-controller="companyInfoCtrl as companyInfoCtrl">
+    <ion-list>
+        <form name="companyInfoCtrl.companyInfoForm" novalidate>
+            <ion-item class="item-divider">企业基本信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">企业名称</span>
+                <input ion-autocomplete
+                       ng-class="{'ion-autocomplete' : !companyInfoCtrl.isCustNameDisabled}"
+                       ng-disabled="companyInfoCtrl.isCustNameDisabled"
+                       type="text"
+                       name="custName"
+                       readonly="readonly"
+                       autocomplete="off"
+                       placeholder="请输入企业名称"
+                       title-label="编辑企业名称"
+                       ng-model="companyInfoCtrl.form.custName"
+                       component-id="companyInfoCtrl-cpyCustName"
+                       items-method="companyInfoCtrl.autoDomClick(query, componentId)"
+                       item-view-value-key="custName"
+                       cust-type="custType"
+                       cust-name="custName"
+                       phone-no="phoneNo"
+                       card-no="cardNo"
+                       cust-no="custNo"
+                       more-record="moreRecord"
+                       confirm-button-clicked-method="companyInfoCtrl.confirmClick(callback)"
+                       more-record-button-clicked-method="companyInfoCtrl.autoDomClick(query, componentId, isFetchMore)"
+                       jn-input-length="60"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">三证合一</span>
+                <ion-radio class="jn-item-radio"
+                           name="cardMerge"
+                           ng-model='companyInfoCtrl.form.cardMerge'
+                           ng-checked="companyInfoCtrl.form.cardMerge == N"
+                           ng-disabled="companyInfoCtrl.isCardMergeDisabled"
+                           ng-click="companyInfoCtrl.cardMergeClick(companyInfoCtrl.form.cardMerge)"
+                           value='N'>否
+                </ion-radio>
+                <ion-radio class="jn-item-radio"
+                           name="cardMerge"
+                           ng-model='companyInfoCtrl.form.cardMerge'
+                           ng-checked="companyInfoCtrl.form.cardMerge == Y"
+                           ng-disabled="companyInfoCtrl.isCardMergeDisabled"
+                           ng-click="companyInfoCtrl.cardMergeClick(companyInfoCtrl.form.cardMerge)"
+                           value='Y'>是
+                </ion-radio>
+            </ion-item>
+            <ion-item class="item-input" ng-show="companyInfoCtrl.form.cardMerge == 'N'">
+                <span class="input-label"
+                      ng-class="{'jn-input-required':companyInfoCtrl.isRegNoRequired}">
+                      营业执照
+                </span>
+                <input ion-autocomplete
+                       ng-class="{'ion-autocomplete' : !companyInfoCtrl.isIdCardDisabled}"
+                       ng-disabled="companyInfoCtrl.isIdCardDisabled"
+                       type="text"
+                       name="regNo"
+                       readonly="readonly"
+                       autocomplete="off"
+                       placeholder="请输入营业执照号码"
+                       title-label="编辑营业执照号码"
+                       ng-model="companyInfoCtrl.form.regNo"
+                       component-id="companyInfoCtrl-cpyRegNo"
+                       items-method="companyInfoCtrl.autoDomClick(query, componentId)"
+                       item-view-value-key="cardNo"
+                       cust-type="custType"
+                       cust-name="custName"
+                       phone-no="phoneNo"
+                       card-no="cardNo"
+                       cust-no="custNo"
+                       more-record="moreRecord"
+                       confirm-button-clicked-method="companyInfoCtrl.confirmClick(callback)"
+                       more-record-button-clicked-method="companyInfoCtrl.autoDomClick(query, componentId, isFetchMore)"
+                       ng-required="companyInfoCtrl.isRegNoRequired"
+                       jn-reg-no/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="companyInfoCtrl.form.cardMerge == 'N'">
+                <span class="input-label">组织机构代码</span>
+                <input type="text"
+                       placeholder="请输入组织机构代码"
+                       name="liceNo"
+                       ng-model="companyInfoCtrl.form.liceNo"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-org-no/>
+            </ion-item>
+            <ion-item class="item-input" ng-show="companyInfoCtrl.form.cardMerge == 'Y'">
+                <span class="input-label"
+                      ng-class="{'jn-input-required':companyInfoCtrl.isRegNoRequired}">统一信用代码
+                </span>
+                <input ion-autocomplete
+                       ng-class="{'ion-autocomplete' : !companyInfoCtrl.isLiceNoDisabled}"
+                       ng-disabled="companyInfoCtrl.isLiceNoDisabled"
+                       type="text"
+                       name="liceNo"
+                       readonly="readonly"
+                       autocomplete="off"
+                       placeholder="请输入统一信用代码"
+                       title-label="编辑统一信用代码"
+                       ng-model="companyInfoCtrl.form.liceNo"
+                       component-id="companyInfoCtrl-cpyLiceNo"
+                       items-method="companyInfoCtrl.autoDomClick(query, componentId)"
+                       item-view-value-key="cardNo"
+                       cust-type="custType"
+                       cust-name="custName"
+                       phone-no="phoneNo"
+                       card-no="cardNo"
+                       cust-no="custNo"
+                       more-record="moreRecord"
+                       confirm-button-clicked-method="companyInfoCtrl.confirmClick(callback)"
+                       more-record-button-clicked-method="companyInfoCtrl.autoDomClick(query, componentId, isFetchMore)"
+                       ng-required="companyInfoCtrl.isRegNoRequired"
+                       jn-lice-no/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">手机</span>
+                <input type="tel"
+                       placeholder="请输入手机号码"
+                       name="mobPhone"
+                       ng-model="companyInfoCtrl.form.mobPhone"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-mobile/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">固定电话</span>
+                <input type="tel"
+                       placeholder="请输入固定电话"
+                       name="fixPhone"
+                       ng-model="companyInfoCtrl.form.fixPhone"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-phone/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">电子邮箱</span>
+                <input type="email"
+                       placeholder="请输入电子邮箱"
+                       name="email"
+                       ng-model="companyInfoCtrl.form.email"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-email/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">联系人</span>
+                <input type="text"
+                       placeholder="请输入联系人姓名"
+                       name="contacter"
+                       ng-model="companyInfoCtrl.form.contacter"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-input-length="60"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">联系地址</span>
+                <input type="text"
+                       placeholder="请输入联系地址"
+                       name="contactAddr"
+                       ng-model="companyInfoCtrl.form.contactAddr"
+                       ng-readonly="companyInfoCtrl.isReadOnly"
+                       jn-input-length="200"/>
+            </ion-item>
+
+            <ion-item class="item-icon-right jn-toggle-item"
+                      ng-click="companyInfoCtrl.toggleItem('pDetail')"
+                      ng-class="{'item-divider':companyInfoCtrl.checked.pDetail}"
+                      ng-model='companyInfoCtrl.checked.pDetail'>
+                <span>更多信息</span>
+                <i class="icon"
+                   ng-class="{true:'ion-ios-arrow-up',false:'ion-ios-arrow-down'}[companyInfoCtrl.checked.pDetail]"></i>
+            </ion-item>
+            <div ng-show="companyInfoCtrl.checked.pDetail">
+                <ion-item class="item-input item-select">
+                    <span class="input-label">组织形式</span>
+                    <select name="orgForm"
+                            ng-model="companyInfoCtrl.form.orgForm"
+                            ng-disabled="companyInfoCtrl.isReadOnly"
+                            jn-options="899">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">法律实体类型</span>
+                    <select name="orgType"
+                            ng-model="companyInfoCtrl.form.orgType"
+                            ng-disabled="companyInfoCtrl.isReadOnly"
+                            jn-options="5014">
+                    </select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款卡编号</span>
+                    <input type="text"
+                           placeholder="请输入贷款卡编号"
+                           name="loanCard"
+                           ng-model="companyInfoCtrl.form.loanCard"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           ng-minlength="16"
+                           jn-input-length="30"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">主营业务</span>
+                    <input type="text"
+                           placeholder="请输入主营业务"
+                           name="mainBusiness"
+                           ng-model="companyInfoCtrl.form.mainBusiness"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           jn-input-length="100"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">所属行业</span>
+                    <jn-select-intrade
+                        name="inTradeName"
+                        ng-model="companyInfoCtrl.form.inTrade"
+                        ng-readonly="companyInfoCtrl.isReadOnly"
+                        label="companyInfoCtrl.form.inTradeName"
+                        placeholder="请点击选择所属行业">
+                    </jn-select-intrade>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">业务开始时间/注册时间</span>
+                    <input type="date"
+                           name="businessStartDt"
+                           ng-model="companyInfoCtrl.form.businessStartDt"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           format-date/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">营业时间</span>
+                    <input type="text"
+                           placeholder="请输入营业时间"
+                           name="businessHours"
+                           ng-model="companyInfoCtrl.form.businessHours"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           jn-input-length="100"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">雇员数量</span>
+                    <input type="number"
+                           placeholder="请输入雇员数量"
+                           name="employeeNum"
+                           ng-model="companyInfoCtrl.form.employeeNum"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           min="0"
+                           jn-input-length="16"/>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">经营场所</span>
+                    <select name="addressType"
+                            ng-model="companyInfoCtrl.form.addressType"
+                            ng-disabled="companyInfoCtrl.isReadOnly">
+                        <option value="">--请选择--</option>
+                        <option value="1">自有</option>
+                        <option value="2">租赁</option>
+                        <option value="4">其他</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input" ng-if="companyInfoCtrl.form.addressType==4">
+                    <span class="input-label"></span>
+                    <input type="text"
+                           placeholder="请输入其他经营场所"
+                           name="addressTypeotherDesc"
+                           ng-model="companyInfoCtrl.form.addressTypeotherDesc"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           jn-input-length="100"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">场所面积(m2)</span>
+                    <input type="number"
+                           placeholder="请输入经营场所面积"
+                           name="addressArea"
+                           ng-model="companyInfoCtrl.form.addressArea"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           min="0"
+                           max="9999999999999"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">注册资本(元)</span>
+                    <input type="number"
+                           placeholder="请输入注册资本"
+                           name="regFund"
+                           ng-model="companyInfoCtrl.form.regFund"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           min="0"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">净资产(元)</span>
+                    <input type="number"
+                           placeholder="请输入净资产"
+                           name="businessAsset"
+                           ng-model="companyInfoCtrl.form.businessAsset"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           min="0"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">注册地址</span>
+                    <input type="text"
+                           placeholder="请输入注册地址"
+                           name="regAddr"
+                           ng-model="companyInfoCtrl.form.regAddr"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">实际经营地址</span>
+                    <input type="text"
+                           placeholder="请输入实际经营地址"
+                           name="address"
+                           ng-model="companyInfoCtrl.form.address"
+                           ng-readonly="companyInfoCtrl.isReadOnly"
+                           jn-input-length="200"/>
+                </ion-item>
+                <ion-item class='item-input'>
+                      <span class='input-label'>其他说明</span>
+                      <textarea name='remark'
+                                style="resize: none;width: initial;margin-right:24px;"
+                                rows='4'
+                                cols="32"
+                                ng-model='companyInfoCtrl.form.remark'
+                                ng-readonly="companyInfoCtrl.isReadOnly"
+                                jn-input-length="500" >
+                      </textarea>
+                </ion-item>
+            </div>
+        </form>
+        <ion-item class="item-divider"></ion-item>
+        <ion-item class="item-icon-right"
+                  ng-click="companyInfoCtrl.goCorporation()">
+            <span>法人代表</span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item class="item-icon-right"
+                  ng-click="companyInfoCtrl.goTogetherOpt()">
+            <span>共同经营者</span>
+            <span class="badge badge-assertive"
+                  ng-show="companyInfoCtrl.form.ctrlerNum">
+                  {{companyInfoCtrl.form.ctrlerNum}}
+            </span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item class="item-icon-right"
+                  ng-click="companyInfoCtrl.goStocker()">
+            <span>股东</span>
+            <span class="badge badge-assertive"
+                  ng-show="companyInfoCtrl.form.stockerNum">
+                  {{companyInfoCtrl.form.stockerNum}}
+            </span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>
+
+
+
+

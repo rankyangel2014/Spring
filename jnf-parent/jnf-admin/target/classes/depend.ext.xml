@@ -1,0 +1,213 @@
+<extdepender>
+	<!-- -->
+	<ext className="com.jsjn.jnf.member.QryMemberListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.member.MemberInfoDetailMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.member.QryBussinessListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.member.AddBussinessMgr</dependClass>
+		<dependClass>com.jsjn.jnf.member.UpdateBussinessMgr</dependClass>
+		<dependClass>com.jsjn.jnf.member.AuthorityConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.member.AccessConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.member.RegInvestMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.FeeConfigListMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.member.QryNewBussnessMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+	</ext>
+	<ext className="com.jsjn.jnf.member.QryWithholdInfos">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+	</ext>
+	<ext className="com.jsjn.jnf.member.AmendBusnessMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/js/jquery-1.8.0.js</dependJs>
+	</ext>
+	<ext className="com.jsjn.jnf.config.FeeConfigListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.config.AddConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.UpdateConfigMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.member.RegInvestMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+	</ext>
+	<ext className="com.jsjn.jnf.member.UpdateBussinessMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+	</ext>
+	<ext className="com.jsjn.jnf.member.MemberBindCardInfo">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.member.MemberSelect</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.withhold.QryWithholdInfos">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.withhold.QryWithholdDetails</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.payment.QryPaymentListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.payment.PaymentInfoDetailMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.payment.QryPaymentExceptionListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.payment.PaymentExceptionInfoDetailMgr
+		</dependClass>
+		<dependClass>com.jsjn.jnf.payment.DealExceptionMgr</dependClass>
+	</ext>
+
+	<ext className="com.jsjn.jnf.trade.QryTradeListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.trade.TradeInfoDetailMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.trade.QueryTradeInfos">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.trade.OperaTrade</dependClass>
+		<dependClass>com.jsjn.jnf.trade.TradeTwo</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.trade.QryTradeExceptionListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.trade.TradeExceptionInfoDetailMgr
+		</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.fee.QryFeeXmlFlowListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.fee.FeeXmlDetailMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.fee.QryTotalFeeListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.fee.AccountsDetailMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.config.DictConfigListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.config.AddDictConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.UpdateDictConfigMgr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.config.MenuConfigListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.config.AddMenuConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.UpdateMenuConfigMgr</dependClass>
+	</ext>
+
+
+	<!--计费设置 -->
+	<ext className="com.jsjn.jnf.fee.FeeConfig">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/js/moment.min.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependClass>com.jsjn.jnf.fee.FeeAddConfig</dependClass>
+	</ext>
+	<!--计费设置新增 -->
+	<ext className="com.jsjn.jnf.fee.FeeAddConfig">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/js/moment.min.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+	</ext>
+
+	<!--计费统计 -->
+	<ext className="com.jsjn.jnf.fee.FeeStatistic">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/js/moment.min.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/ComboxTable.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/GroupSummaryGrid.js</dependJs>
+		<dependClass>com.jsjn.jnf.fee.FeeWithholdDetail</dependClass>
+		<dependClass>com.jsjn.jnf.fee.FeeRealNameAuthDetail</dependClass>
+	</ext>
+	<!--计费统计 > 代扣交易流水 -->
+	<ext className="com.jsjn.jnf.fee.FeeWithholdDetail">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/GroupSummaryGrid.js</dependJs>
+	</ext>
+	<!--计费统计 > 实名认证交易流水 -->
+	<ext className="com.jsjn.jnf.fee.FeeRealNameAuthDetail">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependJs>/ExtJs3.4/extend/GroupSummaryGrid.js</dependJs>
+	</ext>
+
+	<ext className="com.jsjn.jnf.config.ChannelConfigListMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.config.AddChannelConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.UpdateChannelConfigMggr</dependClass>
+	</ext>
+	<ext className="com.jsjn.jnf.config.ChannelBankConfigMgr">
+		<dependJs>/js/util.js</dependJs>
+		<dependJs>/js/rcasUtil.js</dependJs>
+		<dependJs>/js/CommonStore.js</dependJs>
+		<dependJs>/js/validator.js</dependJs>
+		<dependClass>com.jsjn.jnf.config.AddChannelBankConfigMgr</dependClass>
+		<dependClass>com.jsjn.jnf.config.UpdateChannelBankConfigMgr
+		</dependClass>
+	</ext>
+</extdepender>

@@ -1,0 +1,21 @@
+<ion-view cache-view="false" view-title="关于我们">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-tabs class="tabs-stable tabs-color-positive">
+        <ion-tab
+            title="公司简介"
+            ui-sref="aboutUs.company({stat: 0})"
+            ui-sref-opts="{reload: true}"
+        >
+            <ion-nav-view name="company"></ion-nav-view>
+        </ion-tab>
+       <!-- -->  <ion-tab
+            title="自我介绍"
+            ui-sref="aboutUs.self({stat: 1})"
+            ui-sref-opts="{reload: true}"
+        >
+            <ion-nav-view name="self"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

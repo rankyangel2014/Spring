@@ -1,0 +1,79 @@
+#myBusinessDetail .progress {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    background-color: #fff;
+    counter-reset: progress;
+}
+
+#myBusinessDetail .progress>li {
+    display: table-cell;
+    vertical-align: top;
+    position: relative;
+    height: 50px;
+    line-height: 30px;
+    padding-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#myBusinessDetail .progress>li.pending {
+    color: #999;
+}
+
+#myBusinessDetail .progress a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#myBusinessDetail .progress>li:before {
+    counter-increment: progress;
+    content: counter(progress);
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #5e97f6;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#myBusinessDetail .progress>li.pending:before {
+    background-color: grey;
+}
+
+#myBusinessDetail .progress>li.active:before {
+    background-color: #f65e8d;
+}
+
+#myBusinessDetail .progress>li:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 75%;
+    width: 50%;
+    height: 0;
+    border-top: 1px dashed #333;
+}
+
+#myBusinessDetail .progress>li.pending:after {
+    border-color: #ccc;
+}
+
+#myBusinessDetail .progress>li:last-child:after {
+    display: none;
+}
+
+#myBusinessDetail .section .contract_no {
+    padding: 0;
+}

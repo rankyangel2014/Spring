@@ -1,0 +1,91 @@
+<ion-view view-title="企业客户详细信息">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+    	
+            <ion-item class="item-divider">企业信息</ion-item>
+            <ion-item class="item" >客户名称
+               <span class="item-note">{{entCustDetail.custName }}</span>
+            </ion-item>
+           <ion-item class="item" >客户经理
+               <span class="item-note">{{entCustDetail.custManagerName }}</span>
+            </ion-item>
+			<ion-item class="item" >三证合一
+               <span class="item-note" ng-if="entCustDetail.liceNo.length == 18">是</span>
+               <span class="item-note" ng-if="entCustDetail.liceNo.length != 18">否</span>
+            </ion-item>
+			<ion-item class="item" ng-if="entCustDetail.liceNo.length == 18">统一信用代码
+               <span class="item-note">{{entCustDetail.liceNo }}</span>
+            </ion-item>
+			<ion-item class="item" ng-if="entCustDetail.liceNo.length != 18">营业执照
+               <span class="item-note">{{entCustDetail.regNo }}</span>
+            </ion-item>
+			<ion-item class="item" ng-if="entCustDetail.liceNo.length != 18">组织机构代码
+               <span class="item-note">{{entCustDetail.liceNo }}</span>
+            </ion-item>
+           <ion-item class="item" >联系方式
+               <span class="item-note"  ng-if='entCustDetail.phoneNo'><jn-tel-no num="{{entCustDetail.phoneNo}}" ></jn-tel-no> </span>
+               
+            </ion-item>
+          
+            <ion-item class="item-divider">详细信息</ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/ent/detailInfo/importantTarget?custNo={{ entCustDetail.custNo }}&operType={{ entCustDetail.operType }}">
+                	重要指标
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/ent/detailInfo/entInfoDetail?custNo={{ entCustDetail.custNo }}&operType={{ entCustDetail.operType }}&isDetail={{ isDetail }}">
+                	企业信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+			            ui-sref="entPartnerInfo({
+				            custNo:entCustDetail.custNo,
+				            linkType:29,
+				            orgNo:entCustDetail.orgNo,
+				            isDetail:isDetail,
+			            })">
+                	股东信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right"
+                      ui-sref="custActualList({
+                      custNo:entCustDetail.custNo ,
+                      orgNo:entCustDetail.orgNo ,
+                      isDetail:isDetail ,
+                      })">
+                	实际控制人
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/ent/detailInfo/contextControl?custNo={{ entCustDetail.custNo }}&orgNo={{ entCustDetail.orgNo }}&isDetail={{ isDetail }}">
+                	关联信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+             <ion-item class="item-icon-right" 
+                       href="#/myCustomer/valid/custAssignHistory?custNo={{ entCustDetail.custNo }}&orgNo={{ entCustDetail.orgNo }}&custType=1">
+                	管户历史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="from=='1'" class="item-icon-right" 
+            		  ui-sref="blackOperateHistory({custNo:entCustDetail.custNo,custName:entCustDetail.custName})">
+                	黑名单操作史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item ng-if="userId===custDetail.custManagerNo&&isDetail=='0' && transferAble" class="item-icon-right"
+            		   ui-sref="reserveCustomerTransfer({custNo:entCustDetail.custNo,custType:'1',custClass:1})">
+                	移交
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+             <!-- 分配暂时不需要 全部放在代办中处理 -->
+           <ion-item ng-if="assignedAble" class="item-icon-right"
+            		  ui-sref="reserveCustomerAssigned({custNo:entCustDetail.custNo,custType:'1',todos:false})">
+                	分配
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            
+    </ion-content>
+</ion-view>

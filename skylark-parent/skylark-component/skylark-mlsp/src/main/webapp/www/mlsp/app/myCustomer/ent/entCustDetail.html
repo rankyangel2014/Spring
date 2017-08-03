@@ -1,0 +1,225 @@
+<style type="text/css">
+ .phone a[href^="tel:"] {
+    width: 100px;
+    padding-left: 0px;
+    font-weight:normal;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    color: #007aff;
+    white-space: nowrap;
+    display: inline-block;
+}
+.phone a[href^="tel:"]:before{
+	font-family: iconfont;
+    padding-right: 4px;
+    content: '\e616';
+}
+
+.address::before {
+    content: '\e648';
+    font-family: 'iconfont';
+    display: inline-block;
+    height: 100%;
+    padding-right: 4px;
+    font-size: 12px;
+    color: salmon;
+}
+.address{
+display:block;
+white-space: normal;
+max-width: 100%;
+}
+</style>
+
+<ion-view view-title="企业客户详情">
+	<jn-back ></jn-back>
+	  <ion-nav-buttons side="secondary">
+       <!--  <button ng-if="editFlag!=='1'"
+             class="button button-clear "
+             ng-click="edit()"
+         >编辑</button>
+        <button ng-if="editFlag==='1'"
+             class="button button-clear "
+             ng-click="submit()"
+         >保存</button> -->
+           <button
+             class="button button-clear"
+             ng-click="assign();"
+             ng-if='!isManager&&flag==="1"'
+         >分配</button>
+    </ion-nav-buttons>
+    <ion-content >
+    	
+  		<ion-list ng-repeat="entCustDetail in entCustDetailData">
+            <ion-item class="item-divider">企业信息</ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	客户名称 
+             <div class="item-note" style="max-width: 70%">{{ entCustDetail.custName }}</div>
+            </ion-item>
+            <ion-item class="item" >
+            	组织形式
+            	 <span class="item-note">{{ entCustDetail.orgForm | jnConstant :5014}}</span>
+            </ion-item>
+            
+            <ion-item class="item" >
+            	三证合一
+            	 <span class="item-note">{{ entCustDetail.liceNo.length==18?'是':'否' }}</span>
+            </ion-item>
+            
+            <div ng-if="entCustDetail.liceNo.length==18">
+	            <ion-item class="item" >
+	            	统一信用代码
+	            	 <span class="item-note">{{ entCustDetail.liceNo }}</span>
+	            </ion-item>
+            </div>
+            <div ng-if="entCustDetail.liceNo.length!=18">
+            	 <ion-item class="item" >
+	            	组织机构代码
+	            	 <span class="item-note">{{ entCustDetail.liceNo }}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	证件类型
+	            	 <span class="item-note">{{ entCustDetail.paperType|jnConstant :5025}}</span>
+	            </ion-item>
+	            
+	            <ion-item class="item" >
+	            	新版
+	            	  <span class="item-note">{{entCustDetail.paperEndDate=='29991231'?'是':'否'}}</span> 
+<!-- 	            	 <ion-checkbox class="item-note" style="border-width:0px;" checked="true"></ion-checkbox>
+ -->	            </ion-item>
+	            <ion-item class="item" >
+	            	证件号码
+	            	 <span class="item-note">{{ entCustDetail.paperNo }}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	营业执照起止日
+	            	 <span class="item-note">{{ entCustDetail.paperStrDate|jnDate }}{{(entCustDetail.paperEndDate==''&&entCustDetail.paperStrDate=='')?'':'~'}}{{ entCustDetail.paperEndDate|jnDate }}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	税务登记证
+	            	 <span class="item-note">{{ entCustDetail.taxNo }}</span>
+	            </ion-item>
+            </div>
+            <ion-item class="item" >
+            	企业信用代码证
+            	 <span class="item-note">{{ entCustDetail.creditNo}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款卡编码
+            	 <span class="item-note">{{ entCustDetail.loanCard}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	涉农类型
+            	 <span class="item-note">{{ entCustDetail.agricultureType| jnConstant :7601}}</span>
+            </ion-item>
+            
+             <ion-item class="item" style="white-space:normal">
+            	联系方式
+            	<div class="item-note" style="max-width: 70%">
+	            	<jn-tel-no num="{{entCustDetail.contact.split(',')[0]}}" ></jn-tel-no>
+	            	<div class="address" ng-if="entCustDetail.contact&&entCustDetail.contact.split(',')[1]!=''">{{ entCustDetail.contact.split(",")[1] }}</div>
+            	</div>
+            </ion-item>
+            <ion-item class="item-divider">行业信息</ion-item>
+             <ion-item class="item" >
+            	行业编码
+            	 <span class="item-note">{{ entCustDetail.inTrade }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	行业名称
+            	 <span class="item-note">{{ entCustDetail.inTradeName}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	产业类型
+            	 <span class="item-note">{{ entCustDetail.domain| jnConstant :9010}}</span>
+            </ion-item>
+            <ion-item class="item-divider">规模信息</ion-item>
+             <ion-item class="item" >
+            	企业规模
+            	 <span class="item-note">{{ entCustDetail.companyScale| jnConstant:7508 }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	年营业收入(万元)
+            	 <span class="item-note">{{ entCustDetail.operRecpt| jnCurrency}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	工商注册日期
+            	 <span class="item-note">{{ entCustDetail.regDate| jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	注册资本(万元)
+            	 <span class="item-note">{{ entCustDetail.regFund| jnCurrency}}</span>
+            </ion-item>
+             <ion-list ng-repeat="faren in farenData">
+            <ion-item class="item-divider">法人代表</ion-item>
+             <ion-item class="item" >
+            	姓名
+            	 <span class="item-note">{{ faren.frCustName}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件类型
+            	 <span class="item-note">{{ faren.frPaperType|jnConstant:5029}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件号码
+            	 <span class="item-note">{{ faren.frPaperNo}}</span>
+            </ion-item>
+             <ion-item class="item" style="white-space:normal">
+            	联系方式
+            	<div class="item-note" style="max-width: 70%">
+            	<jn-tel-no  num="{{faren.contact.split(',')[0]}}" ></jn-tel-no>
+            	<span class="address" ng-if="faren.contact&&faren.contact.split(',')[1]!=''">{{ faren.contact.split(",")[1] }}</span>
+            	</div>
+            </ion-item>
+            </ion-list>
+            <ion-list ng-repeat="caiwu in caiwuData">
+	            <ion-item class="item-divider">财务负责人</ion-item>
+	             <ion-item class="item" >
+	            	姓名
+	            	 <span class="item-note">{{ caiwu.cwCustName}}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	证件类型
+	            	 <span class="item-note">{{ caiwu.cwPaperType|jnConstant:5029}}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	证件号码
+	            	 <span class="item-note">{{ caiwu.cwPaperNo}}</span>
+	            </ion-item>
+	            <ion-item class="item" style="white-space:normal">
+	            	联系方式
+	            	<div class="item-note" style="max-width: 70%">
+	            	<!-- <span class="phone" ng-if="caiwu.contact&&caiwu.contact.split(',')[0]!=''"><a href="tel:{{caiwu.contact.split(',')[0]}}">{{caiwu.contact.split(",")[0]}}</a></span> -->
+	            	<jn-tel-no  num="{{caiwu.contact.split(',')[0]}}" ></jn-tel-no>
+	            	<span class="address" ng-if="caiwu.contact&&caiwu.contact.split(',')[1]!=''">{{ caiwu.contact.split(",")[1] }}</span>
+	            	</div>
+	            </ion-item>
+            </ion-list>
+          
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ entCustDetail.custNo }}&linkType=25&actionFlag=relations&isQry={{isQry}}">
+                	联系人
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ entCustDetail.custNo }}&actionFlag=custRelationInfos">
+                	客户关系
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ entCustDetail.custNo }}&actionFlag=custEventInfos">
+                	事件信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/custOtherList?custNo={{ entCustDetail.custNo }}&actionFlag=assignHistoryInfos">
+                	分配历史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+		
+      
+    </ion-content>
+</ion-view>

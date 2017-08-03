@@ -1,0 +1,33 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+			ng-controller="relatedPsnInfoCtrl as relatedPsnInfoCtrl"
+            has-bouncing="false">
+    <ion-list ng-show="0 < relatedPsnInfoCtrl.list.items.length" id="relatedPsnInfo">
+        <ion-item ng-repeat="e in relatedPsnInfoCtrl.list.items"
+                  ng-click="relatedPsnInfoCtrl.goDetail(e)"
+                  style="padding: 10px;">
+            <div>
+                <div>
+                    <span class="jn-item-title jn-name" cust-type="{{e.custType}}">
+                     {{ e.custName}}
+                    </span>
+                    <button class="button button-small button-assertive jn-list-item-btn"
+                            ng-click="relatedPsnInfoCtrl.deleteRelate(e,$event)"
+                            ng-show="!relatedPsnInfoCtrl.isReadOnly">
+                       	 删除
+                    </button>
+                </div>
+                <jn-tel-no style="font-size: 14px" num="{{e.mobPhone||e.fixPhone}}"></jn-tel-no>
+                <div class="jn-card-id" ng-if="e.paperNo || e.liceNo">{{ e.paperNo || e.liceNo }}</div>
+                <div class="jn-item-compact">
+                    <label>与客户关系</label>
+                    <span class="jn-list-item-content">{{ e.linkType | jnConstantList :5033 }}</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <div ng-if="0 === relatedPsnInfoCtrl.list.items.length"
+         class="no_record">
+        暂无记录
+    </div>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+    <link href="../www/base/lib/ionic/css/ionic.css" rel="stylesheet"></link>
+</head>
+<body>
+<div class="bar bar-header bar-positive">
+    <h1 class="title">提取码</h1>
+</div>
+<div class="content has-header">
+    <div class="card" style="margin-bottom: 50px; margin-top: 40%;">
+        <div class="item item-text-wrap">
+            <form action="/skylark/skylark/share/forwordPage.do" method="post">
+                <ion-item class='item-input'><span class='input-label'>提取码:</span>
+                    <input type="text" name="code" placeholder="请输入提取码"/>
+                    <input type="hidden" name="id" th:value="${id}"/>
+                    <input type="hidden" name="isCode" th:value="true"/>
+                </ion-item>
+                <ion-item class='item-input'>
+                    <input type="submit" class="button button-balanced button-small" value="确定"/>
+                </ion-item>
+                <ion-item class='item-input'>
+                    <span style="color: red;" th:text="${errMessage}"></span>
+                </ion-item>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"></meta>
+<meta name="apple-mobile-web-app-capable" content="yes"></meta>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+<link href="../www/base/lib/ionic/css/ionic.css" rel="stylesheet"></link>
+</head>
+<body>
+	<div class="bar bar-header bar-positive">
+		<h1 class="title" th:text="${subject}"></h1>
+	</div>
+	<div class="scroll-content has-header">
+		<div class="card">
+			<div th:text="${message}" class="item item-text-wrap"></div>
+		</div>
+	</div>
+</body>
+</html>

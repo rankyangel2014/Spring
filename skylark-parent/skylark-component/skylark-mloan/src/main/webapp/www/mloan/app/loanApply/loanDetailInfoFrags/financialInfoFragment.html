@@ -1,0 +1,100 @@
+<ion-scroll class="jn-tabSlideBox-scroll" has-bouncing="false" ng-controller="financialInfoCtrl as ctrl">
+    <ion-list>
+    	<form id="financialInfo" name="ctrl.financialInfo" novalidate>
+    		<ion-item class="item-divider">财务信息概述</ion-item>
+    		<ion-item class="item-input">
+                <span class="input-label">月均营业额(元)</span>
+                <jn-currency-format
+                            name="turnoverMon"
+                            placeholder="请输入月均营业额"
+                            ng-model="ctrl.form.turnoverMon"
+                            ng-readonly="ctrl.isReadOnly"
+                            numformat="0,0.00"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">旺季营业额(元)</span>
+                <jn-currency-format
+                            name="turnoverTop"
+                            placeholder="请输入旺季营业额"
+                            ng-model="ctrl.form.turnoverTop"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">淡季营业额(元)</span>
+                <jn-currency-format
+                            name="turnoverLow"
+                            placeholder="请输入淡季营业额"
+                            ng-model="ctrl.form.turnoverLow"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">毛利率(%)</span>
+                <jn-rate-format
+                            name="grossRate"
+                            placeholder="请输入毛利率"
+                            ng-model="ctrl.form.grossRate"
+                            ng-readonly="ctrl.isReadOnly"
+                            numformat="0.0000"
+                            maxlen="8"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">应收账款(元)</span>
+                <jn-currency-format
+                            name="acctRecv"
+                            placeholder="请输入应收账款"
+                            ng-model="ctrl.form.acctRecv"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">存货(元)</span>
+                <jn-currency-format
+                            name="stock"
+                            placeholder="请输入存货"
+                            ng-model="ctrl.form.stock"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">净利率(%)</span>
+                <jn-rate-format
+                            name="netRate"
+                            placeholder="请输入净利率"
+                            ng-model="ctrl.form.netRate"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="8"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">总资产(元)</span>
+                <jn-currency-format
+                            name="assets"
+                            placeholder="请输入总资产"
+                            ng-model="ctrl.form.assets"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">其他收入(元)</span>
+                <jn-currency-format
+                            name="revenueOther"
+                            placeholder="请输入其他收入"
+                            ng-model="ctrl.form.revenueOther"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">负债(元)</span>
+                <jn-currency-format
+                            name="debts"
+                            placeholder="请输入负债"
+                            ng-model="ctrl.form.debts"
+                            ng-readonly="ctrl.isReadOnly"
+                            maxlen="16"/>
+            </ion-item>
+        </form>
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

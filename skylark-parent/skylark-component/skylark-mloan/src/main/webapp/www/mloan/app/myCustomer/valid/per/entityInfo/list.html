@@ -1,0 +1,62 @@
+<ion-view view-title="实体信息" id="custOtherList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button ng-if="isDetail=='0'"
+                class="button button-clear "
+                ng-click="ctrl.add()"
+        >新增
+        </button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <!-- 实体信息 -->
+        <ion-list ng-if="0 < ctrl.list.items.length">
+            <ion-item class="item-icon-right" ng-repeat="e in ctrl.list.items"
+                      ng-click="ctrl.toDetail(e.entCustNo,e.custNo)">
+                <div class="jn-item-title">{{ e.custName }}</div>
+                <div ng-if=" e.liceNo" style="font-weight: normal;white-space: normal;">
+                    {{ e.corpReprst }}<span ng-if="e.corpReprst"> / </span>{{ e.liceNo }}<span
+                        ng-if="e.orgForm"> / </span>{{ e.orgForm|jnConstant:899 }}
+                </div>
+                <div ng-if="!e.liceNo" style="font-weight: normal;">
+                    {{ e.corpReprst }} <span ng-if="e.corpReprst"> / </span>{{ e.regNo }}<span
+                        ng-if="e.orgForm"> / </span>{{ e.orgForm|jnConstant:899 }}
+                </div>
+                <i
+                        class="icon arrow-size ion-ios-arrow-{{e.expandFlag==='1'?'up':'down'}} "
+                        ng-click="ctrl.toggleItem($index)"
+                        style=" position: absolute; right: -10px;;top: 0;width: 50px;height: 50px;font-size: 22px;"></i>
+
+                <div ng-if="e.expandFlag==='1'">
+                    <div>
+                        <label class="label">关联贷款次数:</label>
+                        <span class="content">{{ e.totalNum }} 次</span>
+                    </div>
+                    <div>
+                        <label class="label"> 关联贷款余额:</label>
+                        <span class="content">{{ e.totalBal }} 元</span>
+                    </div>
+                </div>
+                <ion-option-button
+                        ng-if="isDetail=='0'"
+                        class="button-assertive"
+                        ng-click="ctrl.deleteItem($event,e)"
+                >删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+
+        <div
+                ng-if="0 === ctrl.list.items.length"
+                class="no_record"
+        >暂无记录
+        </div>
+        <button
+                ng-click="ctrl.more()"
+                ng-if="ctrl.list.items.length < ctrl.list.total"
+                class="button button-clear button-full button-positive"
+        >点击加载更多
+        </button>
+    </ion-content>
+</ion-view>

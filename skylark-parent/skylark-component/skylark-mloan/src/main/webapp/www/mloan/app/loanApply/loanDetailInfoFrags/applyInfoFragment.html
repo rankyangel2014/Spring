@@ -1,0 +1,131 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            ng-controller="applyInfoCtrl as applyInfoCtrl"
+            has-bouncing="false">
+    <ion-list>
+        <form name="applyInfoCtrl.applyInfoForm" novalidate>
+            <ion-item class="item-divider">申请信息</ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">申请日期</span>
+                <input type="date"
+                       name="applDt"
+                       ng-model="applyInfoCtrl.form.applDt"
+                       ng-readonly="applyInfoCtrl.isReadOnly"
+                       format-date/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">需款日期</span>
+                <input type="date"
+                       name="reqDt"
+                       ng-model="applyInfoCtrl.form.reqDt"
+                       ng-readonly="applyInfoCtrl.isReadOnly"
+                       format-date
+                       required/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">客户编号</span>
+                <input type="text"
+                       name="custNo"
+                       ng-model="applyInfoCtrl.form.custNo"
+                       readonly/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label jn-input-required">客户性质</span>
+                <select name="applCustProp"
+                        ng-model="applyInfoCtrl.form.applCustProp"
+                        ng-disabled="applyInfoCtrl.isReadOnly"
+                        jn-options="910"
+                        required>
+                </select>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">产品类型</span>
+                <select name="prodNo"
+                        ng-model="applyInfoCtrl.form.prodNo"
+                        ng-options="m.paramKey as m.paramValue for m in applyInfoCtrl.prodTypeList.items"
+                        disabled>
+                    <option value=""></option>
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">申请金额(元)</span>
+                <input type="number"
+                       name="applAmt"
+                       placeholder="请输入申请金额"
+                       ng-model="applyInfoCtrl.form.applAmt"
+                       ng-readonly="applyInfoCtrl.isReadOnly"
+                       string-to-number
+                       jn-input-length="16"
+                       min="1"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label jn-input-required">申请期限(月)</span>
+                <input type="number"
+                       name="applPerd"
+                       placeholder="请输入申请期限"
+                       ng-model="applyInfoCtrl.form.applPerd"
+                       ng-readonly="applyInfoCtrl.isReadOnly"
+                       pattern="[0-9]*"
+                       min="1"
+                       max="999"
+                       jn-Integer
+                       required/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">月还款能力(元)</span>
+                <input type="number"
+                       name="repayAbilityM"
+                       placeholder="请输入月还款能力"
+                       ng-model="applyInfoCtrl.form.repayAbilityM"
+                       ng-readonly="applyInfoCtrl.isReadOnly"
+                       string-to-number
+                       jn-input-length="16"
+                       min="0"/>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label jn-input-required">贷款目的</span>
+                <select name="applLoanUse" ng-if="applyInfoCtrl.form.custType==='0'"
+                        ng-model="applyInfoCtrl.form.applLoanUse"
+                        ng-disabled="applyInfoCtrl.isReadOnly"
+                        jn-options="7602"
+                        required>
+                </select>
+                 <select name="applLoanUse" ng-if="applyInfoCtrl.form.custType==='1'"
+                        ng-model="applyInfoCtrl.form.applLoanUse"
+                        ng-disabled="applyInfoCtrl.isReadOnly"
+                        jn-options="7603"
+                        required>
+                </select>
+            </ion-item>
+            <ion-item class='item-input'>
+                <span class='input-label'>资金投向</span>
+                <jn-select-intrade
+                    name="applCapitalDirection"
+                    ng-model="applyInfoCtrl.form.applInTrade"
+                    label="applyInfoCtrl.form.applCapitalDirection"
+                    ng-readonly="applyInfoCtrl.isReadOnly"
+                    placeholder="请点击选择资金投向">
+                </jn-select-intrade>
+            </ion-item>
+            <ion-item class='item-input'>
+                  <span class='input-label jn-input-required'>用途</span>
+                  <textarea name='applPurpose'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='4'
+                            cols="32"
+                            ng-model='applyInfoCtrl.form.applPurpose'
+                            ng-readonly="applyInfoCtrl.isReadOnly"
+                            jn-input-length="500"
+                            required>
+                  </textarea>
+            </ion-item>
+        </form>
+        <ion-item class="item-divider"></ion-item>
+        <ion-item class="item-icon-right"
+                  ng-click="applyInfoCtrl.goGuarantee()">
+            <span>担保方式</span>
+            <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

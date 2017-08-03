@@ -1,0 +1,64 @@
+<ion-view view-title="试算明细" id="utilRepayCalcResult">
+    <jn-back></jn-back>
+    <!--
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.notify()"
+         >通知客户</button>
+    </ion-nav-buttons>
+    -->
+    <ion-content style="overflow-x: auto;" overflow-scroll="true">
+        <table class="summary">
+            <caption>{{ ctrl.data.contNoExt }}</caption>
+            <tbody>
+                <tr>
+                    <th>借据号</th>
+                    <td>{{ ctrl.data.loanNo }}</td>
+                    <th>应还合计</th>
+                    <td>{{ ctrl.data.receivableTotal | jnCurrency }}</td>
+                </tr>
+                <tr>
+                    <th>应还本金</th>
+                    <td>{{ ctrl.data.receivablePrcp | jnCurrency }}</td>
+                    <th>应还利息</th>
+                    <td>{{ ctrl.data.receivableInt | jnCurrency }}</td>
+                </tr>
+                <tr>
+                    <th>应还罚息</th>
+                    <td>{{ ctrl.data.receivableOdInt | jnCurrency }}</td>
+                    <th>应还复利</th>
+                    <td>{{ ctrl.data.receivableCmpdInt | jnCurrency }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="item-divider padding">还款明细</div>
+        <table class="jnTable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>账单日</th>
+                    <th>应还本金</th>
+                    <th>应还利息</th>
+                    <th>应还罚息</th>
+                    <th>应还复利</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="e in ctrl.data.repayList">
+                    <td>~</td>
+                    <td class="jnBillDt">{{ e.billDt | utilRepayCalcResultBillDate }}</td>
+                    <td>{{ e.receivablePrcp | jnCurrency }}</td>
+                    <td>{{ e.receivableIntT | jnCurrency }}</td>
+                    <td>{{ e.receivableOdIntT | jnCurrency }}</td>
+                    <td>{{ e.receivableCmpdIntT | jnCurrency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-content>
+</ion-view>
+<script id="smsDialog.html" type="text/ng-template">
+            <p>{{ custName }}</p>
+            <p ng-if="phoneNo"><a class="ion-android-textsms" href="sms:{{ phoneNo }}">{{ phoneNo }}</a></p>
+            <p>{{ content }}</p>
+</script>

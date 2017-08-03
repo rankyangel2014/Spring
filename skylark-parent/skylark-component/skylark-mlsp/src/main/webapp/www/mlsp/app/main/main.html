@@ -1,0 +1,329 @@
+<ion-view view-title="信贷助手" id="main" cache-view="false">
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-clear icon ion-ios-gear-outline">
+        </button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="false">
+    <div class="jn-whitespace" jn-mode="30px"></div>
+    <div class="jn-grid-view" ng-if="'grid' === ctrl.style">
+        <div class="row">
+            <a
+                class="col col-33 jn-col"
+                ng-if="ctrl.menuItems[0]"
+                ng-href="{{ ctrl.menuItems[0].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[0].icon }}" />
+                <p>{{ ctrl.menuItems[0].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[0].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[0].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a
+                class="col col-33 jn-col"
+                ng-if="ctrl.menuItems[1]"
+                ng-href="{{ ctrl.menuItems[1].url }}"
+                jn-mode="noTop noBottom" 
+            >
+                <img ng-src="{{ ctrl.menuItems[1].icon }}" />
+                <p>{{ ctrl.menuItems[1].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[1].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[1].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a
+                class="col col-33 jn-col jn-last-col"
+                ng-if="ctrl.menuItems[2]"
+                ng-href="{{ ctrl.menuItems[2].url }}"
+                jn-mode="noLeft noRight"
+            >
+                <img ng-src="{{ ctrl.menuItems[2].icon }}" />
+                <p>{{ ctrl.menuItems[2].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[2].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[2].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+        </div>
+        <div class="row" ng-if="ctrl.menuItems[3]">
+            <a 
+                class="col col-33 jn-col"
+                ng-if="ctrl.menuItems[3]"
+                ng-href="{{ ctrl.menuItems[3].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[3].icon }}" />
+                <p>{{ ctrl.menuItems[3].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[3].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[3].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a 
+                class="col col-33 jn-col"
+                ng-if="ctrl.menuItems[4]"
+                ng-href="{{ ctrl.menuItems[4].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[4].icon }}" />
+                <p>{{ ctrl.menuItems[4].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[4].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[4].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a
+                class="col col-33 jn-col jn-last-col"
+                ng-if="ctrl.menuItems[5]"
+                ng-href="{{ ctrl.menuItems[5].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[5].icon }}" />
+                <p>{{ ctrl.menuItems[5].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[5].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[5].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+        </div>
+        <div class="row" ng-if="ctrl.menuItems[6]">
+            <a
+                class="col col-33 jn-col"
+                ng-if="ctrl.menuItems[6]"
+                ng-href="{{ ctrl.menuItems[6].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[6].icon }}" />
+                <p>{{ ctrl.menuItems[6].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[6].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[6].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a
+                class="col col-33 jn-col" 
+                ng-if="ctrl.menuItems[7]"
+                ng-href="{{ ctrl.menuItems[7].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[7].icon }}" />
+                <p>{{ ctrl.menuItems[7].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[7].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[7].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+            <a
+                class="col col-33 jn-col jn-last-col"
+                ng-if="ctrl.menuItems[8]"
+                ng-href="{{ ctrl.menuItems[8].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[8].icon }}" />
+                <p>{{ ctrl.menuItems[8].name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[8].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[8].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="jn-list-view" ng-if="'list' === ctrl.style">
+        <ion-list>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[0]"
+                ng-href="{{ ctrl.menuItems[0].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[0].icon }}" />
+                <h2>{{ ctrl.menuItems[0].name }}</h2>
+                <p>{{ ctrl.menuItems[0].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[0].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[0].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[1]"
+                ng-href="{{ ctrl.menuItems[1].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[1].icon }}" />
+                <h2>{{ ctrl.menuItems[1].name }}</h2>
+                <p>{{ ctrl.menuItems[1].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[1].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[1].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[2]"
+                ng-href="{{ ctrl.menuItems[2].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[2].icon }}" />
+                <h2>{{ ctrl.menuItems[2].name }}</h2>
+                <p>{{ ctrl.menuItems[2].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[2].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[2].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[3]"
+                ng-href="{{ ctrl.menuItems[3].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[3].icon }}" />
+                <h2>{{ ctrl.menuItems[3].name }}</h2>
+                <p>{{ ctrl.menuItems[3].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[3].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[3].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[4]"
+                ng-href="{{ ctrl.menuItems[4].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[4].icon }}" />
+                <h2>{{ ctrl.menuItems[4].name }}</h2>
+                <p>{{ ctrl.menuItems[4].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[4].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[4].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[5]"
+                ng-href="{{ ctrl.menuItems[5].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[5].icon }}" />
+                <h2>{{ ctrl.menuItems[5].name }}</h2>
+                <p>{{ ctrl.menuItems[5].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[5].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[5].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[6]"
+                ng-href="{{ ctrl.menuItems[6].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[6].icon }}" />
+                <h2>{{ ctrl.menuItems[6].name }}</h2>
+                <p>{{ ctrl.menuItems[6].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[6].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[6].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[7]"
+                ng-href="{{ ctrl.menuItems[7].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[7].icon }}" />
+                <h2>{{ ctrl.menuItems[7].name }}</h2>
+                <p>{{ ctrl.menuItems[7].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[7].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[7].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-avatar item-icon-right"
+                ng-if="ctrl.menuItems[8]"
+                ng-href="{{ ctrl.menuItems[8].url }}"
+            >
+                <img ng-src="{{ ctrl.menuItems[8].icon }}" />
+                <h2>{{ ctrl.menuItems[8].name }}</h2>
+                <p>{{ ctrl.menuItems[8].desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000001' === ctrl.menuItems[8].id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'000002' === ctrl.menuItems[8].id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+        </ion-list>
+    </div>
+    </ion-content>
+</ion-view>

@@ -10,7 +10,6 @@ import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -28,7 +27,7 @@ import com.ranky.service.FilmService;
  * 
  * 
  */
-@Component
+//@Component
 public class ScheduledCallback {
 
 	private static final Logger logger = LoggerFactory.getLogger(ScheduledCallback.class);

@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+#editBox {
+	position: fixed;
+	left: 350px;
+	top: 100px;
+	width: 500px;
+	height: 300px;
+	background-color: #ddd;
+	color: #000;
+}
+
+.propertites {
+	position: fixed;
+	left: 10px;
+	top: 60px;
+	width: 340px;
+	background-color: #ddd;
+	color: #000;
+	line-height: 20px;
+	height: 500px;
+}
+
+
+
+.toolbar {
+	position: fixed;
+	right: 10px;
+	top: 30px;
+	width: 150px;
+	height: 600px;
+	background-color: #ddd;
+	color: #000;
+}
+

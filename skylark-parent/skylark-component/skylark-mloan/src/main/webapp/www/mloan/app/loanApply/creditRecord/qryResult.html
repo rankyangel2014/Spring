@@ -1,0 +1,93 @@
+<ion-view view-title="征信记录" id="creditRecordQryResult">
+	<ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+    <ion-list>
+        <form name="Ctrl.myform" novalidate>
+            <ion-item class="item-divider">筛查结果</ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">工商征信</span>
+                <select name="indComCredit"
+                        ng-model="Ctrl.form.indComCredit"
+                        jn-options="883"
+                        ng-disabled="Ctrl.isReadOnly">
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">备注</span>
+                <textarea name='indComCreditSts'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='2'
+                            cols="32"
+                            ng-model='Ctrl.form.indComCreditSts'
+                            jn-input-length="500" 
+                            placeholder="请输入工商征信备注"
+                            ng-readonly="Ctrl.isReadOnly">
+                  </textarea>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">小贷征信</span>
+                <select name="smallLoanCredit"
+                        ng-model="Ctrl.form.smallLoanCredit"
+                        jn-options="882"
+                        ng-disabled="Ctrl.isReadOnly">
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">备注</span>
+                <textarea name='smallLoanCreditSts'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='2'
+                            cols="32"
+                            ng-model='Ctrl.form.smallLoanCreditSts'
+                            jn-input-length="500" 
+                            placeholder="请输入小贷征信备注"
+                            ng-readonly="Ctrl.isReadOnly">
+                  </textarea>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">人行征信</span>
+                <select name="centralBankCredit"
+                        ng-model="Ctrl.form.centralBankCredit"
+                        jn-options="882"
+                        ng-disabled="Ctrl.isReadOnly">
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">备注</span>
+                <textarea name='centralBankCreditSts'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='2'
+                            cols="32"
+                            ng-model='Ctrl.form.centralBankCreditSts'
+                            jn-input-length="500" 
+                            placeholder="请输入人行征信备注"
+                            ng-readonly="Ctrl.isReadOnly">
+                </textarea>
+            </ion-item>
+            <ion-item class='item-input'>
+                  <span class='input-label'>网络查询结果</span>
+                  <textarea name='internetCreditSts'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='4'
+                            cols="32"
+                            ng-model='Ctrl.form.internetCreditSts'
+                            jn-input-length="500" 
+                            placeholder="请输入网络查询结果"
+                            ng-readonly="Ctrl.isReadOnly">
+                  </textarea>
+            </ion-item>
+        </form>
+    </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-positive" 
+    				ng-if="!Ctrl.isReadOnly"
+    				ng-click="Ctrl.saveForm()">
+        <div class="title">
+            <button class="button button-clear">
+                    保存
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

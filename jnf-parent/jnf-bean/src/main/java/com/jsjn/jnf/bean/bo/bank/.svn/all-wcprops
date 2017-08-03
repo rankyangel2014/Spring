@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Zfjs/!svn/ver/3823/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank
+END
+RealtimeBalQueryReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/RealtimeBalQueryReqBO.java
+END
+SinglePaymentSecCheckReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2353/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentSecCheckReqBO.java
+END
+QueryWithholdReqBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2476/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QueryWithholdReqBo.java
+END
+RealtimeBalQueryResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/RealtimeBalQueryResBO.java
+END
+SinglePaymentSecCheckResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2353/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentSecCheckResBO.java
+END
+QueryWithholdResBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2603/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QueryWithholdResBo.java
+END
+SingleWithHoldReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/3823/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleWithHoldReqDataBO.java
+END
+SingleWithHoldResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/2474/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleWithHoldResDataBO.java
+END
+SingleWithHoldReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/2474/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleWithHoldReqBO.java
+END
+SingleWithHoldResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/3697/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleWithHoldResBO.java
+END
+SinglePaymentTradeReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/2353/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentTradeReqDataBO.java
+END
+SingleFlowStateQueryReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/4113/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleFlowStateQueryReqDataBO.java
+END
+SinglePaymentTradeResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/2401/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentTradeResDataBO.java
+END
+SingleFlowStateQueryResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/2335/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleFlowStateQueryResDataBO.java
+END
+QuerySignInfoDataReqBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2565/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QuerySignInfoDataReqBo.java
+END
+QuerySignInfoDataResBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2903/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QuerySignInfoDataResBo.java
+END
+SinglePaymentTradeReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentTradeReqBO.java
+END
+SingleFlowStateQueryReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/2335/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleFlowStateQueryReqBO.java
+END
+SinglePaymentTradeResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentTradeResBO.java
+END
+QuerySignInfoReqBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2541/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QuerySignInfoReqBo.java
+END
+SingleFlowStateQueryResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/2335/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SingleFlowStateQueryResBO.java
+END
+QuerySignInfoResBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2476/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QuerySignInfoResBo.java
+END
+BatchWithHoldReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/3602/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/BatchWithHoldReqDataBO.java
+END
+BatchWithHoldResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/3656/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/BatchWithHoldResDataBO.java
+END
+BatchWithHoldReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/3602/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/BatchWithHoldReqBO.java
+END
+BatchWithHoldResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/3656/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/BatchWithHoldResBO.java
+END
+RealtimeBalQueryReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/RealtimeBalQueryReqDataBO.java
+END
+QueryWithholdReqDataBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2565/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QueryWithholdReqDataBo.java
+END
+SinglePaymentSecCheckReqDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/2353/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentSecCheckReqDataBO.java
+END
+RealtimeBalQueryResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/2335/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/RealtimeBalQueryResDataBO.java
+END
+SinglePaymentSecCheckResDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/2353/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/SinglePaymentSecCheckResDataBO.java
+END
+QueryWithholdDataResBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/2384/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/bank/QueryWithholdDataResBo.java
+END

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.ChannelBankDao">
+	<sql id="columns">
+		a.c1 as "channelId",
+		a.c2 as "bankName",
+		a.c3 as "jnBankCode",
+		a.c4 as "channelBankCode",
+		a.c5 as "maxAmount",
+		a.c6 as "maxAmountDay"
+	</sql>
+	<sql id="joins"></sql>
+	
+	<select id="queryBankList" resultType="ChannelBankDto">
+		SELECT 
+			<include refid="columns"></include>  
+		FROM JNF_T25 a
+		WHERE 1=1
+		<if test="channelId!=null and channelId!=''">
+			AND a.c1 =#{channelId}
+		</if>
+	</select>
+	
+	<select id="queryBankInfo" resultType="ChannelBankDto">
+	    SELECT
+	        <include refid="columns"></include>  
+	    FROM JNF_T25 a
+	    WHERE a.C1 = #{channelId}
+	      AND a.C3 = #{jnBankCode}
+	</select>
+	
+	<select id="queryJnBankCode" resultType="ChannelBankDto">
+	    SELECT
+	        <include refid="columns"></include>  
+	    FROM JNF_T25 a
+	    WHERE a.C1 = #{channelId}
+	    AND a.C4 = #{channelBankCode}
+	</select>
+	
+	<select id="queryAllBankList" resultType="ChannelBankDto">
+		SELECT 
+			<include refid="columns"></include>  
+		FROM JNF_T25 a
+		WHERE 1=1
+		<if test="channelId!=null and channelId!=''">
+			AND a.c1 =#{channelId}
+		</if>
+		<if test="bankName!=null and bankName!=''">
+			AND a.c2 like '%' || #{bankName} || '%'
+		</if>
+	</select>
+	
+	<insert id="addBankInfo" parameterType="ChannelBankDto">
+		insert into jnf_t25(
+			C1,
+			C2,
+			C3,
+			C4,
+			C5,
+			C6
+		)
+		values(
+			#{channelId},
+			#{bankName},
+			#{jnBankCode},
+			#{channelBankCode},
+			#{maxAmount},
+			#{maxAmountDay}
+		)
+	</insert>
+	
+	<update id="updateBankInfo" parameterType="ChannelBankDto">
+		UPDATE JNF_T25 SET 
+			C2 = #{bankName},
+			C4 = #{channelBankCode},
+			C5 = #{maxAmount},
+			C6 = #{maxAmountDay}
+		WHERE C1 = #{channelId}
+		AND C3 = #{jnBankCode}
+	</update>
+	
+	<delete id="delBankInfo" parameterType="ChannelBankDto">
+		DELETE FROM JNF_T25 WHERE C1 = #{channelId} and C3 = #{jnBankCode}
+	</delete>
+	
+	
+	<select id='queryMaxAmount' resultType="ChannelBankDto">
+		SELECT 
+			* 
+		FROM (
+			SELECT 
+				T4.C1 channelId, 
+				T3.C5 maxAmount, 
+				T3.C6 maxAmountDay
+		    FROM JNF_T24 T1, JNF_T2 T2,JNF_T25 T3,JNF_T23 T4,(
+		    	 SELECT C3  FROM JNF_T25 WHERE C1='CH12' AND C4=#{bankCode} 
+		    ) T5 
+			WHERE T1.C2 = T2.C1 AND T1.C3 = T3.C1
+			    AND T2.C4  = '1' AND T2.C6 = '1'
+			    AND T1.C4  = '1' AND T1.C3 = T4.C1
+			    AND T1.C12 = '1' AND T3.C3  = T5.C3
+			    <![CDATA[ AND T4.C1 <> 'CH12'  ]]> --去除CH12（金农征信渠道） 
+			    AND T2.C12 = #{orgNo}
+		    <if test="channel != null and channel != '' ">
+				AND T4.C1 = #{channel}
+			</if> 
+	  		    ORDER BY channelId
+			)
+		WHERE ROWNUM = 1
+	</select>
+</mapper>

@@ -1,0 +1,100 @@
+<ion-view view-title="{{title}}" id="loan">
+    <jn-back></jn-back>
+    <ion-content>
+         <ion-list ng-show="0 < loanList.items.length" >
+         	<div ng-repeat="r in loanList.items">
+         	<div ng-if=' "0"===r.txType || "6"===r.txType || "b"===r.txType '>
+	            <ion-item class='item' ui-sref='singleDebtLoanInfo({
+									            crtTxNo:r.crtTxNo,
+									            crtDt:r.crtDt,
+									            custNo:r.custNo,
+									            loanNo:r.loanNo,
+									            })' >
+	                <div class="jn-item-title name"  data-type="{{ r.custType }}" >{{  r.custName }}</div>
+			        <div class="jn-item-title" >{{  r.contNoExt }}</div>
+			        <div>{{  r.amt | jnCurrency}} {{  r.repayTyp | jnConstant:327 }} {{  r.setlDt | jnDate }}</div>
+			        <div ng-show=' r.txNoAcc!="0" '  class="txNoAcc">凭证号 {{ r.txNoAcc }}</div>
+			        <div  class="manager">{{  r.custManagerName }}</div>
+			        <div class="status">
+		                <span class='jylx ion-android-checkmark-circle' data-value="{{r.txType|jnConstant:6015 }}"></span>
+		                <span class="czbz ion-android-checkmark-circle" data-value="{{ r.revseInd|jnConstant: 9801 }}"></span>
+	                </div>
+	            </ion-item>
+            </div>
+            <div ng-if=' "1"===r.txType '>
+	            <ion-item class='item' ui-sref='singleCustomerLoanInfo({
+									            crtTxNo:r.crtTxNo,
+									            crtDt:r.crtDt,
+									            custNo:r.custNo,
+									            })'>
+	                <div class="jn-item-title name"  data-type="{{ r.custType }}" >{{  r.custName }}</div>
+			        <div class="jn-item-title" >{{  r.contNoExt }}</div>
+			        <div>{{  r.amt | jnCurrency}} {{  r.repayTyp | jnConstant:327 }} {{  r.setlDt | jnDate }}</div>
+			        <div class="txNoAcc">凭证号 {{  r.txNoAcc }}</div>
+			        <div  class="manager">{{  r.custManagerName }}</div>
+			        <div class="status">
+		                <span class='jylx ion-android-checkmark-circle' data-value="{{r.txType|jnConstant:6015 }}"> </span>
+		                <span class="czbz ion-android-checkmark-circle" data-value="{{ r.revseInd|jnConstant: 9801}}"></span>
+	                </div>
+	            </ion-item>
+            </div>
+            <div ng-if=' "5"===r.txType '>
+	            <ion-item class='item'>
+	                <div class="jn-item-title name"  data-type="{{ r.custType }}" >{{  r.custName }}</div>
+			        <div class="jn-item-title" >{{  r.contNoExt }}</div>
+			        <div>{{  r.amt | jnCurrency}} {{  r.repayTyp | jnConstant:327 }} {{  r.setlDt | jnDate }}</div>
+			        <div class="txNoAcc">凭证号 {{  r.txNoAcc }}</div>
+			        <div  class="manager">{{  r.custManagerName }}</div>
+			        <div class="status">
+		                <span class='jylx ion-android-checkmark-circle' data-value="{{r.txType|jnConstant:6015 }}"> </span>
+		                <span class="czbz ion-android-checkmark-circle" data-value="{{ r.revseInd|jnConstant: 9801 }}"></span>
+	                </div>
+	            </ion-item>
+            </div>
+            <div ng-if=' "2"===r.txType'>
+	            <ion-item class='item' ui-sref='batchLoanInfo({
+									            crtTxNo:r.crtTxNo,
+									            crtDt:r.crtDt,
+									            custNo:r.custNo,
+									            loanNo:r.loanNo,
+									            })'>
+	                <div class="jn-item-title name"  data-type="{{ r.custType }}" >{{  r.custName }}</div>
+			        <div class="jn-item-title" >{{  r.contNoExt }}</div>
+			        <div>{{  r.amt | jnCurrency}} {{  r.repayTyp | jnConstant:327 }} {{  r.setlDt | jnDate }}</div>
+			        <div class="txNoAcc">凭证号 {{  r.txNoAcc }}</div>
+			        <div  class="manager">{{  r.custManagerName }}</div>
+			        <div class="status">
+		                <span class='jylx ion-android-checkmark-circle' data-value="{{r.txType|jnConstant:6015 }}"></span>
+		                <span class="czbz ion-android-checkmark-circle" data-value="{{ r.revseInd|jnConstant: 9801 }}"></span>
+	                </div>
+	            </ion-item>
+            </div>
+            <div ng-if=' "7"===r.txType'>
+	            <ion-item class='item' ui-sref='writeBackLoanInfo({
+									            crtTxNo:r.crtTxNo,
+									            crtDt:r.crtDt,
+									            loanNo:r.loanNo,
+									            })'>
+	                <div class="jn-item-title name"  data-type="{{ r.custType }}" >{{  r.custName }}</div>
+			        <div class="jn-item-title" >{{  r.contNoExt }}</div>
+			        <div>{{  r.amt | jnCurrency}} {{  r.repayTyp | jnConstant:327 }} {{  r.setlDt | jnDate }}</div>
+			        <div class="txNoAcc">凭证号 {{  r.txNoAcc }}</div>
+			        <div  class="manager">{{  r.custManagerName }}</div>
+			        <div class="status">
+		                <span class='jylx ion-android-checkmark-circle' data-value="{{ r.txType|jnConstant:6015 }}"> </span>
+		                <span class="czbz ion-android-checkmark-circle" data-value="{{ r.revseInd|jnConstant: 9801}}"></span>
+	                </div>
+	            </ion-item>
+            </div>
+         	</div>
+        </ion-list>
+        <div
+            ng-show="0 === loanList.items.length" class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="more()"
+            ng-show="loanList.items.length < loanList.total"
+            class="button button-block button-positive button-clear"
+        >点击加载更多</button> 
+    </ion-content>
+</ion-view>

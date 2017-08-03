@@ -1,0 +1,39 @@
+<ion-view  view-title="回访记录修改">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button
+				class="button button-clear"
+				ng-click="save();"
+				ng-if='true'
+		>保存</button>
+	</ion-nav-buttons>
+
+	<ion-content>
+		<form name="Ctrl.myForm" jn-edit-form>
+			<ion-list>
+				<ion-item class='item-input item-select'>
+					<span class='input-label required'>回访方式</span>
+					<select required ng-model='it.visitType' name='visitType' jn-options="890" >
+
+					</select>
+				</ion-item>
+				<ion-item class='item-input item-select'>
+					<span class='input-label required'>回访结果</span>
+					<select required ng-model='it.visitResult' name='visitResult' jn-options="891">
+					</select>
+				</ion-item>
+				<ion-item class='item-input'>
+					<span class='input-label required'>备注</span>
+	                      <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32"  required
+									 ng-model='it.remark'  name='remark' placeholder="请输入备注" jn-input-length="200"></textarea>
+					</div>
+				</ion-item>
+			</ion-list>
+		</form>
+
+
+	</ion-content>
+
+</ion-view>

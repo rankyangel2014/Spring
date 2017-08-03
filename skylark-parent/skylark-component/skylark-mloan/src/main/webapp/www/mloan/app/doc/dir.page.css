@@ -1,0 +1,15 @@
+#jn-doc-dir .item-content>i {
+    vertical-align: middle;
+    font-size: 1.8em;
+}
+
+#jn-doc-dir .item-content>div {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: .8em;
+}
+
+#jn-doc-dir .path {
+    font-size: .7em;
+    white-space: normal;
+}

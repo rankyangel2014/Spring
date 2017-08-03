@@ -1,0 +1,42 @@
+<ion-view view-title="{{togetherOperatorCtrl.viewName}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"
+                ng-click="togetherOperatorCtrl.addOperator()"
+                ng-if="!togetherOperatorCtrl.isReadOnly">
+                新增
+        </button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <ion-list ng-show="0 < togetherOperatorCtrl.list.items.length">
+            <ion-item ng-repeat="e in togetherOperatorCtrl.list.items"
+                      ng-click="togetherOperatorCtrl.goDetail(e)"
+                      style="padding: 10px;">
+                <div>
+                    <div>
+                        <span class="jn-item-title jn-name" cust-type="{{e.custType}}">
+                         {{ e.custName }}
+                        </span>
+                        <button class="button button-small button-assertive jn-list-item-btn"
+                                ng-click="togetherOperatorCtrl.deleteOperator(e,$event)"
+                                ng-show="!togetherOperatorCtrl.isReadOnly">
+                            删除
+                        </button>
+                    </div>
+                    <jn-tel-no style="font-size: 14px" num="{{e.mobPhone||e.fixPhone}}"></jn-tel-no>
+                    <div class="jn-card-id" ng-if="e.paperNo || e.liceNo">{{ e.paperNo || e.liceNo }}</div>
+                    <div class="jn-item-compact">
+                        <label>与客户关系</label>
+                        <span class="jn-list-item-content">{{ e.linkType | jnConstantList :5033 }}</span>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <div ng-if="0 === togetherOperatorCtrl.list.items.length"
+             class="no_record">
+            暂无记录
+        </div>
+    </ion-content>
+</ion-view>

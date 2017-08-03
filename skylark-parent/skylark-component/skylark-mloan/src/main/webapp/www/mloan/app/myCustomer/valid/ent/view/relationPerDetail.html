@@ -1,0 +1,66 @@
+<ion-view view-title="关联信息详情（个人）" id="perCustActualDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button ng-if=" ctrl.isDetail=='0' "
+                class="button button-clear "
+                ng-click="ctrl.edit(it.custNo)"
+        >修改
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-item class="item-divider"></ion-item>
+         <ion-item class="item" >与客户关系
+        <span class="item-note">{{it.linkTypeName }}</span>
+    </ion-item>
+        <ion-item class="item">
+            姓名
+            <span class="item-note">{{ it.custName }}</span>
+        </ion-item>
+        <ion-item class="item">
+            身份证号
+            <span class="item-note">{{ it.paperNo }}</span>
+        </ion-item>
+        <ion-item class="item">
+            性别
+            <span class="item-note">{{ it.sex|jnConstant:306 }}</span>
+        </ion-item>
+        <ion-item class="item">
+            出生日期
+            <span class="item-note">{{ it.birthday|jnDate }}</span>
+        </ion-item>
+        <ion-item class="item">
+            年龄
+            <span class="item-note">{{ it.age }}</span>
+        </ion-item>
+        <ion-item class="item">
+            婚姻状况
+            <span class="item-note">{{ it.marryStatus | jnConstant :5027 }}</span>
+        </ion-item>
+        <ion-item class="item">
+            教育水平
+            <span class="item-note">{{ it.eduLevel | jnConstant :5047 }}</span>
+        </ion-item>
+        <ion-item class="item">
+            手机
+            <span class="item-note">{{it.mobPhone}}</span>
+        </ion-item>
+        <ion-item class="item">
+            固定电话
+            <span class="item-note">{{ it.fixPhone }}</span>
+        </ion-item>
+        <ion-item class="item">
+            居住情况
+            <span class="item-note" ng-if=" '1' == it.housingStatus">自有</span>
+            <span class="item-note" ng-if=" '2' == it.housingStatus">抵押</span>
+            <span class="item-note" ng-if=" '3' == it.housingStatus">租赁</span>
+            <span class="item-note" ng-if=" '4' == it.housingStatus">{{ it.housingDesc}}</span>
+        </ion-item>
+        <ion-item class="item">
+            家庭地址
+            <span class="item-note">{{ it.custAddr }}</span>
+        </ion-item>
+
+    </ion-content>
+</ion-view>

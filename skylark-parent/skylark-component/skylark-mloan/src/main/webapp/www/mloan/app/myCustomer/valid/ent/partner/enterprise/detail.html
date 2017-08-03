@@ -1,0 +1,42 @@
+<ion-view view-title="股东信息（企业）">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                ng-if="isDetail=='0'"
+                class="button button-clear "
+                ng-click="ctrl.edit()"
+        >修改
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <input type="hidden" name="custNo" ng-model="ctrl.param.custNo "/>
+        <input type="hidden" name="pCustNo" ng-model="ctrl.param.pCustNo "/>
+        <input type="hidden" name="paperType" ng-model="ctrl.param.paperType "/>
+        <!--<ion-item class="item">客户类别-->
+            <!--<span class="item-note">{{ctrl.param.custType |jnConstant:5028 }}</span>-->
+        <!--</ion-item>-->
+        <ion-item class="item">名称
+            <span class="item-note">{{ ctrl.param.custName }}</span>
+        </ion-item>
+        <ion-item class="item">证件类型
+            <span class="item-note">{{ ctrl.param.paperType |jnConstant:5099}}</span>
+        </ion-item>
+        <ion-item class="item">证件号码
+            <span class="item-note">{{ ctrl.param.paperNo }}</span>
+        </ion-item>
+        <ion-item class="item">联系方式
+            <span class="item-note">{{ ctrl.param.fixPhone }}</span>
+        </ion-item>
+        <ion-item class="item">联系地址
+            <span class="item-note">{{ctrl.param.custAddr }}</span>
+        </ion-item>
+
+        <ion-item class="item">
+            股份占比
+            <span class="item-note">{{ ctrl.param.sharePct }}%</span>
+        </ion-item>
+
+    </ion-content>
+</ion-view>

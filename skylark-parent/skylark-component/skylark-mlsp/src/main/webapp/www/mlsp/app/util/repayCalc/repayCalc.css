@@ -1,0 +1,91 @@
+#utilRepayCalcList ion-item {
+    font-size: 14px;
+}
+
+#utilRepayCalcList .jnCustName,
+#utilRepayCalcList .jnContNoExt,
+#utilRepayCalcList .jnPrcp,
+#utilRepayCalcList .jnManager {
+    line-height: 1.5em;
+}
+
+#utilRepayCalcList .jnCustName {
+    font-weight: bold;
+}
+
+#utilRepayCalcList .jnCustName:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#utilRepayCalcList .jnCustName[data-type="0"]:before {
+    content: '\e645';
+}
+
+#utilRepayCalcList .jnCustName[data-type="1"]:before {
+    content: '\e644';
+}
+
+#utilRepayCalcList .jnPrcp,
+#utilRepayCalcList .jnManager {
+    color: #666;
+}
+
+#utilRepayCalcList .jnManager:before {
+    content: '\e627';
+    font-family: iconfont;
+    margin-right: .5em;
+    color: #007aff;
+}
+
+#utilRepayCalcList .jnRepayTyp {
+    position: absolute;
+    right: .5em;
+    bottom: .5em;
+    color: grey;
+    font-size: .9em;
+}
+
+#utilRepayCalcList .jnRepayTyp:before {
+    margin-right: .3em;
+    color: #f98653;
+}
+
+#utilRepayCalcCalc .jnCalcBtn {
+    display: block;
+    width: 80%;
+    margin: 2em auto;
+}
+
+#utilRepayCalcResult .summary {
+    width: 100%;
+}
+
+#utilRepayCalcResult .summary caption,
+#utilRepayCalcResult .summary th,
+#utilRepayCalcResult .summary td {
+    padding: .4em;
+}
+
+#utilRepayCalcResult .summary caption {
+    font-weight: bold;
+}
+
+#utilRepayCalcResult .summary th {
+    text-align: left;
+}
+
+#utilRepayCalcResult .summary td {
+    color: #9b9b9b;
+}
+
+#utilRepayCalcResult .jnBillDt {
+    white-space: pre;
+    text-align: center;
+}

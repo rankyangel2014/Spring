@@ -1,0 +1,44 @@
+<ion-view view-title="客户关系信息">
+    <jn-back></jn-back>
+    <ion-nav-buttons
+        side="secondary"
+    >
+        <button
+            class="button button-clear"
+            ng-click="ctrl.edit()"
+            ng-if="ctrl.editable && enableEdit"
+        >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item>
+                主关联客户名称
+                <span class="item-note jn-item-title">{{ ctrl.data.custName }}</span>
+            </ion-item>
+            <ion-item>
+                被关联客户名称
+                <span class="item-note jn-item-title">{{ ctrl.data.linkCustName }}</span>
+            </ion-item>
+            <ion-item>
+                被关联客户类型
+                <span class="item-note">{{ ctrl.data.linkCustType | jnConstant :5028 }}</span>
+            </ion-item>
+            <ion-item>
+                关系类型
+                <span class="item-note">{{ ctrl.data.linkType | jnConstant :5033 }}</span>
+            </ion-item>
+            <ion-item>
+                拥有股份
+                <span class="item-note">{{ ctrl.data.sharePct }}%</span>
+            </ion-item>
+            <ion-item>
+                关系状态
+                <span class="item-note">{{ ctrl.data.linkStatus | jnConstant :5030 }}</span>
+            </ion-item>
+            <ion-item>
+                备注
+                <span class="item-note">{{ ctrl.data.remark }}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/4083/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open
+END
+PandaBankService.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/4287/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/PandaBankService.java
+END
+PandaBusinessService.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/3387/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/PandaBusinessService.java
+END
+PandaTimeTaskService.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2525/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/PandaTimeTaskService.java
+END
+PandaRealNameService.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/2218/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/PandaRealNameService.java
+END
+StatementPandaService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/3718/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/StatementPandaService.java
+END
+PandaTransactionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Zfjs/!svn/ver/1887/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open/PandaTransactionService.java
+END

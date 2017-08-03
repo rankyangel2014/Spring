@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Zfjs/!svn/ver/4083/group/dev/jnf-parent/jnf-service
+END
+package.bat
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Zfjs/!svn/ver/201/group/dev/jnf-parent/jnf-service/package.bat
+END
+ServiceInterface.soa.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Zfjs/!svn/ver/88/group/dev/jnf-parent/jnf-service/ServiceInterface.soa.xml
+END
+extBuilder.properties
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Zfjs/!svn/ver/201/group/dev/jnf-parent/jnf-service/extBuilder.properties
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Zfjs/!svn/ver/4408/group/dev/jnf-parent/jnf-service/pom.xml
+END
+assembly.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Zfjs/!svn/ver/201/group/dev/jnf-parent/jnf-service/assembly.xml
+END

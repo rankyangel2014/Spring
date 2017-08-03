@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.BizConfigDao">
+	<sql id="columns">
+	 a.C1 as mid,
+	 a.C2 as appkey,
+     a.C3 as whiteList,
+     a.C4 as rsaPubKey,
+     a.C5 as aesKey,
+     a.C6 as digest
+	</sql>
+	<sql id="joins">
+	</sql>
+	<!-- 获取序列号 -->
+	
+	<select id="get" resultType="BizConfigDto">
+		SELECT 
+		<include refid="columns"></include>
+		FROM JNF_T5 a
+		<where>
+			<if test="appkey!=null and appkey!=''">
+				AND a.C2=#{appkey}
+			</if> 
+			<if test="mid!=null and mid!=''">
+				AND a.C1=#{mid}
+			</if>
+		</where>
+	</select> 
+	 
+	
+	<insert id="insert">
+		INSERT INTO JNF_T5(
+		C1,
+		C2,
+		C3,
+		C4,
+		C5,
+		C6
+		)VALUES(
+		#{mid},
+		#{appkey},
+		#{whiteList},
+		#{rsaPubKey},
+		#{aesKey},
+		#{digest}		
+		) 
+	</insert>
+	
+	<update id="update">
+		UPDATE JNF_T5 SET
+			C1 = #{mid},
+			C2 = #{appkey},
+			C3 = #{whiteList},
+			C4 = #{rsaPubKey},
+			C5 = #{aesKey},
+			C6 = #{digest} 
+		WHERE C1 = #{mid} 
+	</update>
+	
+	<select id="queryBussinessConfigByMid" resultType="BizConfigDto">
+		SELECT 
+		<include refid="columns"></include>
+		FROM JNF_T5 a
+		WHERE a.C1=#{mid}
+	</select> 
+	
+	<select id="qryByPubKey" parameterType="String" resultType="BizConfigDto">
+		SELECT 
+		<include refid="columns"></include>
+		FROM JNF_T5 a
+		WHERE a.C4 = #{rsaPubKey} and a.C1 != #{mid}
+	</select> 
+	
+</mapper>

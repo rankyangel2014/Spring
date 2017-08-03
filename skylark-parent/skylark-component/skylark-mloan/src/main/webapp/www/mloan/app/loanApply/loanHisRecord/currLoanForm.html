@@ -1,0 +1,143 @@
+<ion-modal-view id="currloanFormModel">
+    <div class="bar bar-header bar-positive">
+        <button class="button button-clear"  ng-if="!data.isReadOnly" ng-click="currLoanModalConf.closeModal();">取消</button>
+        <button class="button button-clear ion-chevron-left jnBack"  
+        	ng-if="data.isReadOnly" ng-click="currLoanModalConf.closeModal();">返回</button>
+        <h1 class="title">当前融资</h1>
+         <div class="buttons buttons-right">
+            <button class="button button-clear"
+            		ng-if="!data.isReadOnly"
+                    ng-click="currLoanModalConf.save();">
+                  	  保存
+            </button>
+        </div>
+    </div>
+    <ion-content class="has-header" has-bouncing="false" scroll="true">
+      <jn-form validator="validateForm" id="currloanForm" ng-if="!data.isReadOnly">
+        	<ion-item class="item-input ">
+        		<span class="input-label required">融资来源</span>
+            	<input
+                    type="text"
+                    ng-model="currLoanModalConf.form.lender"
+                    jn-validate-name="融资来源"
+                    jn-validate="required and maxlen(30)"
+                    placeholder="请输入融资来源"
+                />
+        	</ion-item>
+        	<ion-item class="item-input ">
+        		<span class="input-label required">融资金额（元）</span>
+            	<input
+                    type="number"
+                    ng-model="currLoanModalConf.form.amt"
+                    jn-validate-name="融资金额"
+                    jn-validate="required and maxlen(16) and gte(0) and lte(100000000000)"
+                    placeholder="请输入融资金额"
+                />
+        	</ion-item>
+ 			<ion-item class="item-input ">
+           		<span class="input-label ">发放日期</span>
+           		<input
+                    type="date"
+                    ng-model="currLoanModalConf.form.lendDt"
+                    format-date
+                />
+           	</ion-item>
+        	<ion-item class="item-input">
+        		<span class="input-label ">期限（月）</span>
+            	<input
+                    type="number"
+                    ng-model="currLoanModalConf.form.perd"
+                    pattern="[0-9]*"
+                    jn-validate-name="期限"
+                    jn-validate="maxlen(3) and int and gte(0) and lte(999)"
+                    placeholder="请输入期限"
+                />
+        	</ion-item>
+        	
+        	<ion-item class="item-input item-select">
+        		<span class="input-label ">保证方式</span>
+        		<select ng-model="currLoanModalConf.form.gurTyp" name="gurTyp" jn-options='5045'></select>
+        	</ion-item>
+			<ion-item class="item-input ">
+        		<span class="input-label ">月还款额（元）</span>
+            	<input
+                    type="number"
+                    ng-model="currLoanModalConf.form.instmAmt"
+                    jn-validate-name="月还款额"
+                    jn-validate="maxlen(16) and gte(0) and lte(100000000000)"
+                    placeholder="请输入月还款额"
+                />
+        	</ion-item>
+			<ion-item class="item-input ">
+        		<span class="input-label ">余额（元）</span>
+            	<input
+                    type="number"
+                    ng-model="currLoanModalConf.form.bal"
+                    jn-validate-name="余额"
+                    jn-validate="maxlen(16) and gte(0) and lte(100000000000)"
+                    placeholder="请输入余额"
+                />
+        	</ion-item>
+			<ion-item class="item-input">
+        		<span class="input-label">用途</span>
+            	<input
+                    type="text"
+                    ng-model="currLoanModalConf.form.purpose"
+                    jn-validate-name="用途"
+                    jn-validate="maxlen(30)"
+                    placeholder="请输入用途"
+                />
+        	</ion-item>
+			<ion-item class="item-divider">逾期信息及原因</ion-item>
+            <ion-item class="item-input">
+				<span class="input-label" style="display: none">逾期信息及原因</span>
+				<textarea
+                    rows="4"
+                    cols="30"
+                    ng-model="currLoanModalConf.form.overdueDesc"
+                    jn-validate-name="逾期信息及原因"
+                    jn-validate="maxlen(1000)"
+                    placeholder="请在此处填写逾期信息及原因"
+                ></textarea>
+			</ion-item>
+        </jn-form>
+        <ion-list ng-if="data.isReadOnly">
+        	<ion-item>
+           		<span>融资来源</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.lender}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>融资金额（元）</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.amt | jnCurrency}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>发放日期</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.lendDt | jnDate}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>期限（月）</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.perd }}</span>
+            </ion-item>
+            <ion-item>
+           		<span>保证方式</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.gurTyp | jnConstant :5045}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>月还款额（元）</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.instmAmt | jnCurrency}}</span>
+            </ion-item>
+              <ion-item>
+           		<span>余额（元）</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.bal | jnCurrency}}</span>
+            </ion-item>
+            <ion-item>
+           		<span>用途</span>
+           		<span class="item-note" style="max-width:60%">{{currLoanModalConf.form.purpose }}</span>
+            </ion-item>
+            <ion-item class="item-divider">逾期信息及原因</ion-item>
+            <ion-item style="min-height: 80px;">
+				<span style="text-overflow: initial;white-space: normal;color: #aaa;">{{currLoanModalConf.form.overdueDesc}}</span>
+			</ion-item>
+        </ion-list>
+ </ion-content>
+</ion-modal-view>

@@ -1,0 +1,76 @@
+<ion-view view-title="我的业务查询">
+	<jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="paramsCtrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="paramsCtrl.myForm" novalidate>
+            <ion-list>
+            	<ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="paramsCtrl.form.custName"
+                        placeholder="请输入客户名称" 
+                       />
+                </ion-item>
+            	
+				<!-- <div ng-if='userFlag'>
+                	<input name="custManagerNo" type="hidden" />
+                </div> -->
+                
+                <ion-item class="item-input item-select" ng-show='!userFlag'>
+                    <span class="input-label">客户经理</span>
+                    <select
+                        ng-model="paramsCtrl.form.custManagerNo"
+                        jn-manager-select
+                        name = "custManagerNo" 
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">业务类型</span>
+                    <select
+                        ng-model="paramsCtrl.form.busType"
+                        name="busType"
+                    >
+	                    <option value="">--请输入--</option>
+	                    <option value="0">贷款</option>
+	                    <option value="1">授信</option>
+                    </select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">申请金额（至少）</span>
+                    <input
+                        type="number"
+                        ng-model="paramsCtrl.form.applAmtFrom"
+                        name="applAmtFrom"
+                        jn-Positive
+                        placeholder="至少" 
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">申请金额（至多）</span>
+                     <input
+                        type="number"
+                        ng-model="paramsCtrl.form.applAmtTo"
+                        name="applAmtTo"
+                        jn-Positive
+                        placeholder="至多" 
+                        />
+                </ion-item>
+                <jn-form-item
+                    label="申请日期"
+                >
+                    <jn-date-range
+                        model-start="paramsCtrl.form.applDtFrom"
+                        model-end="paramsCtrl.form.applDtTo"
+                    ></jn-date-range>
+                </jn-form-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

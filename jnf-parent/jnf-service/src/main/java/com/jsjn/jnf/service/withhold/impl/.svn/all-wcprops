@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Zfjs/!svn/ver/4051/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl
+END
+SignInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/2827/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/SignInfoServiceImpl.java
+END
+InvestorChannelServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/InvestorChannelServiceImpl.java
+END
+SignTempInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/Zfjs/!svn/ver/4262/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/SignTempInfoServiceImpl.java
+END
+BatchWithholdServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Zfjs/!svn/ver/3656/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/BatchWithholdServiceImpl.java
+END
+QueryOrgCardNoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/Zfjs/!svn/ver/3741/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/QueryOrgCardNoServiceImpl.java
+END
+LoanInfoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/2675/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/LoanInfoServiceImpl.java
+END
+UserThirdAccountServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/service/withhold/impl/UserThirdAccountServiceImpl.java
+END

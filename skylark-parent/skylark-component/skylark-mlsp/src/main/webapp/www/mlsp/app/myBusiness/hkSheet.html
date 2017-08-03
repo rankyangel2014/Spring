@@ -1,0 +1,34 @@
+<ion-view view-title="还款计划表" id="hkSheet">
+	<jn-back></jn-back>
+    <ion-content direction="xy">
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>期数</th>
+                    <th>还款日</th>
+                    <th>期供</th>
+                    <th>应还本金</th>
+                    <th>应还利息</th>
+                </tr>
+            </thead>
+          		<tbody>
+                <tr ng-repeat="r in items" >
+                    <th>{{ r.perdNo }}</th>
+                    <td>{{ r.dueDt }}</td>
+                    <td>{{ r.instmAmt | jnCurrency}}</td>
+                    <td>{{ r.instmPrcp | jnCurrency}}</td>
+                    <td>{{ r.instmInt | jnCurrency}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td>{{ sum.instmAmt | jnCurrency}}</td>
+                    <td>{{ sum.instmPrcp | jnCurrency}}</td>
+                    <td>{{ sum.instmInt | jnCurrency}}</td>
+                </tr>
+            </tfoot>
+    	</table>
+    </ion-content>
+</ion-view>

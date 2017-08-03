@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Zfjs/!svn/ver/4073/group/dev/jnf-parent/jnf-service/src/main/resources
+END
+panda.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Zfjs/!svn/ver/201/group/dev/jnf-parent/jnf-service/src/main/resources/panda.xsd
+END
+panda.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Zfjs/!svn/ver/4296/group/dev/jnf-parent/jnf-service/src/main/resources/panda.xml
+END
+0aa7052e738a4e43aefa38380f6fda4c.properties
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/2806/group/dev/jnf-parent/jnf-service/src/main/resources/0aa7052e738a4e43aefa38380f6fda4c.properties
+END
+panda-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Zfjs/!svn/ver/3527/group/dev/jnf-parent/jnf-service/src/main/resources/panda-config.xml
+END
+yifubao.cer
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Zfjs/!svn/ver/2455/group/dev/jnf-parent/jnf-service/src/main/resources/yifubao.cer
+END
+soa.rss.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Zfjs/!svn/ver/3676/group/dev/jnf-parent/jnf-service/src/main/resources/soa.rss.xml
+END
+jnf.pfx
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Zfjs/!svn/ver/325/group/dev/jnf-parent/jnf-service/src/main/resources/jnf.pfx
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Zfjs/!svn/ver/3046/group/dev/jnf-parent/jnf-service/src/main/resources/log4j.properties
+END
+mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/3719/group/dev/jnf-parent/jnf-service/src/main/resources/mybatis-config.xml
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Zfjs/!svn/ver/3553/group/dev/jnf-parent/jnf-service/src/main/resources/jdbc.properties
+END

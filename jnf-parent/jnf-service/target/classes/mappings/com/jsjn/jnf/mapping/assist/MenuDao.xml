@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.MenuDao">
+	<sql id="columns">
+		a.C1 as "menuCde",
+		a.C2 as "menuKey",
+		a.C3 as "menuValue",
+		a.C4 as "menuSort"
+	</sql>
+    
+	<sql id="joins"></sql>
+	
+	<!-- 设置支持缓存，不需要缓存的，使用useCache="false" -->
+	<cache eviction="LRU" flushInterval="60000" size="1024" readOnly="true"/> 
+	
+	<!-- 查询支持银行  -->
+	<select id = "findByMenuCode"  resultType = "com.jsjn.jnf.bean.dto.assist.MenuDto" useCache="false">
+		 SELECT 
+		<include refid="columns"></include>
+		  FROM JNF_T13 a
+		  WHERE a.C1=#{menuCode}
+		  ORDER BY a.C4 ASC
+	</select>
+	
+	<!-- 查询所有下拉参数配置  -->
+	<select id="findAllMenuCode" resultType = "com.jsjn.jnf.bean.dto.assist.MenuDto">
+		SELECT 
+		<include refid="columns"></include>  
+		FROM JNF_T13 a
+	</select>
+	
+	<!-- 查询所有下拉参数配置  -->
+	<select id="findAllMenuByCode" parameterType="MenuDto" resultType = "MenuDto">
+		SELECT 
+		<include refid="columns"></include>  
+		FROM JNF_T13 a
+		WHERE 1=1 
+		<if test="menuCde!=null and menuCde!=''">
+			AND a.C1=#{menuCde}
+		</if> 
+	</select>
+	
+	<!-- 新增下拉参数配置 -->
+	<insert id="addMenu">
+		INSERT INTO JNF_T13(
+		C1,
+		C2,
+		C3,
+		C4
+		)
+		values(
+		#{menuCde},      
+		#{menuKey},    
+		#{menuValue},
+		#{menuSort} 
+		)
+	</insert>
+	
+	<!-- 修改下拉参数配置 -->
+	<update id="updateMenu" parameterType="MenuDto">
+		UPDATE JNF_T13 SET 
+			C1 = #{menuCde},
+			C2 = #{menuKey},
+			C3 = #{menuValue},
+			C4 = #{menuSort}
+		WHERE C1 = #{menuCde} and C2 = #{menuKey}
+	</update>
+	
+	<!-- 删除计费参数配置 -->
+	<delete id="delMenu" parameterType="MenuDto">
+		DELETE FROM JNF_T13 WHERE C1 = #{menuCde} and C2 = #{menuKey}
+	</delete>
+	
+</mapper>

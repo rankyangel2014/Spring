@@ -1,0 +1,66 @@
+<ion-scroll class="jn-tabSlideBox-scroll" 
+			ng-controller="approvalInfoCtrl as ctrl"
+            has-bouncing="false">
+<style>
+	#approvalInfo .item-radio input:checked + .radio-content .item-content {
+   	  background: #ffffff; 
+	}
+	#approvalInfo .toggle input:disabled + .track {
+     	opacity: 1;
+	}
+</style>
+    <form id="approvalInfo">
+	    <ion-item class="item-divider">
+	              审批结果
+	    </ion-item>
+     	<ion-radio ng-required="true" class="show_radio" name='examine'
+			ng-model='ctrl.form.examine' ng-disabled="true"  value='0'>同意
+		</ion-radio>
+		<ion-radio ng-required="true" class="show_radio" name='examine'
+			ng-model='ctrl.form.examine' ng-disabled="true"  value='1'>拒绝
+		</ion-radio>
+		<ion-radio ng-required="true" class="show_radio" name='examine'
+			ng-model='ctrl.form.examine' ng-disabled="true" value='2'>退回
+		</ion-radio>
+		<ion-item class="item-divider" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+	              审批意见
+		</ion-item>
+		<ion-item  style="min-height: 80px;" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+			<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.opinion}}</span>
+		</ion-item>
+		<ion-item class="item-divider" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+	      	   客户资料
+		</ion-item>
+		<ion-toggle  ng-if="!ctrl.form.examine || ctrl.form.examine==0" ng-repeat="item in ctrl.form.pproveCfg"
+                ng-model="item.checked" 
+                ng-readonly="true"
+                ng-disabled = "true"
+                style="pointer-events:all"
+                ng-checked="item.isCheck=='1'">
+     		 {{ item.appDesc }}
+   		</ion-toggle>
+		<ion-item class="item-divider" ng-if="ctrl.form.examine==1">
+	              拒绝原因
+		</ion-item>
+		<ion-item ng-if="ctrl.form.examine==1">
+			<span>拒绝类型</span> 
+			<span class="item-note">{{ctrl.form.refTypeTxt}}</span>
+		</ion-item>
+		<ion-item ng-if="ctrl.form.examine==1">
+			<span>拒绝理由</span>
+			<span class="item-note">{{ctrl.form.refCauseTxt}}</span>
+		</ion-item>
+		<ion-item style="min-height: 80px;"  ng-if="ctrl.form.examine==1 &&(ctrl.form.refCause_p==8 || ctrl.form.refCause_c==13)"> 
+			<span  style="text-overflow: initial;white-space: normal;">{{ctrl.form.refOtherDesc}}</span>
+		</ion-item>
+		<!--拒绝 end-->
+		<!--退回 begin-->
+		<ion-item class="item-divider" ng-if="ctrl.form.examine==2">
+	             退回原因
+	 	</ion-item>
+		<ion-item style="min-height: 80px;"  ng-if="ctrl.form.examine==2">
+				<span style="text-overflow: initial;white-space: normal;">{{ctrl.form.thTxt}}</span>
+		</ion-item>
+	</form>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

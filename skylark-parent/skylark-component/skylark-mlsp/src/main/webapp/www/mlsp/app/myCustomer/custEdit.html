@@ -1,0 +1,151 @@
+<style type="text/css">
+#editPerCustomer .show_radio{
+	max-width: 110px;
+	line-height: 10px;
+	border-width: 0px;
+}
+#editPerCustomer .show_radio2{
+	max-width: 200px;
+	line-height: 10px;
+	border-width: 0px;
+}
+</style>
+
+<ion-view view-title="个人客户修改" id="editPerCustomer">
+	<jn-back jn-state="myCustomer"></jn-back>
+	  <ion-nav-buttons side="secondary">
+        <button 
+             class="button button-clear "
+             ng-click="ctrl.submit(ctrl.form.birthday,ctrl.form.sex)"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content >
+		  <!-- 编辑表单 -->
+            <jn-form  name="ctrl.editForm" edit >
+            
+            <ion-item class='item-input' >
+                    <span class='input-label' >类别</span>
+                     <ion-br/>
+                    <ion-radio ng-disabled="true" class="show_radio2" name='perTyp' value='0' ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >普通个人</ion-radio>
+                    <ion-br/>
+                    <ion-radio ng-disabled="true" class="show_radio2"  name='perTyp' value='1'  ng-model='ctrl.form.perTyp'  ng-checked="ctrl.form.perTyp" >个体工商户</ion-radio>
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select style="color: #aaa" disabled="disabled">
+                        <option value="" ng-selected="true" >身份证</option>
+                    </select>
+                    <input type="hidden" name="paperType" ng-required="true"  ng-model="ctrl.form.paperType"/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">证件号码</span>
+                    <input
+                    	required
+                        type="text"
+                        name="paperNo"
+                        readonly="readonly"
+                        ng-model="ctrl.form.paperNo"
+                        placeholder="请输入证件号码"
+                        jn-id-no
+                        />
+                </ion-item>
+                <ion-item class="item-input" ng-if='ctrl.form.perTyp=="1"'>
+                    <span class="input-label required">营业执照</span>
+                    <input
+                    	required
+                        type="text"
+                        name="regNo"
+                        readonly="readonly"
+                        ng-model="ctrl.form.regNo"
+                        placeholder="请输入营业执照" 
+                        jn-reg-no
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">客户名称</span>
+                    <input
+                            type="text"
+                            name="custName"
+                            required
+                            readonly="readonly"
+                            jn-input-length="60"
+                            ng-model="ctrl.form.custName"
+                            placeholder="请输入客户名称"
+                            ng-required="true"
+                    />
+                </ion-item>
+
+                <ion-item class="item-input">
+                    <span class="input-label required">生日</span>
+                    <input
+                            type="date"
+                            ng-required="true"
+                            name="birthday"
+                            ng-model="ctrl.form.birthday"
+
+                    />
+                </ion-item>
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">民族</span>
+                    <select name="nation"
+                            ng-model="ctrl.form.nation"
+                            jn-options="8"
+                    ></select>
+                </ion-item>
+                <ion-item class='item-input' >
+                    <span class='input-label required' >性别</span>
+                    <ion-radio class="show_radio" name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='M' checked>男</ion-radio>
+                    <ion-radio  class="show_radio"  name='sex'  ng-model='ctrl.form.sex'  ng-checked="ctrl.form.sex"  value='F'>女</ion-radio>
+                </ion-item>
+                <ion-item
+                	class="item-input item-select"
+                >
+                    <span class="input-label required">婚姻状况</span>
+                    <select
+                        ng-model="ctrl.form.marryStatus"
+                        jn-options="5027"
+                        name="marryStatus"
+                        required
+                    ></select>
+                </ion-item>
+                <ion-item
+                	class="item-input item-select"
+                >
+                 	<span class="input-label required">涉农类型</span>
+                    <select
+                        ng-model="ctrl.form.agricultureType"
+                        jn-options="7600"
+                        name="agricultureType"
+                        ng-required="true"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">联系电话</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.phoneNo"
+                        placeholder="请输入客户联系电话" 
+                        name="mobile"
+                        jn-tel
+                        ng-required="true"
+                        />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">详细地址</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custAddr"
+                        placeholder="请输入客户详细地址" 
+                        name="address"
+                        jn-input-length="200"
+                        ng-required="true"
+                        />
+                </ion-item>
+            </jn-form>
+      		
+    </ion-content>
+</ion-view>

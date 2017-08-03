@@ -1,0 +1,52 @@
+<ion-view view-title="贷款试算器" cache-view="false" id="loanCalc">
+	<jn-back></jn-back>
+    <ion-content>
+    	<ion-list>
+	            <ion-item class="item" >
+	            	贷款本金
+	            	<span class="item-note">{{ items.bj | jnCurrency}}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	年利率(%)
+	            	<span class="item-note">{{ items.rate | jnCurrency}}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	还款方式
+	            	<span  ng-show=" items.type == 'debx' " class="item-note"> 等额本息 </span>
+	            	<span  ng-show=" items.type == 'debj' " class="item-note"> 等额本金 </span>
+	            	<span  ng-show=" items.type == 'aqhx' " class="item-note"> 按期还息 </span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	利息总额
+	            	<span class="item-note">{{ items.lx | jnCurrency}}</span>
+	            </ion-item>
+	            <ion-item class="item" >
+	            	还款总额
+	            	<span class="item-note">{{ items.bx | jnCurrency}}</span>
+	            </ion-item>
+	            <ion-item class="item-divider">还款明细</ion-item>
+	  	 </ion-list>
+	  	 <div class="padding">
+			        <table class="table">
+			            <thead>
+			               <tr>
+								<th>期次</th>
+								<th>偿还本息</th>
+								<th>偿还利息</th>
+								<th>偿还本金</th>
+								<th>剩余本金</th>
+							</tr>
+			            </thead>
+	            		<tbody>
+			                <tr ng-repeat="c in items.records" >
+								<td>{{ c.qs }}</td>
+								<td>{{ c.bx | jnCurrency}}</td>
+								<td>{{ c.lx | jnCurrency}}</td>
+								<td>{{ c.yhbj | jnCurrency}}</td>
+								<td>{{ c.sybj | jnCurrency}}</td>
+							</tr>
+			            </tbody>
+        			</table>
+        	</div>
+    </ion-content>
+</ion-view>

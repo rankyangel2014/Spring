@@ -1,0 +1,38 @@
+<ion-view view-title="{{title}}" id="creditLimitDb">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+     <ion-list >
+                <ion-item ng-repeat="c in it.root" >
+                    <div
+                        class="type_status"
+                        data-type="{{ c.gurTyp }}"
+                        data-status="{{ c.status }}">
+                    </div>
+                    <div class="name">{{ c.gurNo }} {{ c.ownerCusts }}</div>
+                    <div style='white-space: normal;'>{{ c.pleName }}<span ng-if='c.collNoExt'> [{{ c.collNoExt }}]</span></div>
+                    <div>
+                    <label>创建日期：</label>&nbsp;&nbsp;
+                    <span>{{ c.crtDt | jnDate }}</span>&nbsp;&nbsp;
+                    </div>
+                    <div ng-if='c.updDt'>
+                     <label>作废日期</label>&nbsp;&nbsp;
+                     <span class="content">{{ c.updDt | jnDate }}</span>
+                    </div>
+                    <div >
+                        <label>公司作价：</label>&nbsp;&nbsp;
+                        <span>{{ c.assCd | jnCurrency }}</span>
+                    </div>
+                    <div ng-if='c.thdCdList' style='white-space: normal;'>
+                        <label>评估人（评估价值）：</label>&nbsp;&nbsp;
+                        <span style='width: 60%'>{{c.thdCdList}}</span>
+                    </div>
+                    <div style='white-space: normal;'>
+                        <label>备注：</label><!--
+                     --><span style='width: 60%'>{{ c.remark3 }}</span>
+                    </div>  
+                </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

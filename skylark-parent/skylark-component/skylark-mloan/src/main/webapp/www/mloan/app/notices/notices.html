@@ -1,0 +1,23 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list class='list'>
+		  <ion-item class="item item-icon-left item-icon-right"  ng-repeat='c in noticesList.items'  ui-sref='noticesAssign({ noticeId:c.noticeId,})' style="font-size: 14px;">
+                 <i class=" icon pageLink" ></i>
+                 <span style='display: inline-block; font-weight: bolder; margin-left: -16px; max-width: 12em; text-overflow: ellipsis; overflow: hidden; vertical-align: middle'>{{ c.noticeHead }}</span>
+                 <span style="float: right; font-size: 12px; margin-right: -16px;">{{ c.noticeDate | jnDateFormat }}</span> 
+                 <i class=" icon ion-ios-arrow-right" style="font-size: 22px;"></i>
+		 </ion-item>  
+	   </ion-list>
+	   <div
+            ng-show="0 === noticesList.items.length" class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="more()"
+            ng-show="noticesList.items.length < noticesList.total"
+            class="button button-block button-positive button-clear"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

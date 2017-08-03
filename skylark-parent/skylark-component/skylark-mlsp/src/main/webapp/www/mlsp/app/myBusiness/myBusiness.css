@@ -1,0 +1,129 @@
+#myBusiness  .item {
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+#myBusiness .list .name {
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+#myBusiness .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#myBusiness .name[data-type="1"]:before {
+    content: '\e644';
+}
+#myBusiness .name:before {
+	font-family: iconfont;
+	margin: auto;
+	height: 25px;
+	font-size: 20px;
+	font-weight: normal;
+	color: #007aff;
+	padding-right: 5px;
+	margin-left: -3px;
+}
+
+#myBusiness .list>li>div:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#myBusiness .list>li>div:nth-child(3) {
+    color: grey;
+}
+
+#myBusiness .list>li>div:nth-child(4) {
+    color: grey;
+}
+
+#myBusiness .list>li>div:nth-child(5) {
+    color: grey;
+}
+
+#myBusiness .type_status {
+    line-height: 1;
+    font-size: 0px;
+    font-weight: normal;
+    text-align: right;
+}
+
+#myBusiness .type_status:before,
+#myBusiness .type_status :last-child {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+#myBusiness .type_status:before{
+    content: attr(data-type);
+    color: #fff;
+}
+
+#myBusiness .type_status :last-child {
+    content: attr(data-status);
+    text-align: center;
+}
+
+#myBusiness .type_status[data-type="0"]:before{
+	content:'贷款';
+    background-color: navy;
+}
+
+#myBusiness .type_status[data-type="1"]:before{
+	content:'授信';
+    background-color: orange;
+}
+
+#myBusiness .type_status[data-type="0"] :last-child {
+    border-color: navy;
+}
+
+#myBusiness .type_status[data-type="1"] :last-child {
+    border-color: orange;
+}
+
+#myBusiness .list .name {
+    font-weight: bold;
+    color: inherit;
+}
+
+#myBusiness .compact {
+    word-break:break-all;
+    display:inline-block;
+    vertical-align:top;
+}
+
+#myBusiness .content {
+	white-space:normal;
+	display:inline-block;
+	width:30%;
+	vertical-align:top;
+	padding: 0 10px 0 0;
+}
+
+#myBusiness .manager:before{
+	font-family:'iconfont';
+	content: '\e627';
+    color: #007aff;
+    padding-right: 5px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+#historyDeatils .list div{
+	
+	font-size: 14px !important;
+}
+
+#historyDeatils  .meta {
+	position: absolute;
+	right: .5em;
+	bottom: .5em;
+	color: grey;
+	font-size: .9em;
+}

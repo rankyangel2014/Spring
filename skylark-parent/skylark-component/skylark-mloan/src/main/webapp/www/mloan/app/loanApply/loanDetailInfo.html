@@ -1,0 +1,35 @@
+<ion-view view-title="贷款详细信息填写" id="loanDetailInfo">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear"
+                ng-if="!loanDetailInfoCtrl.acceptParamObj.isReadOnly" ng-click="loanDetailInfoCtrl.submitForm()">提交</button>
+    </ion-nav-buttons>
+    <ion-content class="has-header" has-bouncing="false" scroll="false"
+                 ng-class="{'has-footer':loanDetailInfoCtrl.footIsShow}">
+        <tab-slide-box tab="0">
+            <div class="tsb-icons">
+                <div class="tsb-ic-wrp">
+                    <ion-scroll direction="x" class="tsb-hscroll">
+                        <a href="javascript:;" ng-repeat="tab in loanDetailInfoCtrl.tabs | orderBy:'index'" on-finish-render="" ng-if="! tab.hide">{{tab.text}}</a>
+                    </ion-scroll>
+                </div>
+            </div>
+            <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="tab in loanDetailInfoCtrl.tabs | orderBy:'index'" ng-if="! tab.hide">
+                    <ng-include src="tab.fragmentURL" class="scroll-content"></ng-include>
+                </ion-slide>
+            </ion-slide-box>
+        </tab-slide-box>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-positive"
+                    ng-if="loanDetailInfoCtrl.footIsShow"
+                    ng-click="loanDetailInfoCtrl.saveForm()">
+        <div class="title">
+            <button class="button button-clear">
+                    {{loanDetailInfoCtrl.footName}}
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

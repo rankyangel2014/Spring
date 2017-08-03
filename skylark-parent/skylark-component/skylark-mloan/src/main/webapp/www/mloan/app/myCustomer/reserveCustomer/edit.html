@@ -1,0 +1,164 @@
+<style type="text/css">
+#reserveCustomerEdit .show_radio {
+    max-width: 110px;
+    line-height: 10px;
+    border-width: 0px;
+}
+
+#syxz label .item-content {
+    white-space: normal;
+}
+
+#reserveCustomerEdit .quick_tool_bar {
+    height: 40px;
+    line-height: 38px;
+    vertical-align: middle;;
+}
+
+#reserveCustomerEdit .quick_tool {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+#reserveCustomerEdit .quick_tool_100 {
+    float: right;
+    width: 100%;
+    text-align: center;
+}
+
+#reserveCustomerEdit .quick_tool:FIRST-CHILD {
+    border-right: 1px solid #eee;
+}
+
+#reserveCustomerEdit .quick_tool a {
+    padding: 10px 20px 10px 20px;
+    font-size: 14px;
+}
+
+#reserveCustomerEdit .quick_tool_100 a {
+    padding: 10px 20px 10px 20px;
+    font-size: 14px;
+}
+
+#reserveCustomerEdit .quick_tool .idcard:BEFORE {
+    content: '\e635';
+    color: #007aff;
+    font-size: 20px;
+    margin-right: 5px;
+    font-family: 'iconfont';
+    vertical-align: middle;
+}
+
+#reserveCustomerEdit .quick_tool .buscard:BEFORE {
+    content: '\e634';
+    color: #007aff;
+    font-size: 20px;
+    margin-right: 5px;
+    font-family: 'iconfont';
+    vertical-align: middle;
+}
+
+#reserveCustomerEdit .quick_tool_100 .buscard:BEFORE {
+    content: '\e634';
+    color: #007aff;
+    font-size: 20px;
+    margin-right: 5px;
+    font-family: 'iconfont';
+    vertical-align: middle;
+}
+
+#reserveCustomerEdit .title_divider {
+    line-height: 18px;
+    padding: 0px;
+    margin-top: 18px;
+}
+</style>
+<ion-view view-title="潜在客户修改" id="reserveCustomerEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="save();"
+             ng-if=' it.status!="1" '
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <form name="Ctrl.myForm" jn-edit-form>
+            <ion-list >
+                <ion-item class='title_divider'>
+                    <div class="quick_tool_bar">
+                        <div class="quick_tool" ng-if='it.custType=="0"'>
+                            <a class="idcard" ng-click="scanIDCard()">扫描身份证</a>
+                        </div><!--
+                     --><div class="{{it.custType=='0'?'quick_tool':'quick_tool_100'}}" >
+                            <a class="buscard" ng-click="scanVCard()">扫描名片</a>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class='item-input'>
+                    <span class='input-label required'>接触日期</span>
+                    <input type='date' ng-model='it.fstContactDt' required name='fstContactDt'/>
+                </ion-item>
+                <ion-item class='item-input item-select'>
+                    <span class='input-label required'>客户类别</span>
+                    <select required ng-model='it.custType' name='custType'  ng-if='!isEdit'>
+                        <option value='0'>个人</option>
+                        <option value='1'>企业</option>
+                    </select>
+                    <select required ng-model='it.custType' name='custType'  disabled="disabled" ng-if='isEdit'>
+                        <option value='0'>个人</option>
+                        <option value='1'>企业</option>
+                    </select>
+                </ion-item>
+                <ion-item class='item-input' ng-if='it.custType==0'>
+                    <span class='input-label required'>客户名称</span>
+                    <input type='text'  ng-model='it.custName' required name='custName' jn-input-length="60" placeholder='请输入客户名称' />
+                    <input type='hidden'  ng-model='it.custNo' name='custNo'/>
+                </ion-item>
+                <ion-item class='item-input' ng-if='it.custType==1'>
+                    <span class='input-label required'>企业名称</span>
+                    <input type='text'  ng-model='it.cCustName' required name='cCustName' jn-input-length="60" placeholder='请输入企业名称' />
+                </ion-item>
+                <ion-item class='item-input' ng-if='it.custType==1'>
+                    <span class='input-label required'>联系人</span>
+                    <input type='text'  ng-model='it.contactName' required name='contactName' jn-input-length="60" placeholder='请输入联系人名称' />
+                </ion-item>
+                <ion-item class='item item-input'>
+                   <span class='input-label required'>联系电话</span>
+                   <input type='tel' ng-model='it.phoneNo' jn-mobile required name='phoneNo' placeholder='请输入联系电话' />
+                </ion-item>
+                
+                 <!-- <ion-toggle class='pItem'   ng-model= 'checked["xxqd"]' ng-checked='checked["xxqd"]'>贷款意向</ion-toggle> -->
+                 <!--  信息渠道  -->
+                 <ion-item ng-click="toggleItem('xxqd')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['xxqd']]"   ng-model= 'checked["xxqd"]' ng-checked='checked["xxqd"]' >信息渠道
+                    <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['xxqd']]"></i>
+                 </ion-item>
+                <ion-item class='item-input item-select' ng-show=' checked["xxqd"]'>
+                   <span class='input-label required'>信息渠道</span>
+                   <select required ng-model='it.adTypeId' name='adTypeId' jn-options='895'></select>
+                </ion-item>
+                <ion-item class='item-input' ng-show='checked["xxqd"]'>
+                   <span class='input-label'>推荐人 </span>
+                   <input type="text" ng-model='it.referrer' name='referrer' placeholder="请输入推荐人名称" jn-input-length="60" />
+                </ion-item>
+                
+                 <!--  判定  -->
+                <ion-item ng-click="toggleItem('pd')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['pd']]" ng-model= 'checked["pd"]' ng-checked='checked["gsxx"]' >判定
+                     <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['pd']]"></i>
+                </ion-item>
+                <ion-item class='item-input item-select' ng-show='checked["pd"]'>
+                      <span class='input-label required'>判定结果</span>
+                      <select  required jn-options='889' ng-model='it.fstContactIf'  name='fstContactIf' ></select>
+                </ion-item>
+                <ion-item class='item-input' ng-show='checked["pd"]'>
+                      <span class='input-label'>判定原因</span>
+                      <textarea  style="resize: none;width: initial;margin-right:24px;" rows='4' cols="32" ng-model='it.fstCausation'  name='fstCausation' jn-input-length="500" ></textarea>
+                      </div>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-scroll class="jn-tabSlideBox-scroll" has-bouncing="false">
+    <ion-list>
+      	 <ion-item class="item-icon-right" 
+           		  ui-sref="creditRecordQryResult({loanNo:loanDetailInfoCtrl.acceptParamObj.loanNo,custNo:loanDetailInfoCtrl.acceptParamObj.custNo,moduleId:14,isReadOnly:loanDetailInfoCtrl.acceptParamObj.isReadOnly})">
+               	筛查结果
+               <i class="icon ion-ios-arrow-right"></i>
+         </ion-item>
+         <ion-item class="item-icon-right" 
+           		  ui-sref="creditRecordQryCount({loanNo:loanDetailInfoCtrl.acceptParamObj.loanNo,custNo:loanDetailInfoCtrl.acceptParamObj.custNo,type:0,isReadOnly:loanDetailInfoCtrl.acceptParamObj.isReadOnly})">
+               	征信查询次数
+               <i class="icon ion-ios-arrow-right"></i>
+         </ion-item>
+         <ion-item class="item-icon-right" 
+           		  ui-sref="creditRecordQryCount({loanNo:loanDetailInfoCtrl.acceptParamObj.loanNo,custNo:loanDetailInfoCtrl.acceptParamObj.custNo,type:1,isReadOnly:loanDetailInfoCtrl.acceptParamObj.isReadOnly})">
+               	征信逾期次数
+               <i class="icon ion-ios-arrow-right"></i>
+         </ion-item>
+         
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

@@ -1,0 +1,58 @@
+<ion-view view-title="{{title}}" id="hkSheet">
+	<jn-back></jn-back>
+    <ion-content direction="xy">
+                 <div class="page_body">
+			        <table class="scrollable" >
+			            <thead>
+			                <tr>
+								<th>期数<th>
+								<th>账单日<th>
+								<th>计息天数<th>
+								<th>期供<th>
+								<th>应还本金<th>
+								<th>已还本金<th>
+								<th>应还利息<th>
+								<th>已还利息<th>
+								<th>减免利息<th>
+								<th>执行利率%<th>
+								<th>提前还款额<th>
+								<th>剩余本金<th>
+								<th>当期结清<th>
+			                </tr>
+			            </thead>
+	            		<tbody>
+			                <tr ng-repeat='r in it'>
+			                    <td>{{ r.perdNo }}<td>
+								<td>{{ r.dueDt |jnDate}}<td>
+								<td>{{ r.numberOfDays }}<td>
+								<td>{{ r.instmAmt | jnCurrency}}<td>
+								<td>{{ r.instmPrcp | jnCurrency}}<td>
+								<td>{{ r.setlPrcp | jnCurrency}}<td>
+								<td>{{ r.instmInt | jnCurrency}}<td>
+								<td>{{ r.setlInt | jnCurrency}}<td>
+								<td>{{ r.wvInt | jnCurrency}}<td>
+								<td>{{ r.intRate }}<td>
+								<td>{{ r.aheadSetlPrcp | jnCurrency}}<td>
+								<td>{{ r.contPrcpEnd | jnCurrency}}<td>
+								<td>{{ r.setlFlg |jnConstant:300}}<td>
+			                </tr>
+			                <tr >
+			                    <td> <td>
+								<td> <td>
+								<td>{{ numberOfDays }}<td>
+								<td>{{ instmAmt| jnCurrency }}<td>
+								<td>{{ instmPrcp | jnCurrency}}<td>
+								<td>{{ setlPrcp | jnCurrency}}<td>
+								<td>{{ instmInt | jnCurrency}}<td>
+								<td>{{ setlInt | jnCurrency}}<td>
+								<td>{{ wvInt | jnCurrency}}<td>
+								<td> <td>
+								<td>{{ aheadSetlPrcp | jnCurrency}}<td>
+								<td> <td>
+								<td> <td>
+			                </tr>
+			            </tbody>
+        			</table>
+    			</div>
+    </ion-content>
+</ion-view>

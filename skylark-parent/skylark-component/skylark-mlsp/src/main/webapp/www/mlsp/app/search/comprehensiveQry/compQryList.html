@@ -1,0 +1,35 @@
+<ion-view view-title="贷款综合查询" cache-view="false" id="compQry">
+	<jn-back></jn-back>
+    <ion-content>
+        <ion-list ng-show="0 < compQryListCtrl.compQryList.items.length">
+            <ion-item ng-repeat="l in compQryListCtrl.compQryList.items" ng-click="toDetail(l.custNo,l.loanNo,l.contType)">
+                <div class="ztjc"
+		                data-dkzt="{{ l.setlFlg }}"
+		                data-dkjc="{{ l.compoNo }}">
+		        </div>
+		        <div class="jn-item-title name" data-type="{{l.custType}}">
+		        	<span>{{ l.custName }}</span>
+		        </div>
+		        <div class="jn-item-title">
+		        	<span>{{ l.contNoExt }}</span>
+		        </div>
+		        <div>本金：{{ l.prcpOrig | jnCurrency}} 剩余：{{ l.prcpBal | jnCurrency}}</div>
+		        <div ng-if="l.custManagerName != '' " class="manager">{{ l.custManagerName }}</div>
+		        <div class="status">
+		            <span class="dkxz ion-android-checkmark-circle" data-value="{{ l.prdctTyp }}"></span>
+		            <span class="wjfl ion-android-checkmark-circle" data-value="{{ l.maxLoadGrd }}"></span>
+		            <span class="dkxt ion-android-checkmark-circle" data-value="{{ l.loanStatus }}"></span>
+		        </div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === compQryListCtrl.compQryList.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="compQryListCtrl.more()"
+            ng-show="compQryListCtrl.compQryList.items.length < compQryListCtrl.compQryList.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

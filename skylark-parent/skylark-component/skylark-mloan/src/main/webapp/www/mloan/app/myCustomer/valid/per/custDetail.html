@@ -1,0 +1,88 @@
+<ion-view view-title="个人客户详情" id="custDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	  <ion-nav-buttons side="secondary">
+        <button ng-if="isDetail=='0'"
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+    </ion-nav-buttons>
+    <ion-content >
+            <ion-item class="item-divider">基本信息</ion-item>
+            <ion-item class="item" >
+            	客户名称 
+             <span class="item-note">{{ custDetail.custName }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	客户经理
+             <span class="item-note">{{ custDetail.custManagerName}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	证件号码
+            	 <span class="item-note">{{ custDetail.paperNo }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	电子邮件
+            	 <span class="item-note">{{ custDetail.email }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	手机号码
+            	<span class="item-note"  ng-if='custDetail.phoneNo'><jn-tel-no num="{{custDetail.phoneNo}}" ></jn-tel-no> </span>
+            	 
+            </ion-item>
+            <ion-item class="item" style="white-space:normal">
+            	住&nbsp;&nbsp;&nbsp;&nbsp;址
+            	<!--  <div class="item-note" style="max-width: 100%;">{{ custDetail.custAddr }}</div> -->
+            	 <span class="item-note">{{ custDetail.custAddr }}</span>
+            </ion-item>
+            <ion-item class="item-divider">详细信息</ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/per/custOtherList?custNo={{ custDetail.custNo }}&operType=0&actionFlag=zyzb">
+                	重要指标
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/per/custOtherDetail?custNo={{ custDetail.custNo }}&operType=0&actionFlag=grxx&isDetail={{isDetail}}&sex={{ custDetail.sex }}"> 
+                	个人信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right"
+                      ui-sref="custEntityList({
+                          custNo:custDetail.custNo,
+                          isDetail:isDetail,
+                      })">
+                	实体信息
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item
+                class="item-icon-right"
+                href="#/myCustomer/valid/per/glr/list?custNo={{ custDetail.custNo }}&custType={{ custDetail.custType }}&orgNo={{ custDetail.orgNo }}&editable={{ editable }}">
+                关联人
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		  href="#/myCustomer/valid/custAssignHistory?custNo={{ custDetail.custNo }}&custType=1">
+                	管户历史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item ng-if="from=='1'" class="item-icon-right" 
+            		  ui-sref="blackOperateHistory({custNo:custDetail.custNo,custName:custDetail.custName})">
+                	黑名单操作史
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item ng-if="userId===custDetail.custManagerNo&&isDetail=='0' && transferAble" class="item-icon-right"
+            		  ui-sref="reserveCustomerTransfer({custNo:custDetail.custNo,custType:'1',custClass:1})">
+                	移交
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <!-- 分配暂时不需要 全部放在代办中处理 -->
+            <ion-item ng-if="assignedAble" class="item-icon-right"
+                      ui-sref="reserveCustomerAssigned({custNo:custDetail.custNo,custType:'1',todos:false})">
+                	分配
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+      
+    </ion-content>
+</ion-view>

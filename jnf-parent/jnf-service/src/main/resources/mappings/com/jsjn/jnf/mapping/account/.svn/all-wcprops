@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/2423/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/account
+END
+AccountDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/628/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/account/AccountDao.xml
+END
+BindCardDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/4359/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/account/BindCardDao.xml
+END
+BindCardDao2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/2423/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/account/BindCardDao2.xml
+END

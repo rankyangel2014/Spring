@@ -1,0 +1,37 @@
+<ion-view view-title="联系人" id="contactInfo">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="secondary" >
+        <button ng-if=" '1' != isDetail "
+             class="button button-clear "
+             ng-click="ctrl.add()"
+         >新增</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list ng-if="0 < ctrl.list.total">
+            <ion-item ng-repeat="c in ctrl.list.items" ng-click="ctrl.toDetail($index)">
+		        <div style="font-size: 14px;">
+		        	<span class="name">{{ c.linkCustName }}</span> / 
+		        	<jn-tel-no num="{{ c.linkPhoneNo }}"></jn-tel-no> / 
+		        	{{ c.linkType | jnConstant :5033}}
+		        </div>
+                <div class="address" style="margin-top: 2px;font-size: 14px; overflow: hidden; text-overflow: ellipsis;">{{ c.linkCustAddr }}</div>
+               <ion-option-button
+               		ng-if="isDetail=='0'"
+                   class="button-assertive"
+                   ng-click="ctrl.rmQYLXR(c)"
+               >删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-if="0 === ctrl.list.total"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="ctrl.more()"
+            ng-if="ctrl.list.items.length < ctrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

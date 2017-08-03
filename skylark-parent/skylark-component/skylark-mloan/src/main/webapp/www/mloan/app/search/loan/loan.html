@@ -1,0 +1,76 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="Ctrl.submit();"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content >
+        <form name="Ctrl.myForm" >
+            	<!--<div ng-if='userFlag'>
+                	<input name="custManagerNo" type="hidden" />
+                </div>-->
+              <ion-list>
+
+                  <ion-item
+                          class="item-input item-select"
+                          ng-if="!Ctrl.justManager && !Ctrl.justTeamManager && !Ctrl.justSysManager"
+                  >
+                      <span class="input-label">团队</span>
+                      <jn-select-team
+                              name="deptId"
+                              ng-model="Ctrl.form.deptId"
+                      ></jn-select-team>
+                  </ion-item>
+                  <ion-item
+                          class="item-input item-select"
+                          ng-if="Ctrl.form.deptId"
+                  >
+                      <span class="input-label">客户经理</span>
+                      <jn-select-manager ng-hide="Ctrl.justManager"
+                                         name="custManagerNo"
+                                         ng-model="Ctrl.form.custManagerNo"
+                                         team="Ctrl.form.deptId"
+                      ></jn-select-manager>
+                  </ion-item>
+
+
+                <ion-item class=" item-input">
+                    <span class="input-label">客户名称</span>
+                    <input type="text" ng-model='Ctrl.form.custName' placeholder="请输入客户名称"  />
+                </ion-item>
+                <ion-item class=" item-input item-select">
+                    <span class="input-label">客户类型</span>
+                    <select ng-model='Ctrl.form.custType'
+                        jn-options="5028" 
+                    ></select>
+                </ion-item>
+                <ion-item class=" item-input item-select">
+                    <span class="input-label">交易类型</span>
+                    <select ng-model='Ctrl.form.txType'
+                        jn-options="6014" 
+                    ></select>
+                </ion-item>
+                <ion-item class=" item-input">
+                    <span class="input-label">会计凭证号</span>
+                    <input type="number" name="txNoAcc" ng-model='Ctrl.form.txNoAcc' placeholder="请输入会计凭证号" pattern="\d+" />
+                </ion-item>
+                <ion-item class=" item-input">
+                    <span class="input-label">贷款合同号</span>
+                    <input type="text" ng-model='Ctrl.form.contNoExt' placeholder="请输入贷款合同号"  />
+                </ion-item>
+                <ion-item class=" item-input">
+                    <span class="input-label">还款日期（从）</span>
+                    <input type="date" ng-model='Ctrl.form.dtStart' name='dtStart'/>
+                </ion-item>
+                <ion-item class=" item-input">
+                    <span class="input-label">还款日期（至）</span>
+                    <input type="date" ng-model='Ctrl.form.dtEnd' name='dtEnd'/>
+                </ion-item>
+               </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

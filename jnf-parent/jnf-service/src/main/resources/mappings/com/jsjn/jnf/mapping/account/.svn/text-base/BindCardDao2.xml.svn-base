@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.account.BindCardDao2">
+	
+	<sql id="columns">
+		a.C1 as "aid",
+		a.C2 as "custId",
+		a.C3 as "mId",
+		a.C4 as "type",
+		a.C5 as "bankName",
+		a.C6 as "bankCardNo",
+		a.C7 as "state",
+		a.C8 as "mobile",
+		a.C9 as "agreementHash",
+		a.C10 as "remark",
+		a.C11 as "digest",
+		a.C12 as "created",
+		a.C13 as "modified",
+		a.C14 as "custName",
+		a.C15 as "idNo",
+		a.C16 as "signNo",
+		a.C17 as "cardType",
+		a.C18 as "cardBankNo",
+		a.C19 as "cardBankName"
+	</sql>
+	
+	<!-- 查询是否绑定 --> 
+	<select id = "getCustId" parameterType="Map" resultType="String">
+		SELECT a.C2
+			FROM JNF_T100 a
+			WHERE a.C3=#{mId}
+			AND a.C14=#{custName}
+			AND a.C6=#{bankCardNo}
+	</select>
+	
+	<!-- 查询绑卡信息 --> 
+	<select id = "queryCardInfo" parameterType="Map" resultType="com.jsjn.jnf.bean.dto.account.BindCardDto2">
+		SELECT 
+		    <include refid="columns"/>
+			FROM JNF_T100 a
+			WHERE a.C3=#{mId}
+			AND a.C2=#{custId}
+			AND a.C6=#{bankCardNo}
+	</select>
+	
+	<!-- 插入签约信息 -->
+	<insert id="insert" parameterType="BindCardDto">
+		INSERT INTO JNF_T100(
+			C1, 
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13,
+			C14,
+			C15,
+			C16,
+			C17,
+			C18,
+			C19
+		) VALUES (
+			 #{aid},
+			 #{custId},
+			 #{mId},
+			 #{type},
+			 #{bankName},
+			 #{bankCardNo},
+			 #{state},
+			 #{mobile},
+			 #{agreementHash},
+			 #{remark},
+			 #{digest},
+			 sysdate,
+			 sysdate,
+			 #{custName},
+			 #{idNo},
+			 #{signNo},
+			 #{cardType},
+			 #{cardBankNo},
+			 #{cardBankName}
+		)
+	</insert>
+</mapper>

@@ -1,0 +1,48 @@
+package com.jsjn.jnf.panda.test;
+
+import net.sf.json.JSONObject;
+
+import com.jsjn.jnf.bean.linkq.LoanInfoDTO;
+import com.jsjn.jnf.common.linkq.LinkQHandler;
+import com.jsjn.panda.annotation.PandaMethod;
+import com.jsjn.panda.annotation.PandaService;
+import com.jsjn.panda.annotation.ServiceType;
+import com.jsjn.platform.util.ConfigBean;
+
+/**
+ * Panda测试类
+ * 
+ * @author CodmerYin
+ * 
+ */
+@PandaService(serviceName = "testPandaService", serviceType = ServiceType.CommonBean)
+public class PandaTestService {
+
+	/**
+	 * 微贷接口：查询贷款详情测试
+	 * 
+	 * @param req
+	 * @return
+	 */
+	@PandaMethod(mName = "queryLoanInfo", dscrpt = "查询贷款详情测试", RegID = "queryLoanInfo")
+	public void queryLoanInfoTest() {
+		LoanInfoDTO dto = new LoanInfoDTO();
+		
+		System.out.println(ConfigBean.LINKQ_SERVER);
+
+		// 设置交易码
+		dto.set_transCode("QRY850");
+		dto.set_sqlListName("resultList");
+		//		dto.setOrderType("1");
+		//		dto.setSetlFlg("N");
+		//		dto.setOrgNo("320000114");
+		//		dto.setCustType("0");
+		//		dto.setPaperType("0");
+
+		JSONObject json = LinkQHandler.getJsonNoLogin(dto);
+
+		System.out.println(json);
+	}
+	
+	
+}

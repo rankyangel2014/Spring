@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.account.AccountDao">
+	
+	<sql id="columns">
+		a.C1 as "mid",
+		a.C2 as "mName",
+		a.C3 as "busLcnsNo",
+		a.C4 as "phoneNo",
+		a.C5 as "addr",
+		a.C6 as "status",
+		a.C7 as "digest",
+		a.C8 as "created",
+		a.C9 as "modified"
+	</sql>
+    
+	<sql id="joins">
+	
+	</sql>
+	<!-- 插入交易 -->
+	<insert id="insert">
+		INSERT INTO JNF_T8(
+			C1, 
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13
+		) VALUES (
+			#{tradeNo}, 
+			#{bNo}, 
+			#{tradeType}, 
+			#{mid}, 
+			#{mSerialNo}, 
+			#{payor}, 
+			#{payee}, 
+			#{amount}, 
+			#{status}, 
+			#{desc}, 
+			#{created}, 
+			#{modified}, 
+			#{digest}
+		)
+	</insert>
+</mapper>

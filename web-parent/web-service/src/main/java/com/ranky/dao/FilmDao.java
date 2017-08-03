@@ -38,7 +38,7 @@ public interface FilmDao {
 	@Cacheable(value = "films", sync = true)
 	FilmDto findFilmById(@Param("id") Integer id);
 
-	@Select(value = "select * from film")
+	@Select(value = "select * from film ")
 	@Cacheable(value = "films", sync = true)
 	PageList<FilmDto> findAllFilms(PageBounds pageBounds);
 

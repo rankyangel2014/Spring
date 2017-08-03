@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/3441/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common
+END
+PandaApiRoleCtrlService.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/1477/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaApiRoleCtrlService.java
+END
+PandaBusinessConfigService.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/4166/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaBusinessConfigService.java
+END
+PandaDictService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/3408/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaDictService.java
+END
+PandaChannelBankService.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/3441/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaChannelBankService.java
+END
+PandaMenuService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/2200/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaMenuService.java
+END
+PandaRSAService.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/1352/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaRSAService.java
+END
+PandaChannelService.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Zfjs/!svn/ver/3419/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/common/PandaChannelService.java
+END

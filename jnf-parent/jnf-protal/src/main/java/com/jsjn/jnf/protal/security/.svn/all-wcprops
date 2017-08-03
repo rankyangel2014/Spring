@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/2323/group/dev/jnf-parent/jnf-protal/src/main/java/com/jsjn/jnf/protal/security
+END
+SecurityCheck.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/4166/group/dev/jnf-parent/jnf-protal/src/main/java/com/jsjn/jnf/protal/security/SecurityCheck.java
+END
+SysConfigBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-protal/src/main/java/com/jsjn/jnf/protal/security/SysConfigBean.java
+END
+RequestVerifyedFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/2268/group/dev/jnf-parent/jnf-protal/src/main/java/com/jsjn/jnf/protal/security/RequestVerifyedFilter.java
+END

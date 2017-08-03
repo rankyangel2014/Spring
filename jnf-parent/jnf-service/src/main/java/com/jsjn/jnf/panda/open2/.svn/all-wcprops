@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Zfjs/!svn/ver/4067/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2
+END
+PandaCardInfoQueryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/4067/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2/PandaCardInfoQueryService.java
+END
+PandaBankCardValidateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/4059/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2/PandaBankCardValidateService.java
+END
+PandaOrgBusinessTypeQryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/Zfjs/!svn/ver/4053/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2/PandaOrgBusinessTypeQryService.java
+END
+PandaPaymentTransactionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2/PandaPaymentTransactionService.java
+END
+PandaSignWithholdService.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/4053/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/panda/open2/PandaSignWithholdService.java
+END

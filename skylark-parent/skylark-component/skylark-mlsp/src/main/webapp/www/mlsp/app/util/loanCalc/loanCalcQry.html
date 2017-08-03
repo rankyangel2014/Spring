@@ -1,0 +1,56 @@
+<ion-view view-title="贷款试算器">
+	<jn-back></jn-back>
+	<ion-nav-buttons side="secondary">
+         <input type="reset" form="loanCalcForm" value="清空" class="button button-clear " ng-click="loanCalcCtrl.reset()" />
+    </ion-nav-buttons>
+    <ion-content>
+    	<form name="loanCalcCtrl.myForm" id="loanCalcForm" novalidate  >
+    	<ion-list>
+			<ion-item class="item-divider"></ion-item>
+			<ion-item class="item-input">
+               <span class="input-label">贷款金额</span>
+               <input type="number"   
+							required="true" value="" min="1"
+							jnPositive
+							max="100000000000"
+							ng-model="loanCalcCtrl.form.bj"
+							name="bj"
+							placeholder="请输入贷款金额">
+           </ion-item>
+		   <ion-item class="item-input">
+               <span class="input-label">贷款期限(月)</span>
+               <input type="number"  
+							required="true" value="" min="1" max="100" 
+							jn-integer 
+							pattern="[0-9]*"
+							ng-model="loanCalcCtrl.form.limit"
+							name="limit"
+							placeholder="请选择贷款期限">
+           </ion-item>
+		   <ion-item class="item-input">
+               <span class="input-label">年利率（%）</span>
+               <input type="number"    
+							value="" min="0" required="true"  max="100" 
+							ng-model="loanCalcCtrl.form.rate"
+							name="rate"
+							placeholder="请输入贷款年利率">
+           </ion-item>
+           <ion-item class="item-input item-select">
+           		<span class="input-label">还款方式</span>
+           		<select required="true" 
+           				ng-model="loanCalcCtrl.form.type"
+           				name="type">
+					<option value="debx">等额本息</option>
+					<option value="debj">等额本金</option>
+					<option value="aqhx">按期还息</option>
+				</select>
+           </ion-item>
+    	<ion-list>
+    	<div class="padding">
+    		<button class="button button-block  button-balanced" ng-click="loanCalcCtrl.submit()">
+				  贷款试算
+			</button> 
+		</div>
+    	</form>
+    </ion-content>
+</ion-view>

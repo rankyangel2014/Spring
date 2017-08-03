@@ -1,0 +1,62 @@
+<ion-view view-title="新增企业客户信息" name="custForCB">
+    <jn-back jn-state="myCustomer"></jn-back>
+    <ion-content>
+        <form name="ctrl.searchForm" novalidate>
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">组织形式</span>
+                    <select
+                        ng-model="ctrl.form.paperType"
+                        ng-change="ctrl.onChangePaperType()"
+                        jn-options="5014"
+                    ></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">组织机构代码/统一信用代码</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" />
+                </ion-item>
+                <ion-item
+                    class="item-input item-select"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="ctrl.form.paperType"
+                        ng-change="ctrl.onChangePaperType()"
+                        jn-options="5025"
+                    ></select>
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperType"
+                        ng-model="ctrl.form.paperNo"
+                        jn-id-no
+                        placeholder="请输入证件号码" />
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+<ion-footer-bar align-title="left" class="page_footer" >
+  <div  class="show_nav " ng-click="ctrl.jump('custAdd')">
+    	个人
+  </div>
+  <div class="show_nav show_nav_on" >
+ 	 企业
+  </div>
+</ion-footer-bar>
+</ion-view>

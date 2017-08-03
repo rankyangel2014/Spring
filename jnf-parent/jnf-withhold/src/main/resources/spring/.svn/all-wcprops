@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Zfjs/!svn/ver/2636/group/dev/jnf-parent/jnf-withhold/src/main/resources/spring
+END
+spring-jdbc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Zfjs/!svn/ver/2376/group/dev/jnf-parent/jnf-withhold/src/main/resources/spring/spring-jdbc.xml
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Zfjs/!svn/ver/2376/group/dev/jnf-parent/jnf-withhold/src/main/resources/spring/spring.xml
+END
+springServlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Zfjs/!svn/ver/2636/group/dev/jnf-parent/jnf-withhold/src/main/resources/spring/springServlet.xml
+END

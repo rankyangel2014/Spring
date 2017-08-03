@@ -1,0 +1,20 @@
+<ion-view cache-view="false">
+    <ion-tabs class="tabs-stable tabs-top tabs-color-positive tabs-icon-left">
+        <ion-tab
+            icon-on="ion-arrow-up-a"
+            icon-off="ion-arrow-up-a"
+            title="正在上传"
+            ui-sref="DocTransfer.Uploading"
+        >
+            <ion-nav-view name="Uploading"></ion-nav-view>
+        </ion-tab>
+        <ion-tab
+            icon-on="ion-ios-clock"
+            icon-off="ion-ios-clock"
+            title="上传历史"
+            ui-sref="DocTransfer.History"
+        >
+            <ion-nav-view name="History"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

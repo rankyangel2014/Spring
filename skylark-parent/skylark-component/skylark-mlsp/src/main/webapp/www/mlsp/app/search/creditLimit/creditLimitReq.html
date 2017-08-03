@@ -1,0 +1,32 @@
+<ion-view view-title="授信额度查询" cache-view="false" id="creditLimit">
+	<jn-back></jn-back>
+    <ion-content>
+        <ion-list ng-show="0 < creditListCtrl.creditList.items.length">
+	            <ion-item ng-repeat="e in creditListCtrl.creditList.items" ng-click="toDetail(e.crdtNo)">
+	                	<div class="type_status"
+                                data-type="{{ e.contTyp }}"
+                                data-status="{{ e.status}}">
+                        <span>{{ e.contTyp | jnConstantAbbr :9900 }}</span>
+                        <span>{{ e.status | jnConstant :13}}</span>
+		                </div>
+		                <div class="jn-item-title name" data-type="{{e.custType}}">
+		                	<span>{{ e.custName }}</span>
+		                </div>
+		                <div class="jn-item-title">
+		                	<span>{{ e.contNoExt }}</span>
+		                </div>
+		                <div><span>额度：</span>{{ e.exapCreAmt | jnCurrency}}<span> 剩余：</span>{{ e.ableAmt | jnCurrency}}</div>
+		                <div>{{ e.startDt | jnDate}} ~ {{ e.endDt | jnDate}}</div>
+	            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === creditListCtrl.creditList.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="creditListCtrl.more()"
+            ng-show="creditListCtrl.creditList.items.length < creditListCtrl.creditList.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

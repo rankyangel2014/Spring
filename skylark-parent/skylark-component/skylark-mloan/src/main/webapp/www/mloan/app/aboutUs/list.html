@@ -1,0 +1,79 @@
+<ion-view id="aboutUs" cache-view="false" view-title="关于我们">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+<ion-content overflow-scroll="true">
+<ion-list>
+	<ion-item ng-if=" stat == '0'">
+		<div class="body_tab selected">
+			<div class="imageview">
+				<!--  <img onerror="this.src='app/aboutUs/back.png'" 
+					src="{{ it.WEIDAI_INSTTU_PIC_PREVIEW }}"/>-->
+				<img image-lazy-src="{{it.WEIDAI_INSTTU_PIC_PREVIEW}}" onerror="this.src='app/aboutUs/back.png'"  />
+			</div>
+			<div class="title" style='white-space: normal;'>
+				<span style='max-width: 100%;'>{{ custName }}</span>
+			</div>
+			<div>
+				<span class="label">注册资本：</span><!--
+			  --><span class="content">￥{{ it.REG_PROPER | jnCurrency }} </span>
+			</div>
+			<div>
+				<span class="label">开业时间：</span><!--
+			  --><span class="content">{{ it.OPEN_TIME }}</span>
+			</div>
+			<div>
+				<span class="label">认证信息：</span><!--
+			  --><span class="content" style="color: green;">已认证</span>
+			</div>
+			<div style="white-space:normal;display: inline-block;vertical-align: top;">
+				<span class="label">微贷理念：</span><!--
+			  --><span class="content" style="max-width:72%">{{ it.IDEA }}</span>
+			</div>
+			<div ng-if=" it.WXEWM != '' && it.WXEWM != undefined ">
+				<span class="label">微信关注：</span><!--
+			  --><span class="content"><img style="height: 100px;width:100px;" image-lazy-src="{{ it.WXEWM }}" ></span>
+			</div>
+		</div>
+	</ion-item>
+		
+	<ion-item  ng-if=" stat == '1'">
+		<div class="body_tab">
+			<div class="imageview icon_back" >
+				<div class="photo_wrap">
+					<img class="icon_header " ng-if="it.CUST_MANAGER.PHOTO_URL == ''" 
+						src="app/aboutUs/profle.png" />
+						
+					<img class="icon_header " ng-if="it.CUST_MANAGER.PHOTO_URL != ''" 
+						image-lazy-src="{{ it.CUST_MANAGER.PHOTO_URL }}" 
+						onerror="this.src='app/aboutUs/profle.png'"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="title" style='white-space: normal;'>
+                <span style='max-width: 100%;'>{{ it.CUST_MANAGER.USER_NAME }}<span ng-if='it.STATION_NAME'>({{ it.STATION_NAME }})</span></span>
+         </div>
+		<div>
+			<span class="label">电话：</span><!--
+		  --><span class="content" style="margin-left: 30px;">{{ it.CUST_MANAGER.PHONE }}</span>  
+		</div>
+		<div>
+			<span class="label">性别：</span><!--
+		  --><span class="content" style="margin-left: 30px;">{{ it.CUST_MANAGER.SEX }}</span>
+		</div>
+		<div>
+			<span class="label">司龄：</span><!--
+		  --><span class="content" style="margin-left: 30px;">{{ it.CUST_MANAGER.COMP_OLD }}年</span>
+		</div>
+		<div style="white-space:normal;display: inline-block;vertical-align: top;">
+			<span class="label">微贷宣言：</span><!--
+		  --><span ng-if=" it.CUST_MANAGER.SLOGAN != undefined " class="content"
+		  			style="max-width:75%">
+				{{ it.CUST_MANAGER.SLOGAN }}
+			</span>
+		</div>
+	</ion-item>
+</ion-list>
+</ion-content>
+</ion-view>

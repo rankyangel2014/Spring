@@ -1,0 +1,75 @@
+<ion-view view-title="传输列表" jn-page>
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+            class="button button-clear"
+            ng-click="select()"
+        >{{ selecting ? '取消' : '多选' }}</button>
+    </ion-nav-buttons>
+    <ion-content class="has-footer">
+        <ion-list>
+            <ion-item ng-repeat="e in files">
+                <div class="file">
+                    <label
+                        class="checkbox"
+                        ng-show="selecting && ! e.uploading"
+                    >
+                        <input
+                            type="checkbox"
+                            ng-model="e.selected"
+                        />
+                    </label>
+                    <div class="thumb" ng-click="viewImage(e)">
+                        <img ng-src="{{ e.thumb }}" />
+                        <i
+                            ng-if="e.uploading"
+                            class="fa fa-refresh fa-spin"
+                        ></i>
+                        <i
+                            ng-if="e.uploadFailed"
+                            class="fa fa-exclamation-circle"
+                        ></i>
+                    </div>
+                    <div class="info">
+                        <div class="name">{{ e.name }}</div>
+                        <div class="cust-name"
+                        >{{ e.custName }} ({{ e.applAmt | jnCurrency }})</div>
+                        <div class="check" ng-if="e.check">{{ e.check }}</div>
+                        <div class="path">{{ e.path | jnJoin :'➙' }}</div>
+                    </div>
+                    <div class="ctime"
+                    >{{ e.ctime | jnRelativeDate :86400000 }}</div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="buttons">
+            <button
+                class="button button-clear button-dark"
+                ng-if="selecting"
+                ng-click="selectAll()"
+            >全选</button>
+            <button
+                class="button button-clear button-dark"
+                ng-if="selecting"
+                ng-click="deselectAll()"
+            >全不选</button>
+        </div>
+        <h1 class="title"><!-- 排版需要 --></h1>
+        <div class="buttons">
+            <button
+                class="button button-clear button-dark"
+                ng-if="! selecting"
+                ng-click="upload()"
+            >{{ queue.uploading ? '暂停上传' : '开始上传' }}</button>
+            <button
+                class="button button-clear button-dark"
+                ng-if="selecting"
+                ng-click="deleteSelected()"
+            >删除</button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

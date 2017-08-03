@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Zfjs/!svn/ver/3866/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils
+END
+BackPack.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Zfjs/!svn/ver/792/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/BackPack.java
+END
+HttpClientUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3091/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/HttpClientUtils.java
+END
+FileUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/FileUtils.java
+END
+HttpsClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/3091/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/HttpsClient.java
+END
+Collections3.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/917/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Collections3.java
+END
+SystemPath.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/SystemPath.java
+END
+SpringContextHolder.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/SpringContextHolder.java
+END
+DateConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/946/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/DateConverter.java
+END
+JSONUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/2454/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/JSONUtil.java
+END
+IdcardUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/4138/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/IdcardUtils.java
+END
+CryptoUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/2784/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/CryptoUtil.java
+END
+PDFBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/533/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/PDFBuilder.java
+END
+Exceptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/131/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Exceptions.java
+END
+ValidatorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/ValidatorUtil.java
+END
+PakgeUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/792/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/PakgeUtil.java
+END
+IdGen.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/1933/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/IdGen.java
+END
+BeanUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/2583/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/BeanUtils.java
+END
+ObjectUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/1603/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/ObjectUtils.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/2583/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/StringUtils.java
+END
+OrderProperties.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/1603/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/OrderProperties.java
+END
+Threads.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Threads.java
+END
+HttpUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/2810/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/HttpUtils.java
+END
+SensitiveInfoUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/1713/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/SensitiveInfoUtils.java
+END
+MyX509TrustManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/1192/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/MyX509TrustManager.java
+END
+FileSizeHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/FileSizeHelper.java
+END
+StreamUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/1603/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/StreamUtils.java
+END
+Reflections.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/1713/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Reflections.java
+END
+Logger.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/411/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Logger.java
+END
+TimeUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/316/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/TimeUtils.java
+END
+Encodes.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/Encodes.java
+END
+SysTelUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/794/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/SysTelUtil.java
+END
+MacUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/MacUtils.java
+END
+HmacSHA256Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/504/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/HmacSHA256Utils.java
+END
+PropertiesLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Zfjs/!svn/ver/72/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/PropertiesLoader.java
+END
+AesDataUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/1713/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/AesDataUtils.java
+END
+CacheUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/1674/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/CacheUtils.java
+END
+SocketClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/792/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/SocketClient.java
+END
+ArithUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/107/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/ArithUtils.java
+END
+DateUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/DateUtils.java
+END
+StringComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2408/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/utils/StringComparator.java
+END

@@ -1,0 +1,60 @@
+<ion-view view-title="正式客户" id="assign">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+      <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+         >移交</button>
+    </ion-nav-buttons>
+    <ion-content >
+      <!-- 编辑表单 -->
+            <form  name="ctrl.assignForm" novalidate >
+             <ion-item class="item-input">
+                    <span class="input-label">姓名</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="custDetail.custName"
+                        placeholder="请输入客户名称" 
+                        ng-required="true"
+                        readonly
+                       />
+                       <input type="hidden" name="custNos" ng-model="assign.form.custNos"
+	               />
+                </ion-item>
+             <ion-item class="item-input">
+                    <span class="input-label">电话</span>
+                    <input
+                        type="text"
+                        name="phoneNo"
+                        ng-model="custDetail.phoneNo"
+                        ng-required="true"
+                        readonly
+                       />
+                </ion-item>
+             <ion-item class="item-input">
+                    <span class="input-label">移交给</span>
+                      <select
+                        ng-model="assign.form.stationType"
+                        name="stationType"
+                        ng-required="true">
+                         <option value="">--请选择--</option>
+                         <option value="3" ng-if="custDetail.isStation=='1'">决策岗</option>
+                         <option value="1" ng-if="custDetail.isStation=='3'">决策岗</option>
+                         <option value="2" ng-if="custDetail.isStation=='2' || custDetail.isStation=='3'">团队经理</option>
+                    </select>
+                </ion-item>
+             <ion-item class="item-input">
+                    <span class="input-label">原因</span>
+                        <textarea
+                          name="asgnRemark"
+                          required
+                          ng-model="assign.form.asgnRemark"
+                          ng-required="true"
+                          placeholder="请输入原因"></textarea>
+                </ion-item>
+            </form>
+    </ion-content>
+</ion-view>

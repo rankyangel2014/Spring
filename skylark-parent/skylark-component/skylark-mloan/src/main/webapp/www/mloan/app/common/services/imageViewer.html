@@ -1,0 +1,55 @@
+<ion-modal-view
+    style="background-color: black;"
+>
+    <ion-header-bar
+        style="background-color: rgba(0, 0, 0, .3); background-image: none;"
+        ng-style="{'visibility': toolbarVisibility}"
+    >
+        <div class="buttons">
+            <button
+                class="button button-clear ion-chevron-left"
+                style="color: white; padding-right: 2em;"
+                ng-click="quit()"
+            ></button>
+        </div>
+        <span class="title"
+            style="color: #fff; text-align: center; line-height: 44px; overflow: hidden; text-overflow: ellipsis;"
+        >{{ title }}</span>
+        <div class="buttons">
+            <button
+                class="button button-clear button-light"
+                style="width: 2em;"
+                ng-repeat="btn in buttons"
+                ng-click="btn.onClick()"
+                ng-bind-html="btn.content"
+            ></button>
+        </div>
+    </ion-header-bar>
+    <ion-content
+        scroll="false"
+        style="top: 0;"
+    >
+        <jn-slide
+            make-page="makePage"
+            on-change="onChange"
+            start-at="startAt"
+            manager="slideManager"
+            style="height: 100%;"
+            ng-click="toggleToolbars()"
+        ></jn-slide>
+    </ion-content>
+    <!--
+    <div
+        class="bar bar-footer"
+        style="background-color: rgba(255, 255, 255, .3);"
+        ng-show="ctrl.showHeadFoot"
+        ng-if="ctrl.selecting"
+    >
+        <button
+            class="button button-clear button-balanced"
+            style="position: absolute; top: 5px; right: 5px; bottom: 5px;"
+            ng-click="ctrl.submit()"
+        ><span class="badge badge-balanced">7</span> 完成</button>
+    </div>
+    -->
+</ion-modal-view>

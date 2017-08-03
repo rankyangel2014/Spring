@@ -1,0 +1,43 @@
+<ion-view view-title="还款试算器">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form>
+            <ion-list>
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.custName"
+                        placeholder="请输入客户名称" />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">贷款合同号</span>
+                    <input
+                        type="text"
+                        ng-model="ctrl.form.contNoExt"
+                        placeholder="请输入贷款合同号" />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">起始放款日期</span>
+                    <input
+                        type="date"
+                        ng-model="ctrl.form.actvDtFrom"
+                    />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">截止放款日期</span>
+                    <input
+                        type="date"
+                        ng-model="ctrl.form.actvDtTo"
+                    />
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

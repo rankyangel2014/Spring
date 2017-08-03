@@ -1,0 +1,99 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item" >
+            	收回日期
+            	 <span class="item-note">{{it.crtDt|jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	收回方式
+            	<span class="item-note">{{it.txTyp|jnConstant:9820}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	贷款合同号
+            	<span class="item-note">{{it.contNoExt}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	借据号
+            	<span class="item-note">{{it.loanNo}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	起息日
+            	<span class="item-note">{{it.intStartDt|jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	到期日
+            	<span class="item-note">{{it.lastDueDt|jnDate}}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应还金额
+            	<span class="item-note">{{it.repayAmt|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应还本金
+            	<span class="item-note">{{it.prcpBal|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应还利息
+            	<span class="item-note">{{it.intAll|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应还罚息
+            	<span class="item-note">{{it.oweInt|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应还复利
+            	<span class="item-note">{{it.cmpdIntAll|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	减免
+            	<span class="item-note">{{it.wvIntAll|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	实收金额
+            	<span class="item-note">{{it.setlTotal|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	实收本金
+            	<span class="item-note">{{it.setlPrcp|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	实收利息/罚息/复利
+            	<span class="item-note">{{it.setlIntAll|jnCurrency}} 元</span>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item-icon-right" 
+            		  ui-sref='writeBackPaymentRecord({
+            		  crtTxNo: it.crtTxNo ,
+            		  crtDt: it.crtDt,
+            		  loanNo: it.loanNo,
+            		  })'>
+                	收款记录
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='writeBackBalanceTreatment({
+            		  crtTxNo: it.crtTxNo ,
+            		  crtDt: it.crtDt,
+            		  loanNo: it.loanNo,
+            		  })'>
+                	费用处理
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <ion-item class="item-icon-right" 
+            		 ui-sref='writeBackRiskReserve({
+            		  crtTxNo: it.crtTxNo ,
+            		  crtDt: it.crtDt,
+            		  loanNo: it.loanNo,
+            		  })'>
+                	风险准备金
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

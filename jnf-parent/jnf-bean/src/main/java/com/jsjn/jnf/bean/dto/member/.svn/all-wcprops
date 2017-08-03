@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/3498/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member
+END
+FeeStatisticDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Zfjs/!svn/ver/3498/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/FeeStatisticDataBO.java
+END
+BussinessDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Zfjs/!svn/ver/2007/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/BussinessDto.java
+END
+RoleDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Zfjs/!svn/ver/3431/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/RoleDto.java
+END
+FeeWithholdDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3472/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/FeeWithholdDto.java
+END
+FeeRealNameDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3498/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/FeeRealNameDto.java
+END
+MemberDto.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/1981/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/dto/member/MemberDto.java
+END

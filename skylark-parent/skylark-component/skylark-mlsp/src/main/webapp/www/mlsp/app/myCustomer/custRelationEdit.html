@@ -1,0 +1,70 @@
+<style type="text/css">
+
+
+</style>
+
+
+<ion-view view-title="紧急联系人修改" id="editRelation">
+    <jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="ctrl.submit()"
+        >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <jn-form name="ctrl.myForm" edit>
+            <ion-list>
+                <ion-item
+                        class="item-input item-select"
+                >
+                    <span class="input-label">证件类型</span>
+                    <select style="color: #aaa" disabled="disabled">
+                        <option value="" ng-selected="true" >身份证</option>
+                    </select>
+                    <input type="hidden" name="paperType" ng-required="true"  ng-model="ctrl.form.paperType"/>
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">证件号码</span>
+                    <input
+                        type="text"
+                        name="paperNo"
+                        ng-model="ctrl.form.paperNo"
+                        required
+                        jn-id-no
+                        ng-change="ctrl.onChangePaperNo(ctrl.form.paperNo)"
+                        placeholder="请输入身份证号码"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label required">姓名</span>
+                    <input
+                        type="text"
+                        name="custName"
+                        ng-model="ctrl.form.custName"
+                        required
+                        ng-readonly="ctrl.nameDisable"
+                        jn-input-length="60"
+                        placeholder="请输入姓名"
+                    />
+                </ion-item>
+                <ion-item
+                    class="item-input"
+                >
+                    <span class="input-label">联系电话</span>
+                    <input
+                        type="text"
+                        name="phoneNo"
+                        ng-model="ctrl.form.phoneNo"
+                        jn-tel
+                        placeholder="请输入联系电话"
+                    />
+                </ion-item>
+            </ion-list>
+        </jn-form>
+    </ion-content>
+</ion-view>

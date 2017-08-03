@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mcps:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mcps="http://www.jsjngf.com/schema/mcps">
+	<node name="test"  id=""></node>
+	
+	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
+	<!--注册中心配置-->
+	<registery>
+		<protocalId>mcps</protocalId>
+		<protocalName>mcps</protocalName>
+		<ip>127.0.0.1</ip>
+		<port>4601</port>
+		<subscribe>true</subscribe>
+		<register/>
+		<heartBeat>10000000</heartBeat>
+		<password></password>
+		<username></username>
+	</registery>
+	<application id="0020" name="金农付服务层" version="0.0.1" createdate="2013-12-01 12:01:01" verification="true">
+		<reference id="queryTran" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+		<reference id="queryTrans" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="getSysConfigByTypes" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="cardBINQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="realNameAuthByMessage" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="realNameAuthBy4Element" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="contractUnbinding" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="singlePaymentQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="tradeFlowQuery" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="withHolding" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="queryBussinessConfig" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="validateRoleCtrl" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="RSASign" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="singleWithHold" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+        <reference id="querySignState" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<reference id="batchWithHold" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<!-- 系统对账 -->
+	 	<reference id="verifyAcct" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	 	<!-- 查询机构提现卡号 -->
+	 	<reference id="queryInsttuCardNo" failover="retry" version="0.0.1" host="127.0.0.1:8082"/>
+	</application>
+</mcps:definitions>

@@ -1,0 +1,120 @@
+#creditLimit  .item {
+    font-size: 14px;
+    	line-height: 1.5em;
+}
+
+#creditLimit .list .name {
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+#creditLimit .name:before {
+    font-family: iconfont;
+    margin: auto;
+    height: 25px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #007aff;
+    padding-right: 5px;
+    margin-left: -3px;
+}
+
+#creditLimit .name[data-type="0"]:before {
+    content: '\e645';
+}
+
+#creditLimit .name[data-type="1"]:before {
+    content: '\e644';
+}
+
+#creditLimit .list>li>div:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#creditLimit .list>li>div:nth-child(3) {
+    color: grey;
+}
+
+#creditLimit .list>li>div:nth-child(4) {
+    color: grey;
+}
+
+#creditLimit .list>li>div:nth-child(5) {
+    color: grey;
+}
+
+#creditLimit .type_status {
+    line-height: 1;
+    font-size: 0px;
+    font-weight: normal;
+    text-align: right;
+}
+
+#creditLimit .type_status :first-child,
+#creditLimit .type_status :last-child {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+#creditLimit .type_status :first-child {
+    content: attr(data-type);
+    color: #fff;
+}
+
+#creditLimit .type_status :last-child {
+    content: attr(data-status);
+    text-align: center;
+}
+
+#creditLimit .type_status[data-type="1"] :last-child {
+    border-color: navy;
+}
+
+#creditLimit .type_status[data-type="2"] :last-child {
+    border-color: orange;
+}
+
+#creditLimit .type_status[data-type="6"] :last-child {
+    border-color: green;
+}
+
+#creditLimit .type_status[data-type="1"] :first-child {
+    background-color: navy;
+}
+
+#creditLimit .type_status[data-type="2"] :first-child {
+    background-color: orange;
+}
+
+#creditLimit .type_status[data-type="6"] :first-child {
+    background-color: green;
+}
+
+#creditLimit .type_status[data-status="0"] :last-child {
+    content: '';
+}
+
+#creditLimit .type_status[data-status="1"] :last-child {
+    content: '';
+}
+
+#creditLimit .list .name {
+    font-weight: bold;
+}
+
+#historyDeatils .list div{
+	
+	font-size: 14px !important;
+}
+
+#historyDeatils  .meta {
+	position: absolute;
+	right: .5em;
+	bottom: .5em;
+	color: grey;
+	font-size: .9em;
+}

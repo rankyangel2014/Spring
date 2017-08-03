@@ -1,0 +1,101 @@
+<ion-view view-title="储备客户详情" id="reserveCustomerDetail">
+    <jn-back></jn-back>
+     <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="edit(it.custNo);"
+             ng-if=' isManager && it.status!="1"'
+         >修改</button>
+         <button
+             class="button button-clear"
+             ng-click="assign(it.custNo);"
+             ng-if='!isManager'
+         >分配</button>
+    </ion-nav-buttons> 
+    
+    <ion-content>
+        <ion-item class="item-divider" >客户信息</ion-item>
+        <ion-item class='subItem'>
+            <div style="white-space:normal;" > 客户名称  <span class="item-note" style="max-width:60%;">{{it.custName }} </span></div>
+        </ion-item>
+        <ion-item class='subItem'>
+                             性别<span class="item-note">{{it.sex|jnConstant:306 }} </span>
+        </ion-item>
+        <ion-item class='subItem'>
+                           联系电话 <span class="item-note"  ng-if='it.phoneNo'><jn-tel-no  num="{{ it.phoneNo }}"></jn-tel-no> </span>
+        </ion-item>
+        <ion-item class='subItem'>
+           <div style="white-space:normal;">详细地址<span class="item-note" style="max-width:60%;">{{ it.custAddr }} </span></div>
+        </ion-item>
+        <ion-item class='subItem'>
+          <div style="white-space:pre;">从事行业<span class="item-note" style="max-width:60%;">{{it.inTrade|jnConstant:9999 }} </span></div> 
+        </ion-item>
+        <ion-item>
+         <div style="white-space:normal;" >备注信息<span class="item-note" style="max-width:60%;">{{it.remark}} </span></div>
+        </ion-item>
+        
+         <!-- <ion-toggle class='pItem'   ng-model= 'checked["dkyx"]' ng-checked='checked["dkyx"]'>贷款意向</ion-toggle> -->
+         <!--  贷款意向  -->
+         <ion-item class='item-divider' ></ion-item>
+         <ion-item  ng-click="toggleItem('dkyx')" ng-class="{false:'item-divider change',true:' item-divider'}[checked['dkyx']]" ng-model= 'checked["dkyx"]' ng-checked='checked["dkyx"]' >贷款意向
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['dkyx']]"></i>
+         </ion-item>
+        <ion-item class='subItem' ng-show=' checked["dkyx"]'>
+                             贷款申请金额  <span class="item-note">{{it.loanAmt|jnCurrency }} </span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["dkyx"]'>
+                            申请期限 <span class="item-note">{{it.period }}<span ng-if='it.period'>&nbsp;个月</span></span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["dkyx"]'>
+                             借款事由<span class="item-note">{{it.loanUse|jnConstant:7604 }} </span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["dkyx"]'>
+                             可接受最高利率<span class="item-note">{{it.loanRate|number:4 }}&nbsp;%</span>
+        </ion-item>
+        
+        
+         <!--  法人信息  -->
+        <ion-item ng-click="toggleItem('frxx')"  ng-class="{false:'item-divider change',true:' item-divider'}[checked['frxx']]" ng-model= 'checked["frxx"]' ng-checked='checked["xxtj"]' >法人信息
+             <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['frxx']]"></i>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["frxx"]'>
+                              法人资格  <span class="item-note">{{it.isJuridical|jnConstant:5031 }} </span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["frxx"]'>
+                              组织形式  <span class="item-note">{{it.orgForm|jnConstant:5014 }} </span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["frxx"]'>
+            <div style="white-space:normal;" >企业名称<span class="item-note" style="max-width:60%;">{{it.enbName}} </span></div>
+        </ion-item>
+        
+        
+        <!-- 信息途径 -->
+        <ion-item ng-class="{false:'item-divider change',true:' item-divider'}[checked['xxtj']]" ng-click="toggleItem('xxtj')"  ng-model= 'checked["xxtj"]' ng-checked='checked["xxtj"]'>信息途径
+             <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['xxtj']]"></i>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["xxtj"]'>
+                             信息途径 <span class="item-note">{{it.adTypeId|jnConstant:5001 }} </span>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["xxtj"]'>
+            <div style="white-space:normal;" >信息途径名称<span class="item-note" style="max-width:60%;">{{it.adTitle }} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["xxtj"]'>
+            <div style="white-space:normal;" >  推荐人<span class="item-note" style="max-width:60%;">{{it.referrer}} </span></div>
+        </ion-item>
+        
+        <ion-item class='item-divider' ></ion-item>
+        <ion-item  class="item-icon-right" ui-sref='reserveCustomerEvent({custNo:it.custNo})'>
+                             客户事件<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item  class="item-icon-right"  ui-sref='reserveCustomerAssign({custNo:it.custNo})'>
+                             分配历史<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item ng-if=' isManager && it.status!="1" '>
+              <button
+             class="button button-full  button-assertive "
+             ng-click="disabled(it.custNo);"
+             ng-if=' isManager && it.status!="1" '
+         >作废</button>
+        </ion-item>
+    </ion-content>
+</ion-view>

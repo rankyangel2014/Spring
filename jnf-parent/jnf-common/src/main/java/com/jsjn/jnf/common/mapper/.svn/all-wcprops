@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Zfjs/!svn/ver/1603/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/mapper
+END
+JaxbMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/1603/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/mapper/JaxbMapper.java
+END
+BeanMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Zfjs/!svn/ver/77/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/mapper/BeanMapper.java
+END
+JsonMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/148/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/mapper/JsonMapper.java
+END

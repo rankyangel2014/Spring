@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.DictDao">
+	<sql id="columns">
+		a.C1 as "id",
+		a.C2 as "type", --编码
+		a.C3 as "desc", --描述
+		a.C4 as "value" --值
+	</sql>
+	
+
+    <!-- 查询多个类型 -->
+	<select id = "findByTypes" resultType="com.jsjn.jnf.bean.dto.assist.DictDto" useCache="false">
+		SELECT 
+			C4 AS "value",
+			C2 AS "type"
+		FROM JNF_T12  
+		WHERE C2 IN
+		<foreach item="item" index="index" collection="types" open="(" separator="," close=")">
+  			#{item}
+ 		</foreach>
+ 		ORDER BY C1
+	</select>
+	
+	<!-- 查询单个类型 -->
+	<select id = "findByType" resultType = "String" useCache="false">
+		SELECT 
+			C4 AS "value"
+		FROM JNF_T12  
+		WHERE C2 = #{type}
+	</select>
+	
+	<!-- 设置支持缓存，不需要缓存的，使用useCache="false" -->
+	<cache eviction="LRU" flushInterval="60000" size="1024" readOnly="true"/> 
+	
+	<!-- 查询当前系统所有配置参数 -->
+	<select id = "qryDictInfo" parameterType="com.jsjn.jnf.bean.dto.assist.DictDto" resultType = "com.jsjn.jnf.bean.dto.assist.DictDto">
+		SELECT 
+			<include refid="columns"></include>
+		FROM JNF_T12 a 
+		ORDER BY a.C1 ASC
+	</select>
+	
+	<!-- 新增系统配置参数 -->
+	<insert id="addDictInfo" keyProperty="id">
+		insert into jnf_t12(
+			C1,
+			C2,
+			C3,
+			C4
+		)
+		values(
+			#{id},
+			#{type},
+			#{desc},
+			#{value}
+		)
+	</insert>
+	
+	<!-- 修改系统参数配置 -->
+	<update id="updateDictInfo" parameterType="com.jsjn.jnf.bean.dto.assist.DictDto">
+		UPDATE JNF_T12 SET 
+			C2 = #{type},
+			C3 = #{desc},
+			C4 = #{value}
+		WHERE C1 = #{id}
+	</update>
+	
+</mapper>

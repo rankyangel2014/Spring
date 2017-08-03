@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/2354/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request
+END
+JsReqBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqBase.java
+END
+JsReqBaseHead.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/2354/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqBaseHead.java
+END
+JsReqFlowStateQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/2336/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqFlowStateQueryBody.java
+END
+JsReqSinglePaymentTradeBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqSinglePaymentTradeBody.java
+END
+JsReqFlowStateQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/2336/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqFlowStateQuery.java
+END
+JsReqSinglePaymentTrade.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqSinglePaymentTrade.java
+END
+JsReqRealtimeBalQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqRealtimeBalQueryBody.java
+END
+JsReqCashSweepQueryBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqCashSweepQueryBody.java
+END
+JsReqRealtimeBalQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqRealtimeBalQuery.java
+END
+JsReqCashSweepQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/integration/jsyh/request/JsReqCashSweepQuery.java
+END

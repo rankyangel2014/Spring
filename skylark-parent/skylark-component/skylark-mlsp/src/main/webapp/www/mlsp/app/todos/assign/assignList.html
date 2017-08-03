@@ -1,0 +1,19 @@
+<ion-view view-title="{{title}}" id="assignListView">
+    <jn-back></jn-back>
+    <ion-content>
+		<ion-list ng-show="0 < todosList.items.length">
+            <ion-item ng-repeat="c in todosList.items">
+                <div class="row" ><b> {{ c.pendDate|jnDate }} {{ c.pendTime }}</b></div>
+			    <div class="row" style="white-space: normal;word-break: break-all;"> {{ c.custName }}</div>
+			    <div class="pendContent"> {{ c.pendContent }}</div>
+            </ion-item>
+        </ion-list>
+        <div class="no_record"
+            ng-show="0 === todosList.items.length" >暂无记录</div>
+        <button
+            ng-click="more()"
+            ng-show="todosList.items.length < todosList.total"
+            class="button button-block button-positive button-clear"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

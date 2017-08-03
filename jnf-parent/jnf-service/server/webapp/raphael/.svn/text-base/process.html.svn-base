@@ -1,0 +1,78 @@
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>edit process</title>                
+        <link rel="stylesheet" href="demo.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="demo-print.css" type="text/css" media="print">
+        
+        <script src="raphael.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jBPM5.4_node.js" type="text/javascript" charset="utf-8"></script>
+        <script src="jBPM5.4_op.js" type="text/javascript" charset="utf-8"></script>
+        <script src="intersection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="connect.js" type="text/javascript" charset="utf-8"></script>
+        <script src="util.js" type="text/javascript" charset="utf-8"></script>
+        <script src="xmlUtil.js" type="text/javascript"></script>
+        <style type="text/css" media="screen">
+            
+            p {
+                text-align: center;
+            }
+        </style>
+        <link rel="stylesheet" href="layout.css" type="text/css">
+        
+        <script type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <div id="holder" class="canvasErea"></div>
+        <div id="toolbar" class="toolbar" style="display:none">
+        <button id="startBtn" onclick="newNode('StartEvent',0,0);hideEditBox();">Start</button>
+        <button id= "endBtn" onclick="newNode('EndEvent',0,0);hideEditBox();">End</button>
+        <button onclick="newNode('ScriptTask',0,0);hideEditBox();">Script Task</button>
+        <button onclick="newNode('UserTask',0,0);hideEditBox();">User Task</button>
+        <button onclick="newNode('DivergeGateway',0,0);hideEditBox();">Gateway(diverge)</button>
+        <button onclick="newNode('ConvergeGateway',0,0);hideEditBox();">Gateway(converge)</button>
+        <button onclick="newNode('SubProcess',0,0);hideEditBox();">SubProcess</button>
+        <hr/>
+        <button id="btn_wf" onclick="showWF();hideEditBox();" >Workflow Properties</button>
+        <hr/>
+        <button id="btn_connect" onclick="changeMode();hideEditBox();" >—→Sequence Flow</button>
+        <hr/>
+        <button id="node_delete" onclick="deleteNode(selectedObj)" >Delete Node</button>
+        <hr/>
+        <button id="btn_export" onclick="exportData()" >Export</button>
+        <button id="btn_exportXML" onclick="exportXMLData()" >Export XML</button>
+        <button id="btn_loadXML" onclick="loadXMLData('http://127.0.0.1:8080/raphael/LoadXMLFile?file=file.bpmn')" >Load XML</button>
+        </div>
+        
+        <div id="console"></div>
+        
+        <div id="propPanel">
+        
+        <!-- 
+        <div id="StartEvent" class="propertites" style="display: none">
+        <table style="color:#000">
+        <tr>
+        <td>Id:</td>
+        <td><input id="StartEvent_Id" type="text"></td>
+        </tr>
+        <tr>
+        <td>MetaData:</td>
+        <td><input id="StartEvent_MetaData" type="text"></td>
+        </tr>
+        <tr>
+        <td>Name:</td>
+        <td><input id="StartEvent_Name" type="text"></td>
+        </tr>
+        </table>
+        </div>
+         -->
+         
+        </div>
+        <div id="editBox" class="editBox" style="display:none">
+        	<textarea id="editBox_box" rows="17" cols="65" ></textarea>
+        	<button onclick="saveOneProp();">保存</button>
+        	<button onclick="hideEditBox();">取消</button>
+        </div>
+    </body>
+</html>

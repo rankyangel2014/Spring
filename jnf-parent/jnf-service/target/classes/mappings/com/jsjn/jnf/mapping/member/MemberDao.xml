@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.member.MemberDao">
+	<sql id="columns">
+		a.C1 as "custId",
+		a.C2 as "custName",
+		a.C3 as "mId",
+		a.C4 as "custType",
+		a.C5 as "mobile",
+		a.C6 as "state",
+		a.C7 as "isReal",
+		a.C8 as "remark",
+		a.C9 as "idType",
+		a.C10 as "idNo",
+		a.C11 as "extCustId",
+		a.C12 as "insttuId",
+		a.C13 as "digest",
+		a.C14 as "created",
+		a.C15 as "modified"
+	</sql>
+	<sql id="joins">
+		
+	</sql>
+	
+	<!-- 根据用户编号查询用户详情  lihanbing-->
+	<select id="queryMember" resultType="MemberDto">
+			select 
+			<include refid="columns"></include>
+			from JNF_T2 a where a.c1 = #{custId}
+	</select>
+	
+	<!-- 查询投资人是否存在  -->
+	<select id="queryInvest" resultType="MemberDto">
+			SELECT 
+			<include refid="columns"></include> 
+			   FROM JNF_T2 a where a.C4 = '1'
+			<if test="mId != null and mId !=''">
+				AND a.C3=#{mId} 
+			</if>
+			<if test="idNo != null and idNo !=''">
+				AND a.C10=#{idNo} 
+			</if>
+			<if test="idType != null and idType !=''">
+				AND a.C9=#{idType} 
+			</if>
+		 	<if test="custName != null and custName != ''">
+				AND a.C2=#{custName} 
+			</if>
+	</select>
+	
+
+	<!-- 根据条件查询所有符合条件的用户  lihanbing-->
+	<select id="queryMembers" parameterType="MemberDto" resultType="MemberDto">
+			SELECT 
+				<include refid="columns"></include>
+			,b.C2 as "mName" FROM JNF_t1 b right join JNF_T2 a 
+			on b.C1 = a.C3   
+			<where>
+				<if test="endTime!=null and  endTime!='' ">
+					<![CDATA[ AND  a.C15 <= to_date(#{endTime},'yyyyMMdd') ]]>
+				</if>
+				<if test=" beginTime!=null and  beginTime!=''">
+					AND  a.C15  >= to_date( #{beginTime},'yyyyMMdd')
+				</if>
+				<if test="idNo != null and idNo !=''">
+					AND a.C10=#{idNo} 
+				</if>
+				<if test="idType != null and idType !=''">
+					AND a.C9=#{idType} 
+				</if>
+				<if test="custName != null and custName != ''">
+					AND a.C2 = #{custName} 
+				</if>
+				<if test="custType != null and custType != ''">
+					AND a.C4 = #{custType} 
+				</if>
+				<if test="mId != null and mId != ''">
+					AND a.C3=#{mId} 
+				</if>
+				<if test="custId != null and custId != ''">
+					AND a.C1=#{custId} 
+				</if>
+			</where>
+			ORDER BY a.C1 ASC
+	</select>
+	<!-- 查询会员是否注册 -->
+	<select id="get" resultType="MemberDto">
+			SELECT 
+			<include refid="columns"></include> 
+			   FROM JNF_T2 a
+				<where>
+					<if test="mId != null and mId !=''">
+						AND a.C3=#{mId} 
+					</if>
+					<if test="idNo != null and idNo !=''">
+						AND a.C10=#{idNo} 
+					</if>
+					<if test="idType != null and idType !=''">
+						AND a.C9=#{idType} 
+					</if>
+				 	<if test="custName != null and custName != ''">
+						AND a.C2=#{custName} 
+					</if>
+				</where>
+	</select>
+	
+	<!-- 检查用户是否存在 -->
+	<select id="findCust" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include>  
+		FROM JNF_T2 a WHERE a.C3=#{mId} AND a.C10=#{idNo}
+	</select>
+	<!-- 检查用户是否存在 -->
+	<select id="findCustByInsttuId" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include>  
+		FROM JNF_T2 a WHERE a.C3=#{mId} AND a.C12=#{insttuId}
+	</select>
+	
+	<!-- 查询商户的机构码 -->
+	<select id="findOrgNo" resultType="String">
+		SELECT C12 FROM JNF_T2 WHERE C3=#{mId} AND C4=#{custType} AND ROWNUM=1
+	</select>
+	
+	<!-- 注册会员-->
+	<insert id="insert" parameterType="MemberDto">
+		INSERT INTO JNF_T2(
+			C1,
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13,
+			C14,
+			C15
+		) VALUES (
+		 #{custId},
+		 #{custName},
+		 #{mId},
+		 #{custType},
+		 #{mobile},
+		 #{state},
+		 #{isReal},
+		 #{remark},
+		 #{idType},
+		 #{idNo},
+		 #{extCustId},
+		 #{insttuId},
+		 #{digest},
+		 sysdate,
+		 sysdate
+		)
+	</insert>
+	
+	
+	
+	<!-- 根據custId查询客户信息 -->
+	<select id="queryMemberById" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include> 
+		FROM JNF_T2 a
+		WHERE  a.C1=#{custId} 
+	</select>
+	
+	<!-- 查询商户投资人信息-->
+	<select id="queryInvestInfo" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include> 
+		FROM JNF_T2 a
+		WHERE  a.C4 = 1
+		AND a.C3=#{mId} 
+	</select>
+	
+	
+	<!--
+	<update id="update" keyProperty="">
+		UPDATE JNF_T2 SET 
+			C2 = #{isReal}, 
+			C15=#{modified}
+		WHERE C1 = #{custId}
+		AND C3=#{mId}
+		AND 
+	</update>
+	-->
+	<update id="updateMember">
+		UPDATE JNF_T2 SET 
+			C2 = #{custName}, 
+			C3 = #{mId},
+			C5 = #{mobile},
+			C6 = #{state},
+			C9 = #{idType},
+			C10 = #{idNo},
+			C13 = #{digest} 
+		WHERE C3 = #{mId} AND C4='3'
+	</update>
+	
+	<select id="queryMemberInfo" parameterType="String" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include> 
+		FROM JNF_T2 a
+		WHERE  a.C3=#{mid} and a.C4=#{custType}
+	</select>
+	
+	<update id="updateMobile" >
+		UPDATE JNF_T2 SET 
+			C5 = #{mobile},
+			C13 = #{digest},
+			C15 = sysdate 
+		WHERE C1=#{custId}
+	</update>
+	
+	<!-- 根据insttuId查询  投资人  信息 -->
+	<select id="queryMemberByInsttuId" resultType="MemberDto">
+		SELECT 
+		<include refid="columns"></include> 
+		FROM JNF_T2 a
+		WHERE  a.C12 = #{insttuId} 
+		  AND  a.C3 = #{mid}
+		  AND  a.C4 = '1' <!--  客户类型为：投资人 -->
+	</select>
+	<!-- 根据mid商户号查询机构信息 -->
+	<select id="getInsttuListByMid" resultType="MemberDto">
+	SELECT
+		a.C2 as custName,
+		a.C12 as insttuId
+	FROM 
+	   JNF_T2 a
+	WHERE 
+	   a.C4 = '1' AND a.C3 = #{mid}
+	</select>
+	
+</mapper>

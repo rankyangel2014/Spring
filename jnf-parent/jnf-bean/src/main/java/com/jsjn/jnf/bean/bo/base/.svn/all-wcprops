@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Zfjs/!svn/ver/1394/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/base
+END
+BaseOpenReqBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/653/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/base/BaseOpenReqBO.java
+END
+ErrorOpenResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Zfjs/!svn/ver/1394/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/base/ErrorOpenResBO.java
+END
+BaseOpenResBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/1394/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/base/BaseOpenResBO.java
+END

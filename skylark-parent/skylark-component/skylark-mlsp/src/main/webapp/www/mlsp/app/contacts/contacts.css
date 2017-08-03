@@ -1,0 +1,293 @@
+#contactsSearch .page>.page_body {
+	margin-bottom: 0;
+}
+
+#contactsSearch .avatar {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	margin-left: 10px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+#contactsSearch .avatar[data-color_index="0"] {
+	background-color: #ffd220;
+}
+
+#contactsSearch .avatar[data-color_index="1"] {
+	background-color: #998de6;
+}
+
+#contactsSearch .avatar[data-color_index="2"] {
+	background-color: #a6da6e;
+}
+
+#contactsSearch .avatar[data-color_index="3"] {
+	background-color: #77daff;
+}
+
+#contactsSearch .avatar[data-color_index="4"] {
+	background-color: #1d9ef8;
+}
+
+#contactsSearch .avatar[data-color_index="5"] {
+	background-color: #fc816f;
+}
+
+#contactsSearch .avatar[data-color_index="6"] {
+	background-color: #78c06e;
+}
+
+#contactsSearch .avatar[data-color_index="7"] {
+	background-color: #ff943e;
+}
+
+#contactsSearch .avatar[data-color_index="8"] {
+	background-color: #5e97f6;
+}
+
+#contactsSearch .avatar[data-color_index="9"] {
+	background-color: #cada46;
+}
+
+#contactsSearch .avatar:before {
+	content: attr(data-first_letter);
+	display: block;
+	color: #fff;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#contactsSearch .avatar img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+}
+
+#contactsSearch .info {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+#contactsSearch .desc {
+	font-size: 12px;
+	color: #666;
+}
+
+#contactsSearch .shortcuts {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+#contactsSearch .shortcuts:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	margin-right: -0.25em;
+}
+
+#contactsSearch .shortcuts a {
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+#contactsSearch .shortcuts a:before {
+	line-height: 40px;
+	font-family: 'iconfont';
+}
+
+#contactsSearch .shortcuts a.mobile:before {
+	content: '\e63a';
+	color: #007aff;
+}
+
+#contactsSearch .shortcuts a.tel:before {
+	content: '\e63d';
+	color: #007aff;
+}
+
+#contactsSearch .shortcuts a.sms:before {
+	content: '\e63c';
+	color: #007aff;
+}
+
+#contactsSearch .deptName {
+	padding: 5px 10px;
+	font-weight: 900;
+	font-size: 14px;
+}
+
+#contactView .page>.page_body {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding-bottom: 34px;
+}
+
+#contactView .header {
+	position: relative;
+	height: 100px;
+	background-color: #fff;
+	background-image: url("bg.png");
+	background-repeat: no-repeat;
+}
+
+#contactView .avatar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 20px;
+	margin: auto;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+
+#contactView .info {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100px;
+	margin: auto;
+	height: 60px;
+	font-size: 14px;
+	color: #fff;
+}
+
+#contactView .name {
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+}
+
+#contactView .desc {
+	height: 30px;
+	line-height: 30px;
+}
+
+#contactView ol>li {
+	position: relative;
+	height: 40px;
+	margin: 1px 0;
+	padding: 1px 20px;
+	background-color: #fff;
+}
+
+#contactView ol .content {
+	line-height: 18px;
+	font-size: 14px;
+}
+
+#contactView ol label {
+	font-size: 12px;
+	color: #9c9c9c;
+}
+
+#contactView ion-item {
+	padding: 5px 0px 5px 10px;
+}
+
+#contactView .shortcuts {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	margin: auto;
+}
+
+#contactView .shortcuts:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+	margin-right: -0.25em;
+}
+
+#contactView .shortcuts a {
+	display: inline-block;
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+#contactView .shortcuts a:before {
+	line-height: 40px;
+	font-family: 'iconfont';
+}
+
+#contactView .page a[href^="sms:"]:before {
+	content: '\e63c';
+	color: #007aff;
+}
+
+#contactView .page a[href^="tel:"]:before {
+	content: '\e63e';
+	color: #007aff;
+}
+
+#contactView .page [data-gender],#contactView .page [data-age] {
+	font-weight: normal;
+	font-size: 12px;
+	padding: 3px 5px;
+	color: #fff;
+	border-radius: 4px;
+}
+
+#contactView .page [data-gender="M"] {
+	background-color: #19b4f4;
+}
+
+#contactView .page [data-gender="M"]:before {
+	content: '\e619';
+	font-family: 'iconfont';
+}
+
+#contactView .page [data-gender="F"] {
+	background-color: #fe9a9c;
+}
+
+#contactView .page [data-gender="F"]:before {
+	content: '\e61a';
+	font-family: 'iconfont';
+}
+
+#contactView .page [data-age]:before {
+	content: attr(data-age);
+}
+
+#contactView .page [data-gender="M"][data-age]:before {
+	content: '\e619' attr(data-age);
+}
+
+#contactView .page [data-gender="F"][data-age]:before {
+	content: '\e61a' attr(data-age);
+}
+
+#contactView .page a[href^="mailto:"]:before {
+	content: '\e63b';
+	color: #007aff;
+}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/1700/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints
+END
+CheckAmount.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/1700/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckAmount.java
+END
+CheckBankNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/479/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckBankNo.java
+END
+CheckIdNo.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Zfjs/!svn/ver/640/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckIdNo.java
+END
+CheckFlag.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/4284/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckFlag.java
+END
+CheckRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/4285/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckRange.java
+END
+CheckDate.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/1031/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckDate.java
+END
+CheckCustName.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/4309/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckCustName.java
+END
+CheckMobileNumber.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Zfjs/!svn/ver/481/group/dev/jnf-parent/jnf-common/src/main/java/com/jsjn/jnf/common/validator/constraints/CheckMobileNumber.java
+END

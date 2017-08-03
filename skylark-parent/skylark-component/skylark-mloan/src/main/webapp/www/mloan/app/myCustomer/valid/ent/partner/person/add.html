@@ -1,0 +1,157 @@
+<ion-view view-title="股东新增（个人）" id="entDetailEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button
+                class="button button-clear "
+                ng-click="ctrl.submit()"
+        >保存
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <!-- 新增表单 -->
+        <form name="ctrl.addForm" novalidate jn-edit-form>
+            <input type="hidden" name="custNo" ng-model="ctrl.form.custNo "/>
+            <input type="hidden" name="pCustNo" ng-model="ctrl.form.pCustNo "/>
+            <input type="hidden" name="linkType" ng-model="ctrl.form.linkType "/>
+            <input type="hidden" name="operType" ng-model="ctrl.form.operType "/>
+            <input type="hidden" name="custType" ng-model="ctrl.form.custType "/>
+            <input type="hidden" name="custNameTmp" ng-model="ctrl.form.custNameTmp "/>
+            <input type="hidden" name="paperNoTmp" ng-model="ctrl.form.paperNoTmp "/>
+            <input type="hidden" name="paperTypeTmp" ng-model="ctrl.form.paperTypeTmp "/>
+            <legend></legend>
+            <!--<ion-item class='item-input item-select'>-->
+            <!--<span class='input-label required'>客户类别</span>-->
+            <!--<select required ng-model='ctrl.form.custType' name='custType' ng-disabled="ctrl.flag == true">-->
+            <!--<option value='0' ng-selected="true" >个人</option>-->
+            <!--<option value='1'>企业</option>-->
+            <!--</select>-->
+            <!--</ion-item>-->
+            <ion-item class="item-input item-select">
+                <span class="input-label ">证件类型</span>
+                <select
+                        name="paperType"
+                        ng-model="ctrl.form.paperType"
+                        jn-options="5500"
+                        ng-change="ctrl.clear()"
+
+                        ng-disabled="ctrl.flag == true"
+                >
+                </select>
+            </ion-item>
+            <!--<ion-item class="item-input item-select" ng-if=" ctrl.form.custType == '1' ">-->
+            <!--<span class="input-label ">证件类型</span>-->
+            <!--<select-->
+            <!--name="paperType"-->
+            <!--ng-model="ctrl.form.paperType"-->
+            <!--jn-options="5025"-->
+            <!--ng-change="ctrl.clear()"-->
+            <!---->
+            <!--ng-disabled="ctrl.flag == true"-->
+            <!--&gt;-->
+            <!--</select>-->
+            <!--</ion-item>-->
+
+            <ion-item class="item-input" ng-if=" ctrl.form.paperType == '0' ">
+                <span class="input-label ">证件号码</span>
+                <input
+                        type="text"
+                        name="paperNo"
+                        jn-id-no
+                        ng-model="ctrl.form.paperNo"
+                        ng-blur="ctrl.custSearch(ctrl.form.paperNo,ctrl.form.paperType)"
+                        placeholder="请输入证件号码"
+
+                        ng-readonly="ctrl.form.paperType == '' || ctrl.flag  "
+                />
+
+            </ion-item>
+            <ion-item class="item-input" ng-if=" ctrl.form.paperType == '10'">
+                <span class="input-label ">证件号码</span>
+                <input
+                        type="text"
+                        name="paperNo"
+                        jn-reg-no
+                        ng-model="ctrl.form.paperNo"
+                        ng-blur="ctrl.custSearch(ctrl.form.paperNo,ctrl.form.paperType)"
+                        placeholder="请输入证件号码"
+
+                        ng-readonly="ctrl.form.paperType == '' || ctrl.flag "
+                />
+            </ion-item>
+
+            <ion-item class="item-input" ng-if="ctrl.form.paperType === '11'">
+                <span class="input-label ">证件号码</span>
+                <input
+                        type="text"
+                        name="paperNo"
+                        jn-org-no
+                        ng-model="ctrl.form.paperNo"
+                        ng-blur="ctrl.custSearch(ctrl.form.paperNo,ctrl.form.paperType)"
+                        placeholder="请输入证件号码"
+
+                        ng-readonly="ctrl.form.paperType == '' || ctrl.flag "
+                />
+
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label required">名称</span>
+                <jn-select-customer
+                        name="custName"
+                        cust-no="ctrl.form.pCustNo"
+                        cust-type="0"
+                        ng-model="ctrl.form.custName"
+                        ng-readonly="ctrl.form.custNo"
+                        on-select="ctrl.onSelectCustomer"
+                        required
+                        placeholder="请输入客户名称"
+                        ng-disabled="ctrl.flag == true"
+                ></jn-select-customer>
+                <!--     <input
+                         type="text"
+                         name="custName"
+                         ng-model="ctrl.form.custName "
+                         placeholder="请输入名称"
+                         required
+                         ng-readonly="ctrl.flag" /> -->
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label ">与客户关系</span>
+                <select style="color: #aaa" disabled="disabled">
+                    <option value="29" ng-selected="true">股东</option>
+                </select>
+            </ion-item>
+            <ion-item class="item-input ">
+                <span class="input-label">联系方式</span>
+                <input
+                        type="tel"
+                        jn-tel
+                        name="phoneNo"
+                        ng-model="ctrl.form.phoneNo"
+                        placeholder="请输入联系方式"/>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">联系地址</span>
+                <input
+                        type="text"
+                        name="custAddr"
+                        ng-model="ctrl.form.custAddr"
+                        placeholder="请输入联系地址"/>
+            </ion-item>
+
+            <ion-item class="item-input">
+                <span class="input-label ">股份占比(%)</span>
+                <input
+                        type="number"
+                        name="sharePct"
+                        ng-model="ctrl.form.sharePct"
+
+                        min="0"
+                        max="100"
+                        placeholder="请输入股份占比"/>
+            </ion-item>
+
+        </form>
+    </ion-content>
+</ion-view>

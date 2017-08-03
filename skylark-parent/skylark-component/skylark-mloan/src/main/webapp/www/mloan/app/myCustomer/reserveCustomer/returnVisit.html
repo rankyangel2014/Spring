@@ -1,0 +1,66 @@
+<ion-view view-title="潜在客户回访管理" id="reserveCustomerVisitList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<a  class="button button-clear" ui-sref="reserveCustomerReturnVisitAdd({'custNo':custNo,custManagerName:custManagerName})" ng-if='!isManager&&enableTransfer'>新增</a>
+	</ion-nav-buttons>
+	<ion-content>
+		<style type="text/css">
+			#reserveCustomerVisitList{
+				font-size: 14px;
+			}
+			#reserveCustomerVisitList .head{
+				font-weight: bolder;
+				font-size: 14px;
+			}
+			#reserveCustomerVisitList .edit{
+				float: right;
+				text-decoration: none;
+				color: chocolate;
+			}
+		</style>
+		<ion-list>
+			<ion-item ng-repeat="c in  it.root">
+				<a class="edit"  ng-if=" enableTransfer&&!isManager && it.root[0].recId == c.recId" ui-sref="reserveCustomerReturnVisitEdit({
+				'custNo': c.custNo ,
+				'recId':c.recId ,
+				'visitType':c.visitType ,
+				'visitResult':c.visitResult ,
+				'remark':c.remark ,
+				'custManagerName':custManagerName,
+				})">编辑</a>
+				<div class="head">
+					回访日期:
+					<span class=''>{{ c.visitDt }} {{ c.visitTime }}</span>
+				</div>
+				<div>
+					回访方式:
+					<span class=''>{{c.visitType|jnConstant:890}}</span>
+				</div>
+				<div>
+					回访结果:
+					<span class=''>{{c.visitResult|jnConstant:891}}</span>
+				</div>
+				<div style="white-space: normal;">
+					备注:
+					<span style="width: 60%;">{{c.remark}}</span>
+				</div>
+
+			</ion-item>
+
+
+		</ion-list>
+		<div
+				ng-if="0 === it.root.length" class="no_record"
+		>暂无记录
+		</div>
+
+
+		<button ng-click="more()"
+				ng-if="it.root.length < it.total"
+				class="button button-block button-positive button-clear" >点击加载更多
+		</button>
+
+	</ion-content>
+</ion-view>

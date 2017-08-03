@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Zfjs/!svn/ver/3423/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/fee
+END
+FeeStatisticDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Zfjs/!svn/ver/3423/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/fee/FeeStatisticDataBO.java
+END
+XmlFlowDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/2177/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/fee/XmlFlowDataBO.java
+END
+AccountDetailDataBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Zfjs/!svn/ver/2177/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/fee/AccountDetailDataBO.java
+END
+TotalFeeDataBo.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/2177/group/dev/jnf-parent/jnf-bean/src/main/java/com/jsjn/jnf/bean/bo/fee/TotalFeeDataBo.java
+END

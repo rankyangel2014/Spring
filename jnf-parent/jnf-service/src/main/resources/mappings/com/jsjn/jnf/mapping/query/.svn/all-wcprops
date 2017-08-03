@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Zfjs/!svn/ver/2547/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/query
+END
+QuerySignInfoDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/2547/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/query/QuerySignInfoDao.xml
+END
+QueryWithholdDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/2479/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/query/QueryWithholdDao.xml
+END

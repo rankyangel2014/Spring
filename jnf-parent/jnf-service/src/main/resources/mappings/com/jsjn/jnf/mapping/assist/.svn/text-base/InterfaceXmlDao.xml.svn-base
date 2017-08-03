@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.InterfaceXmlDao">
+	<sql id="columns">
+	 a.C1 as id,
+	 a.C2 as method,
+     a.C3 as orgNo,
+     a.C4 as inputXml,
+     a.C5 as outputXml,
+     a.C6 as state,
+     a.C7 as exception,
+     a.C8 as bflag,
+     a.C9 as reason,
+     a.C10 as reqTime,
+     a.C11 as resTime,
+     a.C12 as mid
+	</sql>
+	
+	<!-- 插入接口报文流水表 -->
+	<insert id = "insert" parameterType="InterfaceXmlDto">
+		INSERT INTO JNF_T17 
+			(C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12)
+		VALUES
+			(
+			#{id},
+			#{method},
+			#{orgNo},
+			#{inputXml},
+			#{outputXml},
+			#{state},
+			#{exception},
+			#{bflag},
+			#{reason},
+			TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+			#{resTime},
+			#{mid}
+			)
+	</insert>
+	
+	<!-- 修改接口报文流水表 -->
+	<update id="update" parameterType="InterfaceXmlDto">
+		UPDATE JNF_T17 SET 
+			C5 = #{outputXml},
+			C6 = #{state},
+			C7 = #{exception},
+	     <if test=" feeFlag != null and feeFlag !='' ">
+		    C13 = #{feeFlag},
+		 </if>
+			C11 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss')
+		WHERE C1 = #{id}
+	</update>
+	
+</mapper>

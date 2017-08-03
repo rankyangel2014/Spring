@@ -1,0 +1,102 @@
+<ion-view view-title="贷后检查计划表" cache-view="false" id="loanCheckList">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <style>
+            .no-border {
+                border: 0px;
+                padding-top: .25em;
+                padding-bottom: .25em;
+            }
+
+            .blueHref {
+                color: #387ef5;
+                text-decoration: none;
+            }
+
+        </style>
+
+        <ion-list>
+            <div class="card" ng-show="0 < list.items.length"
+                 ng-repeat="e in list.items"
+                 data-operflag="1" data-stat="0">
+                <div class="item item-avatar" data-stat="0"
+                     data-operFlag="1">
+                    <div
+                        style="display: -webkit-box; display: flex; -webkit-justify-content: space-between; justify-content: space-between; padding-bottom: 5px;"
+                    >
+                        <span
+                            style="font: 900 18px bolder;"
+                        >{{e.checkType|jnConstant:9101}}检查</span>
+                        <span
+                            style="display: -webkit-inline-box; display: inline-flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center;"
+                        >
+                            <a
+                                class="blueHref"
+                                style="font-size: 12px; padding: 0 .5em;"
+                                ng-click="ctrl.viewAttachments(e)"
+                                ng-if="'DocUpload' !== ctrl.ref"
+                            >查看档案</a>
+                            <a ng-if="e.isCheck"
+                                class="blueHref"
+                                style="font-size: 12px; padding: 0 .5em;"
+                                ng-click="ctrl.uploadAttachments(e)"
+                                ng-if="'DocUpload' !== ctrl.ref"
+                            >上传档案</a>
+                            <a
+                                ng-if="! e.isCheck"
+                                class="blueHref"
+                                style="font-size: 12px; padding: 0 .5em;"
+                                ui-sref="loanCheckDetail({loanNo:ctrl.loanNo, checkDate:e.checkDate})"
+                            >检查详情</a>
+                            <a
+                                ng-if="e.isCheck"
+                                class="blueHref"
+                                style="font-size: 12px; padding: 0 .5em;"
+                                ui-sref="loanCheckAdd({loanNo:ctrl.loanNo, checkDate:e.checkDate, realCheckDate:e.realCheckDate, checkStatus:e.checkStatus, remark:e.remark})"
+                            >登记检查</a>
+                        </span>
+                    </div>
+                    <div
+                            ng-click="ctrl.onClickCard(e)"
+                    >
+                        <div class="item item-body no-border">
+                            <span style="font-size: 14px; color: #444;">计划检查日期</span>
+                            <span style="font-size: 14px; color: #666; padding: 0 5px">{{ e.checkDate | jnDate }}</span>
+                        </div>
+                        <div class="item item-body no-border">
+                            <span style="font-size: 14px; color: #444;">实际检查日期</span>
+                            <span style="font-size: 14px; color: #666; padding: 0 5px">{{ e.realCheckDate | jnDate }}</span>
+                        </div>
+                        <div class="item item-body no-border">
+                            <span style="font-size: 14px; color: #444;">检查状态</span>
+                            <span style="font-size: 14px; color: #666; padding: 0 5px">{{ e.checkStatus | jnConstant:9102 }}</span>
+                        </div>
+                        <div
+                                class="item item-body no-border"
+                                style="display: flex;"
+                        >
+                            <span style="font-size: 14px; color: #444; white-space: nowrap;">备注</span>
+                            <span style="font-size: 14px; color: #666; padding: 0 5px; word-break: break-all;">{{ e.remark }}</span>
+                        </div>
+                    </div>
+                    <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
+                    <!--<a class="tab-item tab-do" ng-click=""> <span style='border: 1px solid #387ef5;padding: 4px 4px ;'>查看计划</span></a>-->
+                    <!--<a class="tab-item tab-do" ng-click=""> <span style='border: 1px solid #387ef5;padding: 4px 4px ;'>检查登记</span></a>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </ion-list>
+        <div
+                ng-if="0 === list.items.length" class="no_record"
+        >暂无记录
+        </div>
+        <button
+                ng-click="more()"
+                ng-if="list.items.length < list.total"
+                class="button button-block button-positive button-clear"
+        >点击加载更多
+        </button>
+    </ion-content>
+</ion-view>

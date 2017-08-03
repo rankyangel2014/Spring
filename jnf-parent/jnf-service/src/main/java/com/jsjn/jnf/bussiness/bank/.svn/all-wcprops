@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Zfjs/!svn/ver/3992/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank
+END
+BankBatchWithHoldService.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/3832/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankBatchWithHoldService.java
+END
+BankSingleWithHoldService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/3704/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankSingleWithHoldService.java
+END
+BankQueryOrgCardNoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/3741/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankQueryOrgCardNoService.java
+END
+BankRealtimeBalQueryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/Zfjs/!svn/ver/2258/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankRealtimeBalQueryService.java
+END
+BankSinglePaymentTradeService.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankSinglePaymentTradeService.java
+END
+BankSingleFlowStateQueryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Zfjs/!svn/ver/2426/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/bank/BankSingleFlowStateQueryService.java
+END

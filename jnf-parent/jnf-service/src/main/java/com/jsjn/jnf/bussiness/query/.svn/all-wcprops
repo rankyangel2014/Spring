@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Zfjs/!svn/ver/4079/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/query
+END
+QuerySignStateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/2558/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/query/QuerySignStateService.java
+END
+QueryWithholdStateService.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Zfjs/!svn/ver/2558/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/query/QueryWithholdStateService.java
+END
+QueryOrgBusinessService.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/Zfjs/!svn/ver/4053/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/bussiness/query/QueryOrgBusinessService.java
+END

@@ -1,0 +1,14 @@
+<ion-view view-title="{{title}}">
+	<jn-back></jn-back>
+    <ion-content >
+  		<ion-list>
+	  		<div >
+	            <ion-item class="item-divider"></ion-item>
+	            <ion-item class="item" ng-repeat='f in it'>
+	            	 <div style='font-weight: bolder;'>{{  f.feeCde |jnConstant:9210 }} {{f.setlPrcp|jnCurrency}}</div> 
+	            	 <div style='white-space: normal;'>{{  f.feeDesc }}</div>
+	            </ion-item>
+	         </div>
+		</ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.FeeConfigDao">
+	<sql id="columns">
+		a.C1 as id,
+		a.C2 as mid,
+		a.C3 as orgNo,
+		a.C4 as feeType,
+		a.C5
+		as startTime,
+		a.C6 as endTime,
+		a.C7 as fee,
+		b.C2 as mname,
+		c.c2 as
+		insttuName,
+		a.c8 as channel
+	</sql>
+	<!-- 获取序列号 -->
+
+	<!-- 查询商户计费参数配置 -->
+	<select id="qryFeeConfig" resultType="FeeConfigDto"
+		parameterType="FeeConfigDto">
+		SELECT
+		<include refid="columns"></include>
+		FROM JNF_T18 a , JNF_T1 b ,JNF_T2 c
+		where a.C2 = b.C1 and a.c3 = c.c12
+		and c.C6='1' and b.C6='1'
+		<if test="mid != null and mid !='' ">
+				<![CDATA[and a.C2 = #{mid}]]>
+		</if>
+		<if test="orgNo != null and orgNo !='' ">
+				<![CDATA[and a.C3 = #{orgNo}]]>
+		</if>
+		<if test="feeType != null and feeType !='' ">
+				<![CDATA[and a.C4 = #{feeType}]]>
+		</if>
+		<if test="channel != null and channel !='' ">
+				<![CDATA[and a.C8 = #{channel}]]>
+		</if>
+		UNION ALL
+		SELECT a.C1 as id,
+		a.C2 as mid,
+		a.C3 as orgNo,
+		a.C4 as feeType,
+		a.C5 as startTime,
+		a.C6 as endTime,
+		a.C7 as fee,
+		b.C2 as mname,
+		'' as
+		insttuName,
+		a.c8 as channel
+		FROM JNF_T18 a, JNF_T1 b
+		where a.C2 = b.C1
+		and a.c3 is null
+		and b.C6 = '1'
+		<if test="mid != null and mid !='' ">
+                <![CDATA[and a.C2 = #{mid}]]>
+		</if>
+		<if test="feeType != null and feeType !='' ">
+	                <![CDATA[and a.C4 = #{feeType}]]>
+		</if>
+		<if test="channel != null and channel !='' ">
+	                <![CDATA[and a.C8 = #{channel}]]>
+		</if>
+
+		ORDER BY ID DESC
+	</select>
+
+	<!-- 新增计费参数配置 -->
+	<insert id="addFeeConfig" keyProperty="id">
+		insert into jnf_t18(
+		C1,
+		C2,
+		C3,
+		C4,
+		C5,
+		C6,
+		C7,
+		C8
+		)
+		values(
+		#{id},
+		#{mid},
+		#{orgNo},
+		#{feeType},
+		to_date(#{startTime},'yyyyMMdd'),
+		to_date(#{endTime},'yyyyMMdd'),
+		#{fee},
+		#{channel}
+		)
+	</insert>
+
+	<!-- 修改计费参数配置 -->
+	<update id="updateFeeConfig" parameterType="FeeConfigDto">
+		UPDATE JNF_T18 SET
+		C4
+		= #{feeType},
+		C5 = to_date(#{startTime},'yyyyMMdd'),
+		C6 =
+		to_date(#{endTime},'yyyyMMdd'),
+		C7 = #{fee}
+		WHERE C1 = #{id}
+	</update>
+
+	<!-- 删除计费参数配置 -->
+	<delete id="delFeeConfig" parameterType="String">
+		DELETE FROM JNF_T18 a
+		WHERE a.C1 = #{id}
+	</delete>
+
+	<!-- 查询商户计费参数配置 -->
+	<select id="qryFeeConfigById" resultType="FeeConfigDto"
+		parameterType="FeeConfigDto">
+		SELECT
+		a.C1 as id,
+		a.C2 as mid,
+		a.C3 as orgNo,
+		a.C4 as feeType,
+		a.C5 as
+		startTime,
+		a.C6 as endTime,
+		a.C7 as fee,
+		a.c8 as channel
+		FROM JNF_T18 a
+		where 1=1
+		<if test="mid != null and mid !='' ">
+                <![CDATA[and a.C2 = #{mid}]]>
+		</if>
+		<if test="orgNo != null and orgNo !='' ">
+                <![CDATA[and a.C3 = #{orgNo}]]>
+		</if>
+		<if test="feeType != null and feeType !='' ">
+                <![CDATA[and a.C4 = #{feeType}]]>
+		</if>
+		<if test="channel != null and channel !='' ">
+                <![CDATA[and a.C8 = #{channel}]]>
+		</if>
+		ORDER BY a.C1 DESC
+	</select>
+
+</mapper>

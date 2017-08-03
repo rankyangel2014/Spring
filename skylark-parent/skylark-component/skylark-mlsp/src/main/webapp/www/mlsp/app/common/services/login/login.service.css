@@ -1,0 +1,241 @@
+@keyframes shake-horizontal {
+  2% {
+    transform: translate(-1px, 0) rotate(0); }
+  4% {
+    transform: translate(6px, 0) rotate(0); }
+  6% {
+    transform: translate(-8px, 0) rotate(0); }
+  8% {
+    transform: translate(8px, 0) rotate(0); }
+  10% {
+    transform: translate(5px, 0) rotate(0); }
+  12% {
+    transform: translate(0px, 0) rotate(0); }
+  14% {
+    transform: translate(7px, 0) rotate(0); }
+  16% {
+    transform: translate(-6px, 0) rotate(0); }
+  18% {
+    transform: translate(2px, 0) rotate(0); }
+  20% {
+    transform: translate(-1px, 0) rotate(0); }
+  22% {
+    transform: translate(3px, 0) rotate(0); }
+  24% {
+    transform: translate(-9px, 0) rotate(0); }
+  26% {
+    transform: translate(-8px, 0) rotate(0); }
+  28% {
+    transform: translate(8px, 0) rotate(0); }
+  30% {
+    transform: translate(-2px, 0) rotate(0); }
+  32% {
+    transform: translate(0px, 0) rotate(0); }
+  34% {
+    transform: translate(0px, 0) rotate(0); }
+  36% {
+    transform: translate(9px, 0) rotate(0); }
+  38% {
+    transform: translate(4px, 0) rotate(0); }
+  40% {
+    transform: translate(0px, 0) rotate(0); }
+  42% {
+    transform: translate(-3px, 0) rotate(0); }
+  44% {
+    transform: translate(3px, 0) rotate(0); }
+  46% {
+    transform: translate(-7px, 0) rotate(0); }
+  48% {
+    transform: translate(3px, 0) rotate(0); }
+  50% {
+    transform: translate(10px, 0) rotate(0); }
+  52% {
+    transform: translate(7px, 0) rotate(0); }
+  54% {
+    transform: translate(4px, 0) rotate(0); }
+  56% {
+    transform: translate(-4px, 0) rotate(0); }
+  58% {
+    transform: translate(-4px, 0) rotate(0); }
+  60% {
+    transform: translate(10px, 0) rotate(0); }
+  62% {
+    transform: translate(-6px, 0) rotate(0); }
+  64% {
+    transform: translate(-9px, 0) rotate(0); }
+  66% {
+    transform: translate(1px, 0) rotate(0); }
+  68% {
+    transform: translate(-7px, 0) rotate(0); }
+  70% {
+    transform: translate(-4px, 0) rotate(0); }
+  72% {
+    transform: translate(6px, 0) rotate(0); }
+  74% {
+    transform: translate(0px, 0) rotate(0); }
+  76% {
+    transform: translate(6px, 0) rotate(0); }
+  78% {
+    transform: translate(10px, 0) rotate(0); }
+  80% {
+    transform: translate(6px, 0) rotate(0); }
+  82% {
+    transform: translate(0px, 0) rotate(0); }
+  84% {
+    transform: translate(-3px, 0) rotate(0); }
+  86% {
+    transform: translate(-4px, 0) rotate(0); }
+  88% {
+    transform: translate(-3px, 0) rotate(0); }
+  90% {
+    transform: translate(-6px, 0) rotate(0); }
+  92% {
+    transform: translate(-5px, 0) rotate(0); }
+  94% {
+    transform: translate(0px, 0) rotate(0); }
+  96% {
+    transform: translate(9px, 0) rotate(0); }
+  98% {
+    transform: translate(4px, 0) rotate(0); }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); } }
+
+#login-popover,
+#set-gesture-pwd-popover,
+#gesture-login-popover {
+    position: fixed;
+    visibility: hidden;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+#set-gesture-pwd-popover.show,
+#gesture-login-popover.show {
+    visibility: visible;
+    z-index: 100000;
+}
+
+#login-popover.show {
+    visibility: visible;
+    z-index: 11;
+}
+
+#login-popover {
+    background-color: #f5f5f5;
+    transition: transform .5s;
+}
+
+#login-popover .frame {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+
+#login-popover h1 {
+    position: relative;
+    top: -35px;
+    margin-bottom: 0;
+    font-size: 32px;
+    color: #298ccf;
+    text-align: center;
+    text-shadow: 0px 0px 1px #aaaaaa;
+}
+
+#login-popover label {
+    display: block;
+    padding: 6px 25px 5px 16px;
+}
+
+#login-popover label::before {
+    display: inline-block;
+    font-family: Ionicons;
+    font-size: 25px;
+    color: #aaa;
+    padding-right: 6px;
+    width: 1em;
+    vertical-align: middle;
+}
+
+#login-popover label.loginId::before {
+    content: "";
+}
+
+#login-popover label.password::before {
+    content: "";
+}
+
+#login-popover label.smcode::before {
+    content: "\f296";
+}
+
+#login-popover input {
+    display: inline;
+    width: 88%;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    vertical-align: middle;
+}
+
+#login-popover button {
+    -webkit-appearance: none;
+    margin-top: 10px;
+    width: 100%;
+    padding: 0 12px;
+    text-align: center;
+    border: none;
+    background-color: #47d3b6;
+    color: #fff;
+    font-size: 16px;
+    line-height: 47px;
+}
+
+#set-gesture-pwd-popover jn-pattern-input,
+#gesture-login-popover jn-pattern-input {
+    width: 100%;
+    height: 100%;
+}
+
+#set-gesture-pwd-popover .tip,
+#gesture-login-popover .tip,
+#gesture-login-popover .go-login {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#set-gesture-pwd-popover .tip,
+#gesture-login-popover .tip {
+    top: 15%;
+    color: #387ef5;
+}
+
+#set-gesture-pwd-popover .tip.err,
+#gesture-login-popover .tip.err {
+    color: #d02424;
+    animation: shake-horizontal 150ms ease-in-out 1;
+}
+
+#gesture-login-popover .go-login {
+    bottom: 10%;
+    color: #387ef5;
+}
+
+#gesture-login-popover .user {
+    position: absolute;
+    width: 100%;
+    top: 5%;
+    text-align: center;
+}
+
+.popover-popup {
+    z-index: 100001;
+}

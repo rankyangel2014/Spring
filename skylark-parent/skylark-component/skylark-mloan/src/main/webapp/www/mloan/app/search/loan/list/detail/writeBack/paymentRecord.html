@@ -1,0 +1,19 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+	  		<div >
+	            <ion-item class="item-divider"></ion-item>
+	            <ion-item class="item" ng-repeat='r in it.repayList.root'>
+	            	 <div style='font-weight: bolder;'>{{r.interAccNm}}</div> 
+	            	 <div>{{r.setlPrcp|jnCurrency}}</div>
+	            </ion-item>
+	         </div>
+		</ion-list>
+		<div
+				ng-show="0 === it.repayList.root.length" class="no_record"
+		>暂无记录</div>
+    </ion-content>
+</ion-view>

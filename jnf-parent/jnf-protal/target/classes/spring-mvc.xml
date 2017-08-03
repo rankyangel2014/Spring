@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    
+	<description>Spring MVC Configuration</description>
+    
+	<!-- 加载配置属性文件 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:protal.properties" />
+	
+	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
+	<context:component-scan base-package="com.jsjn.jnf" use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+    
+	<!-- 默认的注解映射的支持，org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -->
+	
+	
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<!--ref bean="controllerInterceptor" /-->
+			</list>
+		</property>
+	</bean>  
+	
+	<context:annotation-config />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="stringHttpMessageConverter" />
+				<ref bean="jsonHttpMessageConverter" />
+				<ref bean="marshallingHttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter" /> 
+	<bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 使用XML格式输出数据 -->
+	<bean id="marshallingHttpMessageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+		<constructor-arg>
+			<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+				<property name="streamDriver">
+					<bean class="com.thoughtworks.xstream.io.xml.StaxDriver"/>
+				</property>
+				<property name="annotatedClasses">
+					<list>
+						<value>com.jsjn.jnf.bean.dto.base.BaseDTO</value>	   
+					</list>
+				</property>
+			</bean>
+		</constructor-arg>
+		<property name="supportedMediaTypes" value="application/xml"></property>
+	</bean>
+	
+	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+		<!-- one of the properties available; the maximum file size in bytes -->  
+		<property name="maxUploadSize" value="10240000"/>  
+	</bean>
+	<!-- Enables the Spring MVC @Controller programming model --> 
+	<mvc:annotation-driven /> 
+	<!-- Default ViewResolver -->  
+	
+	<mvc:default-servlet-handler/>
+
+	<bean id="viewResolver"  
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+		<property name="prefix" value="/view" />  
+		<property name="suffix" value=".jsp"></property>  
+	</bean>
+	
+	<!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="api/**" />
+			<bean class="com.jsjn.jnf.protal.interceptor.LogInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<mvc:default-servlet-handler/>
+	
+	<!-- 支持Shiro对Controller的方法级AOP安全控制 begin-->
+	<!--bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+				<prop key="java.lang.Throwable">error/500</prop>
+			</props>
+		</property>
+	</bean>-->
+</beans>

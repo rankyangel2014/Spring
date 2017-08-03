@@ -1,0 +1,56 @@
+<ion-view view-title="{{title}}">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+  		<ion-list>
+            <ion-item class="item-divider"></ion-item>
+            <ion-item class="item" >
+            	还款日期 
+            	 <span class="item-note">{{  it.setlDt|jnDate }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	应收合计
+            	<span class="item-note">{{  it.receivableTotal|jnCurrency }} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	实收合计
+            	<span class="item-note">{{  it.setlTotal|jnCurrency}} 元</span>
+            </ion-item>
+            <ion-item class="item" >
+            	开户行
+            	<span class="item-note">{{  it.interAccNm }}</span>
+            </ion-item>
+            
+            <ion-item class="item-divider"></ion-item>
+            <div ng-repeat='l in it.loanList.root'>
+	            <ul class="row" >
+	              <li class='col col-100' style='font-weight: bolder;'>{{  l.custName }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-100'>{{  l.contNoExt }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>借据号</li>
+	              <li class='col'>{{  l.loanNo }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还款日</li>
+	              <li class='col'>{{  l.dueDt | jnDate }}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还金额</li>
+	              <li class='col col-25'>{{l.receivableAmt|jnCurrency}}</li>
+	              <li class='col col-25'>应还本金</li>
+	              <li class='col col-25'>{{l.receivablePrcp|jnCurrency}}</li>
+	            </ul>
+	            <ul class="row" >
+	              <li class='col col-25'>应还利息</li>
+	              <li class='col col-25'>{{   l.receivableInt|jnCurrency }}</li>
+	              <li class='col col-25'>执行利率</li>
+	              <li class='col col-25'>{{  l.intRate|jnCurrency }}%</li>
+	            </ul>
+            </div>
+		</ion-list>
+    </ion-content>
+</ion-view>

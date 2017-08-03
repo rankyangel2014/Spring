@@ -1,0 +1,147 @@
+<ion-view view-title="实际控制人详情">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+	<ion-nav-buttons side="secondary" >
+        <button  ng-if=" '1' != isDetail "
+             class="button button-clear "
+             ng-click="edit()"
+         >修改</button>
+    </ion-nav-buttons>
+    <ion-content>
+    	<ion-list ng-if=" '0' == it.linkCustType ">
+    		<ion-item class="item-divider"></ion-item>
+            <ion-item class="item">
+            	姓名
+            	<span class="item-note">{{ it.kpLinkCustName }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	身份证号
+            	<span class="item-note">{{ it.kpLinkPaperNo }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	出生日期
+            	<span class="item-note">{{ it.kpBirthday }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	年龄
+            	<span class="item-note">{{ it.kpAge }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	性别
+            	<span class="item-note">{{ it.kpSex | jnConstant :306 }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	手机
+            	<span class="item-note" ng-if=" it.kpMobPhone ">
+	            	<jn-tel-no num="{{ it.kpMobPhone }}"></jn-tel-no>
+            	</span>
+            </ion-item>
+            <ion-item class="item">
+            	婚姻状况
+            	<span class="item-note">{{ it.kpMarryStatus | jnConstant :5027 }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	教育水平
+            	<span class="item-note">{{ it.kpEduLevel | jnConstant :5047 }}</span>
+            </ion-item>
+            <ion-item class="item">
+            	居住情况
+            	<span class="item-note" ng-if=" '1' == it.kpHousingStatus">自有</span>
+            	<span class="item-note" ng-if=" '2' == it.kpHousingStatus">抵押</span>
+            	<span class="item-note" ng-if=" '3' == it.kpHousingStatus">租赁</span>
+            	<span class="item-note" ng-if=" '4' == it.kpHousingStatus">{{ it.kpDomPlace}}</span>
+            </ion-item>
+            <ion-item class="item">
+            	家庭地址
+            	<span class="item-note">{{ it.kpHome }}</span>
+            </ion-item>
+            
+            <div ng-if=" '28' === it.kpMarryStatus || '29' === it.kpMarryStatus ">
+            	<ion-item class="item-divider">配偶信息</ion-item>
+            	<ion-item class="item" >
+	            	配偶姓名
+	            	<span class="item-note">{{ it.linkSpouseCustName }}</span>
+	            </ion-item>
+            	<ion-item class="item" >
+	            	身份证号
+	            	<span class="item-note">{{ it.linkSpousePaperNo }}</span>
+	            </ion-item>
+            	<ion-item class="item" >
+	            	联系方式
+	            	<span class="item-note">{{ it.linkSpouseMobPhone }}</span>
+	            </ion-item>
+            	<ion-item class="item" >
+	            	工作单位
+	            	<span class="item-note">{{ it.linkSpouseWorkUnit }}</span>
+	            </ion-item>
+            </div>
+		</ion-list>
+		
+		<ion-list ng-if=" '1' == it.linkCustType ">
+			<ion-item class="item" >
+            	企业名称
+            	<span class="item-note">{{ it.kcLinkCustName }}</span>
+            </ion-item>
+			<ion-item class="item" ng-if=" it.kcLinkPaperNo.length == 18 ">
+            	信用代码
+            	<span class="item-note">{{ it.kcLinkPaperNo }}</span>
+            </ion-item>
+			<ion-item class="item" ng-if=" it.kcLinkPaperNo.length != 18 ">
+            	营业执照
+            	<span class="item-note">{{ it.kcLinkPaperNo }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	法人代表
+            	<span class="item-note">{{ it.kcCorpReprst }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	主营业务
+            	<span class="item-note">{{ it.kcMainBusiness }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	固定电话
+            	<span class="item-note">{{ it.kcFixPhone }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	实体类型
+            	<span class="item-note">{{ it.kcOrgType|jnConstant:5014 }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	经营地址
+            	<span class="item-note">{{ it.kcHome }}</span>
+            </ion-item>
+            
+            <ion-item class="item-divider">联系人</ion-item>
+			<ion-item class="item" >
+            	联系人
+            	<span class="item-note">{{ it.kcContactName }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	联系方式
+            	<span class="item-note">{{ it.kcContactPhone }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	关系
+            	<span class="item-note">{{ it.kcContactLinkType|jnConstant:5018 }}</span>
+            </ion-item>
+			<ion-item class="item" >
+            	联系地址
+            	<span class="item-note">{{ it.kcContactAddr }}</span>
+            </ion-item>
+		</ion-list>
+		
+		<ion-list ng-if=" (it.linkCustType !='0' && it.linkCustType !='1') && '1' !== isDetail ">
+			<div class="no_record">
+				<p>尚未填写实际控制人信息，</p>
+            	<p>请点击修改按钮填写。</p>
+			</div>
+		</ion-list>
+		<ion-list ng-if=" (it.linkCustType !='0' && it.linkCustType !='1') && '1' === isDetail ">
+			<div class="no_record">
+				<p>尚未填写实际控制人信息。</p>
+			</div>
+		</ion-list>
+		
+    </ion-content>
+</ion-view>

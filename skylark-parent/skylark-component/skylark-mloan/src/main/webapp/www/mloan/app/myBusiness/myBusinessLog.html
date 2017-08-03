@@ -1,0 +1,27 @@
+<ion-view view-title="审批历史" >
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content overflow-scroll="true">
+        <ion-list ng-show="0 < logCtrl.list.items.length">
+            <ion-item ng-repeat="e in logCtrl.list.items" style="padding: 9px;">
+           		<div style="font-weight: bold;font-size: 16px;color: #000;line-height:200%">
+           			<span>{{ e.timeStamp | jnDate }}</span><!--  -->&nbsp;&nbsp;
+           		</div>
+           		<div style="font-size: 14px;color: #666">
+           			<span>{{ e.operName }}</span><!--  -->&nbsp;&nbsp;
+           			<span>{{ e.operCont }}</span>
+           		</div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === logCtrl.list.items.length"
+            class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="logCtrl.more()"
+            ng-show="logCtrl.list.items.length < logCtrl.list.total"
+            class="button button-clear button-full button-positive"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

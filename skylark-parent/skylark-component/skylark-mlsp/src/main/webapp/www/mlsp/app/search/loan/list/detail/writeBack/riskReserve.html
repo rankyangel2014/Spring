@@ -1,0 +1,12 @@
+<ion-view view-title="{{title}}">
+	<jn-back></jn-back>
+    <ion-content>
+    	<ion-list class='list'>
+	            <ion-item class="item-divider"></ion-item>
+	            <ion-item class="item" ng-repeat='r in it.riskList'>
+	            	 <div>{{r.amt | jnCurrency}}</div> 
+	            	 <div>{{r.ldgrName}}</div>
+	            </ion-item>
+    	</ion-list>
+    </ion-content>
+</ion-view>

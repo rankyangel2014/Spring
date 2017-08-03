@@ -1,0 +1,22 @@
+<ion-view view-title="{{title}}" id="assignListView">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+		<ion-list ng-show="0 < todosList.items.length">
+            <ion-item ng-repeat="c in todosList.items|orderBy:['-pendDate','-pendTime']" ng-click="claim(c)">
+            	<div class="claim" ng-if="c.operType=='1' && c.actorId!=null && c.actorId!=undefined && c.actorId!=''">已认领</div>
+                <div><b> {{ c.pendDate|jnDate }} {{ c.pendTime }}</b></div>
+			    <div style="white-space: normal;word-break: break-all;"> {{ c.custName }}</div>
+			    <div class="pendContent"> {{ c.pendContent }}</div>
+            </ion-item>
+        </ion-list>
+        <div class="no_record"
+             ng-if="0 === todosList.items.length" >暂无记录</div>
+        <button
+            ng-click="more()"
+            ng-if="todosList.items.length < todosList.total"
+            class="button button-block button-positive button-clear"
+        >点击加载更多</button>
+    </ion-content>
+</ion-view>

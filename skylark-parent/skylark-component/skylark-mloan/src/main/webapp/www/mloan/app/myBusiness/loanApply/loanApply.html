@@ -1,0 +1,103 @@
+<ion-view view-title="{{ctrl.title}}" id="loanApply">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-clear " ng-click="ctrl.apply()">确认审批</button>
+    </ion-nav-buttons>
+    <style>
+        #loanApply .item-radio input:checked + .radio-content .item-content {
+            background: #ffffff;
+        }
+    </style>
+    <ion-content>
+        <form name="ctrl.applyForm" novalidate>
+            <ion-item class="item-icon-right" ui-sref="loanDetailInfo({
+                    custNo:custNo,
+                    custType:custType,
+                    loanNo:loanNo,
+                    loanState:status})">
+                贷款申请表
+                <i class="icon ion-ios-arrow-right"></i></ion-item>
+            <div class="item item-divider required">
+                请选择审批结果
+            </div>
+            <ion-list>
+                <ion-radio ng-required="true" class="show_radio" name='examine'
+                           ng-model='ctrl.form.examine' ng-checked="ctrl.form.examine" value='0'>同意
+                </ion-radio>
+                <ion-radio ng-required="true" class="show_radio" name='examine'
+                           ng-model='ctrl.form.examine' ng-checked="ctrl.form.examine" value='1'>拒绝
+                </ion-radio>
+                <ion-radio ng-required="true" class="show_radio" name='examine'
+                           ng-model='ctrl.form.examine' ng-checked="ctrl.form.examine" value='2'>退回
+                </ion-radio>
+            </ion-list>
+            </ion-item>
+            <!--同意 begin-->
+            <div class="item item-divider required" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+                请填写审批意见
+            </div>
+            <ion-item class="item-input" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+                <span class="input-label required" style="display: none">审批意见</span>
+			<textarea rows="4" cols="30" name="opinion" ng-required="true" jn-input-length="1000"
+                      ng-model="ctrl.form.opinion" placeholder="请在此处填写审批意见"></textarea>
+            </ion-item>
+            <div class="item item-divider required" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+                请选择客户资料
+            </div>
+            <ul class="list" ng-if="!ctrl.form.examine || ctrl.form.examine==0">
+                <li class=""
+                    ng-class="{'true':'required item item-toggle','false':'item item-toggle'}[item.isMust=='0']"
+                    ng-repeat="item in items">{{item.appDesc}}
+                    <label class="toggle  toggle-positive">
+                        <input type="checkbox" name='khzl' ng-model='item.isCheck' ng-checked='item.isCheck'>
+
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+            <!--同意 end->
+
+            <!--拒绝 begin-->
+            <div class="item item-divider required" ng-if="ctrl.form.examine==1">
+                请选择或填写拒绝原因
+            </div>
+            <ion-list ng-if="ctrl.form.examine==1">
+                <ion-item class="item-input item-select item">
+                    <span class="input-label required">拒绝类型</span>
+                    <select ng-required="true" name="refType"
+                            ng-model="ctrl.form.refType"
+                            jn-options="897"></select>
+                </ion-item>
+                <ion-item class="item-input item-select item">
+                    <span class="input-label required">拒绝理由</span>
+                    <select style="white-space: normal;" ng-if="ctrl.form.refType==0" ng-required="true"
+                            name="refCause_c"
+                            ng-model="ctrl.form.refCause_c" jn-options="998"> </select>
+                    <select style="white-space: normal;" ng-if="ctrl.form.refType==1" ng-required="true"
+                            name="refCause_p"
+                            ng-model="ctrl.form.refCause_p" jn-options="898"> </select>
+                </ion-item>
+                <ion-item class="item-input" ng-if="ctrl.form.refCause_p==8 || ctrl.form.refCause_c==13">
+				<textarea rows="4" cols="30" name="refOtherDesc" jn-input-length="1000"
+                          ng-model="ctrl.form.refOtherDesc" placeholder="您可在在此处填写拒绝的原因"></textarea>
+                </ion-item>
+            </ion-list>
+            <!--拒绝 end-->
+
+            <!--退回 begin-->
+            <div class="item item-divider required" ng-if="ctrl.form.examine==2">
+                请填写退回原因
+            </div>
+            <ion-item class="item-input" ng-if="ctrl.form.examine==2">
+                <span class="input-label required" style="display: none;">退回原因</span>
+                <textarea ng-required="true" rows="4" cols="30" name="thTxt" ng-required="true" jn-input-length="1000"
+                          ng-model="ctrl.form.thTxt" placeholder="请在此处填写审批退回原因"></textarea>
+            </ion-item>
+            <!--退回-->
+        </form>
+    </ion-content>
+</ion-view>

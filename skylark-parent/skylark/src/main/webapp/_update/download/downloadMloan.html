@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection"/>
+<meta content="yes" name="apple-touch-fullscreen"/>
+<title>下载金农微贷助手</title>
+<meta name="author" content="www.dingtalk.com" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<meta name="author" content="www.dingtalk.com" />
+<meta name="spm-id" content="5776.1438921">
+<meta name="description" content="">
+</head>
+<body>
+<style>
+    html,body{
+        padding:0;
+        margin:0;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        /*background: #2c98e5;*/
+    	font-family: "microsoft yahei", "宋体", Tahoma, Verdana, Arial, Helvetica, sans-serif; 
+    }
+
+    #page , .wrapper{
+        background: #2c98e5;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        min-height: 450px;
+    }
+    .logo {
+        width: 100%;
+        height: 270px;
+        margin-top: 10px;
+        background: url('images/logo3.png') no-repeat center center;
+        background-size: 209px 181px;
+    }
+    .button {
+        position: absolute;
+        height: 60px;
+        width: 100%;
+        bottom: 72px;
+        margin-bottom: 80px;
+    }
+
+.button a {
+		display:none;
+        position: absolute;
+        left: 50%;
+        margin-left: -81px;
+        width: 162px;
+        height: 75px;
+        background: #000;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+   .footer {
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        bottom: 0;
+        font-size: 12px;
+        color: #999999;
+        background: #ffffff;
+    }
+    .footer p {
+        margin-top: 2px;
+        margin-bottom: 0px;
+    }
+    .footer p:first-child {
+        margin-top: 15px;
+    }
+    .dingding {
+        /*display: none;*/
+    }
+  .footer p span {
+        display: inline-block;
+        width: 15px;
+        height: 10px;
+        background: url('images/copyright.png') no-repeat center center;
+        background-size: 15px 15px;
+    }
+	.x-landing-wrapper {
+        display: none;
+    }
+    .button .andriod p {
+        color: #ffffff;
+        font-size: 20px;
+        /*width: 100%;*/
+        height: 38px;
+        padding-left: 18px;
+        margin-left: 10px;
+        line-height: 38px;
+        background: url('images/os.png') no-repeat;
+        overflow: hidden;
+        background-size: 32px 73px;
+    }
+    .button .ios p {
+        color: #ffffff;
+        font-size: 20px;
+        /*width: 100%;*/
+        height: 35px;
+        padding-left: 10px;
+        margin-left: 10px;
+        line-height: 35px;
+        background: url('images/os.png') no-repeat;
+        overflow: hidden;
+        background-size: 32px 73px;
+        background-position: 0 -38px;
+    }
+  .andriod {
+    display : block;
+  }
+  .text-other-option {
+    width:100%;
+    position:absolute;
+    text-align:center;
+    bottom:65px;
+    color:#fff;
+    font-size:13px;
+    font-weight:normal;
+  }
+ .x-landing-wrapper {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  box-sizing: content-box;
+  z-index: 5000;
+}
+.x-landing-wrapper .x-landing-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-color: rgba(0,0,0,.7);
+}
+.x-landing-wrapper div, .x-landing-wrapper p, .x-landing-banner div, .x-landing-banner p {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+.x-landing-wrapper .wx-tips h3 {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 80px 20px 0;
+  margin: 0 0 12px;
+}
+
+.x-landing-wrapper .wx-tips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  line-height: 1.5;
+} 
+
+.x-landing-wrapper .wx-tips .close {
+  margin: 30px auto 0;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 2px 20px;
+  width: 70px;
+  text-align: center;
+}
+@font-face {
+    font-family: 'landingicon';
+    src: url('./fonts/iconfont2.ttf') format('truetype');
+}
+.x-landing-wrapper .wx-tips:after {
+  content: "\e600";
+  font-family: landingicon;
+  font-size: 40px;
+  position: absolute;
+  top: 4px;
+  right: 20px;
+}
+
+</style>
+<div class="wrapper">
+<div class="logo">
+</div>
+<div class="button">
+<a tag="android_app_url" target="_blank" href="#" onclick="javascript:downloadapp();return false;" id="android-app-url" class="andriod download_log">
+<p>安卓版下载</p>
+</a>
+<a tag="ios_app_url" target="_self" href="#" onclick="javascript:downloadapp();return false;" id="ios-app-url" class="ios download_log" style="display: none;">
+<p>苹果版下载</p>
+</a>
+</div>
+<p class="text-p text-bottom-p text-other-option">客服电话：400-600-1212 </span></p>
+<div class="footer">
+<p class="company">
+江苏金农股份有限公司
+</p>
+<p>
+版权所有<span></span>2010 ~ 2015  
+</p>
+</div>
+</div>
+<div class="x-landing-wrapper" id="x-landing-wrapper">
+<div class="x-landing-overlay"></div>
+<div class="wx-tips">
+<h3>下载被微信屏蔽了！</h3>
+<p>1、点击右上角菜单。</p><p>2、选择【浏览器】打开，再下载。</p>
+<div class="close" onclick="javascript:closeWin();">关闭</div>
+</div>
+</div>
+<script src="http://s95.cnzz.com/z_stat.php?id=1255733731&web_id=1255733731" language="JavaScript"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script type="text/javascript">
+(function ($) {
+    window.cb = function(data){
+        var rex = location.href.indexOf('htmls')>-1?'htmls':"MOBILE_SOURCES";
+        var menu = location.href.substr(location.href.indexOf(rex)).split('?')[0].replace(rex,'');
+        var params = {
+                agent:navigator.userAgent,
+                orgno: "999999999",
+                uid:"anonymous",
+                location:menu,
+                vtime:new Date().getTime(),
+                ip:data.Ip,
+                isp:encodeURIComponent(data.Isp)
+        };
+        var server = window.exe ? "http://"+exe.getConfig('IP')+":"+exe.getConfig('Port')+"/"+exe.getConfig('ServerName'):
+             location.href.substr(0,location.href.indexOf(rex));
+        var url = server + "/analysis/stat.do?jsoncallback=?";
+        $.getJSON(url, params, function(json) {});　
+    }
+    var script = document.createElement("script");
+    script.src = "http://chaxun.1616.net/s.php?type=ip&output=json&callback=cb";
+    document.body.appendChild(script);
+})(jQuery);
+</script>
+</body>
+</html>
+<script>
+function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        return true;
+    } else {
+        return false;
+    }
+}
+function checkPlatform(){
+	if(/android/i.test(navigator.userAgent)){
+		return "Android";
+	}
+	if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+		return "IOS";
+	}
+	return "Android";
+}
+
+function showDownloadButton(){
+	var plat = checkPlatform();
+	if (plat=="IOS"){
+		document.getElementById("ios-app-url").style.display = "block";
+	}else{
+		document.getElementById("android-app-url").style.display = "block";
+	}
+}
+
+function downloadapp(){
+	var plat = checkPlatform();
+	var weiXin = isWeiXin();
+	if(weiXin&&plat=="IOS"){
+		document.getElementById("x-landing-wrapper").style.display = "block";
+		return ;
+	}
+	
+	if (plat=="IOS"){
+		window.location.href="https://itunes.apple.com/cn/app/wei-dai-zhu-shou/id1044166517?l=en&mt=8";
+	}else if(plat=="Android"){
+		window.location.href="https://www.jnjlh.com/skylarkMloan/_update/mloan.apk?t="+new Date().getTime();
+	}else{
+		alert("亲，对不起，我们只支持IOS和安卓手机~~");
+	}
+	return ;
+	
+}
+function closeWin(){
+	document.getElementById("x-landing-wrapper").style.display = "none";
+}
+showDownloadButton();
+</script>

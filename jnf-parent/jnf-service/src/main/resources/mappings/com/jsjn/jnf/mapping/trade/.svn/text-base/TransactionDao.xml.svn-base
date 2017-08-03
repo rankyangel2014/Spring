@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.trade.TransactionDao">
+	<sql id="tranColumns">
+		T1.C1 as "tradeNo",
+		T1.C2 as "bNo",
+		T1.C3 as "tradeType",
+		T1.C4 as "mid",
+		T1.C5 as "mSerialNo",
+		T1.C6 as "externLoanNo",
+		T1.C7 as "payer",
+		T1.C8 as "payerName",
+		T1.C9 as "payerBankCardNo",
+		T1.C10 as "payee",
+		T1.C11 as "payeeName",
+		T1.C12 as "amount",
+		T1.C13 as "status",
+		T1.C14 as "failReason",
+		T1.C15 as "desc",
+		T1.C16 as "created",
+		T1.C17 as "modified",
+		T1.C18 as "digest",
+		T1.C19 as "exception",
+		T1.C20 as "orgNo",
+		T1.C21 as "idNo",
+		T1.C22 as "mobile",
+		T1.C23 as "message"
+	</sql>
+	
+	<select id ="queryWithHolds" resultType = "java.util.Map"  parameterType="TransactionDto">
+		SELECT 
+			C13 AS status,
+			C14 AS failReason,
+			c1 as tradeNo
+		FROM JNF_T8  
+		<where>
+			<if test="tradeNo!=null and tradeNo!=''">
+		     C1 = #{tradeNo}
+			</if>
+			<if test="mSerialNo!=null and mSerialNo!=''">
+				and c5= #{mSerialNo}
+			</if>
+			<if test="mid!=null and mid!=''">
+				and c4= #{mid}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 插入交易 -->
+	<insert id="insert">
+		INSERT INTO JNF_T8(
+			C1, 
+			C2, 
+			C3, 
+			C4, 
+			C5, 
+			C6, 
+			C7, 
+			C8, 
+			C9, 
+			C10, 
+			C11, 
+			C12, 
+			C13,
+			C14,
+			C15,
+			C16,
+			C17,
+			C18,
+			C19,
+			C20,
+			C21,
+			C22,
+			C23
+		) VALUES (
+			#{tradeNo}, 
+			#{bNo}, 
+			#{tradeType}, 
+			#{mid}, 
+			#{mSerialNo}, 
+			#{externLoanNo},
+			#{payer},
+			#{payerName},
+			#{payerBankCardNo},
+			#{payee},
+			#{payeeName},
+			#{amount}, 
+			#{status},
+			#{failReason},
+			#{desc}, 
+			<choose>
+			  <when test="created != null and created != ''">
+			      to_date(#{created},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			      to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>
+			<choose>
+			  <when test="modified != null and modified != ''">
+			      to_date(#{modified},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			      to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>	
+			#{digest},
+			#{exception},
+			#{orgNo},
+			#{idNo},
+			#{mobile},
+			#{message}
+		)
+	</insert>
+	
+	<!-- 更新状态交易以及失败原因-->
+	<update id="updateTrans">
+		UPDATE JNF_T8 SET 
+			C14 = #{failReason},
+			C19 = #{exception},
+			C13 = #{status},
+			<choose>
+			  <when test="modified != null and modified !=''">
+			     C17 =  to_date(#{modified},'YYYY-MM-DD HH24:MI:SS'),
+			  </when>
+			  <otherwise>
+			     C17 =  to_date(to_char(sysdate,'yyyyMMddHH24miss'),'YYYY-MM-DD HH24:MI:SS'),
+			  </otherwise>
+			</choose>
+			C18 = #{digest}
+		WHERE C1 = #{tradeNo}
+	</update>
+	
+	
+	<!-- 根据MID(内部调用无需MID，外部调用需MID)、tranNo查询交易 -->
+	<select id="queryTransactionByTradeNo" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		WHERE 
+		T1.C1 = #{tradeNo}
+		<if test="mid != null and mid != ''">
+			AND T1.C4 = #{mid}
+		</if>
+	</select>
+	
+	<!-- 根据mid、mSerialNo查询交易 -->
+	<select id="queryTransactionByMSerialNo" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		WHERE T1.C4 = #{mid}
+		  AND T1.C5 = #{mSerialNo}
+	</select>
+	
+	<!-- 交易流水查询 -->
+	<select id="tradeFlowQuery" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		WHERE T1.C4 = #{mid}
+		AND T1.C16 &gt;= to_date(#{startDt},'YYYYMMDD') 
+		AND T1.C16 &lt;= to_date(#{endDt},'YYYYMMDD') 
+	</select>
+	
+	<!-- 根据状态查询交易 -->
+	<select id="queryTransactionByTradeStatus" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		WHERE 
+		T1.C13 = #{status}
+	</select>
+	
+	<!-- 根据交易条件查询交易 -->
+	<select id="queryTransactionByCondition" parameterType="TransactionDto" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		<where>
+			<if test="tradeNo!=null and tradeNo!=''">
+				and T1.c1=#{tradeNo}
+			</if> 
+			<if test="tradeType!=null and tradeType!=''">
+				and T1.c3=#{tradeType}
+			</if> 
+			<if test="mid!=null and mid!=''">
+				and T1.c4=#{mid}
+			</if> 
+			<if test="mSerialNo!=null and mSerialNo!=''">
+				and T1.c5=#{mSerialNo}
+			</if> 
+			<if test="externLoanNo!=null and externLoanNo!=''">
+				and T1.c6=#{externLoanNo}
+			</if> 
+			<if test="amountMin !=null and amountMin!=''">
+				and T1.c12 >= TO_NUMBER(#{amountMin})
+			</if> 
+			<if test="amountMax !=null and amountMax!=''">
+				<![CDATA[ and T1.c12 <= TO_NUMBER(#{amountMax})]]> 
+			</if> 
+			<if test="modifiedMin !=null and modifiedMin!=''">
+				and T1.c17 >= TO_DATE(#{modifiedMin},'yyyyMMdd')
+			</if> 
+			<if test="modifiedMax !=null and modifiedMax!=''">
+				<![CDATA[ and T1.c17 <= TO_DATE(#{modifiedMax},'yyyyMMdd')]]> 
+			</if> 
+		</where>
+		ORDER BY T1.C1 DESC
+	</select>
+	
+	<!-- 根据交易条件查询异常交易 信息-->
+	<select id="queryExceptionTransaction" parameterType="TransactionDto" resultType="TransactionDto">
+		SELECT 
+			<include refid="tranColumns"/>
+		FROM JNF_T8 T1
+		WHERE T1.C13 = '1'  AND to_date(to_char(sysdate,'yyyyMMdd'),'yyyyMMdd') > T1.C16 + #{day}   
+		<if test="tradeNo!=null and tradeNo!=''">
+			and T1.c1=#{tradeNo}
+		</if> 
+		<if test="tradeType!=null and tradeType!=''">
+			and T1.c3=#{tradeType}
+		</if> 
+		<if test="mid!=null and mid!=''">
+			and T1.c4=#{mid}
+		</if> 
+		<if test="mSerialNo!=null and mSerialNo!=''">
+			and T1.c5=#{mSerialNo}
+		</if> 
+		<if test="externLoanNo!=null and externLoanNo!=''">
+			and T1.c6=#{externLoanNo}
+		</if> 
+		<if test="amountMin !=null and amountMin!=''">
+			and T1.c12 >= TO_NUMBER(#{amountMin})
+		</if> 
+		<if test="amountMax !=null and amountMax!=''">
+			<![CDATA[ and T1.c12 <= TO_NUMBER(#{amountMax})]]> 
+		</if> 
+		<if test="modifiedMin !=null and modifiedMin!=''">
+			and T1.c17 >= TO_DATE(#{modifiedMin},'yyyyMMdd')
+		</if> 
+		<if test="modifiedMax !=null and modifiedMax!=''">
+			<![CDATA[ and T1.c17 <= TO_DATE(#{modifiedMax},'yyyyMMdd')]]>
+		</if> 
+		ORDER BY T1.C1 DESC
+	</select>
+	
+	<update id="dealException">
+		UPDATE JNF_T8 T1 SET 
+		T1.C13 = #{status},
+		T1.C18 = #{digest},
+		T1.C19 = #{exception}
+		WHERE T1.C1 = #{tradeNo}
+	</update>
+</mapper>

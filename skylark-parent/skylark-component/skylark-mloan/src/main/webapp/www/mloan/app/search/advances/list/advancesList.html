@@ -1,0 +1,42 @@
+ <ion-view view-title="{{title}}" id="advancesListView">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+         <ion-list class='list' ng-show="0 < advancesList.items.length"  >
+            <ion-item ng-repeat="e in advancesList.items" ng-click="viewAdvancesDateil({
+            'loanNo':e.loanNo,
+            'contNoExt':e.contNoExt,
+            'custNo':e.custNo,
+            'custName':e.custName,
+            'prcpOrig':e.prcpOrig,
+            'prcpBal':e.prcpBal,
+            'intRate':e.intRate,
+            'prdctDesc':e.prdctDesc,
+            'repayTyp':e.repayTyp,
+            'actvDt':e.actvDt,
+            'intStartDt':e.intStartDt,
+            'lastDueDt':e.lastDueDt,
+            'custManagerName':e.custManagerName,
+            'actvOperName':e.actvOperName,
+            'actvReviewName':e.actvReviewName
+            })">
+                <div class="jn-item-title" style="font-weight: bolder;">{{ e.custName }}</div>
+                <div class="jn-item-title" >{{ e.contNoExt }}</div>
+                <div>本金  {{ e.prcpOrig | jnCurrency }} 剩余  {{e.prcpBal | jnCurrency}}</div>
+                <div>放款日 {{ e.actvDt | jnDate}}</div>
+                <div class="status">
+		                <span class='repayTyp ion-android-checkmark-circle' data-value="{{e.repayTyp|jnConstant:327 }}"></span>
+	            </div>
+            </ion-item>
+        </ion-list>
+        <div
+            ng-show="0 === advancesList.items.length"    class="no_record"
+        >暂无记录</div>
+        <button
+            ng-click="more()"
+            ng-show="advancesList.items.length < advancesList.total"
+            class="button button-block button-positive button-clear"
+        >点击加载更多</button> 
+    </ion-content>
+</ion-view>

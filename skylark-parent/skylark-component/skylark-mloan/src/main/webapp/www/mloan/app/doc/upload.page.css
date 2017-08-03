@@ -1,0 +1,91 @@
+#jn-doc-upload .cache-list {
+    font-size: 0;
+    line-height: 0;
+}
+
+#jn-doc-upload .cache-list>li {
+    display: inline-block;
+    width: 25%;
+    padding: 2px;
+}
+
+#jn-doc-upload .cache-list .img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+#jn-doc-upload .cache-list .img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#jn-doc-upload .cache-list .img-wrapper i {
+    display: -webkit-box;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    color: rgba(255, 255, 255, .8);
+}
+
+#jn-doc-upload form ion-item {
+    display: -webkit-box;
+    display: flex;
+    padding-right: 54px;
+}
+
+#jn-doc-upload form ion-item>label {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+#jn-doc-upload form ion-item>span {
+    display: -webkit-box;
+    display: flex;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    margin-left: 1em;
+    overflow: hidden;
+    font-size: .8em;
+}
+
+#jn-doc-upload form ion-item>span label {
+    font-size: 1em;
+}
+
+#jn-doc-upload form ion-item>span input {
+    vertical-align: middle;
+}
+
+#jn-doc-upload form .cust-name {
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+    margin-left: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#jn-doc-upload form .appl-amt {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    margin-left: .25em;
+}
+
+#jn-doc-upload form .submit {
+     width: 80%;
+     margin: 20px 10%;
+}

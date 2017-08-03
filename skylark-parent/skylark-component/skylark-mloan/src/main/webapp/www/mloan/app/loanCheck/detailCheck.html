@@ -1,0 +1,23 @@
+<ion-view view-title="检查详情">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-item class="item">
+            实际检查日期
+            <span class="item-note">{{ it.realCheckDate }}</span>
+        </ion-item>
+        <ion-item class="item">
+            检查方式
+            <span class="item-note">{{ it.surveyType|jnConstant:9011 }}</span>
+        </ion-item>
+        <ion-item class="item">
+            过程描述
+            <span class="item-note">{{ it.content }}</span>
+        </ion-item>
+        <ion-item class="item">
+            检查结论与建议
+            <span class="item-note">{{ it.propose }}</span>
+        </ion-item>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,104 @@
+<ion-view view-title="黑名单查询" id="blackListQry">
+	<jn-back></jn-back>
+    <ion-nav-buttons side="secondary">
+        <button
+             class="button button-clear"
+             ng-click="blackListSearchCtrl.submit()"
+         >查询</button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="blackListSearchCtrl.myForm" novalidate>
+              <ion-list>
+              	 <ion-item class='title_divider'>
+                    <div class="quick_tool_bar" ng-click="blackListSearchCtrl.scanCard($event)">
+                            <a class="idcard">扫描身份证</a>
+                    </div>
+                </ion-item>
+                 <ion-item class="item-input item-select">
+                    <span class="input-label ">黑名单类型</span>
+                    <select
+                        ng-model="blackListSearchCtrl.form.blackType" 
+                        name="blackType"
+                        jn-options="9910" 
+                        ng-required="true">
+                    </select>
+                </ion-item>
+                <!-- # -->
+                 <ion-item class="item-input  item-select">
+                    <span class="input-label">客户类型</span>
+                    <select
+                        ng-model="blackListSearchCtrl.form.custType"
+                        name="custType"
+                        jn-options="5028" 
+                        ng-change="blackListSearchCtrl.onChangeCustType()"
+                        ng-required="blackListSearchCtrl.form.blackType === '1'"
+                        ng-readonly="blackListSearchCtrl.form.blackType === '' "
+                    ></select>
+                </ion-item>
+                 <ion-item class="item-input  item-select" 
+                 			ng-show="blackListSearchCtrl.form.custType === '0'">
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="blackListSearchCtrl.form.idType"
+                        name="idType"
+                        placeholder="请选择证件类型"
+                        ng-change="blackListSearchCtrl.onChangeIdType()"
+                    >
+                    	<option value=''>--请选择--</option>
+                    	<option value="0">身份证</option>
+                    </select>
+                </ion-item>
+                 <ion-item class="item-input  item-select" 
+                 			ng-show="blackListSearchCtrl.form.custType === '1'">
+                    <span class="input-label">证件类型</span>
+                    <select
+                        ng-model="blackListSearchCtrl.form.idType"
+                        name="idType"
+                        placeholder="请选择证件类型"
+                        ng-change="blackListSearchCtrl.onChangeIdType()"
+                        jn-options="5025"
+                    >
+                    </select>
+                </ion-item>
+                <ion-item class="item-input" 
+                			ng-show="blackListSearchCtrl.form.idType != undefined && blackListSearchCtrl.form.idType != ''">
+                    <span class="input-label">证件号码</span>
+                    	<input ng-if = " !blackListSearchCtrl.form.idType "
+	                        type="text"
+	                        ng-model="blackListSearchCtrl.form.idNo"
+	                        name="idNo"
+	                        placeholder="请输入证件号码" 
+	                        ng-required="blackListSearchCtrl.form.blackType === '1'"
+	                        ng-readonly="blackListSearchCtrl.form.idType === '' "/>
+	                        
+	                    <input ng-if = "blackListSearchCtrl.form.idType === '0'"
+	                        type="text"
+	                        ng-model="blackListSearchCtrl.form.idNo"
+	                        name="idNo"
+	                        placeholder="请输入证件号码" 
+	                        jn-id-no
+	                        ng-required="blackListSearchCtrl.form.blackType === '1'"
+	                        ng-readonly="blackListSearchCtrl.form.idType === '' "/>
+	                    
+	                    <input ng-if = "blackListSearchCtrl.form.idType === '10'"
+	                        type="text"
+	                        ng-model="blackListSearchCtrl.form.idNo"
+	                        name="idNo"
+	                        placeholder="请输入证件号码" 
+	                        jn-reg-no
+	                        ng-required="blackListSearchCtrl.form.blackType === '1'"
+	                        ng-readonly="blackListSearchCtrl.form.idType === '' "/>
+	                    
+	                    <input ng-if = "blackListSearchCtrl.form.idType === '11'"
+	                        type="text"
+	                        ng-model="blackListSearchCtrl.form.idNo"
+	                        name="idNo"
+	                        placeholder="请输入证件号码" 
+	                        adjust-org-no
+	                        ng-required="blackListSearchCtrl.form.blackType === '1'"
+	                        ng-readonly="blackListSearchCtrl.form.idType === '' "/>
+                </ion-item>
+           </ion-list>
+        </form>
+    </ion-content>
+</ion-view>

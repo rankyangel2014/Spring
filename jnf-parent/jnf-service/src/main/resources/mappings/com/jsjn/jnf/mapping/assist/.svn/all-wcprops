@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Zfjs/!svn/ver/4073/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist
+END
+ApiRoleCtrlDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/Zfjs/!svn/ver/1872/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/ApiRoleCtrlDao.xml
+END
+InterfaceXmlDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/2830/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/InterfaceXmlDao.xml
+END
+DictDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/3720/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/DictDao.xml
+END
+ChannelBankDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/Zfjs/!svn/ver/4242/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/ChannelBankDao.xml
+END
+MenuDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/3411/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/MenuDao.xml
+END
+MessageDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/3861/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/MessageDao.xml
+END
+FeeConfigDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/3500/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/FeeConfigDao.xml
+END
+ChannelDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/Zfjs/!svn/ver/4159/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/ChannelDao.xml
+END
+LockDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Zfjs/!svn/ver/1144/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/LockDao.xml
+END
+ReqXmlDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Zfjs/!svn/ver/1569/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/ReqXmlDao.xml
+END
+SeqDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Zfjs/!svn/ver/633/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/SeqDao.xml
+END
+BizConfigDao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/2139/group/dev/jnf-parent/jnf-service/src/main/resources/mappings/com/jsjn/jnf/mapping/assist/BizConfigDao.xml
+END

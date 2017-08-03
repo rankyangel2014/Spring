@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao
+END
+TestQueryCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestQueryCode.java
+END
+TestUpdateState.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestUpdateState.java
+END
+TestUpdateToken.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestUpdateToken.java
+END
+TestMemberFlowCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestMemberFlowCommon.java
+END
+TestSelectByToken.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestSelectByToken.java
+END
+TestInsertFlow.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestInsertFlow.java
+END
+TestUpdateCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestUpdateCode.java
+END
+TestUpdateSendState.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/Zfjs/!svn/ver/1807/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/dao/member/realNameFlowDao/TestUpdateSendState.java
+END

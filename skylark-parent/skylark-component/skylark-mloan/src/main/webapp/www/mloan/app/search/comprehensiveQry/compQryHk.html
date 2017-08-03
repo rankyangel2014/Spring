@@ -1,0 +1,92 @@
+<ion-view view-title="还款计划表" id="hkSheet">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content direction="xy">
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>期数</th>
+                    <th>还款日</th>
+                    <th>期供</th>
+                    <th>应还本金</th>
+                    <th>应还利息</th>
+                </tr>
+            </thead>
+          		<tbody>
+                <tr ng-repeat="r in items" >
+                    <th>{{ r.perdNo }}</th>
+                    <td>{{ r.dueDt }}</td>
+                    <td>{{ r.instmAmt | jnCurrency}}</td>
+                    <td>{{ r.instmPrcp | jnCurrency}}</td>
+                    <td>{{ r.instmInt | jnCurrency}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td>{{ sum.instmAmt | jnCurrency}}</td>
+                    <td>{{ sum.instmPrcp | jnCurrency}}</td>
+                    <td>{{ sum.instmInt | jnCurrency}}</td>
+                </tr>
+            </tfoot>
+    	</table>
+
+        <!--
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>期数</th>
+                    <th>账单日</th>
+                    <th>计息天数</th>
+                    <th>期供</th>
+                    <th>应还本金</th>
+                    <th>已还本金</th>
+                    <th>应还利息</th>
+                    <th>已还利息</th>
+                    <th>减免利息</th>
+                    <th>执行利率%</th>
+                    <th>提前还款额</th>
+                    <th>剩余本金</th>
+                    <th>当期结清</th>
+                </tr>
+            </thead>
+          		<tbody>
+                <tr ng-repeat="r in items" >
+                    <th>{{ r.perdNo }}</th>
+                    <td>{{ r.dueDt }}</td>
+                    <td>{{ r.numberOfDays }}</td>
+                    <td>{{ r.instmAmt | jnCurrency}}</td>
+                    <td>{{ r.instmPrcp | jnCurrency}}</td>
+                    <td>{{ r.setlPrcp | jnCurrency}}</td>
+                    <td>{{ r.instmInt | jnCurrency}}</td>
+                    <td>{{ r.setlInt | jnCurrency}}</td>
+                    <td>{{ r.wvInt | jnCurrency}}</td>
+                    <td>{{ r.intRate | jnCurrency}}</td>
+                    <td>{{ r.aheadSetlPrcp | jnCurrency}}</td>
+                    <td>{{ r.contPrcpEnd | jnCurrency}}</td>
+                    <td>{{ r.setlFlg | jnConstant :6701}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <td></td>
+                    <td>{{ sum.numberOfDays }}</td>
+                    <td>{{ sum.instmAmt | jnCurrency}}</td>
+                    <td>{{ sum.instmPrcp | jnCurrency}}</td>
+                    <td>{{ sum.setlPrcp | jnCurrency}}</td>
+                    <td>{{ sum.instmInt | jnCurrency}}</td>
+                    <td>{{ sum.setlInt | jnCurrency}}</td>
+                    <td>{{ sum.wvInt | jnCurrency}}</td>
+                    <td></td>
+                    <td>{{ sum.aheadSetlPrcp | jnCurrency}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+    	</table>
+        -->
+    </ion-content>
+</ion-view>

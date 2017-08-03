@@ -1,0 +1,52 @@
+<ion-view view-title="微贷助手" id="main" cache-view="false">
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-clear icon ion-ios-gear-outline">
+        </button>
+    </ion-nav-buttons>
+    <ion-content has-bouncing="false">
+    <div class="jn-whitespace" jn-mode="30px"></div>
+    <div class="jn-grid-view" ng-if="'grid' === ctrl.style">
+        <div class="row" ng-repeat="item in ctrl.menugroup" >
+            <a  ng-repeat="colitem in item"
+                class="col col-33 jn-col {{$index==2?'jn-last-col':''}}  {{colitem.url?'':'jn-col-disabled'}}" 
+                ng-if="colitem"
+                ng-href="{{ colitem.url }}"
+            >
+                <img ng-src="{{ colitem.icon }}" />
+                <p>{{ colitem.name }}</p>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'100001' === colitem.id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span
+                    class="badge badge-assertive"
+                    ng-if="'100002' === colitem.id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+            </a>
+        </div>   
+    </div>
+    <div class="jn-list-view" ng-if="'list' === ctrl.style">
+        <ion-list>
+            <ion-item
+            	ng-repeat="item in ctrl.menuItems"
+                class="item-avatar item-icon-right"
+                ng-if="item"
+                ng-href="{{ item.url }}"
+            >
+                <img ng-src="{{item.icon }}" />
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.desc }}</p>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'100001' === item.id && 0 < ctrl.examCount"
+                >{{ ctrl.examCount }}</span>
+                <span style="right: 38px"
+                    class="badge badge-assertive"
+                    ng-if="'100002' === item.id && 0 < ctrl.infoCount"
+                >{{ ctrl.infoCount }}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+        </ion-list>
+    </div>
+    </ion-content>
+</ion-view>

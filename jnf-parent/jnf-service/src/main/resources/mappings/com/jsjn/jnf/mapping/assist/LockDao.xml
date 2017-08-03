@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.assist.LockDao">
+	<!-- 插入锁表 -->
+	<insert id = "insert">
+		INSERT INTO JNF_T10(
+			C1, 
+			C2, 
+			C3
+		) VALUES (
+			#{mid}, 
+			#{lockType}, 
+			#{lockNo}
+		)
+	</insert>
+	<!-- 删除锁表 -->
+	<delete id = "delete">
+		DELETE FROM JNF_T10 WHERE C1 = #{mid} AND C2 = #{lockType} AND C3 = #{lockNo}
+	</delete>	
+</mapper>

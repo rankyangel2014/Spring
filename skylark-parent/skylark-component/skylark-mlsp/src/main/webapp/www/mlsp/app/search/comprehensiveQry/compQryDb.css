@@ -1,0 +1,89 @@
+#compQryDb .page .page_body {
+    margin-bottom: 0;
+}
+
+#compQryDb .list {
+    color: #666;
+}
+
+#compQryDb .list>li>div:first-child {
+    line-height: 1;
+    text-align: right;
+}
+
+#compQryDb .list>li>div:nth-child(2) {
+    color: #000;
+}
+
+#compQryDb .type_status {
+    line-height: 1;
+    font-size: 0;
+    font-weight: normal;
+    text-align: right;
+}
+
+#compQryDb .type_status:before,
+#compQryDb .type_status:after {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+}
+
+#compQryDb .type_status:before {
+    content: attr(data-type);
+    color: #fff;
+}
+
+#compQryDb .type_status:after {
+    content: attr(data-status);
+    text-align: center;
+}
+
+#compQryDb .type_status[data-status="0"]:after {
+    border-color: navy;
+}
+
+#compQryDb .type_status[data-status="1"]:after {
+    border-color: crimson;
+}
+
+#compQryDb .type_status[data-status="0"]:before {
+    content: '有效';
+    background-color: navy;
+}
+
+#compQryDb .type_status[data-status="1"]:before {
+    content: '无效';
+    background-color: crimson;
+}
+
+#compQryDb .type_status[data-type="0"]:after {
+    content: '所有';
+}
+
+#compQryDb .type_status[data-type="1"]:after {
+    content: '信用';
+}
+
+#compQryDb .type_status[data-type="2"]:after {
+    content: '担保';
+}
+
+#compQryDb .type_status[data-type="3"]:after {
+    content: '抵押';
+}
+
+#compQryDb .type_status[data-type="4"]:after {
+    content: '质押';
+}
+
+#compQryDb .cd {
+    display: block;
+}
+#compQryDb .name{
+	font-weight: bold;
+    line-height: 1.2em;
+    white-space: normal;
+    
+}

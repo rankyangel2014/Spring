@@ -1,0 +1,48 @@
+<ion-view view-title="正式客户维护">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-content >
+    	<ion-list>
+			<ion-item class="item-divider">重要指标</ion-item>
+            <ion-item class="item" >
+            	累放笔数
+            	<span class="item-note">{{ it.lfCount }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	累放金额
+            	<span class="item-note">{{ it.dprcpOrig }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	未结清贷款笔数
+            	<span class="item-note">{{ it.wjqCount }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	逾期还款次数
+            	<div class="item-note">{{ it.yqhkCount }}</div>
+            </ion-item>
+            <ion-item class="item" >
+            	累计未结清本金
+            	<span class="item-note">{{ it.dPrcpBal }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	累计未结清利息
+            	<span class="item-note">{{ it.dLx }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	最近一次还款日
+            	<span class="item-note">{{ it.lastSetlDt }}</span>
+            </ion-item>
+            <ion-item class="item" >
+            	下一次还款日
+            	<span class="item-note">{{ it.nextDueDt }}</span>
+            </ion-item>
+            <ion-item class="item" >最差五级分类
+                <span class="item-note">{{it.zcLoanGrd | jnConstant :7801 }}</span>
+            </ion-item>
+            <ion-item class="item" >最差贷款形态
+                <span class="item-note">{{it.zcStatus | jnConstant :6060 }}</span>
+            </ion-item>
+		</ion-list>
+    </ion-content>
+</ion-view>

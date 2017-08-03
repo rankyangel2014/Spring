@@ -1,0 +1,584 @@
+<ion-view view-title="{{ctrl.title}}" id="custOtherEdit">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+    <button ng-if="ctrl.actionFlag==='gtjyz'"
+             class="button button-clear "
+             ng-click="ctrl.submit('gtjyz')"
+         >保存</button>
+    <button ng-if="ctrl.actionFlag==='glrxx'"
+             class="button button-clear "
+             ng-click="ctrl.submit('glrxx')"
+         >保存</button>
+    <button ng-if="ctrl.actionFlag==='gyxx'"
+             class="button button-clear "
+             ng-click="ctrl.submit('gyxx')"
+         >保存</button>
+    <button ng-if="ctrl.actionFlag==='grxx'"
+             class="button button-clear "
+             ng-click="ctrl.submit('grxx')"
+         >保存</button>
+    <button ng-if="ctrl.actionFlag==='jjlxr'"
+             class="button button-clear "
+             ng-click="ctrl.submit('jjlxr')"
+         >保存</button>
+    <button ng-if="ctrl.actionFlag==='stxiangx'"
+             class="button button-clear "
+             ng-click="ctrl.submit('stxiangx')"
+         >保存</button>
+    </ion-nav-buttons>
+    <ion-content>
+     <!-- 客户基本信息修改 概要-->
+   <form ng-if="ctrl.actionFlag==='gyxx'" name="ctrl.form.gyxx"  novalidate jn-edit-form>
+            <input type="hidden" name="custNo" ng-model="ctrl.gyxx.custNo" />
+              <ion-item class="item-input">
+                    <span
+                        data-gender="{{ctrl.gyxx.sex}}"
+                        data-age="{{ctrl.gyxx.age}}"
+                    ></span>
+                    {{ctrl.gyxx.custName }} / {{ctrl.gyxx.paperNo}} 
+                </ion-item>
+                <ion-item class="item-input">
+                   <span class="input-label">客户经理</span>
+                       <input
+                            type="text"
+                            readonly
+                            ng-model="ctrl.gyxx.custManagerName" />
+                   </ion-item>
+                <ion-item class="item-input">
+                   <span class="input-label">电子邮件</span>
+                       <input
+                            type="text"
+                            name="email"
+                            ng-model="ctrl.gyxx.email"
+                            data-validate="email"
+                            placeholder="请输入电子邮件" 
+                            jn-email/>
+                   </ion-item>
+                <ion-item class="item-input">
+                   <span class="input-label">手机号码</span>
+                       <input
+                            type="tel"
+                            name="phoneNo"
+                            ng-model="ctrl.gyxx.phoneNo"
+                            placeholder="请输入电话号码" 
+                            jn-mobile/>
+                   </ion-item>
+                <ion-item class="item-input">
+                   <span class="input-label">住址</span>
+                       <input
+                            type="text"
+                            name="custAddr"
+                            ng-model="ctrl.gyxx.custAddr"
+                            placeholder="请输入居住地址" 
+                            jn-input-length="100"/>
+                   </ion-item>
+        </form>    
+    <!-- 客户基本信息修改 详细-->
+            <form ng-if="ctrl.actionFlag==='grxx'" name="ctrl.form.grxx"  novalidate jn-edit-form>
+            <input type="hidden" name="custNo" ng-model="ctrl.grxx.custNo " />
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">客户来源</span>
+                         <select
+                            name="adTypeId"
+                            required
+                            ng-model="ctrl.grxx.adTypeId"
+                            jn-options="895"></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">出生日期</span>
+                         <input
+                         	type="date"
+                            name="birthday"
+                            required
+                            ng-model="ctrl.grxx.birthday"
+                            placeholder="请输入出生日期" />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">婚姻状况</span>
+                         <select
+                            name="marryStatus"
+                            ng-model="ctrl.grxx.marryStatus"
+                            jn-options="5027"></select>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">户籍所在地</span>
+                         <input
+                            type="text"
+                            name="domPlace"
+                            ng-model="ctrl.grxx.domPlace"
+                            placeholder="请输入户籍所在地"
+                            jn-input-length="25" />
+                </ion-item>
+                
+            <div class="spouse"  ng-if="'28' === ctrl.grxx.marryStatus || '29' === ctrl.grxx.marryStatus">
+                <ion-item class="item-divider">配偶</ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">姓名</span>
+                    <jn-select-customer
+                        name="spouseCustName"
+                        cust-no="ctrl.grxx.custNo"
+                        cust-type="0"
+                        ng-model="ctrl.grxx.spouseCustName"
+                        ng-model-cust-no="ctrl.grxx.spouseCustNo"
+                        ng-model-paper-no="ctrl.grxx.spousePaperNo"
+                        ng-model-sex="ctrl.grxx.spouseSex"
+                        ng-model-birth="ctrl.grxx.spouseBirthday"
+                        ng-model-phone="ctrl.grxx.spouseMobPhone"
+                        required
+                        placeholder="请输入配偶姓名"
+                        on-select="ctrl.nameChange"
+                        ng-readonly="nameFlag"
+                    ></jn-select-customer>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">证件号码</span>
+                    <jn-input-id-no
+                        name="spousePaperNo"
+                        ng-model="ctrl.grxx.spousePaperNo"
+                        ng-model-cust-name="ctrl.grxx.spouseCustName"
+                        ng-model-sex="ctrl.grxx.spouseSex"
+                        ng-model-birth="ctrl.grxx.spouseBirthday"
+                        ng-model-phone="ctrl.grxx.spouseMobPhone"
+                        placeholder="请输入配偶证件号码"
+                        on-fetch="ctrl.noChange"
+                        ng-readonly="paperNoFlag"
+                        ng-blur="ctrl.calaData(ctrl.grxx.spousePaperNo)"
+                    ></jn-input-id-no>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">性别</span>
+                    <span ng-model="ctrl.grxx.spouseSex">{{ ctrl.grxx.spouseSex | jnConstant:306}}</span>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">出生日期</span>
+                         <input
+                            type="date"
+                            name="spouseBirthday"
+                            ng-model="ctrl.grxx.spouseBirthday"
+                            placeholder="请输入配偶出生日期" 
+                            ng-readonly="true"
+                            />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">手机号码</span>
+                         <input
+                            type="tel"
+                            name="spouseMobPhone"
+                            ng-model="ctrl.grxx.spouseMobPhone"
+                            placeholder="请输入配偶手机号码" 
+                            jn-mobile/>
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                         <input
+                            type="text"
+                            name="spouseWorkUnit"
+                            ng-model="ctrl.grxx.spouseWorkUnit "
+                            placeholder="请输入配偶工作单位" 
+                            jn-input-length="60"/>
+                </ion-item>
+             </div>
+        </form>
+    
+    	<!-- 共同经营者信息-->
+           <form ng-if="ctrl.actionFlag==='gtjyz'" name="ctrl.form.gtjyz" novalidate jn-edit-form>
+           <!--  <input type="hidden" name="entCustNo" ng-model="ctrl.gtjyz.entCustNo" /> -->
+            <input type="hidden" name="custNo" ng-model="ctrl.gtjyz.custNo" />
+	            <ion-item class='item-input item-select'>
+	                    <span class='input-label '>客户类别</span>
+	                    <select style="color: #aaa"  ng-model='ctrl.gtjyz.custType' name='custType'  disabled="disabled" >
+	                        <option value='0'>个人</option>
+	                        <option value='1'>企业</option>
+	                    </select>
+	            </ion-item>
+                <ion-item class="item-input ">
+                    <span class="input-label required">客户名称</span>
+                       <input
+                            type="text"
+                            name="custName"
+                            readonly
+                            ng-model="ctrl.gtjyz.custName "
+                            placeholder="请输入客户名称" />
+                  </ion-item>
+                  <ion-item class="item-input item-select">
+                    <span class="input-label ">与客户关系</span>
+					<select  style="color: #aaa" disabled="disabled">
+                        <option value="14" ng-selected="true" >合伙人</option>
+                    </select>
+                </ion-item>
+               <!--  <ion-item class="item-input ">
+                    <span class="input-label required">证件号码</span>
+                       <input
+                            type="text"
+                            name="paperNo"
+                            ng-readonly ="ctrl.gtjyz.paperNoRead!=''"
+                            ng-model="ctrl.gtjyz.paperNo "
+                            placeholder="请输入证件号码" 
+                            jn-id-no/>
+                  </ion-item> -->
+                  <ion-item class="item-input" ng-if=" ctrl.gtjyz.paperType == '0' ">
+                     <span class="input-label ">证件号码</span>
+                       <input
+                            type="text"
+                            name="paperNo"
+                            jn-id-no
+                            ng-readonly ="ctrl.gtjyz.paperNoRead!=''"
+                            ng-model="ctrl.gtjyz.paperNo"
+                            ng-blur="ctrl.custSearch(ctrl.gtjyz.paperNo,ctrl.gtjyz.paperType)"
+                            placeholder="请输入证件号码"
+                            />
+                            
+                </ion-item>
+                <ion-item class="item-input" ng-if=" ctrl.gtjyz.paperType == '10'">
+                     <span class="input-label ">证件号码</span>
+                       <input
+                            type="text"
+                            name="paperNo"
+                            jn-reg-no
+                            ng-model="ctrl.gtjyz.paperNo"
+                            ng-blur="ctrl.custSearch(ctrl.gtjyz.paperNo,ctrl.gtjyz.paperType)"
+                            placeholder="请输入证件号码"
+                            ng-readonly ="ctrl.gtjyz.paperNoRead!=''"
+                            />
+                </ion-item>
+                            
+                <ion-item class="item-input" ng-if="ctrl.gtjyz.paperType === '11'">
+                     <span class="input-label ">证件号码</span>
+                       <input
+                            type="text"
+                            name="paperNo"
+                            jn-org-no
+                            ng-model="ctrl.gtjyz.paperNo"
+                            ng-blur="ctrl.readCustByCondition(ctrl.gtjyz.paperNo,ctrl.gtjyz.paperType)"
+                            placeholder="请输入证件号码"
+                            ng-readonly ="ctrl.gtjyz.paperNoRead!=''"
+                            />
+                            
+                </ion-item>
+                <ion-item class="item-input ">
+                    <span class="input-label ">手机号码</span>
+                       <input
+                            type="tel"
+                            jn-tel
+                            name="phoneNo"
+                            ng-model="ctrl.gtjyz.phoneNo"
+                            placeholder="请输入手机号码"
+                            jn-mobile />
+                  </ion-item>
+                <ion-item class="item-input " ng-if=" ctrl.gtjyz.custType == '1' ">
+                     <span class="input-label ">股份占比(%)</span>
+                       <input
+                       		jn-positive
+                            type="number"
+                            name="soWnedClient"
+                            
+                            min="0"
+                            max="100"
+                            ng-model="ctrl.gtjyz.soWnedClient" />
+                  </ion-item>
+                <ion-item class="item-input" ng-if=" ctrl.gtjyz.custType == '0' ">
+                    <span class="input-label">工作单位</span>
+                       <input
+                            type="text"
+                            name="workUnit"
+                            ng-model="ctrl.gtjyz.workUnit "
+                            placeholder="请输入工作单位" 
+                            jn-input-length="60"/>
+                  </ion-item>
+                <ion-item class="item-input ">
+                    <span class="input-label">联系地址</span>
+                       <input
+                            type="text"
+                            name="custAddr"
+                            ng-model="ctrl.gtjyz.custAddr "
+                            placeholder="请输入联系地址" 
+                            jn-input-length="100"/>
+                  </ion-item>
+        </form>
+    	<!-- 关联人信息 -->
+         <form ng-show="ctrl.actionFlag==='glrxx'" name="ctrl.form.glrxx" novalidate jn-edit-form>
+            <input type="hidden" name="pCustNo" ng-model="ctrl.glrxx.pCustNo" />
+            <input type="hidden" name="custNo" ng-model="ctrl.glrxx.custNo" />
+                <ion-item class="item-input">
+                    <span class="input-label">客户名称</span>
+                       <input
+                            type="text"
+                            name="custName"
+                            readonly
+                            ng-model="ctrl.glrxx.custName"
+                            placeholder="请输入客户名称" />
+                 </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">证件号码</span>
+                       <input
+                            type="text"
+                            name="paperNo"
+                            readonly
+                            ng-model="ctrl.glrxx.paperNo"
+                            data-validate="id"
+                            placeholder="请输入证件号码" />
+                 </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">手机号码</span>
+                       <input
+                            type="tel"
+                            name="phoneNo"
+                            ng-required
+                            jn-mobile
+                            ng-model="ctrl.glrxx.phoneNo"
+                            placeholder="请输入手机号码" />
+                </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">关系类型</span>
+                      <select
+                            name="linkType"
+                            ng-required
+                            jn-options="5017"
+                            exclude="4,24"
+                            ng-model="ctrl.glrxx.linkType">
+                          </select>
+              </ion-item>
+                <ion-item class="item-input required">
+                    <span class="input-label required" >股份占比(%)</span>
+                       <input
+                            jn-postive
+                            type="number"
+                            name="soWnedClient"
+                            ng-required
+                            min="0"
+                            max="100"
+                            ng-model="ctrl.glrxx.soWnedClient " />
+                            
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">工作单位</span>
+                       <input
+                            type="text"
+                            name="workUnit"
+                            ng-model="ctrl.glrxx.workUnit"
+                            placeholder="请输入工作单位" 
+                            jn-input-length="60"/>
+                 </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系地址</span>
+                       <input
+                            type="text"
+                            name="custAddr"
+                            ng-model="ctrl.glrxx.custAddr"
+                            placeholder="请输入联系地址" 
+                            jn-input-length="100"/>
+               </ion-item>
+        </form>
+        <!-- 紧急联系人信息 -->
+        <form ng-if="ctrl.actionFlag==='jjlxr'" name="ctrl.form.jjlxr" novalidate jn-edit-form>
+            <input type="hidden" name="pCustNo" ng-model="ctrl.jjlxr.pCustNo" />
+            <input type="hidden" name="custNo" ng-model="ctrl.jjlxr.custNo" /> 
+                <ion-item class="item-input">
+                    <span class="input-label required">证件号码</span>
+                        <input
+                            type="text"
+                            name="paperNo"
+                            ng-model="ctrl.jjlxr.paperNo"
+                            id="paperNo"
+                            required
+                            data-validate="id"
+                            placeholder="请输入证件号码" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">客户名称</span>
+                        <input
+                            type="text"
+                            name="custName"
+                            ng-model="ctrl.jjlxr.custName"
+                            required
+                            placeholder="请输入客户名称" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label required">手机号码</span>
+                        <input
+                            type="tel"
+                            name="phoneNo"
+                            jn-mobile
+                            ng-model="ctrl.jjlxr.phoneNo"
+                            required
+                            placeholder="请输入手机号码" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label required">与客户关系</span>
+                     <select jn-options="5017"  ng-model="ctrl.jjlxr.linkType" name="linkType"></select>
+                  </ion-item>
+                <ion-item class="item-input ">
+                    <span class="input-label">工作单位</span>
+                        <input
+                            type="text"
+                            name="workUnit"
+                            ng-model="ctrl.jjlxr.workUnit"
+                            placeholder="请输入工作单位"
+                            jn-input-length="60" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">联系地址</span>
+                        <input
+                            type="text"
+                            name="custAddr"
+                            ng-model="ctrl.jjlxr.custAddr"
+                            placeholder="请输入联系地址"
+                            jn-input-length="100" />
+                  </ion-item>
+        </form>
+        <!-- 实体信息详情 -->
+        <form ng-if="ctrl.actionFlag==='stxiangx'" name="ctrl.form.stxx" novalidate jn-edit-form>
+            <input type="hidden" name="entCustNo" ng-model="ctrl.stxx.entCustNo " />
+            <input type="hidden" name="custNo" ng-model="ctrl.stxx.custNo " />
+                 <ion-item class="item-divider">基本信息</ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">实体名称</span>
+                      <input
+                            type="text"
+                            name="custName"
+                            readonly
+                            ng-model="ctrl.stxx.custName " />
+                  </ion-item>
+                <ion-item class="item-input">
+		            <span class="input-label">三证合一</span>
+		           		  <!-- <select 
+		                    name="cardMerge"
+		                    ng-model="ctrl.stxx.cardMerge"
+		                    jn-options="5064"
+		                    ng-disabled="ctrl.cardMerge=='Y'">
+		                    </select> -->
+		        <ion-radio ng-disabled="ctrl.cardMerge=='Y'"  style='border:0px;' name='cardMerge'  ng-model='ctrl.stxx.cardMerge'  ng-checked="ctrl.stxx.cardMerge"  value='N' checked>否</ion-radio>
+                <ion-radio ng-disabled="ctrl.cardMerge=='Y'"  style='border:0px;' name='cardMerge'  ng-model='ctrl.stxx.cardMerge'  ng-checked="ctrl.stxx.cardMerge"  value='Y' >是</ion-radio>
+		            </ion-item>
+				<ion-item class="item-input " ng-if="ctrl.stxx.cardMerge=='Y'">
+		            <span class="input-label required">统一信用代码</span>
+                   <input
+		                    type="text"
+		                    name="liceNo"
+		                    ng-model="ctrl.stxx.liceNo"
+							required
+                            jn-org-no
+		                    placeholder="请输入统一信用代码" 
+		                    ng-readonly="ctrl.cardMerge=='Y'"/>
+		            </ion-item>
+				<ion-item class="item-input " ng-if="ctrl.stxx.cardMerge=='N'">
+		            <span class="input-label required">营业执照</span>
+                   <input
+		                    type="text"
+		                    name="regNo"
+		                    ng-model="ctrl.stxx.regNo"
+							required
+                            readonly
+		                    data-validate="codexy"
+		                    placeholder="请输入营业执照号码" />
+		            </ion-item>
+		        <ion-item class="item-input"   ng-if="ctrl.stxx.cardMerge=='N'">
+		            <span class="input-label">组织机构代码</span>
+                   <input
+		                    type="text"
+		                    name="liceNo"
+		                    ng-model="ctrl.stxx.liceNo"
+		                    data-validate="orgno"
+		                    placeholder="请输入组织机构代码" />
+		            </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">主营业务</span>
+                      <input
+                            type="text"
+                            name="mainBusiness"
+                            maxlength="200"
+                            ng-model="ctrl.stxx.mainBusiness"
+                            placeholder="请输入主营业务" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">组织形式</span>
+                        <select
+                            name="orgForm"
+                            ng-model="ctrl.stxx.orgForm"
+                            jn-options="899"></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">法人代表</span>
+                         <input
+                            type="text"
+                            name="corpReprst"
+                            maxlength="120"
+                            ng-model="ctrl.stxx.corpReprst"
+                            placeholder="请输入法人代表" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">雇员人数</span>
+                        <input
+                            jn-positive
+                            type="number"
+                            name="employeeNum"
+                            ng-model="ctrl.stxx.employeeNum "
+                            min="0"
+                            step="1"
+                            placeholder="请输入雇员人数" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">法律实体</span>
+                        <select
+                            name="orgType"
+                            ng-model="ctrl.stxx.orgType"
+                            jn-options="5014"></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">固定电话</span>
+             			 <input
+                            type="text"
+                            name="fixPhone"
+                            ng-model="ctrl.stxx.fixPhone "
+                            placeholder="请输入固定电话"
+                            jn-phone />
+                  </ion-item>
+               <ion-item class="item-divider">经营信息</ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">营业时间</span>
+                        <input
+                            type="text"
+                            name="businessHours"
+                            ng-model="ctrl.stxx.businessHours"
+                            placeholder="请输入营业时间" />
+                  </ion-item>
+                <ion-item class="item-input item-select">
+                    <span class="input-label">营业场所</span>
+                     <select
+                            name="addressType"
+                            ng-model="ctrl.stxx.addressType"
+                            jn-options="900"
+                           ></select>
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">场所面积(m2)</span>
+                        <input
+                        	jn-positive
+                            type="number"
+                            name="addressArea"
+                            ng-model="ctrl.stxx.addressArea "
+                            min="0"
+                            max="9999999999999"
+                            placeholder="请输入经营场所面积" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">业务开始时间</span>
+                     <input
+                            type="date"
+                            name="businessStartDt"
+                            ng-model="ctrl.stxx.businessStartDt"
+                            placeholder="请输入业务开始时间" />
+                  </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">实际经营地址</span>
+                       <input
+                            type="text"
+                            name="address"
+                            ng-model="ctrl.stxx.address "
+                            placeholder="请输入实际经营地址" />
+                  </ion-item>
+        </form>
+    </ion-content>
+</ion-view>

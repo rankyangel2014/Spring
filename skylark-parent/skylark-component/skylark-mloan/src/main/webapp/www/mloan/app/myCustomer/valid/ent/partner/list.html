@@ -1,0 +1,58 @@
+<ion-view view-title="股东信息" id="partnerInfo">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="secondary">-->
+    <!--<button   ng-if=" '1' != isDetail "-->
+    <!--class="button button-clear "-->
+    <!--ng-click="ctrl.add()"-->
+    <!--&gt;新增</button>-->
+    <!--</ion-nav-buttons>-->
+
+    <ion-nav-buttons side="secondary">
+        <button ng-if="'1' != isDetail"
+                class="button button-clear icon ion-navicon"
+                ng-click="ctrl.showTitleMenu()"
+        >
+        </button>
+    </ion-nav-buttons>
+
+
+    <ion-content>
+        <ion-list ng-show="0 < ctrl.list.total">
+            <ion-item ng-repeat="c in ctrl.list.items">
+                <div ng-click="ctrl.toDetail(c)">
+                    <div class="name jn-item-title" style="margin-top: 12px;">{{ c.custName }}</div>
+                    <div class="sharholder">
+                        <span class="content" ng-if=" c.paperNo ">{{ c.paperNo }}</span>
+                    </div>
+                    <div>
+			        <span class="content" ng-if=" c.phoneNo ">
+		            	<jn-tel-no
+                                num="{{ c.phoneNo }}"></jn-tel-no>
+	            	</span>
+                    </div>
+                    <div class="address jn-item-title" style="margin-top: 2px;font-size: 14px;">{{ c.custAddr }}</div>
+                    <jn-pie-chart class="pie" value="{{ c.sharePct }}"></jn-pie-chart>
+                </div>
+                <ion-option-button
+                        ng-if="isDetail=='0'"
+                        class="button-assertive"
+                        ng-click="ctrl.rmGD(c)"
+                >删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <div
+                ng-if="0 === ctrl.list.total"
+                class="no_record"
+        >暂无记录
+        </div>
+        <button
+                ng-click="ctrl.more()"
+                ng-if="ctrl.list.items.length < ctrl.list.total"
+                class="button button-clear button-full button-positive"
+        >点击加载更多
+        </button>
+    </ion-content>
+</ion-view>

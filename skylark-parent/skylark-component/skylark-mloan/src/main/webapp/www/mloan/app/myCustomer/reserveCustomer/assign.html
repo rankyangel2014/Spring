@@ -1,0 +1,12 @@
+<div style='height:auto;width: auto;'>
+    <ion-radio ng-repeat="item in managers" ng-model="data.userId"  ng-value='item.userId'>
+        <div>{{item.userName}}</div>
+        <div ng-if='item.userId'>{{item.userId}}</div>
+    </ion-radio>
+    <!-- <ion-item class='item-icon-left' ng-repeat="item in managers" ng-value='item.userId'>
+        <span>{{item.userName}}</span> <i style='font-size:20px;' ng-click='Ctrl.toggle(item)' ng-class="{true:'icon ion-plus',false:'icon ion-minus'}[item.isActived]"></i>
+        <ion-radio style='border:0px;line-height:20px;margin-left:0px;' ng-if='!item.isActived' ng-click='checkedManager(manager,item.userId)' ng-repeat="manager in item.managers" ng-model="manager.isChecked">
+            <span style='white-space:normal;'>{{manager.userName}}</span>
+        </ion-radio>
+    </ion-item> -->
+</div>

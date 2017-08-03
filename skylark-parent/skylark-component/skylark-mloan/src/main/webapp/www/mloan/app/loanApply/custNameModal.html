@@ -1,0 +1,29 @@
+<ion-modal-view id="custNameModal">
+    <div class="bar bar-header bar-positive">
+        <button class="button button-clear" ng-click="loanBaseInfoCtrl.custNameModalConf.hideCustNameModal();">取消</button>
+        <h1 class="title">请选择客户</h1>
+        <div class="buttons buttons-right">
+            <button class="button button-clear"
+                    ng-click="loanBaseInfoCtrl.custNameModalConf.confirmCustName();"
+                    ng-show="loanBaseInfoCtrl.custNameModalConf.titleBtn === 0">
+                    确定
+            </button>
+        </div>
+    </div>
+    <ion-content class="has-header" has-bouncing="false" scroll="false">
+        <tab-slide-box tab="0">
+            <div class="tsb-icons">
+                <div class="tsb-ic-wrp">
+                    <ion-scroll direction="x" class="tsb-hscroll">
+                        <a href="javascript:;" ng-repeat="tab in loanBaseInfoCtrl.custNameModalConf.tabs" on-finish-render="">{{tab.text}}</a>
+                    </ion-scroll>
+                </div>
+            </div>
+            <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" >
+                <ion-slide ng-repeat="tab in loanBaseInfoCtrl.custNameModalConf.tabs">
+                    <ng-include src="tab.fragmentURL" class="scroll-content"></ng-include>
+                </ion-slide>
+            </ion-slide-box>
+        </tab-slide-box>
+    </ion-content>
+</ion-modal-view>

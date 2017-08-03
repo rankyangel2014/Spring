@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Zfjs/!svn/ver/1853/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/bussiness/trade
+END
+TestSinglPaymentQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Zfjs/!svn/ver/1842/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/bussiness/trade/TestSinglPaymentQuery.java
+END
+TestWithHolding.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/Zfjs/!svn/ver/1853/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/bussiness/trade/TestWithHolding.java
+END
+TestTradeFlowQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/1842/group/dev/jnf-parent/jnf-test/jnf-service/src/test/java/com/jsjn/jnf/bussiness/trade/TestTradeFlowQuery.java
+END

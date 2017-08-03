@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsjn.jnf.dao.withhold.SignInfoDao">
+
+	<sql id="columns">
+		T1.C1 as aid,
+		T1.C2 as mId,
+		T1.C3 as bindChannel,
+		T1.C4 as
+		payeeUserId,
+		T1.C5 as payerUserId,
+		T1.C6 as payerBindAccId,
+		T1.C7 as
+		type,
+		T1.C8 as state,
+		T1.C9 as payerIdFiles,
+		T1.C10 as payerFiles,
+		T1.C11
+		as jnfFileHash,
+		T1.C12 as loanNo,
+		T1.C13 as digest,
+		T1.C14 as created,
+		T1.C15 as modified,
+		T1.C16 as signNo
+	</sql>
+
+	<select id="querySignInfoByAid" resultType="com.jsjn.jnf.bean.dto.withhold.SignInfoDto">
+		SELECT
+		  <include refid="columns"></include>
+		FROM JNF_T22 T1 
+		WHERE T1.C1 = #{aid}
+		  AND T1.C2 = #{mid}
+		  AND T1.C7 = '1' --协议类型：代扣
+		  AND T1.C8 = '3' --已签约
+	</select>
+
+	<!-- 新增记录 -->
+	<insert id="insert">
+		INSERT INTO JNF_T22(
+		C1,
+		C2,
+		C3,
+		C4,
+		C5,
+		C6,
+		C7,
+		C8,
+		C9,
+		C10,
+		C11,
+		C12,
+		C13,
+		C14,
+		C15,
+		C16,
+		C17
+		)VALUES(
+		#{aid},
+		#{mId},
+		#{bindChannel},
+		#{payeeUserId},
+		#{payerUserId},
+		#{payerBindAccId},
+		#{type},
+		#{state},
+		#{payerIdFiles},
+		#{payerFiles},
+		#{jnfFileHash},
+		#{loanNo},
+		#{digest},
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+		TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss'),
+		#{signNo},
+		#{channelSign}
+		)
+	</insert>
+
+	<select id="querySignInfos" resultType="java.util.Map"
+		parameterType="SignInfoDto">
+		SELECT
+			t1.C4 AS state,
+			t1.c8 as bindChannel,
+			t1.c3 as aid
+		FROM JNF_T20 t1 left join jnf_t22 t2 on t1.c3 = t2.c1
+		<where>
+				t1.C2 = #{mId}
+			<if test="loanNo!=null and loanNo!='' ">
+				and t1.c16 = #{loanNo}
+			</if>
+			<if test="payeeUserId!=null and payeeUserId!=''">
+				and t2.c4 = #{payeeUserId}
+			</if>
+			<![CDATA[ AND t1.c4 <> '6'  ]]> --排除掉无效签约
+		</where>
+	</select>
+	<!--根据机构号和借据号查询签约状态  -->
+	<select id="querySignStatusByorgNoAndLoanNo" resultType="java.util.Map">
+	     SELECT 
+	     	cardSignNo, signStatus,  bankCardNo
+	     FROM (SELECT T1.C3 cardSignNo, T1.C4 signStatus, T2.C9 bankCardNo
+	             FROM JNF_T20 T1
+	             LEFT JOIN JNF_T24 T2
+	               ON T1.C8 = T2.C3
+	             LEFT JOIN JNF_T2 T3
+	               ON T2.C2 = T3.C1
+	     <![CDATA[WHERE T1.C4 <> '6' ]]> 
+	              AND T2.C4 = T3.C6 AND T2.C4 = '1'
+	              AND T1.C6 = T3.C12
+	              AND T1.C6 = #{orgNo}
+	              AND T1.C16 = #{loanNo}
+	            ORDER BY T1.C21 DESC)
+	    WHERE ROWNUM = 1
+	</select>
+	
+	<select id="querySignStateByLoanNo" resultType="Integer">
+		SELECT
+			count(1) 
+		FROM JNF_T22 T1 
+		WHERE T1.C2 = #{mid}
+		  AND T1.C12 = #{loanNo}
+		  AND T1.C8 = '3'
+		  AND T1.C4=(
+		  		SELECT 
+		  			T2.C1 
+		  		FROM
+		  			JNF_T2 T2
+		  		WHERE T2.C12=#{insttuId}
+		  ) 
+	</select>
+	
+	<update id="updateSiganInfoSignState">
+		UPDATE
+		JNF_T22
+		SET
+		C8 = '6',
+		C15 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd
+		HH24:mi:ss')
+		WHERE
+		C2 = #{mid} 
+		AND C12 = #{loanNo}
+		AND C8='4'
+		AND C4=(
+		  		SELECT 
+		  			C1 
+		  		FROM
+		  			JNF_T2 
+		  		WHERE C12=#{insttuId}
+		  ) 
+	</update>
+
+	<update id="cancelSign">
+		UPDATE
+		  JNF_T22
+		SET
+			C8 = '4', --已解约
+			C15 = TO_DATE(TO_CHAR(sysdate,'yyyyMMdd HH24:mi:ss'),'yyyyMMdd HH24:mi:ss')
+		WHERE
+		    C1=#{aid}
+	</update>
+	
+</mapper>

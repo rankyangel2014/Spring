@@ -1,0 +1,131 @@
+<ion-scroll class="jn-tabSlideBox-scroll"
+            ng-controller="addCustCtrl as addCustCtrl"
+            has-bouncing="false">
+    <ion-list>
+        <form name="addCustCtrl.validateForm" novalidate>
+            <ion-item class="item-input item-select">
+                <span class="input-label jn-input-required">客户类型</span>
+                <select name="custType"
+                        ng-model="loanBaseInfoCtrl.form.custType"
+                        jn-options="5028"
+                        disabled
+                        required>
+                </select>
+            </ion-item>
+            <!-- 个人客户新增 -->
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==0">
+                <span class="input-label jn-input-required">客户名称</span>
+                <input name="custName"
+                       type="text"
+                       ng-model="addCustCtrl.form.custName"
+                       jn-input-length="60"
+                       placeholder="请输入客户名称"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==0">
+                <span class="input-label jn-input-required">身份证号</span>
+                <input name="paperNo"
+                       type="text"
+                       ng-model="addCustCtrl.form.paperNo"
+                       jn-id-no
+                       placeholder="请输入身份证号"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==0">
+                <span class="input-label jn-input-required">手机号码</span>
+                <input name="phoneNo"
+                       type="tel"
+                       ng-model="addCustCtrl.form.phoneNo"
+                       jn-mobile
+                       placeholder="请输入手机号码"
+                       required/>
+            </ion-item>
+            <!-- 企业客户新增 -->
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==1">
+                <span class="input-label jn-input-required">企业名称</span>
+                <input name="custName"
+                       type="text"
+                       ng-model="addCustCtrl.form.custName"
+                       jn-input-length="60"
+                       placeholder="请输入企业名称"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==1">
+                <span class="input-label jn-input-required">三证合一</span>
+                <ion-radio class="jn-item-radio"
+                           name="cardMerge"
+                           ng-model="addCustCtrl.form.cardMerge"
+                           ng-checked="addCustCtrl.form.cardMerge == 'N'"
+                           value="N">
+                           否
+                </ion-radio>
+                <ion-radio class="jn-item-radio"
+                           name="cardMerge"
+                           ng-model="addCustCtrl.form.cardMerge"
+                           ng-checked="addCustCtrl.form.cardMerge == 'Y'"
+                           value="Y">
+                           是
+                </ion-radio>
+            </ion-item>
+            <ion-item class="item-input" ng-if="addCustCtrl.form.cardMerge=='Y' && loanBaseInfoCtrl.form.custType==1" >
+                <span class="input-label jn-input-required">统一信用代码</span>
+                <input type="text"
+                       name="liceNo"
+                       jn-lice-no
+                       ng-model="addCustCtrl.form.liceNo"
+                       placeholder="请输入统一信用代码"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="addCustCtrl.form.cardMerge == 'N' && loanBaseInfoCtrl.form.custType==1">
+                <span class="input-label jn-input-required">营业执照</span>
+                <input name="cPaperNo"
+                       type="text"
+                       jn-reg-no
+                       ng-model="addCustCtrl.form.cPaperNo"
+                       placeholder="请输入营业执照号码"
+                       required/>
+            </ion-item>
+            <ion-item class="item-input" ng-if="loanBaseInfoCtrl.form.custType==1">
+                <span class="input-label jn-input-required">联系方式</span>
+                <input name="phoneNo"
+                       type="tel"
+                       ng-model="addCustCtrl.form.phoneNo"
+                       jn-tel
+                       placeholder="请输入联系方式"
+                       required/>
+            </ion-item>
+            <!-- 公用 -->
+            <ion-item class="item-input item-select">
+                <span class="input-label jn-input-required">客户来源</span>
+                <select name="adTypeId"
+                        ng-model="addCustCtrl.form.adTypeId"
+                        jn-options="895"
+                        required>
+                </select>
+            </ion-item>
+            <ion-item class="item-input item-select" ng-if="addCustCtrl.isCustManagerShow == 'show'">
+                <span class="input-label">客户经理</span>
+                <jn-select-manager ng-hide="addCustCtrl.justManager"
+                                   name="custManagerNo"
+                                   ng-model="addCustCtrl.form.custManagerNo"
+                                   team="addCustCtrl.form.deptId">
+                </jn-select-manager>
+            </ion-item>
+            <ion-item class='item-input'>
+                  <span class='input-label'>来源详述</span>
+                  <textarea name='adTitle'
+                            style="resize: none;width: initial;margin-right:24px;"
+                            rows='4'
+                            cols="32"
+                            ng-model='addCustCtrl.form.adTitle'
+                            jn-input-length="500" >
+                  </textarea>
+            </ion-item>
+        </form>
+        <div class="jn-wingblank" jn-mode="15px">
+            <a class="button button-block button-positive" ng-click="addCustCtrl.addFormalCust();">注册新用户</a>
+        </div>
+
+    </ion-list>
+    <div class="jn-tabSlideBox-scroll-extraHeight"></div>
+</ion-scroll>

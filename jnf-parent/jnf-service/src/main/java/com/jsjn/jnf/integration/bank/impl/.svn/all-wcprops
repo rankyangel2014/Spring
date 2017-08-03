@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Zfjs/!svn/ver/3992/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl
+END
+JsyhSinglePaymentTradeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/Zfjs/!svn/ver/4171/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/JsyhSinglePaymentTradeImpl.java
+END
+JsyhSingleFlowStateQueryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/Zfjs/!svn/ver/4171/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/JsyhSingleFlowStateQueryImpl.java
+END
+TfbSingleWithHoldImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/4099/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/TfbSingleWithHoldImpl.java
+END
+TfbWithHoldResultQueryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/Zfjs/!svn/ver/3992/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/TfbWithHoldResultQueryImpl.java
+END
+JsyhRealTimeBalQueryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Zfjs/!svn/ver/4171/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/JsyhRealTimeBalQueryImpl.java
+END
+YfbSingleWithHoldImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/Zfjs/!svn/ver/4186/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/YfbSingleWithHoldImpl.java
+END
+JsyhCashSweepQueryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Zfjs/!svn/ver/4171/group/dev/jnf-parent/jnf-service/src/main/java/com/jsjn/jnf/integration/bank/impl/JsyhCashSweepQueryImpl.java
+END

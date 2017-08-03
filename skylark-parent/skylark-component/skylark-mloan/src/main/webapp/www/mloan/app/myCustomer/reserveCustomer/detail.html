@@ -1,0 +1,107 @@
+<ion-view view-title="潜在客户详情" id="reserveCustomerDetail">
+    <ion-nav-buttons side="left">
+        <jn-back></jn-back>
+    </ion-nav-buttons>
+     <ion-nav-buttons side="right">
+        <button
+             class="button button-clear"
+             ng-click="edit(it.custNo);"
+             ng-if='it.status!="1"&&!isJcManager&&enableTransfer'
+         >修改</button>
+    </ion-nav-buttons> 
+    
+    <ion-content overflow-scroll="true">
+        <ion-item class='subItem'>
+            <div style="white-space:normal;" > 接触日期  <span class="item-note" style="max-width:60%;">{{it.fstContactDt|jnDate }} </span></div>
+        </ion-item>
+        <ion-item class='subItem'>
+            <div style="white-space:normal;" > 客户类别  <span class="item-note" style="max-width:60%;">{{it.custType|jnConstant:5028 }} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-if=' it.custType=="1" '>
+            <div style="white-space:normal;" > 企业名称  <span class="item-note" style="max-width:60%;">{{it.cCustName }} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-if=' it.custType=="1" '>
+            <div style="white-space:normal;" > 联系人  <span class="item-note" style="max-width:60%;">{{it.contactName }} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-if=' it.custType !="1" '>
+            <div style="white-space:normal;" > 客户名称  <span class="item-note" style="max-width:60%;">{{it.custName }} </span></div>
+        </ion-item>
+        <ion-item class='subItem'>
+                           联系电话 <span class="item-note"  ng-if='it.phoneNo'><jn-tel-no  num="{{ it.phoneNo }}"></jn-tel-no> </span>
+        </ion-item>
+        <ion-item class='subItem'>
+           <div style="white-space:normal;">客户经理<span class="item-note" style="max-width:60%;">{{ it.custManagerName }} </span></div>
+        </ion-item>
+        
+         <!-- <ion-toggle class='pItem'   ng-model= 'checked["xxqd"]' ng-checked='checked["xxqd"]'>贷款意向</ion-toggle> -->
+         <!--  信息渠道  -->
+         <ion-item class='item-divider-cust'  ></ion-item>
+         <ion-item  ng-click="toggleItem('xxqd')" style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['xxqd']]" ng-model= 'checked["xxqd"]' ng-checked='checked["xxqd"]' >信息渠道
+            <i  ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['xxqd']]"></i>
+         </ion-item>
+        <ion-item class='subItem' ng-show=' checked["xxqd"]'>
+            <div style="white-space:normal;" >信息渠道<span class="item-note" style="max-width:60%;">{{it.adTypeId|jnConstant:895}} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["xxqd"]'>
+            <div style="white-space:normal;" >推荐人<span class="item-note" style="max-width:60%;">{{it.referrer}} </span></div>
+        </ion-item>
+         <!--  判定 -->
+        <ion-item ng-click="toggleItem('pd')"  style='color:#298ccf;' ng-class="{false:'item-divider change',true:' item-divider'}[checked['pd']]" ng-model= 'checked["pd"]' ng-checked='checked["gsxx"]' >判定
+             <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['pd']]"></i>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["pd"]'>
+            <div style="white-space:normal;" >判定结果<span class="item-note" style="max-width:60%;">{{it.fstContactIf|jnConstant:889}} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["pd"]'>
+            <div style="white-space:normal;" >判定原因<span class="item-note" style="max-width:60%;">{{it.fstCausation}} </span></div>
+        </ion-item>
+        
+        
+        <!-- 公司信息 -->
+        <!-- <ion-item ng-class="{false:'item-divider change',true:' item-divider'}[checked['gsxx']]" style='color:#298ccf;' ng-click="toggleItem('gsxx')"  ng-model= 'checked["gsxx"]' ng-checked='checked["gsxx"]'>公司信息
+             <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['gsxx']]"></i>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["gsxx"]'>
+            <div style="white-space:normal;" >详细地址<span class="item-note" style="max-width:60%;">{{it.custAddr || it.busAddress }} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["gsxx"]'>
+            <div style="white-space:normal;" >部门<span class="item-note" style="max-width:60%;">{{it.dept}} </span></div>
+        </ion-item>
+        <ion-item class='subItem' ng-show=' checked["gsxx"]'>
+            <div style="white-space:normal;" >头衔<span class="item-note" style="max-width:60%;">{{it.title}} </span></div>
+        </ion-item> -->
+        <!-- 其他信息 -->
+        <!-- <ion-item style='color:#298ccf;' ng-if='"0" == it.custType' ng-class="{false:'item-divider change',true:' item-divider'}[checked['qtxx']]" ng-click="toggleItem('gsxx')"  ng-model= 'checked["gsxx"]' ng-checked='checked["gsxx"]'>其他信息
+             <i ng-class="{true:' icon ion-ios-arrow-up arrow-size',false:' icon ion-ios-arrow-down arrow-size'}[checked['qtxx']]"></i>
+        </ion-item>
+        <ion-item ng-if='"0" == it.custType' class='subItem' ng-show=' checked["qtxx"]'>
+                             证件号码 <span class="item-note">{{it.idcard}} </span>
+        </ion-item>
+        <ion-item ng-if='"0" == it.custType' class='subItem' ng-show=' checked["qtxx"]'>
+            <div style="white-space:normal;" >性别<span class="item-note" style="max-width:60%;">{{it.sex }} </span></div>
+        </ion-item>
+        <ion-item ng-if='"0" == it.custType' class='subItem' ng-show=' checked["qtxx"]'>
+            <div style="white-space:normal;" > 名族<span class="item-note" style="max-width:60%;">{{it.nation}} </span></div>
+        </ion-item> -->
+        
+        <ion-item class='item-divider-cust'></ion-item>
+        <ion-item  class="item-icon-right"  ui-sref='reserveCustomerAssign({custNo:it.custNo})'>
+                             分配历史<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item  class="item-icon-right"  ng-if='it.status=="0"' ui-sref='reserveCustomerReturnVisitList({custNo:it.custNo,custManagerName:it.custManagerName})'>
+                             回访管理<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <div ng-if='!isJcManager && it.asgnStatus!="2"'>
+	        <ion-item  class="item-icon-right" ng-if='it.status=="0"&&enableTransfer ' ui-sref='reserveCustomerTransfer({custNo:it.custNo,custType:it.custType,custClass:"0"})'>
+	                             移交<i class="icon ion-ios-arrow-right"></i>
+	        </ion-item>
+        </div>
+        <!-- 分配暂时不需要 全部放在代办中处理 -->
+        <ion-item ng-if="assignedAble && it.asgnStatus!='2'" class="item-icon-right"
+                  ui-sref="reserveCustomerAssigned({custNo:it.custNo,custType:'0',todos:false})">
+                                      分配 <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        
+        
+    </ion-content>
+</ion-view>

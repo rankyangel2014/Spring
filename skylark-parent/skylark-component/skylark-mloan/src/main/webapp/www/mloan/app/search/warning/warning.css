@@ -1,0 +1,32 @@
+#warningList .item {
+    font-size: .875em;
+}
+
+#warningList .item-avatar {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    min-height: 25px;
+}
+
+#warningList .item-avatar[data-operFlag='1'] {
+    background-color: #E0E0E0;
+}
+
+#warningList .tabs-secondary {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 40px;
+    height: 40px;
+    background-color: #E0E0E0;
+}
+
+#warningList .tab-do {
+    color: #387ef5;
+}
+
+#warningList .tab-do span {
+    vertical-align: middle;
+    display: inline;
+    font-size: 16px;
+}
