@@ -33,7 +33,15 @@ CREATE TABLE IMAGE(
     [ISCOVER]          CHAR(1)
 );
 
-
+DROP TABLE IF EXISTS CHINAMD;
+CREATE TABLE CHINAMD(
+    [ID]               INTEGER PRIMARY KEY AUTOINCREMENT,            -- 设置主键
+    [URL]              VARCHAR(200),
+    [PAGENUM]          VARCHAR(30),
+    [STATE]            CHAR(1),
+    [CONTENT]          VARCHAR(2048),
+    [CREATETIME]       TIMESTAMP
+);
 
 
 

@@ -1,7 +1,6 @@
 package com.ranky.service.impl;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,27 +61,11 @@ public class FilmServiceImpl implements FilmService {
 
 	@Override
 	public FilmDto getAllFilm(FilmDto filmDto) {
-		// System.out.println("getAllUser load from database !");
-		PageBounds pageBounds = null;
-		if (Objects.isNull(filmDto)) {
-			pageBounds.setContainsTotalCount(true);
-			pageBounds.setPage(-1);
-			pageBounds.setLimit(-1);
-			filmDto = new FilmDto();
-		} else {
-
-			String sort = filmDto.getSort();
-			Integer page = filmDto.getPage();
-			Integer limit = filmDto.getLimit();
-			List<Order> orders = Lists.newArrayList(Order.formString(sort));
-			pageBounds = new PageBounds(page, limit, orders);
-			//			pageBounds.setOrders(orders);
-			//			pageBounds.setPage(page);
-			//			pageBounds.setLimit(limit);
-			//			pageBounds.setContainsTotalCount(true);
-		}
-		// PageBounds pageBounds = new PageBounds(filmDto.getPage(),
-		// filmDto.getLimit(), orders, true);
+		String sort = filmDto.getSort();
+		Integer page = filmDto.getPage();
+		Integer limit = filmDto.getLimit();
+		List<Order> orders = Lists.newArrayList(Order.formString(sort));
+		PageBounds pageBounds = new PageBounds(page, limit, orders);
 		PageList<FilmDto> list = filmDao.findAllFilms(pageBounds);
 		// 获得结果集条总数
 		filmDto.setTotalCount(list.getPaginator().getTotalCount());

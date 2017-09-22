@@ -43,7 +43,8 @@
 	<script src="mmGrid/mmGrid.js"></script>
 	<script src="mmGrid/mmPaginator.js"></script>
 	<script src="js/layer/layer.js"></script>
-	<script src="js/index.js"></script>
-	
+	<!-- <script src="js/index.js"></script> -->
+	<script src="js/chinamd.js"></script>
+
 </body>
 </html>
